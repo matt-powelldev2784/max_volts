@@ -1,7 +1,7 @@
 import { prisma } from '../../../../prisma/db/client'
 
 const getClients = async () => {
-  prisma.client.findMany()
+  return await prisma.client.findMany()
 }
 
 export const Invoice = async () => {
