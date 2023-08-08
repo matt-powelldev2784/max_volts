@@ -1,5 +1,5 @@
 import { NavBar } from '@/app/components'
-import { getLoggedInUser } from '@/app/lib/getLoggedInUser'
+import { getLoggedInUser } from '@/lib/getLoggedInUser'
 
 export default async function Hero() {
   const user = await getLoggedInUser()
