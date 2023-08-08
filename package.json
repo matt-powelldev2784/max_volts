@@ -46,5 +46,8 @@
     "@commitlint/config-conventional": "^17.6.7",
     "prettier": "^3.0.0",
     "prisma": "^5.0.0"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed/seed.ts"
   }
 }
