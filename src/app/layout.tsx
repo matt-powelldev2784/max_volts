@@ -6,8 +6,8 @@ import AuthProvider from './AuthProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Footboot Store',
-  description: 'Football boots for the modern player',
+  title: 'Max Volts Web Portal',
+  description: 'Max Volts web Portal',
 }
 
 export default function RootLayout({
