@@ -6,6 +6,8 @@ export const getLoggedInUser = async () => {
   const session = await getServerSession(authOptions)
   const email = session?.user?.email
 
+  if (!email) return null
+
   if (email) {
     const user = await prisma.user.findUnique({
       where: {
@@ -14,5 +16,5 @@ export const getLoggedInUser = async () => {
     })
 
     return user
-  } else return null
+  }
 }
