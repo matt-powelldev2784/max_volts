@@ -1,5 +1,4 @@
 import { prisma } from '../db/client'
-import { storeItemSeeds } from './storeItems'
 
 async function main(): Promise<void> {
   //   await prisma.storeItem.deleteMany()
