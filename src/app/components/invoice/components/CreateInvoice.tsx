@@ -17,7 +17,7 @@ export const CreateInvoice = () => {
   const formik = useFormik({
     initialValues: {
       clientId: '',
-      totalAmount: '0',
+      totalAmount: '0.001',
     },
     validationSchema: Yup.object({
       clientId: Yup.string().required('Please input a value client'),
@@ -80,7 +80,6 @@ export const CreateInvoice = () => {
         htmlFor="totalAmount"
         labelText="Invoice Total"
         inputType="text"
-        value={formik.values.totalAmount}
       />
 
       <Button
