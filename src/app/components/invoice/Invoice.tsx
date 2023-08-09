@@ -34,7 +34,7 @@ export const Invoice = () => {
 
   const selectOptionsJsx = clients.map((client) => {
     return (
-      <option key={client.id} value={client.name + client.companyName}>
+      <option key={client.id} value={client.id}>
         {`${client.name} @ ${client.companyName}`}
       </option>
     )
