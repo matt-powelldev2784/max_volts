@@ -22,7 +22,7 @@ export const apiCall = async (apiOptions: ApiOptions) => {
         response = await axios.delete(route)
         break
       default:
-        response = await axios.get(`${BASE_URL}/${route}`)
+        response = await axios.get(route)
     }
 
     const { data } = response
