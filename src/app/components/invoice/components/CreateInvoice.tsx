@@ -32,11 +32,12 @@ export const CreateInvoice = () => {
       // if (breakTest) return
 
       try {
-        await apiCall({
+        const newInvoice = await apiCall({
           httpMethod: 'POST',
           route: `/api/protected/invoice`,
           body: values,
         })
+        sessionStorage.setItem('currentInvoiceId', newInvoice.id)
       } catch (error: any) {
         console.log('error', error.message)
       } finally {
