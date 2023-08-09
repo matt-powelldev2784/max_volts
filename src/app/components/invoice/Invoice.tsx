@@ -16,24 +16,28 @@ export const Invoice = () => {
 
   const formik = useFormik({
     initialValues: {
-      selectClient: '',
+      clientId: '',
       totalAmount: '',
     },
     validationSchema: Yup.object({
-      selectClient: Yup.string().required('Please input a value client'),
+      clientId: Yup.string().required('Please input a value client'),
       totalAmount: Yup.string().required('Please input a invoice total'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
       console.log('values', values)
 
-      //   const res = await apiCall({
-      //     httpMethod: 'GET',
-      //     route: `api/v1/order/${userId}`,
-      //   })
-      //   const { data } = res
-      //   return data
-      // },
+      try {
+        await apiCall({
+          httpMethod: 'POST',
+          route: `/api/protected/invoice`,
+          body: values,
+        })
+      } catch (error: any) {
+        console.log('error', error.message)
+      } finally {
+        setIsLoading(false)
+      }
     },
   })
 
@@ -62,11 +66,7 @@ export const Invoice = () => {
     >
       <p>Invoice</p>
 
-      <SelectField
-        formik={formik}
-        htmlFor="selectClient"
-        labelText="Select Client"
-      >
+      <SelectField formik={formik} htmlFor="clientId" labelText="Select Client">
         <option value="">Select a client</option>
         {selectOptionsJsx}
       </SelectField>
