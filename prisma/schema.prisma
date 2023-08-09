@@ -25,7 +25,7 @@ model Product {
   id       String @id @default(cuid())
   name     String
   buyPrice Float
-  markup   Float @default(50)
+  description  String
   sellPrice Float
   InvoiceRow InvoiceRow[]
 }
@@ -35,7 +35,7 @@ model InvoiceRow {
   invoiceId String
   productId String
   name      String
-  markup    Float
+  description  String
   price     Float
   Invoice   Invoice? @relation(fields: [invoiceId], references: [id])
   Product   Product? @relation(fields: [productId], references: [id])
