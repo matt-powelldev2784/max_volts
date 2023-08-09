@@ -29,6 +29,9 @@ export const GET = async (req: NextRequest, _res: NextResponse) => {
     where: {
       id: invoiceId,
     },
+    include: {
+      InvoiceRow: true,
+    },
   })
 
   return NextResponse.json(invoice, { status: 200 })
