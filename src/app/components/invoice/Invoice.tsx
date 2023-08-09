@@ -39,10 +39,9 @@ export const Invoice = () => {
 
   useEffect(() => {
     const getClientsData = async () => {
-      const res = await apiCall({
+      const clientsData: ClientName[] = await apiCall({
         route: `/api/protected/client/clientname`,
       })
-      const clientsData: ClientName[] = await res.json()
       setClients(clientsData)
     }
     getClientsData()
