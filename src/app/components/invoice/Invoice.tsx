@@ -19,7 +19,7 @@ export const Invoice = () => {
 
   useEffect(() => {
     const getClientsData = async () => {
-      const res = await fetch(`/api/protected/client`)
+      const res = await fetch(`/api/protected/client/clientname`)
       const clientsData = await res.json()
       setClients(clientsData)
     }
