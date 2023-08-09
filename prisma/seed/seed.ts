@@ -1,10 +1,10 @@
 import { prisma } from '../db/client'
 
 async function main(): Promise<void> {
-  await prisma.client.deleteMany()
-  await prisma.product.deleteMany()
-  await prisma.invoice.deleteMany()
   await prisma.invoiceRow.deleteMany()
+  await prisma.invoice.deleteMany()
+  await prisma.product.deleteMany()
+  await prisma.client.deleteMany()
 
   const clientSeeds = [
     {
@@ -37,12 +37,31 @@ async function main(): Promise<void> {
   })
   console.log({ clients })
 
-  // const productsSeeds = [
-  //   {
-  //     name: 'Product 1',
-  //     description: 'Product 1 description',
-  //     price: 100,
-  //   },
+  const productSeeds = [
+    {
+      name: 'Product 1',
+      description: 'Product 1 description',
+      buyPrice: 100,
+      sellPrice: 200,
+    },
+    {
+      name: 'Product 2',
+      description: 'Product 2 description',
+      buyPrice: 100,
+      sellPrice: 200,
+    },
+  ]
+
+  const products = await prisma.product.createMany({
+    data: productSeeds.map((product) => ({
+      name: product.name,
+      description: product.description,
+      buyPrice: product.buyPrice,
+      sellPrice: product.sellPrice,
+    })),
+  })
+
+  console.log({ products })
 
   //   await prisma.storeItem.deleteMany()
   //   const storeItems = await prisma.storeItem.createMany({
