@@ -6,6 +6,7 @@ import { InputField } from './components/InputField'
 import { useFormik } from 'formik'
 import { ClientName } from '@/types/clientName'
 import { Button } from '@/ui/button/button'
+import * as Yup from 'yup'
 
 export const Invoice = () => {
   const [clients, setClients] = useState<ClientName[]>([])
@@ -17,6 +18,9 @@ export const Invoice = () => {
       selectClient: '',
       description: '',
     },
+    validationSchema: Yup.object({
+      selectClient: Yup.string().required('Please input a value client'),
+    }),
     onSubmit: (values) => {
       setIsLoading(true)
       console.log('values', values)
