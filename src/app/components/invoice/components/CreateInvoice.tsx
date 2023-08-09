@@ -38,6 +38,7 @@ export const CreateInvoice = () => {
           body: values,
         })
         sessionStorage.setItem('currentInvoiceId', newInvoice.id)
+        window.location.href = '/'
       } catch (error: any) {
         console.log('error', error.message)
       } finally {
