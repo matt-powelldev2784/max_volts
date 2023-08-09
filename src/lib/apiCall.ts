@@ -10,19 +10,19 @@ export const apiCall = async (apiOptions: ApiOptions) => {
 
     switch (httpMethod) {
       case 'POST':
-        response = await axios.post(`${BASE_URL}/${route}`, body)
+        response = await axios.post(route, body)
         break
       case 'GET':
-        response = await axios.get(`${BASE_URL}/${route}`)
+        response = await axios.get(route)
         break
       case 'PUT':
-        response = await axios.put(`${BASE_URL}/${route}`)
+        response = await axios.put(route)
         break
       case 'DELETE':
-        response = await axios.delete(`${BASE_URL}/${route}`)
+        response = await axios.delete(route)
         break
       default:
-        console.log('Api call type not recognised')
+        response = await axios.get(`${BASE_URL}/${route}`)
     }
 
     const { data } = response
