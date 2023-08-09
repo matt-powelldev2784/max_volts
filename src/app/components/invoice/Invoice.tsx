@@ -7,6 +7,7 @@ import { useFormik } from 'formik'
 import { ClientName } from '@/types/clientName'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
+import { apiCall } from '@/lib/apiCall'
 
 export const Invoice = () => {
   const [clients, setClients] = useState<ClientName[]>([])
@@ -22,16 +23,25 @@ export const Invoice = () => {
       selectClient: Yup.string().required('Please input a value client'),
       totalAmount: Yup.string().required('Please input a invoice total'),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       setIsLoading(true)
-      
       console.log('values', values)
+
+      //   const res = await apiCall({
+      //     httpMethod: 'GET',
+      //     route: `api/v1/order/${userId}`,
+      //   })
+      //   const { data } = res
+      //   return data
+      // },
     },
   })
 
   useEffect(() => {
     const getClientsData = async () => {
-      const res = await fetch(`/api/protected/client/clientname`)
+      const res = await apiCall({
+        route: `/api/protected/client/clientname`,
+      })
       const clientsData: ClientName[] = await res.json()
       setClients(clientsData)
     }
