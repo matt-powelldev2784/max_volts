@@ -85,7 +85,7 @@ export const CreateInvoice = () => {
       <Button
         type="submit"
         optionalClasses="w-full bg-red-500 my-2"
-        buttonText="Upload Image"
+        buttonText="Create Invoice"
         disabled={isLoading}
       />
     </form>
