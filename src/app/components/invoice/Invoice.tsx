@@ -7,6 +7,7 @@ import { useFormik } from 'formik'
 import { ClientName } from '@/types/clientName'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
+import { apiCall } from '@/lib/apiCall'
 
 export const Invoice = () => {
   const [clients, setClients] = useState<ClientName[]>([])
@@ -15,24 +16,36 @@ export const Invoice = () => {
 
   const formik = useFormik({
     initialValues: {
-      selectClient: '',
+      clientId: '',
       totalAmount: '',
     },
     validationSchema: Yup.object({
-      selectClient: Yup.string().required('Please input a value client'),
+      clientId: Yup.string().required('Please input a value client'),
       totalAmount: Yup.string().required('Please input a invoice total'),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       setIsLoading(true)
-      
       console.log('values', values)
+
+      try {
+        await apiCall({
+          httpMethod: 'POST',
+          route: `/api/protected/invoice`,
+          body: values,
+        })
+      } catch (error: any) {
+        console.log('error', error.message)
+      } finally {
+        setIsLoading(false)
+      }
     },
   })
 
   useEffect(() => {
     const getClientsData = async () => {
-      const res = await fetch(`/api/protected/client/clientname`)
-      const clientsData: ClientName[] = await res.json()
+      const clientsData: ClientName[] = await apiCall({
+        route: `/api/protected/client/clientname`,
+      })
       setClients(clientsData)
     }
     getClientsData()
@@ -53,11 +66,7 @@ export const Invoice = () => {
     >
       <p>Invoice</p>
 
-      <SelectField
-        formik={formik}
-        htmlFor="selectClient"
-        labelText="Select Client"
-      >
+      <SelectField formik={formik} htmlFor="clientId" labelText="Select Client">
         <option value="">Select a client</option>
         {selectOptionsJsx}
       </SelectField>

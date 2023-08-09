@@ -6,18 +6,31 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   const session = await getServerSession(authOptions)
   if (!session) return noSessionResponse
 
-  const { clientId, totalAmount } = await req.json()
-  console.log('clientId', clientId)
-  console.log('totalAmount', totalAmount)
+  const data = await req.json()
+  const clientId = data.clientId
+  const totalAmount = Number(data.totalAmount)
 
-  return NextResponse.json({ clientId, totalAmount }, { status: 201 })
+  if (!clientId || !totalAmount || typeof totalAmount !== 'number') {
+    return NextResponse.json(
+      {
+        success: false,
+        status: 400,
+        errors: [
+          { msg: 'Please provide all required fields in the correct format' },
+        ],
+      },
+      {
+        status: 400,
+      }
+    )
+  }
 
-  // const newInvoice = await prisma.invoice.create({
-  //   data: {
-  //     clientId,
-  //     totalAmount,
-  //   },
-  // })
+  const newInvoice = await prisma.invoice.create({
+    data: {
+      clientId,
+      totalAmount,
+    },
+  })
 
-  // return NextResponse.json(newInvoice, { status: 201 })
+  return NextResponse.json(newInvoice, { status: 201 })
 }
