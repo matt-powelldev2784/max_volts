@@ -1,10 +1,12 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { getServerSession } from 'next-auth'
-import { prisma } from '../../../prisma/db/client'
+import { prisma } from '../../prisma/db/client'
 
 export const getLoggedInUser = async () => {
   const session = await getServerSession(authOptions)
   const email = session?.user?.email
+
+  if (!email) return null
 
   if (email) {
     const user = await prisma.user.findUnique({
@@ -14,5 +16,5 @@ export const getLoggedInUser = async () => {
     })
 
     return user
-  } else return null
+  }
 }

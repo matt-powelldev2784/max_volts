@@ -1,11 +1,11 @@
-import { NavBar } from '@/app/components'
-import Hero from './api/hero/Hero'
+import { NavBar, Invoice, IsLoggedIn } from '@/app/components'
 
 export default async function Home() {
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
-      <Hero />
+      <IsLoggedIn />
+      <Invoice />
     </main>
   )
 }
