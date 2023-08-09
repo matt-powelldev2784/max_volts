@@ -11,8 +11,10 @@ import { apiCall } from '@/lib/apiCall'
 
 export const Invoice = () => {
   const [clients, setClients] = useState<ClientName[]>([])
+  const [products, setProducts] = useState<ClientName[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   console.log('clients', clients)
+  console.log('products', products)
 
   const formik = useFormik({
     initialValues: {
@@ -48,7 +50,14 @@ export const Invoice = () => {
       })
       setClients(clientsData)
     }
+    const getProductsData = async () => {
+      const productsData: ClientName[] = await apiCall({
+        route: `/api/protected/product`,
+      })
+      setProducts(productsData)
+    }
     getClientsData()
+    getProductsData()
   }, [])
 
   const selectOptionsJsx = clients.map((client) => {
