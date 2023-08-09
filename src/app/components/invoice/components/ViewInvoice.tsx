@@ -19,7 +19,12 @@ export const ViewInvoice = () => {
 
   console.log('invoiceData', invoiceData)
 
-  return invoiceData ? (
-    <p>{invoiceData.id + ' ' + invoiceData.totalAmount}</p>
-  ) : null
+  if (!invoiceData) return null
+
+  return (
+    <section>
+      <p>Invoice Number:{invoiceData.invoiceNum}</p>
+      <p>Total Amount:{invoiceData.totalAmount}</p>
+    </section>
+  )
 }
