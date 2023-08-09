@@ -5,16 +5,16 @@ interface InputFieldProps {
   formik: FormikProps<any>
   htmlFor: string
   labelText: string
-  inputType: string
   spanText?: string
+  children: React.ReactNode[]
 }
 
 export const SelectField = ({
   formik,
   htmlFor,
   labelText,
-  inputType,
   spanText,
+  children,
 }: InputFieldProps) => {
   return (
     <>
@@ -34,7 +34,9 @@ export const SelectField = ({
           formik.errors[htmlFor] &&
           'border-2 border-red-500'
         }`}
-      />
+      >
+        {...children}
+      </select>
       <FormikError formik={formik} name={htmlFor} />
     </>
   )
