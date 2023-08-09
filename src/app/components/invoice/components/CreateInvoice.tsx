@@ -11,10 +11,8 @@ import { apiCall } from '@/lib/apiCall'
 
 export const CreateInvoice = () => {
   const [clients, setClients] = useState<ClientName[]>([])
-  const [products, setProducts] = useState<ClientName[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   console.log('clients', clients)
-  console.log('products', products)
 
   const formik = useFormik({
     initialValues: {
