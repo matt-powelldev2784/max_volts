@@ -19,7 +19,7 @@ const initialState: T_ProductState = {
   products: [],
 }
 
-export const getProducts = createAsyncThunk('userState/auth', async () => {
+export const getProducts = createAsyncThunk('product/getProducts', async () => {
   try {
     const productsData: T_Product[] = await apiCall({
       route: `/api/protected/product`,

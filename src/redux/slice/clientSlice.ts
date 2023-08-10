@@ -19,7 +19,7 @@ const initialState: T_ClienteState = {
   clients: [],
 }
 
-export const getClients = createAsyncThunk('userState/auth', async () => {
+export const getClients = createAsyncThunk('client/getClient', async () => {
   try {
     const clientsData: T_Client[] = await apiCall({
       route: `/api/protected/client`,
