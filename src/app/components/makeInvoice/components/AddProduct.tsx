@@ -1,22 +1,33 @@
 import { useState } from 'react'
-import { useAppSelector } from '@/redux/hooks/reduxsHooks'
+import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { Button } from '@/ui/button/button'
+import { T_Product } from '@/types'
+import { addProductToInvoice } from '@/redux/slice/newInvoiceSlice'
 
 export const AddProduct = () => {
   const products = useAppSelector((state) => state.productReducer.products)
-  const [selectedProduct, setSelectedProduct] = useState('')
+  const dispatch = useAppDispatch()
+  const [selectedProduct, setSelectedProduct] = useState<T_Product>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   console.log('selectedProduct', selectedProduct)
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedProductId = event.target.value
-    setSelectedProduct(selectedProductId)
+    const selectedProduct = products.find(
+      (product) => product.id === selectedProductId
+    )
+    console.log('selectedProduct', selectedProduct)
+    setSelectedProduct(selectedProduct)
   }
 
   const onAddProductClick = () => {
     setIsLoading(true)
+    console.log('a')
+    if (selectedProduct === undefined) return
+    dispatch(addProductToInvoice(selectedProduct))
     console.log('selectedProduct', selectedProduct)
+    setIsLoading(false)
   }
 
   const productSelectOptionsJsx = products.map((product) => {
@@ -44,6 +55,7 @@ export const AddProduct = () => {
         optionalClasses="w-full bg-red-500 my-2"
         buttonText="Add Product to Invoice"
         disabled={isLoading}
+        onClick={onAddProductClick}
       />
     </form>
   )
