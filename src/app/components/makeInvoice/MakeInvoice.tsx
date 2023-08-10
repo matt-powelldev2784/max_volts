@@ -8,7 +8,6 @@ import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
-import { getProducts } from '@/redux/slice/productSlice'
 import { AddProduct } from './components/AddProduct'
 
 export const MakeInvoice = () => {
@@ -17,7 +16,6 @@ export const MakeInvoice = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    dispatch(getProducts())
     dispatch(getClients())
   }, [dispatch])
 

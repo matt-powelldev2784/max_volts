@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
+import { getProducts } from '@/redux/slice/productSlice'
 import { Button } from '@/ui/button/button'
 import { T_Product } from '@/types'
 import { addProductToInvoice } from '@/redux/slice/newInvoiceSlice'
@@ -11,6 +12,10 @@ export const AddProduct = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   console.log('selectedProduct', selectedProduct)
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [dispatch])
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedProductId = event.target.value
