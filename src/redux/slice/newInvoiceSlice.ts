@@ -1,22 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { T_Product } from '@/types'
 
 type T_NewInvoiceState = {
-  currentInvoiceId: string
+  products: T_Product[]
 }
 
 const initialState: T_NewInvoiceState = {
-  currentInvoiceId: '',
+  products: [],
 }
 
 export const newInvoiceSlice = createSlice({
   name: 'newInvoice',
   initialState,
   reducers: {
-    setCurrentInvoiceId: (state, action: PayloadAction<string>) => {
-      state.currentInvoiceId = action.payload
+    addProductToInvoice: (state, action: PayloadAction<T_Product>) => {
+      state.products = [...state.products, action.payload]
     },
   },
 })
 
-export const { setCurrentInvoiceId } = newInvoiceSlice.actions
+export const { addProductToInvoice } = newInvoiceSlice.actions
 export default newInvoiceSlice.reducer
