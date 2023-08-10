@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
 import { AddProduct } from './components/AddProduct'
 
-export const MakeInvoice = () => {
+export const CreateInvoice = () => {
   const dispatch = useAppDispatch()
   const clients = useAppSelector((state) => state.clientReducer.clients)
   const [isLoading, setIsLoading] = useState<boolean>(false)

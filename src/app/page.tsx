@@ -1,11 +1,11 @@
-import { NavBar, MakeInvoice, IsLoggedIn } from '@/app/components'
+import { NavBar, CreateInvoice, IsLoggedIn } from '@/app/components'
 
 export default async function Home() {
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
       <IsLoggedIn />
-      <MakeInvoice />
+      <CreateInvoice />
     </main>
   )
 }
