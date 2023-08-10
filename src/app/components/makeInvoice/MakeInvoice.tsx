@@ -8,13 +8,28 @@ import { T_Client, T_Product } from '@/types'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { apiCall } from '@/lib/apiCall'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
+import { getClients } from '@/redux/slice/clientSlice'
 
 export const MakeInvoice = () => {
-  const [clients, setClients] = useState<T_Client[]>([])
   const [products, setProducts] = useState<T_Product[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  console.log('clients', clients)
   console.log('products', products)
+
+  const dispatch = useAppDispatch()
+  const clients = useAppSelector((state) => state.clientReducer.clients)
+
+  useEffect(() => {
+    const getProductsData = async () => {
+      const productsData: T_Product[] = await apiCall({
+        route: `/api/protected/product`,
+      })
+      setProducts(productsData)
+    }
+    getProductsData()
+
+    dispatch(getClients())
+  }, [dispatch])
 
   const formik = useFormik({
     initialValues: {
@@ -30,23 +45,6 @@ export const MakeInvoice = () => {
       console.log('values', values)
     },
   })
-
-  useEffect(() => {
-    const getClientsData = async () => {
-      const clientsData: T_Client[] = await apiCall({
-        route: `/api/protected/client`,
-      })
-      setClients(clientsData)
-    }
-    const getProductsData = async () => {
-      const productsData: T_Product[] = await apiCall({
-        route: `/api/protected/product`,
-      })
-      setProducts(productsData)
-    }
-    getProductsData()
-    getClientsData()
-  }, [])
 
   const clientSelectOptionsJsx = clients.map((client) => {
     return (
