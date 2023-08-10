@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { SelectField } from './components/SelectField'
 import { InputField } from './components/InputField'
 import { useFormik } from 'formik'
-import { T_Product } from '@/types'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
@@ -16,8 +15,6 @@ export const MakeInvoice = () => {
   const clients = useAppSelector((state) => state.clientReducer.clients)
   const products = useAppSelector((state) => state.productReducer.products)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-
-  console.log('products', products)
 
   useEffect(() => {
     dispatch(getProducts())
@@ -47,6 +44,14 @@ export const MakeInvoice = () => {
     )
   })
 
+  const productSelectOptionsJsx = products.map((product) => {
+    return (
+      <option key={product.id} value={product.id}>
+        {`${product.name}`}
+      </option>
+    )
+  })
+
   return (
     <form className="flexCol w-[400px]" onSubmit={formik.handleSubmit}>
       <p>Create Invoice</p>
@@ -54,6 +59,15 @@ export const MakeInvoice = () => {
       <SelectField formik={formik} htmlFor="clientId" labelText="Select Client">
         <option value="">Select a client</option>
         {clientSelectOptionsJsx}
+      </SelectField>
+
+      <SelectField
+        formik={formik}
+        htmlFor="productId"
+        labelText="Select Product"
+      >
+        <option value="">Select a product</option>
+        {productSelectOptionsJsx}
       </SelectField>
 
       <InputField
