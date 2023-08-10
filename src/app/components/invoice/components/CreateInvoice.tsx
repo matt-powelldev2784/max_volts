@@ -30,7 +30,7 @@ export const CreateInvoice = () => {
       // if (breakTest) return
 
       try {
-        const newInvoice = await apiCall({
+        await apiCall({
           httpMethod: 'POST',
           route: `/api/protected/invoice`,
           body: values,
