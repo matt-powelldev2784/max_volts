@@ -6,7 +6,8 @@ import { InvoiceRow } from './InvoiceRow'
 
 export const ViewInvoice = () => {
   const [invoiceData, setInvoiceData] = useState<any>(null)
-  const currentInvoiceId = sessionStorage.getItem('currentInvoiceId')
+  // const currentInvoiceId = sessionStorage.getItem('currentInvoiceId')
+  const currentInvoiceId = '1'
 
   useEffect(() => {
     const getInvoiceData = async () => {

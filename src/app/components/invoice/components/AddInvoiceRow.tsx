@@ -26,9 +26,9 @@ export const AddInvoiceRow = () => {
       const product = products.find(
         (product) => product.id === values.productId
       )
-      const invoiceId = sessionStorage.getItem('currentInvoiceId')
+      // const invoiceId = sessionStorage.getItem('currentInvoiceId')
+      const invoiceId = '1'
       const invoiceRow = { invoiceId, ...product }
-
 
       try {
         await apiCall({

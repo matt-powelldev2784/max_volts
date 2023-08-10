@@ -35,7 +35,7 @@ export const CreateInvoice = () => {
           route: `/api/protected/invoice`,
           body: values,
         })
-        sessionStorage.setItem('currentInvoiceId', newInvoice.id)
+        // sessionStorage.setItem('currentInvoiceId', newInvoice.id)
         window.location.href = '/'
       } catch (error: any) {
         console.log('error', error.message)
