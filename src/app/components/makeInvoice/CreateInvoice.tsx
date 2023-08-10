@@ -5,7 +5,7 @@ import { InvoiceForm } from './components/InvoiceForm'
 
 export const CreateInvoice = () => {
   return (
-    <section className="flexCol">
+    <section className="w-full flexCol">
       <InvoiceForm />
       <AddProduct />
     </section>

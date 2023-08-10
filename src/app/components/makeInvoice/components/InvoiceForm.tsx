@@ -42,7 +42,7 @@ export const InvoiceForm = () => {
   })
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className="w-full">
       <p>Create Invoice</p>
 
       <SelectField formik={formik} htmlFor="clientId" labelText="Select Client">
