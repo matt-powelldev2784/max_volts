@@ -3,14 +3,18 @@ import { InputField } from './InputField'
 import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
-import { T_Product } from '@/types'
+import { T_ProductWithId } from '@/types'
+import { updateInvoiceRow } from '@/redux/slice/newInvoiceSlice'
+import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
 export const InvoiceRow = ({
   name,
   description,
   sellPrice,
   buyPrice,
-}: T_Product) => {
+  reduxId,
+}: T_ProductWithId) => {
+  const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const formik = useFormik({
@@ -27,6 +31,8 @@ export const InvoiceRow = ({
     onSubmit: async (values) => {
       setIsLoading(true)
       console.log('values', values)
+      dispatch(updateInvoiceRow({ reduxId, ...values }))
+      setIsLoading(false)
     },
   })
 

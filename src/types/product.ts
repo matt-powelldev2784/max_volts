@@ -5,3 +5,7 @@ export interface T_Product {
   buyPrice: number
   sellPrice: number
 }
+
+export interface T_ProductWithId extends T_Product {
+  reduxId: string
+}
