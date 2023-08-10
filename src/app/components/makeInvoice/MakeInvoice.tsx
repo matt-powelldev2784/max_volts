@@ -7,27 +7,20 @@ import { useFormik } from 'formik'
 import { T_Product } from '@/types'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
-import { apiCall } from '@/lib/apiCall'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
+import { getProducts } from '@/redux/slice/productSlice'
 
 export const MakeInvoice = () => {
-  const [products, setProducts] = useState<T_Product[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  console.log('products', products)
-
   const dispatch = useAppDispatch()
   const clients = useAppSelector((state) => state.clientReducer.clients)
+  const products = useAppSelector((state) => state.productReducer.products)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  console.log('products', products)
 
   useEffect(() => {
-    const getProductsData = async () => {
-      const productsData: T_Product[] = await apiCall({
-        route: `/api/protected/product`,
-      })
-      setProducts(productsData)
-    }
-    getProductsData()
-
+    dispatch(getProducts())
     dispatch(getClients())
   }, [dispatch])
 
