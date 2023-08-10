@@ -4,15 +4,17 @@ import { useEffect, useState } from 'react'
 import { SelectField } from './components/SelectField'
 import { InputField } from './components/InputField'
 import { useFormik } from 'formik'
-import { ClientName } from '@/types/clientName'
+import { T_ClientName, T_Product } from '@/types'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { apiCall } from '@/lib/apiCall'
 
 export const MakeInvoice = () => {
-  const [clients, setClients] = useState<ClientName[]>([])
+  const [clients, setClients] = useState<T_ClientName[]>([])
+  const [products, setProducts] = useState<T_Product[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   console.log('clients', clients)
+  console.log('products', products)
 
   const formik = useFormik({
     initialValues: {
@@ -31,11 +33,18 @@ export const MakeInvoice = () => {
 
   useEffect(() => {
     const getClientsData = async () => {
-      const clientsData: ClientName[] = await apiCall({
-        route: `/api/protected/client/clientname`,
+      const clientsData: T_ClientName[] = await apiCall({
+        route: `/api/protected/client`,
       })
       setClients(clientsData)
     }
+    const getProductsData = async () => {
+      const productsData: T_Product[] = await apiCall({
+        route: `/api/protected/product`,
+      })
+      setProducts(productsData)
+    }
+    getProductsData()
     getClientsData()
   }, [])
 
