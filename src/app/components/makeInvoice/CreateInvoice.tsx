@@ -7,7 +7,7 @@ import { InvoiceRow } from './components/InvoiceRow'
 
 export const CreateInvoice = () => {
   const invoiceRows = useAppSelector(
-    (state) => state.newInvoiceReducer.products
+    (state) => state.newInvoiceReducer.invoiceRows
   )
 
   const invoiceRowsJsx = invoiceRows.map((product) => {

@@ -1,12 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { T_Product } from '@/types'
+import { v4 as uuidv4 } from 'uuid'
+
+interface T_ProductWithId extends T_Product {
+  reduxId: string
+}
 
 type T_NewInvoiceState = {
-  products: T_Product[]
+  invoiceRows: T_ProductWithId[]
 }
 
 const initialState: T_NewInvoiceState = {
-  products: [],
+  invoiceRows: [],
 }
 
 export const newInvoiceSlice = createSlice({
@@ -14,7 +19,13 @@ export const newInvoiceSlice = createSlice({
   initialState,
   reducers: {
     addProductToInvoice: (state, action: PayloadAction<T_Product>) => {
-      state.products = [...state.products, action.payload]
+      state.invoiceRows = [
+        ...state.invoiceRows,
+        {
+          ...action.payload,
+          reduxId: uuidv4(),
+        },
+      ]
     },
   },
 })
