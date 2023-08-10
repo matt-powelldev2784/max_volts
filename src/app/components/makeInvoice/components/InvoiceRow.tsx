@@ -5,7 +5,12 @@ import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { T_Product } from '@/types'
 
-export const InvoiceRow = ({ name, description, sellPrice }: T_Product) => {
+export const InvoiceRow = ({
+  name,
+  description,
+  sellPrice,
+  buyPrice,
+}: T_Product) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const formik = useFormik({
@@ -28,6 +33,7 @@ export const InvoiceRow = ({ name, description, sellPrice }: T_Product) => {
   return (
     <form onSubmit={formik.handleSubmit} className="w-full">
       <p>Invoice Row</p>
+      <p>Buy Price: {buyPrice}</p>
 
       <InputField
         formik={formik}
