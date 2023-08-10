@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { SelectField } from './SelectField'
 import { useFormik } from 'formik'
-import { ClientName } from '@/types/clientName'
+import { ClientName } from '@/types/client'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { apiCall } from '@/lib/apiCall'
