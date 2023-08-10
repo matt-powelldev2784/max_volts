@@ -1,7 +1,7 @@
 export interface T_Product {
   id: string
   name: string
-  desciption: string
+  description: string
   buyPrice: number
   sellPrice: number
 }
