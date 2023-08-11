@@ -4,10 +4,12 @@ import { v4 as uuidv4 } from 'uuid'
 
 type T_NewInvoiceState = {
   invoiceRows: T_ProductWithId[]
+  totalPrice: number
 }
 
 const initialState: T_NewInvoiceState = {
   invoiceRows: [],
+  totalPrice: 0,
 }
 
 export const newInvoiceSlice = createSlice({
@@ -22,6 +24,11 @@ export const newInvoiceSlice = createSlice({
           reduxId: uuidv4(),
         },
       ]
+
+      state.totalPrice = state.invoiceRows.reduce(
+        (acc, curr) => acc + curr.sellPrice,
+        0
+      )
     },
     updateInvoiceRow: (state, action: PayloadAction<any>) => {
       const { reduxId, name, description, price } = action.payload
@@ -35,6 +42,11 @@ export const newInvoiceSlice = createSlice({
         state.invoiceRows[index].description = description
         state.invoiceRows[index].sellPrice = Number(price)
       }
+
+      state.totalPrice = state.invoiceRows.reduce(
+        (acc, curr) => acc + curr.sellPrice,
+        0
+      )
     },
   },
 })
