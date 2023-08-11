@@ -7,8 +7,8 @@ import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
-import { setErrorState } from '@/redux/slice/newInvoiceSlice'
-import { apiCall } from '@/lib/apiCall'
+import { setErrorState, createInvoice } from '@/redux/slice/newInvoiceSlice'
+import { T_InvoiceDetails } from '@/types/invoiceDetails'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -46,19 +46,13 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
         dispatch(setErrorState('Please add at least one invoice row'))
       }
 
-      const invoiceDetails = {
+      const invoiceDetails: T_InvoiceDetails = {
         clientId: values.clientId,
         totalPrice,
         invoiceRows,
       }
 
-      console.log('invoiceDetails', invoiceDetails)
-
-      await apiCall({
-        httpMethod: 'POST',
-        route: '/api/protected/create-invoice/',
-        body: invoiceDetails,
-      })
+      dispatch(createInvoice(invoiceDetails))
 
       setIsLoading(false)
     },
