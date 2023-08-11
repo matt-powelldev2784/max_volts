@@ -29,6 +29,11 @@ export const apiCall = async (apiOptions: ApiOptions) => {
   } catch (err: any) {
     console.log('error from api utility catch block')
     // console.log('err', err)
-    throw err
+    if (err.response.data) {
+      console.log('err.repsonse.data form api utility', err.response.data)
+      throw err.response.data.errors[0].msg
+    } else {
+      throw Error(err)
+    }
   }
 }
