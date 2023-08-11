@@ -26,7 +26,9 @@ export const InvoiceRow = ({
     validationSchema: Yup.object({
       name: Yup.string().required('Please input a name'),
       description: Yup.string().required('Please input a description'),
-      price: Yup.string().required('Please input a description'),
+      price: Yup.number()
+        .typeError('Price must be a number')
+        .required('Please input a price than must be a number'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
