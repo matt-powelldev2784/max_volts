@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma, authOptions, noSessionResponse } from '@/lib'
 import { getServerSession } from 'next-auth'
-import { badRequestError400 } from '../../badRequestError'
+import { badRequestError400 } from '@/lib'
 import { T_Product } from '@/types'
 
 export const POST = async (req: NextRequest, _res: NextResponse) => {
