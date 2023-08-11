@@ -9,9 +9,7 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   if (!session) return noSessionResponse
 
   const data = await req.json()
-  let { clientId, totalPrice, invoiceRows } = data
-
-  clientId = null
+  const { clientId, totalPrice, invoiceRows } = data
 
   if (!clientId || !totalPrice || invoiceRows.length === 0)
     return badRequestError400
