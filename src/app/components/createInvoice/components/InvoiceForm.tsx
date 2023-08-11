@@ -68,6 +68,11 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
   return (
     <div className="w-full">
+      <div className="bg-blue-500 w-full flexRow">
+        <div className="bg-red-500 w-full">a</div>
+        <div className="bg-green-500 w-full">b</div>
+      </div>
+
       <form className="w-full">
         <p>Create Invoice</p>
 

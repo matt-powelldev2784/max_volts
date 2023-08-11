@@ -7,16 +7,20 @@ module.exports = {
   ],
   theme: {
     extend: {
-      extend: {
-        colors: {
-          primaryPink: '#d70567',
-        },
-        screens: {
-          sm: '0px',
-          md: '600px',
-          lg: '1100px',
-        },
+      colors: {
+        primaryPink: '#d70567',
       },
+      screens: {
+        sm: '0px',
+        md: '600px',
+        lg: '1100px',
+      },
+    },
+    fontSize: {
+      sm: ['14px', '20px'],
+      base: ['18px', '24px'],
+      lg: ['22px', '28px'],
+      xl: ['26px', '32px'],
     },
   },
   plugins: [
