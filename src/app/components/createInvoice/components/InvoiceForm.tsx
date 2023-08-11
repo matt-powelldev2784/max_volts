@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
 import { setErrorState, createInvoice } from '@/redux/slice/newInvoiceSlice'
 import { T_InvoiceDetails } from '@/types/invoiceDetails'
+import { AddProduct } from './AddProduct'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -68,23 +69,26 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
   return (
     <div className="w-full">
-      <div className="bg-blue-500 w-full flexRow">
-        <div className="bg-red-500 w-full">a</div>
-        <div className="bg-green-500 w-full">b</div>
+      <p className="p-2" >Create Invoice</p>
+
+      <div className="w-full flexRow p-2 px-8 gap-16">
+        <div className="w-full p-8 bg-gray-300 rounded-xl">
+          <form className="w-full">
+            <SelectField
+              formik={formik}
+              htmlFor="clientId"
+              labelText="Select Client"
+            >
+              <option value="">Select a client</option>
+              {clientSelectOptionsJsx}
+            </SelectField>
+          </form>
+        </div>
+
+        <div className="w-full p-8 bg-gray-300 rounded-xl">
+          <AddProduct />
+        </div>
       </div>
-
-      <form className="w-full">
-        <p>Create Invoice</p>
-
-        <SelectField
-          formik={formik}
-          htmlFor="clientId"
-          labelText="Select Client"
-        >
-          <option value="">Select a client</option>
-          {clientSelectOptionsJsx}
-        </SelectField>
-      </form>
 
       {children}
 

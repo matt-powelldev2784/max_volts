@@ -42,20 +42,23 @@ export const AddProduct = () => {
   })
 
   return (
-    <form className="flexCol w-full" onSubmit={onAddProductClick}>
-      <label htmlFor="productId" className="w-full p-1 text-sm">
-        Select Product
-      </label>
-      <select
-        className="w-full rounded-lg border-2 border-darkBlack p-2 px-4 outline-none"
-        onChange={handleSelectChange}
-      >
-        <option value="">Select a product</option>
-        {productSelectOptionsJsx}
-      </select>
+    <form className="w-full flex gap-2 items-end" onSubmit={onAddProductClick}>
+      <div className="w-full">
+        <label htmlFor="productId" className="w-full p-1 text-sm">
+          Select Product
+        </label>
+        <select
+          className="w-full rounded-lg border-2 border-black bg-white p-2 px-4 outline-none"
+          onChange={handleSelectChange}
+        >
+          <option value="">Select a product</option>
+          {productSelectOptionsJsx}
+        </select>
+      </div>
+
       <Button
         type="button"
-        optionalClasses="w-full bg-red-500 my-2"
+        optionalClasses="w-[150px] text-white text-sm bg-mvOrange"
         buttonText="Add Product to Invoice"
         disabled={isLoading}
         onClick={onAddProductClick}

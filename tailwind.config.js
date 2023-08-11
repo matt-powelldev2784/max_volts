@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         mvOrange: '#f07e19',
         mvGreen: '#99cc66',
+        darkGreen: '#006B3D',
+        darkRed: '#d3212C',
+        darkBlack: '#121212',
       },
       screens: {
         sm: '0px',

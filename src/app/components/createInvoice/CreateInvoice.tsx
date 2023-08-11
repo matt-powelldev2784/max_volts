@@ -1,6 +1,5 @@
 'use client'
 
-import { AddProduct } from './components/AddProduct'
 import { InvoiceForm } from './components/InvoiceForm'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { InvoiceRow } from './components/InvoiceRow'
@@ -16,10 +15,7 @@ export const CreateInvoice = () => {
 
   return (
     <section className="w-full flexCol">
-      <InvoiceForm>
-        <AddProduct />
-        {invoiceRowsJsx}
-      </InvoiceForm>
+      <InvoiceForm>{invoiceRowsJsx}</InvoiceForm>
     </section>
   )
 }
