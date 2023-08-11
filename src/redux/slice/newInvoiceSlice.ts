@@ -3,11 +3,15 @@ import { T_Product, T_ProductWithId } from '@/types'
 import { v4 as uuidv4 } from 'uuid'
 
 type T_NewInvoiceState = {
+  isLoading: boolean
+  error: string | null
   invoiceRows: T_ProductWithId[]
   totalPrice: number
 }
 
 const initialState: T_NewInvoiceState = {
+  isLoading: false,
+  error: null,
   invoiceRows: [],
   totalPrice: 0,
 }
