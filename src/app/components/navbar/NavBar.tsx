@@ -4,8 +4,8 @@ import { NavItems } from './components/NavItems'
 export const NavBar = () => {
   return (
     <header className="">
-      <nav className="flex flex-row justify-between items-center h-fit w-full bg-black">
-        <a href="/menu" className="lg:hidden md:ml-4 ml-3 flexCol">
+      <nav className="flex flex-row justify-between items-center h-fit w-full">
+        <a href="/menu" className="lg:hidden ml-4 flexCol">
           <Image
             src={`/icons/hamburger.svg`}
             alt={'Hamburger Menu Icon'}
@@ -19,10 +19,10 @@ export const NavBar = () => {
             alt="Footboot Logo"
             width={300}
             height={40}
-            className="sm:h-6 m-0 md:h-full p-2 lg:mx-5"
+            className="m-0 p-2"
           />
         </a>
-        <a href="/api/auth/signin" className="lg:hidden mr-3 md:mr-4">
+        <a href="/api/auth/signin" className="lg:hidden mr-4">
           <Image
             src={`/icons/person.svg`}
             alt={'Hamburger Menu Icon'}
