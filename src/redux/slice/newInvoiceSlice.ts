@@ -28,7 +28,7 @@ export const createInvoice = createAsyncThunk(
     try {
       const newInvoice = await apiCall({
         httpMethod: 'POST',
-        route: '/api/protected/create-invoice/',
+        route: '/api/protected/create-invoice',
         body: invoiceDetails,
       })
 
