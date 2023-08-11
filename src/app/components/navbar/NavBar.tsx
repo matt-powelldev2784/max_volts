@@ -4,7 +4,7 @@ import { NavItems } from './components/NavItems'
 export const NavBar = () => {
   return (
     <header className="">
-      <nav className="flex flex-row justify-between items-center h-fit w-full">
+      <nav className="flex flex-row justify-between items-center h-fit w-full bg-black">
         <a href="/menu" className="lg:hidden ml-4 flexCol">
           <Image
             src={`/icons/hamburger.svg`}
