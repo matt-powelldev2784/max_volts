@@ -4,11 +4,7 @@ export const noSessionResponse = NextResponse.json(
   {
     success: false,
     status: 401,
-    errors: [
-      {
-        msg: 'User is not authorised. Please login to access this route.',
-      },
-    ],
+    message: 'User is not authorised. Please login to access this route.',
   },
   { status: 401 }
 )

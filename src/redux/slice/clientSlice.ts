@@ -24,8 +24,7 @@ export const getClients = createAsyncThunk('client/getClient', async () => {
     const clientsData: T_Client[] = await apiCall({
       route: `/api/protected/client`,
     })
-
-    console.log('clientsData', clientsData)
+    
     return clientsData
   } catch (err: any) {
     throw Error(err)

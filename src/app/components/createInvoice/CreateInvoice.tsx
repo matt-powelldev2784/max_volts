@@ -7,7 +7,7 @@ import { InvoiceRow } from './components/InvoiceRow'
 
 export const CreateInvoice = () => {
   const invoiceRows = useAppSelector(
-    (state) => state.newInvoiceReducer.products
+    (state) => state.newInvoiceReducer.invoiceRows
   )
 
   const invoiceRowsJsx = invoiceRows.map((product) => {
@@ -16,9 +16,10 @@ export const CreateInvoice = () => {
 
   return (
     <section className="w-full flexCol">
-      <InvoiceForm />
-      <AddProduct />
-      {invoiceRowsJsx}
+      <InvoiceForm>
+        <AddProduct />
+        {invoiceRowsJsx}
+      </InvoiceForm>
     </section>
   )
 }

@@ -28,10 +28,8 @@ export const AddProduct = () => {
 
   const onAddProductClick = () => {
     setIsLoading(true)
-    console.log('a')
     if (selectedProduct === undefined) return
     dispatch(addProductToInvoice(selectedProduct))
-    console.log('selectedProduct', selectedProduct)
     setIsLoading(false)
   }
 

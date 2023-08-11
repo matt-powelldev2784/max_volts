@@ -3,14 +3,18 @@ import { InputField } from './InputField'
 import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
-import { T_Product } from '@/types'
+import { T_ProductWithId } from '@/types'
+import { updateInvoiceRow } from '@/redux/slice/newInvoiceSlice'
+import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
 export const InvoiceRow = ({
   name,
   description,
   sellPrice,
   buyPrice,
-}: T_Product) => {
+  reduxId,
+}: T_ProductWithId) => {
+  const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const formik = useFormik({
@@ -22,11 +26,15 @@ export const InvoiceRow = ({
     validationSchema: Yup.object({
       name: Yup.string().required('Please input a name'),
       description: Yup.string().required('Please input a description'),
-      price: Yup.string().required('Please input a description'),
+      price: Yup.number()
+        .typeError('Price must be a number')
+        .required('Please input a price than must be a number'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
       console.log('values', values)
+      dispatch(updateInvoiceRow({ reduxId, ...values }))
+      setIsLoading(false)
     },
   })
 

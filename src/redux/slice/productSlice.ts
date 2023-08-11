@@ -25,7 +25,6 @@ export const getProducts = createAsyncThunk('product/getProducts', async () => {
       route: `/api/protected/product`,
     })
 
-    console.log('productsData', productsData)
     return productsData
   } catch (err: any) {
     throw Error(err)

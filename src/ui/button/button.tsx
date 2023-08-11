@@ -2,7 +2,7 @@ import React from 'react'
 
 interface ButtonProps {
   // eslint-disable-next-line no-unused-vars
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: (event: any) => void
   // eslint-disable-next-line no-unused-vars
   onSubmit?: (event: React.MouseEvent<HTMLButtonElement>) => void
   optionalClasses?: string
