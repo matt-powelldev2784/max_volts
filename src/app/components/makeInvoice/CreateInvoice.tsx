@@ -16,9 +16,10 @@ export const CreateInvoice = () => {
 
   return (
     <section className="w-full flexCol">
-      <InvoiceForm />
-      <AddProduct />
-      {invoiceRowsJsx}
+      <InvoiceForm>
+        <AddProduct />
+        {invoiceRowsJsx}
+      </InvoiceForm>
     </section>
   )
 }

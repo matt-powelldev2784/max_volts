@@ -2,16 +2,22 @@
 
 import { useEffect, useState } from 'react'
 import { SelectField } from './SelectField'
-import { InputField } from './InputField'
 import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
 
-export const InvoiceForm = () => {
+interface InvoiceFormProps {
+  children: React.ReactNode
+}
+
+export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const dispatch = useAppDispatch()
   const clients = useAppSelector((state) => state.clientReducer.clients)
+  const totalPrice = useAppSelector(
+    (state) => state.newInvoiceReducer.totalPrice
+  )
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
@@ -21,11 +27,9 @@ export const InvoiceForm = () => {
   const formik = useFormik({
     initialValues: {
       clientId: '',
-      totalAmount: '0.001',
     },
     validationSchema: Yup.object({
       clientId: Yup.string().required('Please input a value client'),
-      totalAmount: Yup.string().required('Please input a invoice total'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
@@ -42,27 +46,29 @@ export const InvoiceForm = () => {
   })
 
   return (
-    <form onSubmit={formik.handleSubmit} className="w-full">
-      <p>Create Invoice</p>
+    <div className="w-full">
+      <form className="w-full">
+        <p>Create Invoice</p>
 
-      <SelectField formik={formik} htmlFor="clientId" labelText="Select Client">
-        <option value="">Select a client</option>
-        {clientSelectOptionsJsx}
-      </SelectField>
+        <SelectField
+          formik={formik}
+          htmlFor="clientId"
+          labelText="Select Client"
+        >
+          <option value="">Select a client</option>
+          {clientSelectOptionsJsx}
+        </SelectField>
+      </form>
 
-      <InputField
-        formik={formik}
-        htmlFor="totalAmount"
-        labelText="Invoice Total"
-        inputType="text"
-      />
+      {children}
 
+      <p className="font-bold text-center">Total Price : {totalPrice}</p>
       <Button
         type="submit"
         optionalClasses="w-full bg-red-500 my-2"
         buttonText="Create Invoice"
         disabled={isLoading}
       />
-    </form>
+    </div>
   )
 }
