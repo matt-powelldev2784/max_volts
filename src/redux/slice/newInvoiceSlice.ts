@@ -20,6 +20,9 @@ export const newInvoiceSlice = createSlice({
   name: 'newInvoice',
   initialState,
   reducers: {
+    setErrorState: (state, action: PayloadAction<string>) => {
+      state.error = action.payload
+    },
     addProductToInvoice: (state, action: PayloadAction<T_Product>) => {
       state.invoiceRows = [
         ...state.invoiceRows,
@@ -55,5 +58,6 @@ export const newInvoiceSlice = createSlice({
   },
 })
 
-export const { addProductToInvoice, updateInvoiceRow } = newInvoiceSlice.actions
+export const { addProductToInvoice, updateInvoiceRow, setErrorState } =
+  newInvoiceSlice.actions
 export default newInvoiceSlice.reducer
