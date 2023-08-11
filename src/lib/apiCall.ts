@@ -31,7 +31,7 @@ export const apiCall = async (apiOptions: ApiOptions) => {
     // console.log('err', err)
     if (err.response.data) {
       console.log('err.repsonse.data form api utility', err.response.data)
-      throw err.response.data.errors[0].msg
+      throw err.response.data.message
     } else {
       throw Error(err)
     }
