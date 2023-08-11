@@ -7,6 +7,7 @@ import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
+import { setErrorState } from '@/redux/slice/newInvoiceSlice'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -17,6 +18,9 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const clients = useAppSelector((state) => state.clientReducer.clients)
   const totalPrice = useAppSelector(
     (state) => state.newInvoiceReducer.totalPrice
+  )
+  const invoiceRows = useAppSelector(
+    (state) => state.newInvoiceReducer.invoiceRows
   )
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -34,6 +38,21 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
     onSubmit: async (values) => {
       setIsLoading(true)
       console.log('values', values)
+      if (!totalPrice || typeof totalPrice !== 'number') {
+        dispatch(setErrorState('Server error, when submitting invoice'))
+      }
+      if (invoiceRows.length === 0) {
+        dispatch(setErrorState('Please add at least one invoice row'))
+      }
+
+      const invoiceDetails = {
+        clientId: values.clientId,
+        totalPrice,
+        invoiceRows,
+      }
+
+      console.log('invoiceDetails', invoiceDetails)
+      setIsLoading(false)
     },
   })
 
@@ -68,6 +87,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
         optionalClasses="w-full bg-red-500 my-2"
         buttonText="Create Invoice"
         disabled={isLoading}
+        onClick={formik.handleSubmit}
       />
     </div>
   )
