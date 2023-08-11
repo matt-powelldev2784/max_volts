@@ -17,7 +17,7 @@ export const NavItem = ({ itemDetails }: NavItemProps) => {
 
   return (
     <li>
-      <Link href={href} className="flexRow gap-1 text-lg">
+      <Link href={href} className="flexRow gap-2">
         <Image
           src={`/icons/${image}`}
           alt={alt}

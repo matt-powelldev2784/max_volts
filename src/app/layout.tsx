@@ -4,7 +4,7 @@ import localFont from '@next/font/local'
 import AuthProvider from './AuthProvider'
 import { ReduxProvider } from '@/redux/provider/provider'
 
-const brandonGrotFont = localFont({
+const LibreFranklinFont = localFont({
   src: [
     {
       path: '../../public/fonts/LibreFranklin-VariableFont_wght.ttf',
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body className={brandonGrotFont.className}>
+        <body className={`${LibreFranklinFont.className} text-base`}>
           <ReduxProvider>{children}</ReduxProvider>
         </body>
       </AuthProvider>
