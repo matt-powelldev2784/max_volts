@@ -46,6 +46,7 @@ model Invoice {
   invoiceNum  Int         @default(autoincrement())
   clientId    String
   totalAmount Float       @default(0)
+  isActive    Boolean     @default(false)
   Client      Client?     @relation(fields: [clientId], references: [id])
   InvoiceRow  InvoiceRow[]
 }
