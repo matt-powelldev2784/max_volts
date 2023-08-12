@@ -25,7 +25,7 @@ export const Button = ({
       onClick={onClick}
       onSubmit={onSubmit}
       disabled={disabled}
-      className={`rounded-lg bg-mvOrange font-semibold outline-none p-2 ${optionalClasses}`}
+      className={`rounded-lg font-semibold outline-none p-2 ${optionalClasses}`}
     >
       {buttonText}
     </button>

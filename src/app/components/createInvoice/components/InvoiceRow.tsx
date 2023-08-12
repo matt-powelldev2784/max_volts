@@ -42,7 +42,7 @@ export const InvoiceRow = ({
 
   return (
     <section className="min-w-screen min-h-screen flex md:justify-center fixed inset-0 bg-black bg-opacity-50 overflow-y-scroll">
-      <div className="md:rounded-xl w-full h-fit md:w-7/8 lg:w-3/4 max-w-[500px] bg-white md:m-8 z-10 ">
+      <div className="md:rounded-xl w-full h-fit md:w-7/8 lg:w-3/4 max-w-[500px] bg-white md:m-8">
         <div className="relative bg-black text-white p-4 md:rounded-t-xl flexRow justify-start items-end gap-2 border-2 border-white">
           <Image
             src="./icons/add_product.svg"
@@ -57,7 +57,7 @@ export const InvoiceRow = ({
 
         <form
           onSubmit={formik.handleSubmit}
-          className="flex flex-col items-center justify-center gap-2 md:gap-4 p-4 px-2 md:px-16 mb-6"
+          className="min-h-screen md:min-h-fit flex flex-col items-center justify-start gap-2 md:gap-4 p-4 px-2 md:px-16 mb-6"
         >
           <InputField
             formik={formik}

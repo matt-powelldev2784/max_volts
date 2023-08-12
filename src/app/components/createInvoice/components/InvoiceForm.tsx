@@ -79,7 +79,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
             labelText="Select Client"
             imagePath="/icons/person.svg"
           >
-            <option value="" disabled selected className="">
+            <option value="" disabled>
               Select a client
             </option>
             {clientSelectOptionsJsx}

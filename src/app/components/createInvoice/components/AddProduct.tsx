@@ -53,7 +53,7 @@ export const AddProduct = () => {
           labelText="Select Product"
           imagePath="/icons/add_product.svg"
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Select a product
           </option>
           {productSelectOptionsJsx}
