@@ -21,7 +21,7 @@ export const AddProduct = () => {
       productId: '',
     },
     validationSchema: Yup.object({
-      productId: Yup.string().required('Please seclect a product'),
+      productId: Yup.string().required('Please select a product'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
