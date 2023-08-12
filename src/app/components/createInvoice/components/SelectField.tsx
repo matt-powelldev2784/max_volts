@@ -1,5 +1,6 @@
 import { FormikError } from './FormikError'
 import { FormikProps } from 'formik'
+import Image from 'next/image'
 
 interface InputFieldProps {
   formik: FormikProps<any>
@@ -7,6 +8,7 @@ interface InputFieldProps {
   labelText: string
   spanText?: string
   children: React.ReactNode[]
+  imagePath: string
 }
 
 export const SelectField = ({
@@ -15,23 +17,21 @@ export const SelectField = ({
   labelText,
   spanText,
   children,
+  imagePath,
 }: InputFieldProps) => {
-  console.log(
-    'formik.touched[htmlFor] && !formik.errors[htmlFor]',
-    formik.touched[htmlFor] && !formik.errors[htmlFor]
-  )
-  console.log('htmlFor', htmlFor)
-  console.log('formik.touched', formik.touched)
-  console.log('formik.touched[htmlFor]', formik.touched[htmlFor])
-  console.log('!formik.errors[htmlFor]', !formik.errors[htmlFor])
-  console.log('formik.hanldeBlur', formik.handleBlur)
-
   return (
     <div className="relative">
       <label htmlFor={htmlFor} className="w-full p-1 text-sm text-black/50">
         {labelText}
         {spanText ? <span className="text-xs">{spanText}</span> : null}
       </label>
+      <Image
+        src={imagePath}
+        alt="arrow-down"
+        width={20}
+        height={20}
+        className="absolute top-[34.5px] left-3"
+      />
       <select
         id={htmlFor}
         name={htmlFor}
@@ -39,7 +39,7 @@ export const SelectField = ({
         onChange={formik.handleChange}
         value={formik.values[htmlFor]}
         onBlur={formik.handleBlur}
-        className={`w-full rounded-lg border-2 bg-white p-2 px-4 outline-none
+        className={`w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-10
         ${
           formik.touched[htmlFor] && formik.errors[htmlFor]
             ? 'border-red-500'
