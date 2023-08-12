@@ -28,8 +28,12 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const showProductModal = useAppSelector(
     (state) => state.newInvoiceReducer.displayAddProductModal
   )
+  const currentInvoiceRow = useAppSelector(
+    (state) => state.newInvoiceReducer.currentInvoiceRow
+  )
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
+  console.log('currentInvoiceRow', currentInvoiceRow)
   useEffect(() => {
     dispatch(getClients())
   }, [dispatch])
@@ -93,7 +97,10 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
         <AddProduct />
       </div>
 
-      {showProductModal ? <InvoiceRowModal /> : null}
+      {showProductModal && currentInvoiceRow?.reduxId ? (
+        <InvoiceRowModal {...currentInvoiceRow} />
+      ) : null}
+
       {children}
 
       <p className="font-bold text-center mt-8">Total Price : {totalPrice}</p>

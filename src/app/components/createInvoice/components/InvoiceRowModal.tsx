@@ -8,6 +8,7 @@ import { T_ProductWithId } from '@/types'
 import {
   toggleAddProductModal,
   updateInvoiceRow,
+  deleteInvoiceRow,
 } from '@/redux/slice/newInvoiceSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
@@ -48,6 +49,11 @@ export const InvoiceRowModal = ({
       dispatch(toggleAddProductModal())
     },
   })
+
+  const cancelAddProduct = () => {
+    dispatch(deleteInvoiceRow(reduxId))
+    dispatch(toggleAddProductModal())
+  }
 
   if (!displayAddProductModal) return null
 
@@ -122,7 +128,7 @@ export const InvoiceRowModal = ({
               optionalClasses="w-full text-white text-sm bg-darkRed h-[42.5px]"
               buttonText="Cancel"
               disabled={isLoading}
-              onClick={() => dispatch(toggleAddProductModal())}
+              onClick={cancelAddProduct}
             />
             <Button
               type="submit"
