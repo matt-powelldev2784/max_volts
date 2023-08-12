@@ -68,7 +68,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   })
 
   return (
-    <div className="w-full">
+    <div className="min-h-screen relative w-full h-fit">
       <p className="p-2">Create Invoice</p>
 
       <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">

@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 import { T_ProductWithId } from '@/types'
 import { updateInvoiceRow } from '@/redux/slice/newInvoiceSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
+import Image from 'next/image'
 
 export const InvoiceRow = ({
   name,
@@ -40,9 +41,19 @@ export const InvoiceRow = ({
   })
 
   return (
-    <section className="min-w-screen min-h-screen flexCol fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm">
-      <div className="rounded-xl w-11/12 md:w-7/8 lg:w-3/4 max-w-[500px] bg-white overflow-y-auto m-8">
-        <p className="bg-mvGreen p-4 rounded-t-xl">Add Invoice Row</p>
+    <section className="min-w-screen min-h-screen flex md:justify-center fixed inset-0 bg-black bg-opacity-50 overflow-y-scroll">
+      <div className="md:rounded-xl w-full h-fit md:w-7/8 lg:w-3/4 max-w-[500px] bg-white md:m-8 z-10 ">
+        <div className="relative bg-black text-white p-4 md:rounded-t-xl flexRow justify-start items-end gap-2 border-2 border-white">
+          <Image
+            src="./icons/add_product.svg"
+            alt="arrow-down"
+            width={30}
+            height={30}
+            className=""
+          />
+          <p> Add Invoice Row</p>
+          <p className="absolute text-mvGreen font-lg top-2 right-4">X</p>
+        </div>
 
         <form
           onSubmit={formik.handleSubmit}
