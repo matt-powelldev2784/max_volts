@@ -39,7 +39,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
-      console.log('values', values)
+
       if (!totalPrice || typeof totalPrice !== 'number') {
         dispatch(setErrorState('Server error, when submitting invoice'))
       }
