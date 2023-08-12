@@ -1,4 +1,3 @@
-import { FormikError } from './FormikError'
 import { FormikProps } from 'formik'
 
 interface InputFieldProps {
