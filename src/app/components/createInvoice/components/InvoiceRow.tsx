@@ -39,37 +39,49 @@ export const InvoiceRow = ({
   })
 
   return (
-    <form onSubmit={formik.handleSubmit} className="w-full">
+    <div className="mx-16 m-auto">
       <p>Invoice Row</p>
-      <p>Buy Price: {buyPrice}</p>
 
-      <InputField
-        formik={formik}
-        htmlFor="name"
-        labelText="Product Name"
-        inputType="text"
-      />
+      <form
+        onSubmit={formik.handleSubmit}
+        className="flex items-end gap-4 max-w-[1100px]"
+      >
+        <p>Quantitiy</p>
 
-      <InputField
-        formik={formik}
-        htmlFor="description"
-        labelText="Description"
-        inputType="text"
-      />
+        <InputField
+          formik={formik}
+          htmlFor="name"
+          labelText="Product Name"
+          inputType="text"
+          optionalClassNames="w-[200px]"
+        />
 
-      <InputField
-        formik={formik}
-        htmlFor="price"
-        labelText="Price"
-        inputType="text"
-      />
+        <InputField
+          formik={formik}
+          htmlFor="description"
+          labelText="Description"
+          inputType="text"
+        />
 
-      <Button
-        type="submit"
-        optionalClasses="w-full bg-red-500 my-2"
-        buttonText="Update Invoice Row"
-        disabled={isLoading}
-      />
-    </form>
+        <p>{buyPrice}</p>
+
+        <p>VAT</p>
+
+        <InputField
+          formik={formik}
+          htmlFor="price"
+          labelText="Price"
+          inputType="text"
+          optionalClassNames="w-[100px]"
+        />
+
+        <Button
+          type="submit"
+          optionalClasses="w-full md:w-[150px] text-white text-sm bg-mvOrange h-[42.5px]"
+          buttonText="Update Invoice Row"
+          disabled={isLoading}
+        />
+      </form>
+    </div>
   )
 }
