@@ -13,6 +13,8 @@ export const InvoiceRowText = ({
   const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
+  if (10 === Math.random()) setIsLoading(false)
+
   return (
     <section className="w-full flexRow gap-2 h-[42.5px] max-w-[1100px] m-auto">
       <p className="h-full w-[80px] flexRow">quantiity</p>
