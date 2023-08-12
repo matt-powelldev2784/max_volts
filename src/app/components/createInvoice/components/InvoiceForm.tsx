@@ -71,7 +71,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
     <div className="w-full">
       <p className="p-2">Create Invoice</p>
 
-      <div className="w-full flexRow p-2 md:px-12 lg:px-8 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap">
+      <div className="w-full flexRow p-2 md:px-12 lg:px-8 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
         <form className="w-full">
           <SelectField
             formik={formik}
