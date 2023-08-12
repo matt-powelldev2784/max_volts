@@ -52,6 +52,7 @@ export const newInvoiceSlice = createSlice({
         {
           ...action.payload,
           reduxId: uuidv4(),
+          editMode: false,
         },
       ]
 
