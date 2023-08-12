@@ -91,7 +91,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
       {children}
 
-      <p className="font-bold text-center">Total Price : {totalPrice}</p>
+      <p className="font-bold text-center mt-8">Total Price : {totalPrice}</p>
       <Button
         type="submit"
         optionalClasses="w-full bg-red-500 my-2"

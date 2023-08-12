@@ -13,9 +13,28 @@ export const CreateInvoice = () => {
     return <InvoiceRowText key={product.id} {...product} />
   })
 
+  console.log('invoiceRows', invoiceRows)
+  const invoiceRowsHeader = {
+    id: 'invoice_row_header',
+    name: 'Product Name',
+    buyPrice: 'Buy Price',
+    description: 'Description',
+    sellPrice: 'Price',
+    reduxId: '',
+    editMode: false,
+  }
+
+  const invoiceRowHeader = (
+    // @ts-ignore: ignore erros to allow insertion of invoice row header
+    <InvoiceRowText key={invoiceRowsHeader.id} {...invoiceRowsHeader} />
+  )
+
   return (
     <section className="w-full flexCol">
-      <InvoiceForm>{invoiceRowsJsx}</InvoiceForm>
+      <InvoiceForm>
+        {invoiceRowHeader}
+        {invoiceRowsJsx}
+      </InvoiceForm>
     </section>
   )
 }
