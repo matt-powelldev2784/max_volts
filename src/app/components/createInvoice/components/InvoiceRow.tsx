@@ -121,6 +121,7 @@ export const InvoiceRow = ({
               optionalClasses="w-full text-white text-sm bg-darkRed h-[42.5px]"
               buttonText="Cancel"
               disabled={isLoading}
+              onClick={() => dispatch(toggleAddProductModal())}
             />
             <Button
               type="submit"
