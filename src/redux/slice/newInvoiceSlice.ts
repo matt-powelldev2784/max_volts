@@ -13,6 +13,7 @@ type T_NewInvoiceState = {
   error: string | null
   invoiceRows: T_ProductWithId[]
   totalPrice: number
+  showAddProductModal: boolean
 }
 
 const initialState: T_NewInvoiceState = {
@@ -20,6 +21,7 @@ const initialState: T_NewInvoiceState = {
   error: null,
   invoiceRows: [],
   totalPrice: 0,
+  showAddProductModal: false,
 }
 
 export const createInvoice = createAsyncThunk(
@@ -45,6 +47,9 @@ export const newInvoiceSlice = createSlice({
   reducers: {
     setErrorState: (state, action: PayloadAction<string>) => {
       state.error = action.payload
+    },
+    toggleAddProductModal: (state) => {
+      state.showAddProductModal = !state.showAddProductModal
     },
     addProductToInvoice: (state, action: PayloadAction<T_Product>) => {
       state.invoiceRows = [
@@ -96,6 +101,10 @@ export const newInvoiceSlice = createSlice({
   },
 })
 
-export const { addProductToInvoice, updateInvoiceRow, setErrorState } =
-  newInvoiceSlice.actions
+export const {
+  addProductToInvoice,
+  updateInvoiceRow,
+  setErrorState,
+  toggleAddProductModal,
+} = newInvoiceSlice.actions
 export default newInvoiceSlice.reducer

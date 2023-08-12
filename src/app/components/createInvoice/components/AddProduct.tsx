@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { getProducts } from '@/redux/slice/productSlice'
 import { Button } from '@/ui/button/button'
-import { addProductToInvoice } from '@/redux/slice/newInvoiceSlice'
+import {
+  addProductToInvoice,
+  toggleAddProductModal,
+} from '@/redux/slice/newInvoiceSlice'
 import { SelectField } from './SelectField'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -33,6 +36,7 @@ export const AddProduct = () => {
       if (!selectedProduct) return
       dispatch(addProductToInvoice(selectedProduct))
       setIsLoading(false)
+      dispatch(toggleAddProductModal())
     },
   })
 

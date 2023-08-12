@@ -5,9 +5,13 @@ import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
 import { T_ProductWithId } from '@/types'
-import { updateInvoiceRow } from '@/redux/slice/newInvoiceSlice'
-import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
+import {
+  toggleAddProductModal,
+  updateInvoiceRow,
+} from '@/redux/slice/newInvoiceSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
+import newInvoiceSlice from '../../../../redux/slice/newInvoiceSlice'
 
 export const InvoiceRow = ({
   name,
@@ -18,6 +22,9 @@ export const InvoiceRow = ({
 }: T_ProductWithId) => {
   const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const showAddProductModal = useAppSelector(
+    (state) => state.newInvoiceReducer.showAddProductModal
+  )
 
   const formik = useFormik({
     initialValues: {
@@ -37,8 +44,11 @@ export const InvoiceRow = ({
       console.log('values', values)
       dispatch(updateInvoiceRow({ reduxId, ...values }))
       setIsLoading(false)
+      dispatch(toggleAddProductModal())
     },
   })
+
+  if (!showAddProductModal) return null
 
   return (
     <section className="min-w-screen min-h-screen flex md:justify-center fixed inset-0 bg-black bg-opacity-50 overflow-y-scroll">
@@ -115,7 +125,7 @@ export const InvoiceRow = ({
             <Button
               type="submit"
               optionalClasses="w-full text-white text-sm bg-mvOrange h-[42.5px]"
-              buttonText="Add Invoice Row"
+              buttonText="Update Invoice Row"
               disabled={isLoading}
             />
           </div>
