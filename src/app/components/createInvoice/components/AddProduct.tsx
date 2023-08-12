@@ -11,7 +11,6 @@ import * as Yup from 'yup'
 export const AddProduct = () => {
   const products = useAppSelector((state) => state.productReducer.products)
   const dispatch = useAppDispatch()
-  const [selectedProduct, setSelectedProduct] = useState<T_Product>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
