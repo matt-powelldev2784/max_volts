@@ -4,7 +4,6 @@ import { getProducts } from '@/redux/slice/productSlice'
 import { Button } from '@/ui/button/button'
 import {
   addProductToInvoice,
-  setCurrentInvoiceRow,
   toggleAddProductModal,
 } from '@/redux/slice/newInvoiceSlice'
 import { SelectField } from './SelectField'
