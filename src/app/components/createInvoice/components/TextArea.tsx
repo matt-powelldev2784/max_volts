@@ -10,11 +10,10 @@ interface InputFieldProps {
   optionalClassNames?: string
 }
 
-export const InputField = ({
+export const TextAreaField = ({
   formik,
   htmlFor,
   labelText,
-  inputType,
   spanText,
   optionalClassNames,
 }: InputFieldProps) => {
@@ -24,10 +23,9 @@ export const InputField = ({
         {labelText}
         {spanText ? <span className="text-xs">{spanText}</span> : null}
       </label>
-      <input
+      <textarea
         id={htmlFor}
         name={htmlFor}
-        type={inputType}
         placeholder={labelText}
         onChange={formik.handleChange}
         value={formik.values[htmlFor]}
