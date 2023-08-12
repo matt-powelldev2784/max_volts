@@ -4,6 +4,9 @@ import { getProducts } from '@/redux/slice/productSlice'
 import { Button } from '@/ui/button/button'
 import { T_Product } from '@/types'
 import { addProductToInvoice } from '@/redux/slice/newInvoiceSlice'
+import { SelectField } from './SelectField'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 export const AddProduct = () => {
   const products = useAppSelector((state) => state.productReducer.products)
@@ -11,27 +14,29 @@ export const AddProduct = () => {
   const [selectedProduct, setSelectedProduct] = useState<T_Product>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  console.log('selectedProduct', selectedProduct)
-
   useEffect(() => {
     dispatch(getProducts())
   }, [dispatch])
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedProductId = event.target.value
-    const selectedProduct = products.find(
-      (product) => product.id === selectedProductId
-    )
-    console.log('selectedProduct', selectedProduct)
-    setSelectedProduct(selectedProduct)
-  }
-
-  const onAddProductClick = () => {
-    setIsLoading(true)
-    if (selectedProduct === undefined) return
-    dispatch(addProductToInvoice(selectedProduct))
-    setIsLoading(false)
-  }
+  const formik = useFormik({
+    initialValues: {
+      productId: '',
+    },
+    validationSchema: Yup.object({
+      productId: Yup.string().required('Please seclect a product'),
+    }),
+    onSubmit: async (values) => {
+      setIsLoading(true)
+      const selectedProductId = values.productId
+      if (!selectedProductId) return
+      const selectedProduct = products.find(
+        (product) => product.id === selectedProductId
+      )
+      if (!selectedProduct) return
+      dispatch(addProductToInvoice(selectedProduct))
+      setIsLoading(false)
+    },
+  })
 
   const productSelectOptionsJsx = products.map((product) => {
     return (
@@ -42,20 +47,19 @@ export const AddProduct = () => {
   })
 
   return (
-    <form className="w-full flex gap-2 items-end" onSubmit={onAddProductClick}>
+    <form className="w-full flex gap-2 items-end">
       <div className="w-full">
-        <label htmlFor="productId" className="w-full p-1 text-sm">
-          Select Product
-        </label>
-        <select
-          className="w-full rounded-lg border-2 border-black bg-white p-2 px-4 outline-none text-red-500 placeholder-shown:text-gray-500 "
-          onChange={handleSelectChange}
+        <SelectField
+          formik={formik}
+          htmlFor="productId"
+          labelText="Select Product"
+          imagePath="/icons/add_product.svg"
         >
           <option value="" disabled selected>
             Select a product
           </option>
           {productSelectOptionsJsx}
-        </select>
+        </SelectField>
       </div>
 
       <Button
@@ -63,7 +67,7 @@ export const AddProduct = () => {
         optionalClasses="w-[150px] text-white text-sm bg-mvOrange h-[42.5px]"
         buttonText="Add Product"
         disabled={isLoading}
-        onClick={onAddProductClick}
+        onClick={formik.handleSubmit}
       />
     </form>
   )
