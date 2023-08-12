@@ -2,7 +2,7 @@
 
 import { InvoiceForm } from './components/InvoiceForm'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
-import { InvoiceRowModal } from './components/InvoiceRowModal'
+import { InvoiceRowText } from './components/InvoiceRowText'
 
 export const CreateInvoice = () => {
   const invoiceRows = useAppSelector(
@@ -10,7 +10,7 @@ export const CreateInvoice = () => {
   )
 
   const invoiceRowsJsx = invoiceRows.map((product) => {
-    return <InvoiceRowModal key={product.id} {...product} />
+    return <InvoiceRowText key={product.id} {...product} />
   })
 
   return (
