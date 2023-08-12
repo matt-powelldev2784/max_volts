@@ -1,16 +1,8 @@
 import { useState } from 'react'
-import { InputField } from './InputField'
-import { TextAreaField } from './TextArea'
-import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
-import * as Yup from 'yup'
 import { T_ProductWithId } from '@/types'
-import {
-  toggleAddProductModal,
-  updateInvoiceRow,
-} from '@/redux/slice/newInvoiceSlice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
-import Image from 'next/image'
+import { toggleAddProductModal } from '@/redux/slice/newInvoiceSlice'
+import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
 export const InvoiceRowText = ({
   name,
