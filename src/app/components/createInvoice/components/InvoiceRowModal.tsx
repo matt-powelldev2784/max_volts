@@ -11,9 +11,8 @@ import {
 } from '@/redux/slice/newInvoiceSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
-import newInvoiceSlice from '../../../../redux/slice/newInvoiceSlice'
 
-export const InvoiceRow = ({
+export const InvoiceRowModal = ({
   name,
   description,
   sellPrice,
@@ -25,6 +24,8 @@ export const InvoiceRow = ({
   const showAddProductModal = useAppSelector(
     (state) => state.newInvoiceReducer.showAddProductModal
   )
+
+  console.log('buyPrice', buyPrice)
 
   const formik = useFormik({
     initialValues: {
