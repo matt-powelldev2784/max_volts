@@ -10,6 +10,7 @@ import { getClients } from '@/redux/slice/clientSlice'
 import { setErrorState, createInvoice } from '@/redux/slice/newInvoiceSlice'
 import { T_InvoiceDetails } from '@/types/invoiceDetails'
 import { AddProduct } from './AddProduct'
+import { InvoiceRowModal } from './InvoiceRowModal'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -23,6 +24,9 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   )
   const invoiceRows = useAppSelector(
     (state) => state.newInvoiceReducer.invoiceRows
+  )
+  const showProductModal = useAppSelector(
+    (state) => state.newInvoiceReducer.showAddProductModal
   )
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -89,6 +93,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
         <AddProduct />
       </div>
 
+      {showProductModal ? <InvoiceRowModal /> : null}
       {children}
 
       <p className="font-bold text-center mt-8">Total Price : {totalPrice}</p>
