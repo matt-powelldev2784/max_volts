@@ -48,18 +48,20 @@ export const AddProduct = () => {
           Select Product
         </label>
         <select
-          className="w-full rounded-lg border-2 border-black bg-white p-2 px-4 outline-none"
+          className="w-full rounded-lg border-2 border-black bg-white p-2 px-4 outline-none text-red-500 placeholder-shown:text-gray-500 "
           onChange={handleSelectChange}
         >
-          <option value="">Select a product</option>
+          <option value="" disabled selected>
+            Select a product
+          </option>
           {productSelectOptionsJsx}
         </select>
       </div>
 
       <Button
         type="button"
-        optionalClasses="w-[150px] text-white text-sm bg-mvOrange"
-        buttonText="Add Product to Invoice"
+        optionalClasses="w-[150px] text-white text-sm bg-mvOrange h-[42.5px]"
+        buttonText="Add Product"
         disabled={isLoading}
         onClick={onAddProductClick}
       />

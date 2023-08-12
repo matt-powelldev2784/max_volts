@@ -61,7 +61,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
   const clientSelectOptionsJsx = clients.map((client) => {
     return (
-      <option key={client.id} value={client.id}>
+      <option key={client.id} value={client.id} onBlur={formik.handleBlur}>
         {`${client.name} @ ${client.companyName}`}
       </option>
     )
@@ -69,25 +69,24 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
   return (
     <div className="w-full">
-      <p className="p-2" >Create Invoice</p>
+      <p className="p-2">Create Invoice</p>
 
-      <div className="w-full flexRow p-2 px-8 gap-16">
-        <div className="w-full p-8 bg-gray-300 rounded-xl">
-          <form className="w-full">
-            <SelectField
-              formik={formik}
-              htmlFor="clientId"
-              labelText="Select Client"
-            >
-              <option value="">Select a client</option>
-              {clientSelectOptionsJsx}
-            </SelectField>
-          </form>
-        </div>
+      <div className="w-full flexRow p-2 md:px-12 lg:px-8 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap">
+        <form className="w-full">
+          <SelectField
+            formik={formik}
+            htmlFor="clientId"
+            labelText="Select Client"
+            imagePath="/icons/person.svg"
+          >
+            <option value="" disabled selected className="">
+              Select a client
+            </option>
+            {clientSelectOptionsJsx}
+          </SelectField>
+        </form>
 
-        <div className="w-full p-8 bg-gray-300 rounded-xl">
-          <AddProduct />
-        </div>
+        <AddProduct />
       </div>
 
       {children}
