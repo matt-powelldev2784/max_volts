@@ -45,7 +45,7 @@ export const AddProduct = () => {
   })
 
   return (
-    <form className="w-full flex gap-2 items-end">
+    <form className="w-full flex gap-2 items-end flex-col md:flex-row">
       <div className="w-full">
         <SelectField
           formik={formik}
@@ -62,7 +62,7 @@ export const AddProduct = () => {
 
       <Button
         type="button"
-        optionalClasses="w-[150px] text-white text-sm bg-mvOrange h-[42.5px]"
+        optionalClasses="w-full md:w-[150px] text-white text-sm bg-mvOrange h-[42.5px]"
         buttonText="Add Product"
         disabled={isLoading}
         onClick={formik.handleSubmit}
