@@ -1,9 +1,8 @@
 'use client'
 
-import { AddProduct } from './components/AddProduct'
 import { InvoiceForm } from './components/InvoiceForm'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
-import { InvoiceRow } from './components/InvoiceRow'
+import { InvoiceRowText } from './components/InvoiceRowText'
 
 export const CreateInvoice = () => {
   const invoiceRows = useAppSelector(
@@ -11,13 +10,29 @@ export const CreateInvoice = () => {
   )
 
   const invoiceRowsJsx = invoiceRows.map((product) => {
-    return <InvoiceRow key={product.id} {...product} />
+    return <InvoiceRowText key={product.id} {...product} />
   })
+
+  console.log('invoiceRows', invoiceRows)
+  const invoiceRowsHeader = {
+    id: 'invoice_row_header',
+    name: 'Product Name',
+    buyPrice: 'Buy Price',
+    description: 'Description',
+    sellPrice: 'Price',
+    reduxId: '',
+    editMode: false,
+  }
+
+  const invoiceRowHeader = (
+    // @ts-ignore: ignore erros to allow insertion of invoice row header
+    <InvoiceRowText key={invoiceRowsHeader.id} {...invoiceRowsHeader} />
+  )
 
   return (
     <section className="w-full flexCol">
       <InvoiceForm>
-        <AddProduct />
+        {invoiceRowHeader}
         {invoiceRowsJsx}
       </InvoiceForm>
     </section>

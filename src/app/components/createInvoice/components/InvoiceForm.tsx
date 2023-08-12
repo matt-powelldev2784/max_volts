@@ -9,6 +9,8 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
 import { setErrorState, createInvoice } from '@/redux/slice/newInvoiceSlice'
 import { T_InvoiceDetails } from '@/types/invoiceDetails'
+import { AddProduct } from './AddProduct'
+import { InvoiceRowModal } from './InvoiceRowModal'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -23,8 +25,15 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const invoiceRows = useAppSelector(
     (state) => state.newInvoiceReducer.invoiceRows
   )
+  const showProductModal = useAppSelector(
+    (state) => state.newInvoiceReducer.displayAddProductModal
+  )
+  const currentInvoiceRow = useAppSelector(
+    (state) => state.newInvoiceReducer.currentInvoiceRow
+  )
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
+  console.log('currentInvoiceRow', currentInvoiceRow)
   useEffect(() => {
     dispatch(getClients())
   }, [dispatch])
@@ -38,7 +47,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
-      console.log('values', values)
+
       if (!totalPrice || typeof totalPrice !== 'number') {
         dispatch(setErrorState('Server error, when submitting invoice'))
       }
@@ -60,30 +69,41 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
   const clientSelectOptionsJsx = clients.map((client) => {
     return (
-      <option key={client.id} value={client.id}>
+      <option key={client.id} value={client.id} onBlur={formik.handleBlur}>
         {`${client.name} @ ${client.companyName}`}
       </option>
     )
   })
 
   return (
-    <div className="w-full">
-      <form className="w-full">
-        <p>Create Invoice</p>
+    <div className="min-h-screen relative w-full h-fit">
+      <p className="p-2">Create Invoice</p>
 
-        <SelectField
-          formik={formik}
-          htmlFor="clientId"
-          labelText="Select Client"
-        >
-          <option value="">Select a client</option>
-          {clientSelectOptionsJsx}
-        </SelectField>
-      </form>
+      <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
+        <form className="w-full">
+          <SelectField
+            formik={formik}
+            htmlFor="clientId"
+            labelText="Select Client"
+            imagePath="/icons/person.svg"
+          >
+            <option value="" disabled>
+              Select a client
+            </option>
+            {clientSelectOptionsJsx}
+          </SelectField>
+        </form>
+
+        <AddProduct />
+      </div>
+
+      {showProductModal && currentInvoiceRow?.reduxId ? (
+        <InvoiceRowModal {...currentInvoiceRow} />
+      ) : null}
 
       {children}
 
-      <p className="font-bold text-center">Total Price : {totalPrice}</p>
+      <p className="font-bold text-center mt-8">Total Price : {totalPrice}</p>
       <Button
         type="submit"
         optionalClasses="w-full bg-red-500 my-2"

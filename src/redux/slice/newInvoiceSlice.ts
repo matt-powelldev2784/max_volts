@@ -13,6 +13,8 @@ type T_NewInvoiceState = {
   error: string | null
   invoiceRows: T_ProductWithId[]
   totalPrice: number
+  displayAddProductModal: boolean
+  currentInvoiceRow: T_ProductWithId | null
 }
 
 const initialState: T_NewInvoiceState = {
@@ -20,6 +22,8 @@ const initialState: T_NewInvoiceState = {
   error: null,
   invoiceRows: [],
   totalPrice: 0,
+  displayAddProductModal: false,
+  currentInvoiceRow: null,
 }
 
 export const createInvoice = createAsyncThunk(
@@ -46,14 +50,41 @@ export const newInvoiceSlice = createSlice({
     setErrorState: (state, action: PayloadAction<string>) => {
       state.error = action.payload
     },
+    toggleAddProductModal: (state) => {
+      state.displayAddProductModal = !state.displayAddProductModal
+    },
+    deleteInvoiceRow: (state, action: PayloadAction<string>) => {
+      state.invoiceRows = state.invoiceRows.filter((invoiceRow) => {
+        invoiceRow.reduxId !== action.payload
+      })
+
+      state.totalPrice = state.invoiceRows.reduce(
+        (acc, curr) => acc + curr.sellPrice,
+        0
+      )
+    },
+    setCurrentInvoiceRow: (state, action: PayloadAction<T_ProductWithId>) => {
+      state.currentInvoiceRow = action.payload
+    },
     addProductToInvoice: (state, action: PayloadAction<T_Product>) => {
+      const reduxId = uuidv4()
+
       state.invoiceRows = [
         ...state.invoiceRows,
         {
           ...action.payload,
-          reduxId: uuidv4(),
+          reduxId,
+          editMode: false,
         },
       ]
+
+      const currentInvoiceRow = state.invoiceRows.find(
+        (invoiceRow) => invoiceRow.reduxId === reduxId
+      )
+
+      if (currentInvoiceRow) {
+        state.currentInvoiceRow = currentInvoiceRow
+      }
 
       state.totalPrice = state.invoiceRows.reduce(
         (acc, curr) => acc + curr.sellPrice,
@@ -95,6 +126,12 @@ export const newInvoiceSlice = createSlice({
   },
 })
 
-export const { addProductToInvoice, updateInvoiceRow, setErrorState } =
-  newInvoiceSlice.actions
+export const {
+  addProductToInvoice,
+  updateInvoiceRow,
+  setErrorState,
+  toggleAddProductModal,
+  deleteInvoiceRow,
+  setCurrentInvoiceRow,
+} = newInvoiceSlice.actions
 export default newInvoiceSlice.reducer

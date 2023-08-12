@@ -8,4 +8,5 @@ export interface T_Product {
 
 export interface T_ProductWithId extends T_Product {
   reduxId: string
+  editMode: boolean
 }

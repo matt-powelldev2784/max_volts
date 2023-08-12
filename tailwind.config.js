@@ -7,16 +7,24 @@ module.exports = {
   ],
   theme: {
     extend: {
-      extend: {
-        colors: {
-          primaryPink: '#d70567',
-        },
-        screens: {
-          sm: '0px',
-          md: '600px',
-          lg: '1100px',
-        },
+      colors: {
+        mvOrange: '#f07e19',
+        mvGreen: '#99cc66',
+        darkGreen: '#006B3D',
+        darkRed: '#d3212C',
+        darkBlack: '#121212',
       },
+      screens: {
+        sm: '0px',
+        md: '600px',
+        lg: '1100px',
+      },
+    },
+    fontSize: {
+      sm: ['14px', '20px'],
+      base: ['18px', '24px'],
+      lg: ['22px', '28px'],
+      xl: ['26px', '32px'],
     },
   },
   plugins: [
