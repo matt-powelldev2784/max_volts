@@ -26,7 +26,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
     (state) => state.newInvoiceReducer.invoiceRows
   )
   const showProductModal = useAppSelector(
-    (state) => state.newInvoiceReducer.showAddProductModal
+    (state) => state.newInvoiceReducer.displayAddProductModal
   )
   const [isLoading, setIsLoading] = useState<boolean>(false)
 

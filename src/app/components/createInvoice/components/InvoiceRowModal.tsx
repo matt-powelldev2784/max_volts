@@ -21,8 +21,8 @@ export const InvoiceRowModal = ({
 }: T_ProductWithId) => {
   const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const showAddProductModal = useAppSelector(
-    (state) => state.newInvoiceReducer.showAddProductModal
+  const displayAddProductModal = useAppSelector(
+    (state) => state.newInvoiceReducer.displayAddProductModal
   )
 
   console.log('buyPrice', buyPrice)
@@ -49,7 +49,7 @@ export const InvoiceRowModal = ({
     },
   })
 
-  if (!showAddProductModal) return null
+  if (!displayAddProductModal) return null
 
   return (
     <section className="min-w-screen min-h-screen flex md:justify-center fixed inset-0 bg-black bg-opacity-50 overflow-y-scroll">
