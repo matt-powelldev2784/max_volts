@@ -13,7 +13,6 @@ export const CreateInvoice = () => {
     return <InvoiceRowText key={product.reduxId} {...product} />
   })
 
-  console.log('invoiceRows', invoiceRows)
   const invoiceRowsHeader = {
     id: 'invoice_row_header',
     name: 'Product Name',

@@ -1,24 +1,31 @@
 import { useState } from 'react'
 import { Button } from '@/ui/button/button'
 import { T_ProductWithId } from '@/types'
-import { toggleAddProductModal } from '@/redux/slice/newInvoiceSlice'
+import {
+  setCurrentInvoiceRow,
+  toggleAddProductModal,
+  deleteInvoiceRow,
+} from '@/redux/slice/newInvoiceSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
 interface InvoiceRowModalProps extends T_ProductWithId {
   header?: boolean
 }
 
-export const InvoiceRowText = ({
-  name,
-  description,
-  sellPrice,
-  buyPrice,
-  header,
-}: InvoiceRowModalProps) => {
+export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const dispatch = useAppDispatch()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, _setIsLoading] = useState<boolean>(false) // eslint-disable-line
+  const { name, description, sellPrice, buyPrice, header } = productWithId
 
-  if (10 === Math.random()) setIsLoading(false)
+  const onEditInvoiceRow = () => {
+    dispatch(setCurrentInvoiceRow(productWithId))
+    dispatch(toggleAddProductModal())
+  }
+
+  const onDeleteInvoiceRow = () => {
+    dispatch(setCurrentInvoiceRow(productWithId))
+    dispatch(deleteInvoiceRow())
+  }
 
   return (
     <section
@@ -51,13 +58,14 @@ export const InvoiceRowText = ({
           optionalClasses="text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[40px]"
           buttonText="Delete"
           disabled={isLoading}
-          onClick={() => dispatch(toggleAddProductModal())}
+          onClick={onDeleteInvoiceRow}
         />
         <Button
           type="button"
           optionalClasses="text-white text-sm bg-mvOrange h-full w-fit max-h-[40px]"
           buttonText="Edit"
           disabled={isLoading}
+          onClick={onEditInvoiceRow}
         />
       </div>
     </section>

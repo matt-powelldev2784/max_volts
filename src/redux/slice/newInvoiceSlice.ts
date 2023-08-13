@@ -53,9 +53,9 @@ export const newInvoiceSlice = createSlice({
     toggleAddProductModal: (state) => {
       state.displayAddProductModal = !state.displayAddProductModal
     },
-    deleteInvoiceRow: (state, action: PayloadAction<string>) => {
+    deleteInvoiceRow: (state) => {
       state.invoiceRows = state.invoiceRows.filter((invoiceRow) => {
-        invoiceRow.reduxId !== action.payload
+        return invoiceRow.reduxId !== state.currentInvoiceRow?.reduxId
       })
 
       state.totalPrice = state.invoiceRows.reduce(

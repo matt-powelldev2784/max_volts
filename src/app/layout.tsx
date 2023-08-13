@@ -1,6 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
 import AuthProvider from './AuthProvider'
 import { ReduxProvider } from '@/redux/provider/provider'
 
