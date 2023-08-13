@@ -4,6 +4,7 @@ import { T_ProductWithId } from '@/types'
 import {
   setCurrentInvoiceRow,
   toggleAddProductModal,
+  deleteInvoiceRow,
 } from '@/redux/slice/newInvoiceSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
@@ -19,6 +20,11 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const onEditInvoiceRow = () => {
     dispatch(setCurrentInvoiceRow(productWithId))
     dispatch(toggleAddProductModal())
+  }
+
+  const onDeleteInvoiceRow = () => {
+    dispatch(setCurrentInvoiceRow(productWithId))
+    dispatch(deleteInvoiceRow())
   }
 
   return (
@@ -52,7 +58,7 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
           optionalClasses="text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[40px]"
           buttonText="Delete"
           disabled={isLoading}
-          onClick={() => dispatch(toggleAddProductModal())}
+          onClick={onDeleteInvoiceRow}
         />
         <Button
           type="button"

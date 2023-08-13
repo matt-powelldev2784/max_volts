@@ -33,7 +33,6 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   )
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  console.log('currentInvoiceRow', currentInvoiceRow)
   useEffect(() => {
     dispatch(getClients())
   }, [dispatch])

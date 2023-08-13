@@ -13,19 +13,13 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
 
-export const InvoiceRowModal = ({
-  name,
-  description,
-  sellPrice,
-  buyPrice,
-  reduxId,
-}: T_ProductWithId) => {
+export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
   const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const displayAddProductModal = useAppSelector(
     (state) => state.newInvoiceReducer.displayAddProductModal
   )
-
+  const { name, description, sellPrice, buyPrice, reduxId } = productWithId
   console.log('buyPrice', buyPrice)
 
   const formik = useFormik({
@@ -43,14 +37,17 @@ export const InvoiceRowModal = ({
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
-      console.log('values', values)
       dispatch(updateInvoiceRow({ reduxId, ...values }))
       setIsLoading(false)
       dispatch(toggleAddProductModal())
     },
   })
 
-  const cancelAddProduct = () => {
+  const onCancelEditInvoiceRow = () => {
+    dispatch(toggleAddProductModal())
+  }
+
+  const onDeleteInvoiceRow = () => {
     dispatch(deleteInvoiceRow())
     dispatch(toggleAddProductModal())
   }
@@ -68,8 +65,7 @@ export const InvoiceRowModal = ({
             height={30}
             className=""
           />
-          <p> Add Invoice Row</p>
-          <p className="absolute text-mvGreen font-lg top-2 right-4">X</p>
+          <p>Add Invoice Row</p>
         </div>
 
         <form
@@ -128,7 +124,7 @@ export const InvoiceRowModal = ({
               optionalClasses="w-full text-white text-sm bg-darkRed h-[42.5px]"
               buttonText="Cancel"
               disabled={isLoading}
-              onClick={cancelAddProduct}
+              onClick={onCancelEditInvoiceRow}
             />
             <Button
               type="submit"
@@ -137,6 +133,14 @@ export const InvoiceRowModal = ({
               disabled={isLoading}
             />
           </div>
+
+          <Button
+            type="button"
+            optionalClasses="w-full text-white text-sm bg-darkRed h-[42.5px] mt-8 md:hidden"
+            buttonText="Delete Invoice Row"
+            disabled={isLoading}
+            onClick={onDeleteInvoiceRow}
+          />
         </form>
       </div>
     </section>
