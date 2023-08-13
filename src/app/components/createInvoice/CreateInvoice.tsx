@@ -22,6 +22,7 @@ export const CreateInvoice = () => {
     sellPrice: 'Price',
     reduxId: '',
     editMode: false,
+    header: true,
   }
 
   const invoiceRowHeader = (
