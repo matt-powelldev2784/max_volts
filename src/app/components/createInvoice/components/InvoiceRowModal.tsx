@@ -77,7 +77,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
             htmlFor="quantity"
             labelText="Quantity"
             inputType="text"
-            optionalClassNames=""
+            imagePath="/icons/quantity.svg"
           />
 
           <InputField
@@ -86,6 +86,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
             labelText="Product Name"
             inputType="text"
             optionalClassNames=""
+            imagePath="/icons/person.svg"
           />
 
           <TextAreaField
@@ -94,6 +95,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
             labelText="Description"
             inputType="text"
             optionalClassNames="h-20"
+            imagePath="/icons/description.svg"
           />
 
           <InputField
@@ -101,6 +103,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
             htmlFor="buyprice"
             labelText="Buy Price"
             inputType="text"
+            imagePath="/icons/pound_sign.svg"
           />
 
           <InputField
@@ -108,6 +111,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
             htmlFor="vat"
             labelText="VAT"
             inputType="text"
+            imagePath="/icons/vat.svg"
           />
 
           <InputField
@@ -115,7 +119,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
             htmlFor="price"
             labelText="Price"
             inputType="text"
-            optionalClassNames=""
+            imagePath="/icons/pound_sign.svg"
           />
 
           <div className="flexRow gap-2 w-full">
