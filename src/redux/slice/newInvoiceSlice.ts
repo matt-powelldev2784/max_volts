@@ -3,7 +3,6 @@ import {
   PayloadAction,
   createAsyncThunk,
   AnyAction,
-  current,
 } from '@reduxjs/toolkit'
 import { T_Product, T_ProductWithId, T_InvoiceDetails } from '@/types'
 import { v4 as uuidv4 } from 'uuid'
@@ -54,7 +53,7 @@ export const newInvoiceSlice = createSlice({
     toggleAddProductModal: (state) => {
       state.displayAddProductModal = !state.displayAddProductModal
     },
-    deleteInvoiceRow: (state, action: PayloadAction<string>) => {
+    deleteInvoiceRow: (state) => {
       state.invoiceRows = state.invoiceRows.filter((invoiceRow) => {
         return invoiceRow.reduxId !== state.currentInvoiceRow?.reduxId
       })
