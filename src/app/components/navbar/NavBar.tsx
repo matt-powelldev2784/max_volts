@@ -13,15 +13,19 @@ export const NavBar = () => {
             height={30}
           />
         </a>
-        <a href="/">
-          <Image
-            src="/max_volts_logo.svg"
-            alt="Footboot Logo"
-            width={300}
-            height={40}
-            className="m-0 p-2"
-          />
+
+        <a href="/" className="w-full flexRow">
+          <div className="h-[60px] w-[210px] md:h-[80px] md:w-[300px] flexCol">
+            <Image
+              src="/max_volts_logo.svg"
+              alt="Footboot Logo"
+              width={200}
+              height={25}
+              layout="responsive"
+            />
+          </div>
         </a>
+
         <a href="/api/auth/signin" className="lg:hidden mr-4">
           <Image
             src={`/icons/person.svg`}
