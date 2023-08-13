@@ -42,11 +42,11 @@ export const InputField = ({
         onChange={formik.handleChange}
         value={formik.values[htmlFor]}
         onBlur={formik.handleBlur}
-        className={`w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-10 text-black
+        className={`w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-10 text-darkBlack
         ${
           formik.touched[htmlFor] && formik.errors[htmlFor]
             ? 'border-red-500'
-            : 'border-black/25'
+            : 'border-darkBlack/25'
         } 
         
         ${optionalClassNames}

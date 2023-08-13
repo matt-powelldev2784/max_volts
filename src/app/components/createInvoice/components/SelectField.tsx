@@ -32,7 +32,7 @@ export const SelectField = ({
 
         <label
           htmlFor={htmlFor}
-          className="relative left-1 w-full p-1 text-sm text-black/50"
+          className="relative left-1 w-full p-1 text-sm text-darkBlack/50"
         >
           {labelText}
           {spanText ? <span className="text-xs">{spanText}</span> : null}
@@ -50,12 +50,12 @@ export const SelectField = ({
         ${
           formik.touched[htmlFor] && formik.errors[htmlFor]
             ? 'border-red-500'
-            : 'border-black/25'
+            : 'border-darkBlack/25'
         } 
         ${
           formik.touched[htmlFor] && !formik.errors[htmlFor]
-            ? 'text-black'
-            : 'text-black/50'
+            ? 'text-darkBlack'
+            : 'text-darkBlack/50'
         }
        `}
       >
