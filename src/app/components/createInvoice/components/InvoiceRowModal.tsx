@@ -51,7 +51,7 @@ export const InvoiceRowModal = ({
   })
 
   const cancelAddProduct = () => {
-    dispatch(deleteInvoiceRow(reduxId))
+    dispatch(deleteInvoiceRow())
     dispatch(toggleAddProductModal())
   }
 
