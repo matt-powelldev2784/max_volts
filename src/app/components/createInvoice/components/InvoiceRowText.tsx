@@ -22,7 +22,7 @@ export const InvoiceRowText = ({
 
   return (
     <section
-      className={`w-full flexRow gap-4 sm:gap-2 h-fit max-w-[1100px] overflow-hidden sm:max-w-[95vw] m-auto rounded-lg mb-1 min-w-[306px] p-2 ${
+      className={`w-full flex flex-fow gap-4 sm:gap-2 h-fit max-w-[1100px] overflow-hidden sm:max-w-[95vw] m-auto rounded-lg mb-1 min-w-[306px] p-2 ${
         header ? 'bg-darkBlack text-white p-3' : 'bg-black/5'
       }`}
     >
@@ -42,20 +42,20 @@ export const InvoiceRowText = ({
       </p>
 
       <div
-        className={`flexRow gap-2 py-2 md:pl-2 ${
+        className={`flex flex-row gap-2 md:pl-2 ${
           header ? 'opacity-0 h-0' : null
         }`}
       >
         <Button
           type="button"
-          optionalClasses="text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden"
+          optionalClasses="text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[40px]"
           buttonText="Delete"
           disabled={isLoading}
           onClick={() => dispatch(toggleAddProductModal())}
         />
         <Button
           type="button"
-          optionalClasses="text-white text-sm bg-mvOrange h-full w-fit"
+          optionalClasses="text-white text-sm bg-mvOrange h-full w-fit max-h-[40px]"
           buttonText="Edit"
           disabled={isLoading}
         />
