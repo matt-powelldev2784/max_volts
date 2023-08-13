@@ -1,5 +1,6 @@
 import { FormikError } from './FormikError'
 import { FormikProps } from 'formik'
+import Image from 'next/image'
 
 interface InputFieldProps {
   formik: FormikProps<any>
@@ -8,6 +9,7 @@ interface InputFieldProps {
   inputType: string
   spanText?: string
   optionalClassNames?: string
+  imagePath: string
 }
 
 export const TextAreaField = ({
@@ -16,6 +18,7 @@ export const TextAreaField = ({
   labelText,
   spanText,
   optionalClassNames,
+  imagePath,
 }: InputFieldProps) => {
   return (
     <div className="relative flexCol w-full">
@@ -23,6 +26,13 @@ export const TextAreaField = ({
         {labelText}
         {spanText ? <span className="text-xs">{spanText}</span> : null}
       </label>
+      <Image
+        src={imagePath}
+        alt="arrow-down"
+        width={22}
+        height={22}
+        className="absolute left-3 top-10"
+      />
       <textarea
         id={htmlFor}
         name={htmlFor}
