@@ -15,7 +15,7 @@ export const NavBar = () => {
         </a>
 
         <a href="/" className="w-full md:ml-4 flexRow md:w-fit">
-          <div className="h-[60px] w-[210px] md:h-[70px] md:w-[300px] flexCol sm:ml-1">
+          <div className="h-[60px] w-[210px] md:h-[70px] md:w-[300px] flexCol">
             <Image
               src="/max_volts_logo.svg"
               alt="Footboot Logo"
