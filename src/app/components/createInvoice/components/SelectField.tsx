@@ -21,17 +21,24 @@ export const SelectField = ({
 }: InputFieldProps) => {
   return (
     <div className="relative">
-      <label htmlFor={htmlFor} className="w-full p-1 text-sm text-black/50">
-        {labelText}
-        {spanText ? <span className="text-xs">{spanText}</span> : null}
-      </label>
-      <Image
-        src={imagePath}
-        alt="arrow-down"
-        width={20}
-        height={20}
-        className="absolute top-[34.5px] left-3"
-      />
+      <div className="flexRow justify-end">
+        <Image
+          src={imagePath}
+          alt="arrow-down"
+          width={22}
+          height={22}
+          className="relative left-1"
+        />
+
+        <label
+          htmlFor={htmlFor}
+          className="relative left-1 w-full p-1 text-sm text-black/50"
+        >
+          {labelText}
+          {spanText ? <span className="text-xs">{spanText}</span> : null}
+        </label>
+      </div>
+
       <select
         id={htmlFor}
         name={htmlFor}
@@ -39,7 +46,7 @@ export const SelectField = ({
         onChange={formik.handleChange}
         value={formik.values[htmlFor]}
         onBlur={formik.handleBlur}
-        className={`w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-10
+        className={`w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-3
         ${
           formik.touched[htmlFor] && formik.errors[htmlFor]
             ? 'border-red-500'
