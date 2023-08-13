@@ -103,14 +103,19 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
       {children}
 
-      <p className="font-bold text-center mt-8">Total Price : {totalPrice}</p>
-      <Button
-        type="submit"
-        optionalClasses="w-full bg-red-500 my-2"
-        buttonText="Create Invoice"
-        disabled={isLoading}
-        onClick={formik.handleSubmit}
-      />
+      <p className="font-bold text-center mt-8 w-full">
+        Total Price : £{Number(totalPrice).toFixed(2)}
+      </p>
+
+      <div className="flexCol p-2">
+        <Button
+          type="submit"
+          optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px]"
+          buttonText="Create Invoice"
+          disabled={isLoading}
+          onClick={formik.handleSubmit}
+        />
+      </div>
     </div>
   )
 }

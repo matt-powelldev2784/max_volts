@@ -66,7 +66,7 @@ export const AddProduct = () => {
 
       <Button
         type="button"
-        optionalClasses="w-full md:w-[150px] text-white text-sm bg-mvOrange h-[42.5px]"
+        optionalClasses="w-full md:w-[150px] text-white text-sm bg-mvOrange"
         buttonText="Add Product"
         disabled={isLoading}
         onClick={formik.handleSubmit}
