@@ -3,6 +3,7 @@ import {
   PayloadAction,
   createAsyncThunk,
   AnyAction,
+  current,
 } from '@reduxjs/toolkit'
 import { T_Product, T_ProductWithId, T_InvoiceDetails } from '@/types'
 import { v4 as uuidv4 } from 'uuid'
@@ -55,7 +56,7 @@ export const newInvoiceSlice = createSlice({
     },
     deleteInvoiceRow: (state, action: PayloadAction<string>) => {
       state.invoiceRows = state.invoiceRows.filter((invoiceRow) => {
-        invoiceRow.reduxId !== action.payload
+        return invoiceRow.reduxId !== state.currentInvoiceRow?.reduxId
       })
 
       state.totalPrice = state.invoiceRows.reduce(
