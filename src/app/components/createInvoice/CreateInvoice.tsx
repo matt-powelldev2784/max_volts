@@ -10,7 +10,7 @@ export const CreateInvoice = () => {
   )
 
   const invoiceRowsJsx = invoiceRows.map((product) => {
-    return <InvoiceRowText key={product.id} {...product} />
+    return <InvoiceRowText key={product.reduxId} {...product} />
   })
 
   console.log('invoiceRows', invoiceRows)
@@ -22,6 +22,7 @@ export const CreateInvoice = () => {
     sellPrice: 'Price',
     reduxId: '',
     editMode: false,
+    header: true,
   }
 
   const invoiceRowHeader = (
