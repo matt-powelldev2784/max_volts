@@ -3,8 +3,6 @@ import { Button } from '@/ui/button/button'
 import { T_ProductWithId } from '@/types'
 import { toggleAddProductModal } from '@/redux/slice/newInvoiceSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { T_Product } from '../../../../types/product'
-import { bool } from 'yup'
 
 interface InvoiceRowModalProps extends T_ProductWithId {
   header?: boolean
