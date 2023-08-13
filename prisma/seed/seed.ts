@@ -39,16 +39,22 @@ async function main(): Promise<void> {
 
   const productSeeds = [
     {
-      name: 'Product 1',
-      description: 'Product 1 description',
+      name: 'Labour',
+      description: 'Services..',
       buyPrice: 100,
       sellPrice: 200,
     },
     {
-      name: 'Product 2',
-      description: 'Product 2 description',
-      buyPrice: 100,
-      sellPrice: 200,
+      name: 'Part 1',
+      description: 'Electrical Part 1',
+      buyPrice: 200,
+      sellPrice: 400,
+    },
+    {
+      name: 'Misc',
+      description: 'Misclaneous',
+      buyPrice: 0,
+      sellPrice: 50,
     },
   ]
 
