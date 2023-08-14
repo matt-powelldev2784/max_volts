@@ -41,10 +41,10 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
         .required('Please input a buy price than must be a number'),
       VAT: Yup.number()
         .typeError('Buy price must be a number')
-        .required('Please input a buy price than must be a number'),
+        .required('Please input a VAT percentage than must be a number'),
       sellPrice: Yup.number()
         .typeError('Price must be a number')
-        .required('Please input a price than must be a number'),
+        .required('Please input a sell price than must be a number'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
@@ -128,7 +128,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
           <InputField
             formik={formik}
             htmlFor="sellPrice"
-            labelText="sellPrice"
+            labelText="Sell Price"
             inputType="number"
             imagePath="/icons/pound_sign.svg"
           />
