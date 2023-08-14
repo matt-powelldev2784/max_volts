@@ -8,10 +8,10 @@ import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader
 export const CreateInvoice = () => {
   const clientsApiError = useAppSelector((state) => state.clientReducer.error)
   const productsApiError = useAppSelector((state) => state.productReducer.error)
-  const createErrorMessage = (errorMessage: string) => {
+  const ErrorMessageJsx = () => {
     return (
       <p className="m-2 p-2 text-darkRed border-2 border-darkRed">
-        {errorMessage}
+        Server Error. Please Try Again Later.
       </p>
     )
   }
@@ -32,8 +32,7 @@ export const CreateInvoice = () => {
 
   return (
     <section className="w-full flexCol">
-      {clientsApiError ? createErrorMessage(clientsApiError) : null}
-      {productsApiError ? createErrorMessage(productsApiError) : null}
+      {clientsApiError || productsApiError ? <ErrorMessageJsx /> : null}
       <InvoiceForm>
         <InvoiceRowHeader />
         {invoiceRowsJsx}
