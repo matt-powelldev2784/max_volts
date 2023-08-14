@@ -92,7 +92,7 @@ export const newInvoiceSlice = createSlice({
       }
 
       state.totalPrice = state.invoiceRows.reduce(
-        (acc, curr) => acc + curr.sellPrice,
+        (acc, curr) => acc + curr.totalPrice,
         0
       )
     },
@@ -117,7 +117,7 @@ export const newInvoiceSlice = createSlice({
       }
 
       state.totalPrice = state.invoiceRows.reduce(
-        (acc, curr) => acc + curr.sellPrice,
+        (acc, curr) => acc + curr.totalPrice,
         0
       )
     },
