@@ -22,12 +22,13 @@ model Client {
 }
 
 model Product {
-  id       String @id @default(cuid())
-  name     String
-  buyPrice Float
-  description  String
-  sellPrice Float
-  InvoiceRow InvoiceRow[]
+  id            String @id @default(cuid())
+  name          String
+  buyPrice      Float
+  description   String
+  sellPrice     Float
+  VAT           Float @default(20)
+  InvoiceRow    InvoiceRow[]
 }
 
 model InvoiceRow {

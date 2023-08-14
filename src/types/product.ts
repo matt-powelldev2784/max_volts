@@ -4,6 +4,7 @@ export interface T_Product {
   description: string
   buyPrice: number
   sellPrice: number
+  VAT: number
 }
 
 export interface T_ProductWithId extends T_Product {

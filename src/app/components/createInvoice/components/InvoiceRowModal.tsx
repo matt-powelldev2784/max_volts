@@ -19,18 +19,30 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
   const displayAddProductModal = useAppSelector(
     (state) => state.newInvoiceReducer.displayAddProductModal
   )
-  const { name, description, sellPrice, buyPrice, reduxId } = productWithId
+  const { name, description, sellPrice, buyPrice, VAT, reduxId } = productWithId
   console.log('buyPrice', buyPrice)
 
   const formik = useFormik({
     initialValues: {
+      quantity: '1',
       name: name,
       description: description,
+      buyPrice: buyPrice,
+      VAT: VAT,
       price: sellPrice,
     },
     validationSchema: Yup.object({
+      quantity: Yup.number()
+        .typeError('Quantity must be a number')
+        .required('Please input quantitiy than must be a number'),
       name: Yup.string().required('Please input a name'),
       description: Yup.string().required('Please input a description'),
+      buyPrice: Yup.number()
+        .typeError('Buy price must be a number')
+        .required('Please input a buy price than must be a number'),
+      VAT: Yup.number()
+        .typeError('Buy price must be a number')
+        .required('Please input a buy price than must be a number'),
       price: Yup.number()
         .typeError('Price must be a number')
         .required('Please input a price than must be a number'),
@@ -100,7 +112,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
 
           <InputField
             formik={formik}
-            htmlFor="buyprice"
+            htmlFor="buyPrice"
             labelText="Buy Price"
             inputType="text"
             imagePath="/icons/pound_sign.svg"
@@ -108,7 +120,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
 
           <InputField
             formik={formik}
-            htmlFor="vat"
+            htmlFor="VAT"
             labelText="VAT"
             inputType="text"
             imagePath="/icons/vat.svg"
