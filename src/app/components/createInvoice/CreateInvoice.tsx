@@ -1,10 +1,15 @@
 'use client'
 
-import { InvoiceForm } from './components/InvoiceForm'
+import { InvoiceForm } from './components/invoiceForm/InvoiceForm'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
-import { InvoiceRowText } from './components/InvoiceRowText'
+import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
+import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader'
+import { ErrorMessage } from '@/lib/ErrorMessage'
 
 export const CreateInvoice = () => {
+  const clientsApiError = useAppSelector((state) => state.clientReducer.error)
+  const productsApiError = useAppSelector((state) => state.productReducer.error)
+
   const invoiceRows = useAppSelector(
     (state) => state.newInvoiceReducer.invoiceRows
   )
@@ -12,22 +17,6 @@ export const CreateInvoice = () => {
   const invoiceRowsJsx = invoiceRows.map((product) => {
     return <InvoiceRowText key={product.reduxId} {...product} />
   })
-
-  const invoiceRowsHeader = {
-    id: 'invoice_row_header',
-    name: 'Product Name',
-    buyPrice: 'Buy Price',
-    description: 'Description',
-    sellPrice: 'Price',
-    reduxId: '',
-    editMode: false,
-    header: true,
-  }
-
-  const invoiceRowHeader = (
-    // @ts-ignore: ignore erros to allow insertion of invoice row header
-    <InvoiceRowText key={invoiceRowsHeader.id} {...invoiceRowsHeader} />
-  )
 
   const noInvoiceRowsJsx = (
     <p className="w-full flexCol h-[48px] rounded-lg p-2 sm:max-w-[95vw] m-auto  min-w-[306px] text-sm bg-darkBlack/5">
@@ -37,8 +26,9 @@ export const CreateInvoice = () => {
 
   return (
     <section className="w-full flexCol">
+      {clientsApiError || productsApiError ? <ErrorMessage /> : null}
       <InvoiceForm>
-        {invoiceRowHeader}
+        <InvoiceRowHeader />
         {invoiceRowsJsx}
         {invoiceRows.length === 0 ? noInvoiceRowsJsx : null}
       </InvoiceForm>

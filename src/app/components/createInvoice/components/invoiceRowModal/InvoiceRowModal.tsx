@@ -1,65 +1,28 @@
-import { useState } from 'react'
-import { InputField } from './InputField'
-import { TextAreaField } from './TextArea'
-import { useFormik } from 'formik'
+import { InputField } from '../formElements/InputField'
+import { TextAreaField } from '../formElements/TextArea'
 import { Button } from '@/ui/button/button'
-import * as Yup from 'yup'
 import { T_InvoiceRow } from '@/types'
 import {
   toggleAddProductModal,
-  updateInvoiceRow,
   deleteInvoiceRow,
 } from '@/redux/slice/newInvoiceSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
+import { useInvoiceRowFormik } from './lib/useInvoiceRowFormik'
 
 export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
   const dispatch = useAppDispatch()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
   const displayAddProductModal = useAppSelector(
     (state) => state.newInvoiceReducer.displayAddProductModal
   )
-  const { quantity, name, description, sellPrice, buyPrice, VAT } = invoiceRow
-
-  const formik = useFormik({
-    initialValues: {
-      quantity: quantity | 1,
-      name: name,
-      description: description,
-      buyPrice: buyPrice,
-      VAT: VAT,
-      sellPrice: sellPrice,
-    },
-    validationSchema: Yup.object({
-      quantity: Yup.number()
-        .typeError('Quantity must be a number')
-        .required('Please input quantitiy than must be a number'),
-      name: Yup.string().required('Please input a name'),
-      description: Yup.string().required('Please input a description'),
-      buyPrice: Yup.number()
-        .typeError('Buy price must be a number')
-        .required('Please input a buy price than must be a number'),
-      VAT: Yup.number()
-        .typeError('Buy price must be a number')
-        .required('Please input a VAT percentage than must be a number'),
-      sellPrice: Yup.number()
-        .typeError('Price must be a number')
-        .required('Please input a sell price than must be a number'),
-    }),
-    onSubmit: async (values) => {
-      setIsLoading(true)
-      dispatch(updateInvoiceRow({ ...invoiceRow, ...values }))
-      setIsLoading(false)
-      dispatch(toggleAddProductModal())
-    },
-  })
-
-  const onCancelEditInvoiceRow = () => {
-    dispatch(toggleAddProductModal())
-  }
+  const formik = useInvoiceRowFormik(invoiceRow)
 
   const onDeleteInvoiceRow = () => {
     dispatch(deleteInvoiceRow())
+    dispatch(toggleAddProductModal())
+  }
+
+  const onCancelEditInvoiceRow = () => {
     dispatch(toggleAddProductModal())
   }
 
@@ -138,14 +101,14 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
               type="button"
               optionalClasses="w-full text-white text-sm bg-darkRed h-[42.5px]"
               buttonText="Cancel"
-              disabled={isLoading}
+              disabled={formik.isSubmitting}
               onClick={onCancelEditInvoiceRow}
             />
             <Button
               type="submit"
               optionalClasses="w-full text-white text-sm bg-mvOrange h-[42.5px]"
               buttonText="Update Invoice Row"
-              disabled={isLoading}
+              disabled={formik.isSubmitting}
             />
           </div>
 
@@ -153,7 +116,6 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             type="button"
             optionalClasses="w-full text-white text-sm bg-darkRed h-[42.5px] mt-8 md:hidden"
             buttonText="Delete Invoice Row"
-            disabled={isLoading}
             onClick={onDeleteInvoiceRow}
           />
         </form>
