@@ -87,7 +87,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             formik={formik}
             htmlFor="quantity"
             labelText="Quantity"
-            inputType="text"
+            inputType="number"
             imagePath="/icons/quantity.svg"
           />
 
@@ -113,7 +113,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             formik={formik}
             htmlFor="buyPrice"
             labelText="Buy Price"
-            inputType="text"
+            inputType="number"
             imagePath="/icons/pound_sign.svg"
           />
 
@@ -121,7 +121,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             formik={formik}
             htmlFor="VAT"
             labelText="VAT"
-            inputType="text"
+            inputType="number"
             imagePath="/icons/vat.svg"
           />
 
@@ -129,7 +129,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             formik={formik}
             htmlFor="sellPrice"
             labelText="sellPrice"
-            inputType="text"
+            inputType="number"
             imagePath="/icons/pound_sign.svg"
           />
 
