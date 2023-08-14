@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
 import { setErrorState, createInvoice } from '@/redux/slice/newInvoiceSlice'
 import { T_InvoiceDetails } from '@/types/invoice'
-import { AddProduct } from './AddProduct'
+import { AddProduct } from './addProduct/AddProduct'
 import { InvoiceRowModal } from './InvoiceRowModal'
 
 interface InvoiceFormProps {
