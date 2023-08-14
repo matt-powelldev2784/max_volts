@@ -54,8 +54,6 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
     },
   })
 
-  console.log('formik.errors', formik.errors)
-
   const onCancelEditInvoiceRow = () => {
     dispatch(toggleAddProductModal())
   }
