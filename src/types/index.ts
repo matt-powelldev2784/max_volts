@@ -1,5 +1,5 @@
 export type { T_Client } from './client'
 export type { T_Product } from './product'
 export type { T_ProductWithId } from './product'
-export type { T_InvoiceDetails } from './invoiceDetails'
-export type { T_InvoiceRow } from './invoiceDetails'
+export type { T_InvoiceDetails } from './invoice'
+export type { T_InvoiceRow } from './invoice'

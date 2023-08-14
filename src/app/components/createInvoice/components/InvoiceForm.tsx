@@ -8,7 +8,7 @@ import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { getClients } from '@/redux/slice/clientSlice'
 import { setErrorState, createInvoice } from '@/redux/slice/newInvoiceSlice'
-import { T_InvoiceDetails } from '@/types/invoiceDetails'
+import { T_InvoiceDetails } from '@/types/invoice'
 import { AddProduct } from './AddProduct'
 import { InvoiceRowModal } from './InvoiceRowModal'
 
