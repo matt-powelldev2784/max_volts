@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Button } from '@/ui/button/button'
 import { T_InvoiceRow } from '@/types'
 import {
@@ -14,7 +13,6 @@ interface InvoiceRowModalProps extends T_InvoiceRow {
 
 export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const dispatch = useAppDispatch()
-  const [isLoading, _setIsLoading] = useState<boolean>(false) // eslint-disable-line
   const { quantity, name, description, VAT, totalPrice, header } = productWithId
 
   const onEditInvoiceRow = () => {
@@ -58,14 +56,12 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
           type="button"
           optionalClasses="text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[40px]"
           buttonText="Delete"
-          disabled={isLoading}
           onClick={onDeleteInvoiceRow}
         />
         <Button
           type="button"
           optionalClasses="text-white text-sm bg-mvOrange h-full w-fit max-h-[40px]"
           buttonText="Edit"
-          disabled={isLoading}
           onClick={onEditInvoiceRow}
         />
       </div>

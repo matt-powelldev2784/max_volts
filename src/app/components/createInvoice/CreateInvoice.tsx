@@ -2,7 +2,7 @@
 
 import { InvoiceForm } from './components/InvoiceForm'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
-import { InvoiceRowText } from './components/InvoiceRowText'
+import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
 
 export const CreateInvoice = () => {
   const invoiceRows = useAppSelector(
