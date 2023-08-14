@@ -130,6 +130,7 @@ export const newInvoiceSlice = createSlice({
       })
       .addCase(createInvoice.fulfilled, (state) => {
         state.isLoading = false
+        state.error = 'Server Error when creating invoice'
       })
       .addCase(createInvoice.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false

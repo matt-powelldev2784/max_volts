@@ -27,10 +27,10 @@ export const useInvoiceFormFormik = (
       setIsLoading(true)
 
       if (!totalPrice || typeof totalPrice !== 'number') {
-        dispatch(setErrorState('Server error, when submitting invoice'))
+        return dispatch(setErrorState('Server error, please try again later'))
       }
       if (invoiceRows.length === 0) {
-        dispatch(setErrorState('Please add at least one invoice row'))
+        return dispatch(setErrorState('Please add at least one invoice row'))
       }
 
       const invoiceDetails: T_InvoiceDetails = {

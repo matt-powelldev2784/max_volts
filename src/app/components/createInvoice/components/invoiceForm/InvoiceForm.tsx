@@ -8,6 +8,7 @@ import { AddProduct } from '../addProduct/AddProduct'
 import { InvoiceRowModal } from '../invoiceRowModal/InvoiceRowModal'
 import { useInvoiceFormFormik } from './lib/useInvoiceFormFormik'
 import { useClientSelectOptions } from './lib/useClientSelectOptions'
+import { ErrorMessage } from '@/lib/ErrorMessage'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -15,6 +16,9 @@ interface InvoiceFormProps {
 
 export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const createInvoiceError = useAppSelector(
+    (state) => state.newInvoiceReducer.error
+  )
   const totalPrice = useAppSelector(
     (state) => state.newInvoiceReducer.totalPrice
   )
@@ -68,6 +72,9 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
           disabled={isLoading}
           onClick={formik.handleSubmit}
         />
+        {createInvoiceError ? (
+          <ErrorMessage errorMessage={createInvoiceError} />
+        ) : null}
       </div>
     </div>
   )
