@@ -2,9 +2,11 @@ import { Button } from '@/ui/button/button'
 import { SelectField } from '../formElements/SelectField'
 import { useAddProductFormik } from './lib/useAddProductFormik'
 import { useProductSelectOptions } from './lib/useProductSelectOptions'
+import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 
 export const AddProduct = () => {
   const formik = useAddProductFormik()
+  const products = useAppSelector((state) => state.productReducer.products)
   const productSelectOptionsJsx = useProductSelectOptions()
 
   return (
@@ -17,7 +19,7 @@ export const AddProduct = () => {
           imagePath="/icons/add_product.svg"
         >
           <option value="" disabled>
-            Select a product
+            {products.length > 0 ? 'Select a product' : 'Loading...'}
           </option>
           {productSelectOptionsJsx}
         </SelectField>
