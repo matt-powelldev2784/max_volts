@@ -8,7 +8,7 @@ import { AddProduct } from '../addProduct/AddProduct'
 import { InvoiceRowModal } from '../invoiceRowModal/InvoiceRowModal'
 import { useInvoiceFormFormik } from './lib/useInvoiceFormFormik'
 import { useClientSelectOptions } from './lib/useClientSelectOptions'
-import { ErrorMessage } from '@/lib/ErrorMessage'
+import { ErrorMessage } from '@/app/components/createInvoice/components/formElements/ErrorMessage'
 
 interface InvoiceFormProps {
   children: React.ReactNode
