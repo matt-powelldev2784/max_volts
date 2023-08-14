@@ -15,16 +15,7 @@ interface InvoiceRowModalProps extends T_InvoiceRow {
 export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const dispatch = useAppDispatch()
   const [isLoading, _setIsLoading] = useState<boolean>(false) // eslint-disable-line
-  const {
-    quantity,
-    name,
-    description,
-    sellPrice,
-    buyPrice,
-    VAT,
-    totalPrice,
-    header,
-  } = productWithId
+  const { quantity, name, description, VAT, totalPrice, header } = productWithId
 
   const onEditInvoiceRow = () => {
     dispatch(setCurrentInvoiceRow(productWithId))

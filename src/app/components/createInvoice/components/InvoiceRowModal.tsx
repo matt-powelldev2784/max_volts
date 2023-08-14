@@ -4,7 +4,7 @@ import { TextAreaField } from './TextArea'
 import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
-import { T_InvoiceRow, T_ProductWithId } from '@/types'
+import { T_InvoiceRow } from '@/types'
 import {
   toggleAddProductModal,
   updateInvoiceRow,
@@ -20,7 +20,6 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
     (state) => state.newInvoiceReducer.displayAddProductModal
   )
   const { quantity, name, description, sellPrice, buyPrice, VAT } = invoiceRow
-  console.log('buyPrice', buyPrice)
 
   const formik = useFormik({
     initialValues: {

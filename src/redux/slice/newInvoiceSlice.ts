@@ -4,12 +4,7 @@ import {
   createAsyncThunk,
   AnyAction,
 } from '@reduxjs/toolkit'
-import {
-  T_Product,
-  T_ProductWithId,
-  T_InvoiceDetails,
-  T_InvoiceRow,
-} from '@/types'
+import { T_Product, T_InvoiceDetails, T_InvoiceRow } from '@/types'
 import { v4 as uuidv4 } from 'uuid'
 import { apiCall } from '@/lib/apiCall'
 

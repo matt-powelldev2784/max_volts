@@ -1,5 +1,3 @@
-import { T_ProductWithId } from './product'
-
 export interface T_InvoiceRow {
   id: string
   name: string
