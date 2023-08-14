@@ -4,7 +4,7 @@ import { TextAreaField } from './TextArea'
 import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
-import { T_ProductWithId } from '@/types'
+import { T_InvoiceRow, T_ProductWithId } from '@/types'
 import {
   toggleAddProductModal,
   updateInvoiceRow,
@@ -13,23 +13,23 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
 
-export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
+export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
   const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const displayAddProductModal = useAppSelector(
     (state) => state.newInvoiceReducer.displayAddProductModal
   )
-  const { name, description, sellPrice, buyPrice, VAT, reduxId } = productWithId
+  const { quantity, name, description, sellPrice, buyPrice, VAT } = invoiceRow
   console.log('buyPrice', buyPrice)
 
   const formik = useFormik({
     initialValues: {
-      quantity: '1',
+      quantity: quantity | 1,
       name: name,
       description: description,
       buyPrice: buyPrice,
       VAT: VAT,
-      price: sellPrice,
+      sellPrice: sellPrice,
     },
     validationSchema: Yup.object({
       quantity: Yup.number()
@@ -43,17 +43,19 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
       VAT: Yup.number()
         .typeError('Buy price must be a number')
         .required('Please input a buy price than must be a number'),
-      price: Yup.number()
+      sellPrice: Yup.number()
         .typeError('Price must be a number')
         .required('Please input a price than must be a number'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
-      dispatch(updateInvoiceRow({ reduxId, ...values }))
+      dispatch(updateInvoiceRow({ ...invoiceRow, ...values }))
       setIsLoading(false)
       dispatch(toggleAddProductModal())
     },
   })
+
+  console.log('formik.errors', formik.errors)
 
   const onCancelEditInvoiceRow = () => {
     dispatch(toggleAddProductModal())
@@ -128,8 +130,8 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
 
           <InputField
             formik={formik}
-            htmlFor="price"
-            labelText="Price"
+            htmlFor="sellPrice"
+            labelText="sellPrice"
             inputType="text"
             imagePath="/icons/pound_sign.svg"
           />
