@@ -46,7 +46,7 @@ export const SelectField = ({
         onChange={formik.handleChange}
         value={formik.values[htmlFor]}
         onBlur={formik.handleBlur}
-        className={`w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-3
+        className={`w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-3 h-[42px]
         ${
           formik.touched[htmlFor] && formik.errors[htmlFor]
             ? 'border-red-500'
