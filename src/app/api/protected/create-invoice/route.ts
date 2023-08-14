@@ -29,7 +29,8 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
       name: invoiceRow.name,
       description: invoiceRow.description,
       VAT: invoiceRow.VAT,
-      price: invoiceRow.sellPrice,
+      buyPrice: invoiceRow.buyPrice,
+      sellPrice: invoiceRow.sellPrice,
       totalPrice: invoiceRow.totalPrice,
     })),
   })

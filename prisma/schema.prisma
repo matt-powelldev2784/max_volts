@@ -39,7 +39,8 @@ model InvoiceRow {
   name      String
   description  String
   VAT       Float
-  price     Float
+  buyPrice     Float
+  sellPrice     Float
   totalPrice Float
   Invoice   Invoice? @relation(fields: [invoiceId], references: [id])
   Product   Product? @relation(fields: [productId], references: [id])
