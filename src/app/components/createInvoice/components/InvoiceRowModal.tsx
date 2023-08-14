@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { InputField } from './InputField'
-import { TextAreaField } from './TextArea'
+import { InputField } from './formElements/InputField'
+import { TextAreaField } from './formElements/TextArea'
 import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'

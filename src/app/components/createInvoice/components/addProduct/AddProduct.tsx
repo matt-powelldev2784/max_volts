@@ -1,5 +1,5 @@
 import { Button } from '@/ui/button/button'
-import { SelectField } from '../SelectField'
+import { SelectField } from '../formElements/SelectField'
 import { useAddProductFormik } from './lib/useAddProductFormik'
 import { useProductSelectOptions } from './lib/useProductSelectOptions'
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { SelectField } from './SelectField'
+import { SelectField } from './formElements/SelectField'
 import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
