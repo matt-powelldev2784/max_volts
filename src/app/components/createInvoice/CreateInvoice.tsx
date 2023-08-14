@@ -4,17 +4,11 @@ import { InvoiceForm } from './components/invoiceForm/InvoiceForm'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
 import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader'
+import { ErrorMessage } from '@/lib/ErrorMessage'
 
 export const CreateInvoice = () => {
   const clientsApiError = useAppSelector((state) => state.clientReducer.error)
   const productsApiError = useAppSelector((state) => state.productReducer.error)
-  const ErrorMessageJsx = () => {
-    return (
-      <p className="m-2 p-2 text-darkRed border-2 border-darkRed">
-        Server Error. Please Try Again Later.
-      </p>
-    )
-  }
 
   const invoiceRows = useAppSelector(
     (state) => state.newInvoiceReducer.invoiceRows
@@ -32,7 +26,7 @@ export const CreateInvoice = () => {
 
   return (
     <section className="w-full flexCol">
-      {clientsApiError || productsApiError ? <ErrorMessageJsx /> : null}
+      {clientsApiError || productsApiError ? <ErrorMessage /> : null}
       <InvoiceForm>
         <InvoiceRowHeader />
         {invoiceRowsJsx}
