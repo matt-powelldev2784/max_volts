@@ -1,6 +1,6 @@
 'use client'
 
-import { InvoiceForm } from './components/InvoiceForm'
+import { InvoiceForm } from './components/invoiceForm/InvoiceForm'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
 
