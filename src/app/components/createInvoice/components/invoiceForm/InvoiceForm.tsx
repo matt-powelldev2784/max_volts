@@ -24,6 +24,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const currentInvoiceRow = useAppSelector(
     (state) => state.newInvoiceReducer.currentInvoiceRow
   )
+  const clients = useAppSelector((state) => state.clientReducer.clients)
   const formik = useInvoiceFormFormik(setIsLoading)
   const clientSelectOptionsJsx = useClientSelectOptions()
 
@@ -40,7 +41,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
             imagePath="/icons/person.svg"
           >
             <option value="" disabled>
-              Select a client
+              {clients.length > 0 ? 'Select a client' : 'Loading...'}
             </option>
             {clientSelectOptionsJsx}
           </SelectField>
