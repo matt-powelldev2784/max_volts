@@ -1,3 +1,4 @@
+export { CreateErrorMessage } from '../app/lib/CreateErrorMessage'
 export { getLoggedInUser } from './getLoggedInUser'
 export { noSessionResponse } from './noSessionResponse'
 export { badRequestError400 } from './badRequestError'
