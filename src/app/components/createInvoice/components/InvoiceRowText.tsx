@@ -30,7 +30,7 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   return (
     <section
       className={`w-full flex flex-fow gap-4 sm:gap-2 h-fit max-w-[1100px] overflow-hidden sm:max-w-[95vw] m-auto rounded-lg mb-1 min-w-[306px] p-2 break-all ${
-        header ? 'bg-darkBlack text-white p-3' : 'bg-darkBlack/5'
+        header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
       <p className="h-full w-full max-w-[50px] text-sm flex">
