@@ -29,11 +29,18 @@ export const CreateInvoice = () => {
     <InvoiceRowText key={invoiceRowsHeader.id} {...invoiceRowsHeader} />
   )
 
+  const noInvoiceRowsJsx = (
+    <p className="w-full flexCol h-[48px] rounded-lg p-2 sm:max-w-[95vw] m-auto  min-w-[306px] text-sm bg-darkBlack/5">
+      No Invoice Items
+    </p>
+  )
+
   return (
     <section className="w-full flexCol">
       <InvoiceForm>
         {invoiceRowHeader}
         {invoiceRowsJsx}
+        {invoiceRows.length === 0 ? noInvoiceRowsJsx : null}
       </InvoiceForm>
     </section>
   )
