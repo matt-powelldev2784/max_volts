@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma, authOptions, noSessionResponse } from '@/lib'
 import { getServerSession } from 'next-auth'
 import { badRequestError400 } from '@/lib'
-import { T_Product } from '@/types'
+import { T_InvoiceRow, T_Product } from '@/types'
 
 export const POST = async (req: NextRequest, _res: NextResponse) => {
   const session = await getServerSession(authOptions)
@@ -22,12 +22,15 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   })
 
   await prisma.invoiceRow.createMany({
-    data: invoiceRows.map((invoiceRow: T_Product) => ({
+    data: invoiceRows.map((invoiceRow: T_InvoiceRow) => ({
       invoiceId: newInvoice.id,
       productId: invoiceRow.id,
+      quantity: invoiceRow.quantity,
       name: invoiceRow.name,
       description: invoiceRow.description,
+      VAT: invoiceRow.VAT,
       price: invoiceRow.sellPrice,
+      totalPrice: invoiceRow.totalPrice,
     })),
   })
 
