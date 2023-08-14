@@ -4,17 +4,17 @@ import {
   createAsyncThunk,
   AnyAction,
 } from '@reduxjs/toolkit'
-import { T_Product, T_ProductWithId, T_InvoiceDetails } from '@/types'
+import { T_Product, T_InvoiceDetails, T_InvoiceRow } from '@/types'
 import { v4 as uuidv4 } from 'uuid'
 import { apiCall } from '@/lib/apiCall'
 
 type T_NewInvoiceState = {
   isLoading: boolean
   error: string | null
-  invoiceRows: T_ProductWithId[]
+  invoiceRows: T_InvoiceRow[]
   totalPrice: number
   displayAddProductModal: boolean
-  currentInvoiceRow: T_ProductWithId | null
+  currentInvoiceRow: T_InvoiceRow | null
 }
 
 const initialState: T_NewInvoiceState = {
@@ -63,18 +63,23 @@ export const newInvoiceSlice = createSlice({
         0
       )
     },
-    setCurrentInvoiceRow: (state, action: PayloadAction<T_ProductWithId>) => {
+    setCurrentInvoiceRow: (state, action: PayloadAction<T_InvoiceRow>) => {
       state.currentInvoiceRow = action.payload
     },
     addProductToInvoice: (state, action: PayloadAction<T_Product>) => {
       const reduxId = uuidv4()
+      const quantity = 1
+      const totalPrice =
+        quantity * action.payload.sellPrice +
+        quantity * action.payload.sellPrice * (action.payload.VAT / 100)
 
       state.invoiceRows = [
         ...state.invoiceRows,
         {
           ...action.payload,
           reduxId,
-          editMode: false,
+          quantity,
+          totalPrice,
         },
       ]
 
@@ -87,25 +92,32 @@ export const newInvoiceSlice = createSlice({
       }
 
       state.totalPrice = state.invoiceRows.reduce(
-        (acc, curr) => acc + curr.sellPrice,
+        (acc, curr) => acc + curr.totalPrice,
         0
       )
     },
-    updateInvoiceRow: (state, action: PayloadAction<any>) => {
-      const { reduxId, name, description, price } = action.payload
+    updateInvoiceRow: (state, action: PayloadAction<T_InvoiceRow>) => {
+      const { reduxId, quantity, name, description, buyPrice, VAT, sellPrice } =
+        action.payload
 
       const index = state.invoiceRows.findIndex(
         (invoiceRow) => invoiceRow.reduxId === reduxId
       )
 
       if (index !== -1) {
+        state.invoiceRows[index].quantity = Number(quantity)
         state.invoiceRows[index].name = name
         state.invoiceRows[index].description = description
-        state.invoiceRows[index].sellPrice = Number(price)
+        state.invoiceRows[index].buyPrice = buyPrice
+        state.invoiceRows[index].VAT = VAT
+        state.invoiceRows[index].sellPrice = sellPrice
+        state.invoiceRows[index].totalPrice =
+          quantity * action.payload.sellPrice +
+          quantity * action.payload.sellPrice * (action.payload.VAT / 100)
       }
 
       state.totalPrice = state.invoiceRows.reduce(
-        (acc, curr) => acc + curr.sellPrice,
+        (acc, curr) => acc + curr.totalPrice,
         0
       )
     },

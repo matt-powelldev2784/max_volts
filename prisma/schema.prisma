@@ -22,21 +22,26 @@ model Client {
 }
 
 model Product {
-  id       String @id @default(cuid())
-  name     String
-  buyPrice Float
-  description  String
-  sellPrice Float
-  InvoiceRow InvoiceRow[]
+  id            String @id @default(cuid())
+  name          String
+  buyPrice      Float
+  description   String
+  sellPrice     Float
+  VAT           Float @default(20)
+  InvoiceRow    InvoiceRow[]
 }
 
 model InvoiceRow {
   id        String   @id @default(cuid())
   invoiceId String
   productId String
+  quantity  Int
   name      String
   description  String
-  price     Float
+  VAT       Float
+  buyPrice     Float
+  sellPrice     Float
+  totalPrice Float
   Invoice   Invoice? @relation(fields: [invoiceId], references: [id])
   Product   Product? @relation(fields: [productId], references: [id])
 }

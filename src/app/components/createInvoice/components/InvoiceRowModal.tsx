@@ -4,7 +4,7 @@ import { TextAreaField } from './TextArea'
 import { useFormik } from 'formik'
 import { Button } from '@/ui/button/button'
 import * as Yup from 'yup'
-import { T_ProductWithId } from '@/types'
+import { T_InvoiceRow } from '@/types'
 import {
   toggleAddProductModal,
   updateInvoiceRow,
@@ -13,31 +13,42 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
 
-export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
+export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
   const dispatch = useAppDispatch()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const displayAddProductModal = useAppSelector(
     (state) => state.newInvoiceReducer.displayAddProductModal
   )
-  const { name, description, sellPrice, buyPrice, reduxId } = productWithId
-  console.log('buyPrice', buyPrice)
+  const { quantity, name, description, sellPrice, buyPrice, VAT } = invoiceRow
 
   const formik = useFormik({
     initialValues: {
+      quantity: quantity | 1,
       name: name,
       description: description,
-      price: sellPrice,
+      buyPrice: buyPrice,
+      VAT: VAT,
+      sellPrice: sellPrice,
     },
     validationSchema: Yup.object({
+      quantity: Yup.number()
+        .typeError('Quantity must be a number')
+        .required('Please input quantitiy than must be a number'),
       name: Yup.string().required('Please input a name'),
       description: Yup.string().required('Please input a description'),
-      price: Yup.number()
+      buyPrice: Yup.number()
+        .typeError('Buy price must be a number')
+        .required('Please input a buy price than must be a number'),
+      VAT: Yup.number()
+        .typeError('Buy price must be a number')
+        .required('Please input a buy price than must be a number'),
+      sellPrice: Yup.number()
         .typeError('Price must be a number')
         .required('Please input a price than must be a number'),
     }),
     onSubmit: async (values) => {
       setIsLoading(true)
-      dispatch(updateInvoiceRow({ reduxId, ...values }))
+      dispatch(updateInvoiceRow({ ...invoiceRow, ...values }))
       setIsLoading(false)
       dispatch(toggleAddProductModal())
     },
@@ -76,7 +87,7 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
             formik={formik}
             htmlFor="quantity"
             labelText="Quantity"
-            inputType="text"
+            inputType="number"
             imagePath="/icons/quantity.svg"
           />
 
@@ -100,25 +111,25 @@ export const InvoiceRowModal = (productWithId: T_ProductWithId) => {
 
           <InputField
             formik={formik}
-            htmlFor="buyprice"
+            htmlFor="buyPrice"
             labelText="Buy Price"
-            inputType="text"
+            inputType="number"
             imagePath="/icons/pound_sign.svg"
           />
 
           <InputField
             formik={formik}
-            htmlFor="vat"
+            htmlFor="VAT"
             labelText="VAT"
-            inputType="text"
+            inputType="number"
             imagePath="/icons/vat.svg"
           />
 
           <InputField
             formik={formik}
-            htmlFor="price"
-            labelText="Price"
-            inputType="text"
+            htmlFor="sellPrice"
+            labelText="sellPrice"
+            inputType="number"
             imagePath="/icons/pound_sign.svg"
           />
 
