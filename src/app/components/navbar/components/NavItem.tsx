@@ -21,8 +21,8 @@ export const NavItem = ({ itemDetails }: NavItemProps) => {
         <Image
           src={`/icons/${image}`}
           alt={alt}
-          width={30}
-          height={30}
+          width={25}
+          height={25}
           className=""
         />
         <p className="hidden md:block text-white">{text}</p>

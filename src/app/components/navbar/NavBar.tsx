@@ -7,7 +7,7 @@ export const NavBar = () => {
       <nav className="flex flex-col items-center md:justify-center lg:flex-row lg:justify-between h-fit w-full bg-darkBlack">
         <a
           href="/"
-          className="w-[270px] md:w-[300px] h-full m-2 md:m-2 lg:ml-8"
+          className="w-[250px] md:w-[300px] h-full m-2 md:m-2 lg:ml-8"
         >
           <Image
             src="/max_volts_logo.svg"
@@ -21,10 +21,6 @@ export const NavBar = () => {
           <NavItems />
         </ul>
       </nav>
-
-      {/* <ul className="flex lg:hidden gap-8 items-center justify-center h-full bg-darkBlack p-2">
-          <NavItems />
-        </ul> */}
     </header>
   )
 }
