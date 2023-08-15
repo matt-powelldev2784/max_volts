@@ -14,7 +14,3 @@ export interface T_ProductWithoutId {
   sellPrice: number
   VAT: number
 }
-
-export interface T_ProductWithId extends T_Product {
-  reduxId: string
-}
