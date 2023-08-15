@@ -16,6 +16,9 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
     (state) => state.newInvoiceReducer.displayAddProductModal
   )
   const formik = useInvoiceRowFormik(invoiceRow)
+  const { quantity, sellPrice, VAT } = formik.values
+  const invoiceRowTotal =
+    quantity * sellPrice + quantity * sellPrice * (VAT / 100)
 
   const onDeleteInvoiceRow = () => {
     dispatch(deleteInvoiceRow())
@@ -78,6 +81,15 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             labelText="Buy Price"
             inputType="number"
             imagePath="/icons/pound_sign.svg"
+            optionalClassNames="text-darkBlack/50"
+          />
+
+          <InputField
+            formik={formik}
+            htmlFor="sellPrice"
+            labelText="Sell Price"
+            inputType="number"
+            imagePath="/icons/pound_sign.svg"
           />
 
           <InputField
@@ -88,13 +100,19 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             imagePath="/icons/vat.svg"
           />
 
-          <InputField
-            formik={formik}
-            htmlFor="sellPrice"
-            labelText="Sell Price"
-            inputType="number"
-            imagePath="/icons/pound_sign.svg"
-          />
+          <div className="relative flexCol w-full">
+            <p className="w-full p-1 text-sm">Invoice Row Total</p>
+            <Image
+              src="/icons/pound_sign.svg"
+              alt="arrow-down"
+              width={22}
+              height={22}
+              className="absolute left-3 top-[38px] z-20"
+            />
+            <p className="relative w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-10 text-darkBlack font-bold">
+              £{invoiceRowTotal.toFixed(2)}
+            </p>
+          </div>
 
           <div className="flexRow gap-2 w-full">
             <Button

@@ -13,7 +13,8 @@ interface InvoiceRowModalProps extends T_InvoiceRow {
 
 export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const dispatch = useAppDispatch()
-  const { quantity, name, description, VAT, totalPrice, header } = productWithId
+  const { quantity, name, description, VAT, sellPrice, totalPrice, header } =
+    productWithId
 
   const onEditInvoiceRow = () => {
     dispatch(setCurrentInvoiceRow(productWithId))
@@ -39,6 +40,9 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
       </p>
       <p className="h-full md:min-w-[140px] lg:w-full w-full text-sm md:flex sm:hidden">
         {description}
+      </p>
+      <p className="h-full w-[150px] text-sm lg:flex sm:hidden">
+        {header ? 'Each' : `£${Number(sellPrice).toFixed(2)}`}
       </p>
       <p className="h-full w-[150px] text-sm lg:flex sm:hidden">
         {header ? 'VAT' : `${Number(VAT)}%`}
