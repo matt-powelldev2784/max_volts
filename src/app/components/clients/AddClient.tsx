@@ -9,7 +9,7 @@ import { addClient } from '@/redux/slice/clientSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { T_Client } from '@/types'
 
-export const Clients = () => {
+export const AddClient = () => {
   const dispatch = useAppDispatch()
 
   const formik = useFormik({
