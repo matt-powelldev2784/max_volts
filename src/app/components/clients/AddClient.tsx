@@ -1,42 +1,12 @@
 'use client'
 
 import { InputField } from '@/app/lib/formElements/InputField'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
 import { Button } from '@/ui/button/button'
 import Image from 'next/image'
-import { addClient } from '@/redux/slice/clientSlice'
-import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { T_Client } from '@/types'
+import { useAddClientFormik } from './lib/useAddClientFormik'
 
 export const AddClient = () => {
-  const dispatch = useAppDispatch()
-
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      companyName: '',
-      add1: '',
-      add2: '',
-      postcode: '',
-      tel: '',
-      email: '',
-    },
-    validationSchema: Yup.object({
-      name: Yup.string().required('Please input a name'),
-      companyName: Yup.string(),
-      add1: Yup.string(),
-      add2: Yup.string(),
-      psotcode: Yup.string(),
-      tel: Yup.string(),
-      email: Yup.string(),
-    }),
-    onSubmit: async (values) => {
-      console.log('values', values)
-      const newClient: T_Client = values
-      dispatch(addClient(newClient))
-    },
-  })
+  const formik = useAddClientFormik()
 
   return (
     <section className="min-h-screen w-screen">
