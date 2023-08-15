@@ -1,5 +1,5 @@
 export interface T_InvoiceRow {
-  id: string
+  id?: string
   name: string
   description: string
   buyPrice: number

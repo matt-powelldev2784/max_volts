@@ -37,7 +37,7 @@ export const addClient = createAsyncThunk(
   'client/addClient',
   async (clientDetails: T_Client) => {
     try {
-      const clientData: T_Client = await apiCall({
+      const clientData = await apiCall({
         httpMethod: 'POST',
         route: `/api/protected/client`,
         body: clientDetails,
@@ -80,7 +80,7 @@ export const clientSlice = createSlice({
       })
       .addCase(addClient.fulfilled, (state, { payload }) => {
         state.isLoading = false
-        state.currentClient = payload
+        state.currentClient = payload.newClient
       })
       .addCase(addClient.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false

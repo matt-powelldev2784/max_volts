@@ -7,6 +7,10 @@ export interface T_Product {
   VAT: number
 }
 
-export interface T_ProductWithId extends T_Product {
-  reduxId: string
+export interface T_ProductWithoutId {
+  name: string
+  description: string
+  buyPrice: number
+  sellPrice: number
+  VAT: number
 }
