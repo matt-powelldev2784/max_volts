@@ -10,8 +10,8 @@ export const AddClient = () => {
 
   return (
     <section className="min-h-screen w-screen">
-      <div className="flexCol mt-4">
-        <div className="flexRow gap-2">
+      <div className="flexCol">
+        <div className="flexRow gap-2 mt-4">
           <Image
             src="/icons/add_client.svg"
             alt="Person icon"

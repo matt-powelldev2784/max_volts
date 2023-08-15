@@ -9,6 +9,7 @@ import { InvoiceRowModal } from '../invoiceRowModal/InvoiceRowModal'
 import { useInvoiceFormFormik } from './lib/useInvoiceFormFormik'
 import { useClientSelectOptions } from './lib/useClientSelectOptions'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
+import Image from 'next/image'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -34,7 +35,16 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
   return (
     <div className="min-h-screen relative w-full h-fit">
-      <p className="p-2">Create Invoice</p>
+      <div className="flexRow gap-2 mt-4 mb-4">
+        <Image
+          src="/icons/add_invoice.svg"
+          alt="Person icon"
+          width={30}
+          height={30}
+          className=""
+        />
+        <p className="text-lg">Add Invoice</p>
+      </div>
 
       <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
         <form className="w-full">
