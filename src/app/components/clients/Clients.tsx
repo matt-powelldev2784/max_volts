@@ -29,66 +29,69 @@ export const Clients = () => {
   })
 
   return (
-    <section className="w-full flex justify-center item-center  p-2">
-      <form
-        className="w-screen md:w-[400px] flexCol min-w-[310px]"
-        onSubmit={formik.handleSubmit}
-      >
-        <InputField
-          formik={formik}
-          htmlFor="name"
-          labelText="Name"
-          inputType="text"
-          imagePath="/icons/quantity.svg"
-        />
+    <section className="min-h-screen relative w-full h-fit">
+      <div className="flex flex-col p-2">
+        <p className="text-lg">Add Client</p>
+        <form
+          className="w-screen md:w-[400px] flexCol min-w-[310px]"
+          onSubmit={formik.handleSubmit}
+        >
+          <InputField
+            formik={formik}
+            htmlFor="name"
+            labelText="Name"
+            inputType="text"
+            imagePath="/icons/quantity.svg"
+          />
 
-        <InputField
-          formik={formik}
-          htmlFor="companyName"
-          labelText="Company Name"
-          inputType="text"
-          imagePath="/icons/quantity.svg"
-        />
+          <InputField
+            formik={formik}
+            htmlFor="companyName"
+            labelText="Company Name"
+            inputType="text"
+            imagePath="/icons/quantity.svg"
+          />
 
-        <InputField
-          formik={formik}
-          htmlFor="add1"
-          labelText="Address 1"
-          inputType="text"
-          imagePath="/icons/quantity.svg"
-        />
+          <InputField
+            formik={formik}
+            htmlFor="add1"
+            labelText="Address 1"
+            inputType="text"
+            imagePath="/icons/quantity.svg"
+          />
 
-        <InputField
-          formik={formik}
-          htmlFor="add2"
-          labelText="Address 2"
-          inputType="text"
-          imagePath="/icons/quantity.svg"
-        />
+          <InputField
+            formik={formik}
+            htmlFor="add2"
+            labelText="Address 2"
+            inputType="text"
+            imagePath="/icons/quantity.svg"
+          />
 
-        <InputField
-          formik={formik}
-          htmlFor="postcode"
-          labelText="Post Code"
-          inputType="text"
-          imagePath="/icons/quantity.svg"
-        />
+          <InputField
+            formik={formik}
+            htmlFor="postcode"
+            labelText="Post Code"
+            inputType="text"
+            imagePath="/icons/quantity.svg"
+          />
 
-        <InputField
-          formik={formik}
-          htmlFor="tel"
-          labelText="Telelphone Number"
-          inputType="text"
-          imagePath="/icons/quantity.svg"
-        />
+          <InputField
+            formik={formik}
+            htmlFor="tel"
+            labelText="Telelphone Number"
+            inputType="text"
+            imagePath="/icons/quantity.svg"
+          />
 
-        <Button
-          type="submit"
-          optionalClasses="w-full text-white text-sm bg-mvOrange h-[42.5px] m-4"
-          buttonText="Add Client"
-          disabled={formik.isSubmitting}
-        />
-      </form>
+          <Button
+            type="submit"
+            optionalClasses="w-full text-white text-sm bg-mvOrange h-[42.5px] m-4"
+            buttonText="Add Client"
+            disabled={formik.isSubmitting}
+          />
+        </form>
+      </div>
     </section>
   )
 }
