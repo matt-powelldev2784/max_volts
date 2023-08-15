@@ -23,6 +23,7 @@ export const Clients = () => {
       add2: Yup.string(),
       psotcode: Yup.string(),
       tel: Yup.string(),
+      email: Yup.string(),
     }),
     onSubmit: async (values) => {
       console.log('values', values)
@@ -92,6 +93,14 @@ export const Clients = () => {
             labelText="Telelphone Number"
             inputType="text"
             imagePath="/icons/tel.svg"
+          />
+
+          <InputField
+            formik={formik}
+            htmlFor="email"
+            labelText="Email"
+            inputType="text"
+            imagePath="/icons/email.svg"
           />
 
           <Button
