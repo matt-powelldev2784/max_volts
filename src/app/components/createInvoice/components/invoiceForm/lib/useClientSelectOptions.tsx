@@ -1,4 +1,4 @@
-import { useClients } from '../../../../../../lib/hooks/useClients'
+import { useClients } from '../../../../../lib/hooks/useClients'
 
 export const useClientSelectOptions = () => {
   const clients = useClients()

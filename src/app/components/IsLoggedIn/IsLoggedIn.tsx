@@ -1,4 +1,4 @@
-import { getLoggedInUser } from '@/lib/getLoggedInUser'
+import { getLoggedInUser } from '@/app/lib/getLoggedInUser'
 
 export const IsLoggedIn = async () => {
   const user = await getLoggedInUser()

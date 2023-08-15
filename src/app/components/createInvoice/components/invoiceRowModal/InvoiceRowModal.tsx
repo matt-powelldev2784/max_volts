@@ -1,5 +1,5 @@
-import { InputField } from '../formElements/InputField'
-import { TextAreaField } from '../formElements/TextArea'
+import { InputField } from '../../../../lib/formElements/InputField'
+import { TextAreaField } from '../../../../lib/formElements/TextArea'
 import { Button } from '@/ui/button/button'
 import { T_InvoiceRow } from '@/types'
 import {

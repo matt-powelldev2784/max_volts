@@ -14,6 +14,7 @@ async function main(): Promise<void> {
       add2: 'John Town',
       postcode: 'JS1 1JS',
       tel: '01234 567890',
+      email: 'email@email.com',
     },
     {
       name: 'Jane Smith',
@@ -33,6 +34,7 @@ async function main(): Promise<void> {
       add2: client.add2,
       postcode: client.postcode,
       tel: client.tel,
+      email: client.email,
     })),
   })
   console.log({ clients })
@@ -40,21 +42,21 @@ async function main(): Promise<void> {
   const productSeeds = [
     {
       name: 'Labour',
-      description: 'Services..',
+      description: '',
       buyPrice: 100,
       sellPrice: 200,
     },
     {
-      name: 'Part 1',
-      description: 'Electrical Part 1',
+      name: 'Electrical Part 1',
+      description: 'Electrical Part 1 Description',
       buyPrice: 200,
       sellPrice: 400,
     },
     {
       name: 'Misc',
-      description: 'Misclaneous',
+      description: '',
       buyPrice: 0,
-      sellPrice: 50,
+      sellPrice: 0,
     },
   ]
 
@@ -68,19 +70,6 @@ async function main(): Promise<void> {
   })
 
   console.log({ products })
-
-  //   await prisma.storeItem.deleteMany()
-  //   const storeItems = await prisma.storeItem.createMany({
-  //     data: storeItemSeeds.map((product) => ({
-  //       name: product.name,
-  //       image: product.image,
-  //       brand: product.brand,
-  //       description: product.description,
-  //       price: product.price,
-  //       category: product.category,
-  //     })),
-  //   })
-  //   console.log({ storeItems })
 }
 
 main()
