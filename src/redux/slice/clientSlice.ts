@@ -63,6 +63,7 @@ export const clientSlice = createSlice({
       //---------------------------------------------------------------------
       .addCase(getClients.pending, (state) => {
         state.isLoading = true
+        state.error = ''
       })
       .addCase(getClients.fulfilled, (state, { payload }) => {
         state.isLoading = false
@@ -75,6 +76,7 @@ export const clientSlice = createSlice({
       //---------------------------------------------------------------------
       .addCase(addClient.pending, (state) => {
         state.isLoading = true
+        state.error = ''
       })
       .addCase(addClient.fulfilled, (state, { payload }) => {
         state.isLoading = false
