@@ -14,10 +14,10 @@ model Client {
   id          String   @id @default(cuid())
   name        String
   companyName String
-  add1        String
-  add2        String
-  postcode    String
-  tel         String
+  add1        String?
+  add2        String?
+  postcode    String?
+  tel         String?
   Invoice     Invoice[]
 }
 
