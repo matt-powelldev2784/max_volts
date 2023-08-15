@@ -4,7 +4,7 @@ import { InvoiceForm } from './components/invoiceForm/InvoiceForm'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
 import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader'
-import { ErrorMessage } from '@/app/components/createInvoice/components/formElements/ErrorMessage'
+import { ErrorMessage } from '@/lib/formElements/ErrorMessage'
 
 export const CreateInvoice = () => {
   const clientsApiError = useAppSelector((state) => state.clientReducer.error)
