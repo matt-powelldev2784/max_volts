@@ -3,12 +3,13 @@
 import { InputField } from '@/lib/formElements/InputField'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { Button } from '@/ui/button/button'
 
 export const Clients = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
-      compnayName: '',
+      companyName: '',
       add1: '',
       add2: '',
       postcode: '',
@@ -79,6 +80,13 @@ export const Clients = () => {
           labelText="Telelphone Number"
           inputType="text"
           imagePath="/icons/quantity.svg"
+        />
+
+        <Button
+          type="submit"
+          optionalClasses="w-full text-white text-sm bg-mvOrange h-[42.5px] m-4"
+          buttonText="Add Client"
+          disabled={formik.isSubmitting}
         />
       </form>
     </section>
