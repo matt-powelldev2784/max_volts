@@ -4,6 +4,7 @@ import { InputField } from '@/lib/formElements/InputField'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Button } from '@/ui/button/button'
+import Image from 'next/image'
 
 export const Clients = () => {
   const formik = useFormik({
@@ -29,11 +30,20 @@ export const Clients = () => {
   })
 
   return (
-    <section className="min-h-screen relative w-full h-fit">
-      <div className="flex flex-col p-2">
-        <p className="text-lg">Add Client</p>
+    <section className="min-h-screen w-screen">
+      <div className="flexCol mt-4">
+        <div className="flexRow gap-2">
+          <Image
+            src="/icons/add_client.svg"
+            alt="Person icon"
+            width={30}
+            height={30}
+            className=""
+          />
+          <p className="text-lg">Add Client</p>
+        </div>
         <form
-          className="w-screen md:w-[400px] flexCol min-w-[310px]"
+          className="w-screen md:w-[400px] flexCol min-w-[310px] p-2"
           onSubmit={formik.handleSubmit}
         >
           <InputField
@@ -41,7 +51,7 @@ export const Clients = () => {
             htmlFor="name"
             labelText="Name"
             inputType="text"
-            imagePath="/icons/quantity.svg"
+            imagePath="/icons/person.svg"
           />
 
           <InputField
@@ -49,7 +59,7 @@ export const Clients = () => {
             htmlFor="companyName"
             labelText="Company Name"
             inputType="text"
-            imagePath="/icons/quantity.svg"
+            imagePath="/icons/id_badge.svg"
           />
 
           <InputField
@@ -57,7 +67,7 @@ export const Clients = () => {
             htmlFor="add1"
             labelText="Address 1"
             inputType="text"
-            imagePath="/icons/quantity.svg"
+            imagePath="/icons/location.svg"
           />
 
           <InputField
@@ -65,7 +75,7 @@ export const Clients = () => {
             htmlFor="add2"
             labelText="Address 2"
             inputType="text"
-            imagePath="/icons/quantity.svg"
+            imagePath="/icons/location.svg"
           />
 
           <InputField
@@ -73,7 +83,7 @@ export const Clients = () => {
             htmlFor="postcode"
             labelText="Post Code"
             inputType="text"
-            imagePath="/icons/quantity.svg"
+            imagePath="/icons/location.svg"
           />
 
           <InputField
@@ -81,7 +91,7 @@ export const Clients = () => {
             htmlFor="tel"
             labelText="Telelphone Number"
             inputType="text"
-            imagePath="/icons/quantity.svg"
+            imagePath="/icons/tel.svg"
           />
 
           <Button
