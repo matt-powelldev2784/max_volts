@@ -33,17 +33,22 @@ export const getProducts = createAsyncThunk('product/getProducts', async () => {
   }
 })
 
-export const addProduct = createAsyncThunk('product/addProduct', async () => {
-  try {
-    const productData: T_Product[] = await apiCall({
-      route: `/api/protected/product`,
-    })
+export const addProduct = createAsyncThunk(
+  'product/addProduct',
+  async (product: T_Product) => {
+    try {
+      const productData = await apiCall({
+        httpMethod: 'POST',
+        route: `/api/protected/product`,
+        body: product,
+      })
 
-    return productData
-  } catch (err: any) {
-    throw Error(err)
+      return productData
+    } catch (err: any) {
+      throw Error(err)
+    }
   }
-})
+)
 
 export const productSlice = createSlice({
   name: 'product',
@@ -75,7 +80,7 @@ export const productSlice = createSlice({
       })
       .addCase(addProduct.fulfilled, (state, { payload }) => {
         state.isLoading = false
-        state.products = payload
+        state.currentProduct = payload.newProduct
       })
       .addCase(addProduct.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false

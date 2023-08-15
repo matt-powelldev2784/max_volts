@@ -19,7 +19,7 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   const data: T_Product = await req.json()
   const { name, description, buyPrice, sellPrice, VAT } = data
 
-  if (!name || !description || !buyPrice || !sellPrice || !VAT) {
+  if (!name || !description || buyPrice < 0 || sellPrice < 0 || VAT < 0) {
     return badRequestError400
   }
 
