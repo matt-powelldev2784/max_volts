@@ -22,7 +22,7 @@ export const useAddClientFormik = () => {
       companyName: Yup.string(),
       add1: Yup.string(),
       add2: Yup.string(),
-      psotcode: Yup.string(),
+      postcode: Yup.string(),
       tel: Yup.string(),
       email: Yup.string(),
     }),

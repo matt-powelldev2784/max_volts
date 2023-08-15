@@ -1,5 +1,5 @@
 export interface T_Product {
-  id: string
+  id?: string
   name: string
   description: string
   buyPrice: number
