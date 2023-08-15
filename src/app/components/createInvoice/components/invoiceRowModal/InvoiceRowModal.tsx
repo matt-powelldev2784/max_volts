@@ -55,6 +55,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             labelText="Quantity"
             inputType="number"
             imagePath="/icons/quantity.svg"
+            spanText=" *"
           />
 
           <InputField
@@ -64,6 +65,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             inputType="text"
             optionalClassNames=""
             imagePath="/icons/person.svg"
+            spanText=" *"
           />
 
           <TextAreaField
@@ -73,6 +75,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             inputType="text"
             optionalClassNames="h-20"
             imagePath="/icons/description.svg"
+            spanText=" *"
           />
 
           <InputField
@@ -81,7 +84,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             labelText="Buy Price"
             inputType="number"
             imagePath="/icons/pound_sign.svg"
-            optionalClassNames="text-darkBlack/50"
+            spanText=" *"
           />
 
           <InputField
@@ -90,6 +93,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             labelText="Sell Price"
             inputType="number"
             imagePath="/icons/pound_sign.svg"
+            spanText=" *"
           />
 
           <InputField
@@ -98,6 +102,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
             labelText="VAT"
             inputType="number"
             imagePath="/icons/vat.svg"
+            spanText=" *"
           />
 
           <div className="relative flexCol w-full">

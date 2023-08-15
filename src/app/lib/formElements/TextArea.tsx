@@ -24,7 +24,7 @@ export const TextAreaField = ({
     <div className="relative flexCol w-full">
       <label htmlFor={htmlFor} className="w-full p-1 text-sm">
         {labelText}
-        {spanText ? <span className="text-xs">{spanText}</span> : null}
+        {spanText ? <span className="text-darkRed">{spanText}</span> : null}
       </label>
       <Image
         src={imagePath}

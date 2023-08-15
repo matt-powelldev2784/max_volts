@@ -35,7 +35,7 @@ export const SelectField = ({
           className="relative left-1 w-full p-1 text-sm text-darkBlack/50"
         >
           {labelText}
-          {spanText ? <span className="text-xs">{spanText}</span> : null}
+          {spanText ? <span className="text-darkRed">{spanText}</span> : null}
         </label>
       </div>
 

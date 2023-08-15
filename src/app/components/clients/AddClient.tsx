@@ -31,6 +31,7 @@ export const AddClient = () => {
             labelText="Name"
             inputType="text"
             imagePath="/icons/person.svg"
+            spanText=" *"
           />
 
           <InputField
