@@ -9,7 +9,7 @@ import { addClient } from '@/redux/slice/clientSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { T_Client } from '@/types'
 
-export const Clients = () => {
+export const AddClient = () => {
   const dispatch = useAppDispatch()
 
   const formik = useFormik({
@@ -24,7 +24,7 @@ export const Clients = () => {
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Please input a name'),
-      companyName: Yup.string().required('Please input a company name'),
+      companyName: Yup.string(),
       add1: Yup.string(),
       add2: Yup.string(),
       psotcode: Yup.string(),

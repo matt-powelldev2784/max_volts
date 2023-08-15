@@ -13,7 +13,7 @@ datasource db {
 model Client {
   id          String   @id @default(cuid())
   name        String
-  companyName String
+  companyName String?
   add1        String?
   add2        String?
   postcode    String?

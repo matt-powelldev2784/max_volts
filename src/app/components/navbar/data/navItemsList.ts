@@ -8,13 +8,20 @@ export const navItemList = [
   },
   {
     key: 2,
+    href: '/pages/client',
+    image: 'add_client.svg',
+    alt: 'open door icon',
+    text: 'Client',
+  },
+  {
+    key: 3,
     href: '/api/auth/signin',
     image: 'signin.svg',
     alt: 'open door icon',
     text: 'Login',
   },
   {
-    key: 3,
+    key: 4,
     href: '/api/auth/signout',
     image: 'signout.svg',
     alt: 'close door icon',
