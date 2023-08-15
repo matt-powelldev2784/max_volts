@@ -107,10 +107,10 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
               alt="arrow-down"
               width={22}
               height={22}
-              className="absolute left-3 top-10 z-20"
+              className="absolute left-3 top-[38px] z-20"
             />
             <p className="relative w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-10 text-darkBlack font-bold">
-              £{invoiceRowTotal}
+              £{invoiceRowTotal.toFixed(2)}
             </p>
           </div>
 

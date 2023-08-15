@@ -32,7 +32,7 @@ export const InputField = ({
         alt="arrow-down"
         width={22}
         height={22}
-        className="absolute left-3 top-10"
+        className="absolute left-3 top-[38px]"
       />
       <input
         id={htmlFor}
