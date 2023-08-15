@@ -21,10 +21,6 @@ export const NavBar = () => {
           <NavItems />
         </ul>
       </nav>
-
-      {/* <ul className="flex lg:hidden gap-8 items-center justify-center h-full bg-darkBlack p-2">
-          <NavItems />
-        </ul> */}
     </header>
   )
 }
