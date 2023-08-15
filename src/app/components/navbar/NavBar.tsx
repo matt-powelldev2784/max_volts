@@ -7,7 +7,7 @@ export const NavBar = () => {
       <nav className="flex flex-col items-center md:justify-center lg:flex-row lg:justify-between h-fit w-full bg-darkBlack">
         <a
           href="/"
-          className="w-[250px] md:w-[275px] lg:w-[300px] h-full mt-2 md:m-2 lg:ml-8"
+          className="w-[250px] md:w-[275px] lg:w-[300px] h-full mt-1 md:m-2 lg:ml-8"
         >
           <Image
             src="/max_volts_logo.svg"
