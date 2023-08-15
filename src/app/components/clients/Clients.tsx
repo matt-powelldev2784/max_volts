@@ -5,8 +5,13 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Button } from '@/ui/button/button'
 import Image from 'next/image'
+import { addClient } from '@/redux/slice/clientSlice'
+import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
+import { T_Client } from '@/types'
 
 export const Clients = () => {
+  const dispatch = useAppDispatch()
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -15,6 +20,7 @@ export const Clients = () => {
       add2: '',
       postcode: '',
       tel: '',
+      email: '',
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Please input a name'),
@@ -27,6 +33,8 @@ export const Clients = () => {
     }),
     onSubmit: async (values) => {
       console.log('values', values)
+      const newClient: T_Client = values
+      dispatch(addClient(newClient))
     },
   })
 

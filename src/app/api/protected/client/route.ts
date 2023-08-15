@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma, authOptions, noSessionResponse } from '@/lib'
+import {
+  prisma,
+  authOptions,
+  noSessionResponse,
+  badRequestError400,
+} from '@/lib'
 import { getServerSession } from 'next-auth'
+import { T_Client } from '../../../../types/client'
 
 export const GET = async (_req: NextRequest, _res: NextResponse) => {
   const session = await getServerSession(authOptions)
@@ -14,15 +20,18 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   const session = await getServerSession(authOptions)
   if (!session) return noSessionResponse
 
-  const { name, add1, add2, postcode, tel } = await req.json()
-  console.log(
-    'name, add1, add2, postcode, tel',
-    name,
-    add1,
-    add2,
-    postcode,
-    tel
-  )
+  const data: T_Client = await req.json()
+  const { name, companyName } = data
 
-  return NextResponse.json({ test: 'test' }, { status: 201 })
+  if (!name || !companyName) {
+    return badRequestError400
+  }
+
+  const newClient = await prisma.client.create({
+    data: {
+      ...data,
+    },
+  })
+
+  return NextResponse.json({ newClient }, { status: 201 })
 }
