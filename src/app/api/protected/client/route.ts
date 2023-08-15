@@ -12,7 +12,7 @@ export const GET = async (_req: NextRequest, _res: NextResponse) => {
   const session = await getServerSession(authOptions)
   if (!session) return noSessionResponse
 
-  const clients = await prisma.client.findMany()
+  const clients = await prisma.client.findMany({ orderBy: { name: 'asc' } })
   return NextResponse.json(clients, { status: 200 })
 }
 
