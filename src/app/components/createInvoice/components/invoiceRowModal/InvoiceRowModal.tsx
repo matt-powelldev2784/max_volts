@@ -33,7 +33,7 @@ export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
       <div className="md:rounded-xl w-full h-fit md:w-7/8 lg:w-3/4 max-w-[500px] bg-white md:m-8">
         <div className="relative bg-darkBlack text-white p-4 md:rounded-t-xl flexRow justify-start items-end gap-2 border-0 md:border-2 border-white">
           <Image
-            src="./icons/add_product.svg"
+            src="/icons/add_product.svg"
             alt="arrow-down"
             width={30}
             height={30}

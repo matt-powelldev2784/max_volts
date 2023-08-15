@@ -24,6 +24,9 @@ async function main(): Promise<void> {
       postcode: 'JS1 1JS',
       tel: '01234 567890',
     },
+    {
+      name: 'Matthew Powell',
+    },
   ]
 
   const clients = await prisma.client.createMany({
