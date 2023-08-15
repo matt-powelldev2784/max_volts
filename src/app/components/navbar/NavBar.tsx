@@ -4,41 +4,27 @@ import { NavItems } from './components/NavItems'
 export const NavBar = () => {
   return (
     <header className="">
-      <nav className="flex flex-row justify-between items-center h-fit w-full bg-darkBlack">
-        <a href="/menu" className="lg:hidden ml-4 flexCol">
+      <nav className="flex flex-col items-center md:justify-center lg:flex-row lg:justify-between h-fit w-full bg-darkBlack">
+        <a
+          href="/"
+          className="w-[270px] md:w-[300px] h-full m-2 md:m-2 lg:ml-8"
+        >
           <Image
-            src={`/icons/hamburger.svg`}
-            alt={'Hamburger Menu Icon'}
-            width={30}
-            height={30}
+            src="/max_volts_logo.svg"
+            alt="Footboot Logo"
+            width={873}
+            height={156}
           />
         </a>
 
-        <a href="/" className="w-full md:ml-4 flexRow md:w-fit">
-          <div className="h-[70px] w-[225px] md:h-[70px] md:w-[300px] flexCol">
-            <Image
-              src="/max_volts_logo.svg"
-              alt="Footboot Logo"
-              width={200}
-              height={25}
-              layout="responsive"
-            />
-          </div>
-        </a>
-
-        <a href="/api/auth/signin" className="lg:hidden mr-4">
-          <Image
-            src={`/icons/person.svg`}
-            alt={'Hamburger Menu Icon'}
-            width={30}
-            height={30}
-          />
-        </a>
-
-        <ul className="hidden lg:flex gap-8 items-center justify-center mx-8 h-full">
+        <ul className="flex justify-around md:justify-center md:gap-8 mx-8 h-full w-full lg:w-auto p-2 pb-3 min-w-[320px]">
           <NavItems />
         </ul>
       </nav>
+
+      {/* <ul className="flex lg:hidden gap-8 items-center justify-center h-full bg-darkBlack p-2">
+          <NavItems />
+        </ul> */}
     </header>
   )
 }
