@@ -25,7 +25,7 @@ export const NavItem = ({ itemDetails }: NavItemProps) => {
           height={30}
           className=""
         />
-        <p className="text-white">{text}</p>
+        <p className="hidden md:block text-white">{text}</p>
       </Link>
     </li>
   )
