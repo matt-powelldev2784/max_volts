@@ -1,6 +1,6 @@
 'use client'
 
-import { InputField } from '@/lib/formElements/InputField'
+import { InputField } from '@/app/lib/formElements/InputField'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Button } from '@/ui/button/button'

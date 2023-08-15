@@ -1,4 +1,4 @@
-import { useProducts } from '../../../../../../lib/hooks/useProducts'
+import { useProducts } from '../../../../../lib/hooks/useProducts'
 
 export const useProductSelectOptions = () => {
   const products = useProducts()

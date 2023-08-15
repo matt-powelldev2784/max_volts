@@ -5,7 +5,7 @@ import {
   AnyAction,
 } from '@reduxjs/toolkit'
 import { T_Client } from '@/types'
-import { apiCall } from '@/lib/apiCall'
+import { apiCall } from '@/app/lib/apiCall'
 
 type T_ClienteState = {
   isLoading: boolean

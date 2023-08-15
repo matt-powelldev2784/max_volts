@@ -4,7 +4,7 @@ import {
   authOptions,
   noSessionResponse,
   badRequestError400,
-} from '@/lib'
+} from '@/app/lib'
 import { getServerSession } from 'next-auth'
 import { T_Client } from '../../../../types/client'
 

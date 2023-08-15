@@ -1,6 +1,6 @@
 export { getLoggedInUser } from './getLoggedInUser'
 export { noSessionResponse } from './noSessionResponse'
 export { badRequestError400 } from './badRequestError'
-export { prisma } from '../../prisma/db/client'
+export { prisma } from '../../../prisma/db/client'
 export { authOptions } from '@/app/api/auth/[...nextauth]/route'
 export { ErrorMessage } from './formElements/ErrorMessage'
