@@ -8,7 +8,7 @@ export const navItemList = [
   },
   {
     key: 2,
-    href: '/pages/client',
+    href: '/pages/add-client',
     image: 'add_client.svg',
     alt: 'open door icon',
     text: 'Client',
