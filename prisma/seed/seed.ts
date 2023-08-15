@@ -70,19 +70,6 @@ async function main(): Promise<void> {
   })
 
   console.log({ products })
-
-  //   await prisma.storeItem.deleteMany()
-  //   const storeItems = await prisma.storeItem.createMany({
-  //     data: storeItemSeeds.map((product) => ({
-  //       name: product.name,
-  //       image: product.image,
-  //       brand: product.brand,
-  //       description: product.description,
-  //       price: product.price,
-  //       category: product.category,
-  //     })),
-  //   })
-  //   console.log({ storeItems })
 }
 
 main()
