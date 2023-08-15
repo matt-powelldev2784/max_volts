@@ -21,9 +21,9 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   if (!session) return noSessionResponse
 
   const data: T_Client = await req.json()
-  const { name, companyName } = data
+  const { name } = data
 
-  if (!name || !companyName) {
+  if (!name) {
     return badRequestError400
   }
 

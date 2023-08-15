@@ -24,7 +24,7 @@ export const AddClient = () => {
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Please input a name'),
-      companyName: Yup.string().required('Please input a company name'),
+      companyName: Yup.string(),
       add1: Yup.string(),
       add2: Yup.string(),
       psotcode: Yup.string(),
