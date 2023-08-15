@@ -1,8 +1,8 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { T_Product } from '@/types'
 import { addProduct } from '@/redux/slice/productSlice'
+import { T_ProductWithoutId } from '@/types'
 
 export const useAddProductFormik = () => {
   const dispatch = useAppDispatch()
@@ -44,8 +44,7 @@ export const useAddProductFormik = () => {
         ),
     }),
     onSubmit: async (values) => {
-      console.log('values', values)
-      const newProduct: T_Product = values
+      const newProduct: T_ProductWithoutId = values
       dispatch(addProduct(newProduct))
     },
   })

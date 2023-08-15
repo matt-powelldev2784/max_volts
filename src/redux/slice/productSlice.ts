@@ -4,7 +4,7 @@ import {
   createAsyncThunk,
   AnyAction,
 } from '@reduxjs/toolkit'
-import { T_Product } from '@/types'
+import { T_Product, T_ProductWithoutId } from '@/types'
 import { apiCall } from '@/app/lib/apiCall'
 
 type T_ProductState = {
@@ -35,7 +35,7 @@ export const getProducts = createAsyncThunk('product/getProducts', async () => {
 
 export const addProduct = createAsyncThunk(
   'product/addProduct',
-  async (product: T_Product) => {
+  async (product: T_ProductWithoutId) => {
     try {
       const productData = await apiCall({
         httpMethod: 'POST',

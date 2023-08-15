@@ -4,7 +4,7 @@ import {
   createAsyncThunk,
   AnyAction,
 } from '@reduxjs/toolkit'
-import { T_InvoiceDetails, T_InvoiceRow } from '@/types'
+import { T_InvoiceDetails, T_InvoiceRow, T_Product } from '@/types'
 import { v4 as uuidv4 } from 'uuid'
 import { apiCall } from '@/app/lib/apiCall'
 
@@ -66,7 +66,9 @@ export const newInvoiceSlice = createSlice({
     setCurrentInvoiceRow: (state, action: PayloadAction<T_InvoiceRow>) => {
       state.currentInvoiceRow = action.payload
     },
-    addProductToInvoice: (state, action: PayloadAction<T_InvoiceRow>) => {
+    addProductToInvoice: (state, action: PayloadAction<T_Product>) => {
+      console.log('action.payload', action.payload)
+
       const reduxId = uuidv4()
       const quantity = 1
       const totalPrice =
