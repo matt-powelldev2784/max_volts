@@ -6,5 +6,9 @@ export const NavItems = () => {
     return <NavItem key={item.key} itemDetails={item} />
   })
 
-  return <>{...NavItems}</>
+  return (
+    <ul className="flex justify-around md:justify-center md:gap-8 mx-8 h-full w-full lg:w-auto p-2 pb-3 min-w-[320px]">
+      {...NavItems}
+    </ul>
+  )
 }
