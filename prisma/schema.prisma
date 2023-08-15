@@ -18,6 +18,7 @@ model Client {
   add2        String?
   postcode    String?
   tel         String?
+  email       String?
   Invoice     Invoice[]
 }
 
