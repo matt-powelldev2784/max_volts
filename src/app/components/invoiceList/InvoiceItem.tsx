@@ -1,5 +1,6 @@
 import { T_Invoice } from '@/types/invoice'
 import React from 'react'
+import { Button } from '@/ui/button/button'
 
 interface InvoiceItemProps extends T_Invoice {
   header?: boolean
@@ -22,15 +23,28 @@ export const InvoiceItem = ({
         header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
-      <p className="h-full w-full max-w-[50px] text-sm flex">
-        {header ? 'Invoice Num' : `${Number(invoiceNum)}`}
+      <p className="h-full w-full max-w-[100px] text-sm flex">
+        {header ? 'Num' : `${Number(invoiceNum)}`}
       </p>
-      <p className="h-full w-full max-w-[250px] text-sm flex">
+      <p className="h-full w-full text-sm flex">
         {header ? 'Client' : `${clientString}`}
       </p>
-      <p className="h-full w-full max-w-[50px] text-sm flex">
-        {header ? 'Total Amount' : `${Number(totalAmount)}`}
+      <p className="h-full min-w-[70px] text-sm flex">
+        {header ? 'Total' : `£${Number(totalAmount).toFixed(2)}`}
       </p>
+
+      <div
+        className={`flex flex-row gap-2 md:pl-2 break-normal ${
+          header ? 'opacity-0 h-0' : null
+        }`}
+      >
+        <Button
+          type="button"
+          optionalClasses="text-white text-sm bg-mvOrange h-full w-fit max-h-[40px]"
+          buttonText="Edit"
+          onClick={() => {}}
+        />
+      </div>
     </section>
   )
 }
