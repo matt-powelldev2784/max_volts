@@ -5,6 +5,9 @@ import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
 import { AddProduct } from '../createInvoice/components/addProduct/AddProduct'
 import { ClientText } from './components/ClientText'
+import { InvoiceRowText } from '../createInvoice/components/InvoiceRowText/InvoiceRowText'
+import { InvoiceRowHeader } from '../createInvoice/components/InvoiceRowHeader/InvoiceRowHeader'
+import { InvoiceRowModal } from '../createInvoice/components/invoiceRowModal/InvoiceRowModal'
 
 interface EditInvoiceProps {
   invoiceId: string
@@ -15,12 +18,27 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   const invoice = useAppSelector(
     (state) => state.newInvoiceReducer.currentEditInvoice
   )
+  const invoiceRows = useAppSelector(
+    (state) => state.newInvoiceReducer.invoiceRows
+  )
+  const showProductModal = useAppSelector(
+    (state) => state.newInvoiceReducer.displayAddProductModal
+  )
+  const currentInvoiceRow = useAppSelector(
+    (state) => state.newInvoiceReducer.currentInvoiceRow
+  )
 
   const invoiceNum = invoice?.invoiceNum
 
   const clientText = invoice?.Client.companyName
     ? `${invoice?.Client.name} @ ${invoice?.Client.companyName}`
     : invoice?.Client.name
+
+  console.log('invoiceRows', invoiceRows)
+
+  const invoiceRowsJsx = invoiceRows.map((product) => {
+    return <InvoiceRowText key={product.reduxId} {...product} />
+  })
 
   return (
     <section>
@@ -38,6 +56,11 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
       <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
         <ClientText clientText={clientText} />
         <AddProduct />
+        <InvoiceRowHeader />
+        {invoiceRowsJsx}
+        {showProductModal && currentInvoiceRow?.reduxId ? (
+          <InvoiceRowModal {...currentInvoiceRow} />
+        ) : null}
       </div>
     </section>
   )

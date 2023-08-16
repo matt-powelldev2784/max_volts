@@ -198,12 +198,21 @@ export const newInvoiceSlice = createSlice({
       .addCase(getInvoice.pending, (state) => {
         state.isLoading = true
         state.error = null
+        state.currentEditInvoice = null
+        state.invoiceRows = []
       })
       .addCase(
         getInvoice.fulfilled,
         (state, action: PayloadAction<T_Invoice>) => {
+          const reduxId = uuidv4()
+          const invoiceRows = action.payload.InvoiceRow
+          const invoiceRowsWithId = invoiceRows.map((invoiceRow) => {
+            return { ...invoiceRow, reduxId }
+          })
+
           state.isLoading = false
           state.currentEditInvoice = action.payload
+          state.invoiceRows = invoiceRowsWithId
         }
       )
       .addCase(getInvoice.rejected, (state, { error }: AnyAction) => {

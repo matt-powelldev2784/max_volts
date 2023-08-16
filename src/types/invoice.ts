@@ -10,6 +10,8 @@ export interface T_InvoiceRow {
   quantity: number
   totalPrice: number
   reduxId: string
+  invoiceId?: string
+  productId?: string
 }
 
 export interface T_InvoiceDetails {
@@ -27,5 +29,5 @@ export interface T_Invoice {
   paid: boolean
   isActive: boolean
   Client: T_Client
-  InvoiceRows: T_InvoiceRow[]
+  InvoiceRow: T_InvoiceRow[]
 }
