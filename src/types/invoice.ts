@@ -1,3 +1,5 @@
+import { T_Client } from './client'
+
 export interface T_InvoiceRow {
   id: string
   name: string
@@ -8,10 +10,30 @@ export interface T_InvoiceRow {
   quantity: number
   totalPrice: number
   reduxId: string
+  invoiceId?: string
+  productId?: string
 }
 
 export interface T_InvoiceDetails {
   clientId: string
   totalPrice: number
   invoiceRows: T_InvoiceRow[]
+}
+
+export interface T_UpdateInvoiceDetails {
+  invoiceId: string
+  totalPrice: number
+  invoiceRows: T_InvoiceRow[]
+}
+
+export interface T_Invoice {
+  id: string
+  invoiceNum: number
+  clientId: string
+  invoiceDate: string
+  totalAmount: number
+  paid: boolean
+  isActive: boolean
+  Client: T_Client
+  InvoiceRow: T_InvoiceRow[]
 }

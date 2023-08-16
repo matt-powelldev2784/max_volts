@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma, authOptions, noSessionResponse } from '@/app/lib'
+import {
+  prisma,
+  authOptions,
+  noSessionResponse,
+  badRequestError400,
+} from '@/app/lib'
 import { getServerSession } from 'next-auth'
 
 export const GET = async (req: NextRequest, _res: NextResponse) => {
@@ -11,18 +16,7 @@ export const GET = async (req: NextRequest, _res: NextResponse) => {
   console.log('invoiceId', invoiceId)
 
   if (!invoiceId) {
-    return NextResponse.json(
-      {
-        success: false,
-        status: 400,
-        errors: [
-          { msg: 'Please provide a invoice_id in the url search params' },
-        ],
-      },
-      {
-        status: 400,
-      }
-    )
+    return badRequestError400
   }
 
   const invoice = await prisma.invoice.findUnique({
@@ -30,6 +24,7 @@ export const GET = async (req: NextRequest, _res: NextResponse) => {
       id: invoiceId,
     },
     include: {
+      Client: true,
       InvoiceRow: true,
     },
   })

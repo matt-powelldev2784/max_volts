@@ -1,8 +1,8 @@
 export const navItemList = [
   {
     key: 1,
-    href: '/pages/create-invoice',
-    image: 'add_invoice.svg',
+    href: '/pages/invoice',
+    image: 'invoice.svg',
     alt: 'open door icon',
     text: 'Invoice',
   },

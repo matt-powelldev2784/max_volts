@@ -50,8 +50,10 @@ model InvoiceRow {
 model Invoice {
   id          String      @id @default(cuid())
   invoiceNum  Int         @default(autoincrement())
+  invoiceDate DateTime    @default(now())
   clientId    String
   totalAmount Float       @default(0)
+  paid        Boolean     @default(false)
   isActive    Boolean     @default(false)
   Client      Client?     @relation(fields: [clientId], references: [id])
   InvoiceRow  InvoiceRow[]
