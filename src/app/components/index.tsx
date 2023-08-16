@@ -1,3 +1,4 @@
+export { EditInvoice } from './editInvoice/EditInvoice'
 export { InvoiceList } from './invoiceList/InvoiceList'
 export { AddProduct } from './addProduct/AddProduct'
 export { IsLoggedIn } from './IsLoggedIn/IsLoggedIn'

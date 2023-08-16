@@ -1,14 +1,17 @@
-'use cleint'
-
-import React from 'react'
+import { EditInvoice, NavBar } from '@/app/components'
 
 export default function EditInvoicePage({
   params,
 }: {
   params: { invoiceId: string }
 }) {
-  const invoieId = params.invoiceId
-  console.log('invoieId', invoieId[0])
+  const invoiceId = params.invoiceId[0]
 
-  return <div>Invoice Id: {invoieId}</div>
+  return (
+    <div>
+      <NavBar />
+      Invoice Id: {invoiceId}
+      <EditInvoice invoiceId={invoiceId} />
+    </div>
+  )
 }

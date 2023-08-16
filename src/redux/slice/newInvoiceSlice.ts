@@ -73,7 +73,7 @@ export const getInvoice = createAsyncThunk(
     try {
       const invoice = await apiCall({
         httpMethod: 'GET',
-        route: `/api/protected/invoice/single/${invoiceId}`,
+        route: `/api/protected/invoice/single?invoice_id=${invoiceId}`,
       })
 
       return invoice

@@ -1,13 +1,17 @@
+'use cleint'
+
 import { T_Invoice } from '@/types/invoice'
 import React from 'react'
 import { Button } from '@/ui/button/button'
 import { formatDate } from '@/app/lib/formatDate'
+import { useRouter } from 'next/navigation'
 
 interface InvoiceItemProps extends T_Invoice {
   header?: boolean
 }
 
 export const InvoiceItem = ({
+  id,
   invoiceNum,
   Client,
   totalAmount,
@@ -15,6 +19,7 @@ export const InvoiceItem = ({
   paid,
   header,
 }: InvoiceItemProps) => {
+  const router = useRouter()
   const { name, companyName } = Client
   let clientString = companyName ? `${name} @ ${companyName}` : name
 
@@ -49,7 +54,7 @@ export const InvoiceItem = ({
           type="button"
           optionalClasses="text-white text-sm bg-mvOrange h-full w-fit max-h-[40px]"
           buttonText="Edit"
-          onClick={() => {}}
+          onClick={() => router.push(`/pages/invoice/edit-invoice/${id}`)}
         />
       </div>
     </section>
