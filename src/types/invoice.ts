@@ -20,6 +20,12 @@ export interface T_InvoiceDetails {
   invoiceRows: T_InvoiceRow[]
 }
 
+export interface T_UpdateInvoiceDetails {
+  invoiceId: string
+  totalPrice: number
+  invoiceRows: T_InvoiceRow[]
+}
+
 export interface T_Invoice {
   id: string
   invoiceNum: number

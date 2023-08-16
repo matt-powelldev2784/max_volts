@@ -1,0 +1,48 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { prisma, authOptions, noSessionResponse } from '@/app/lib'
+import { getServerSession } from 'next-auth'
+import { badRequestError400 } from '@/app/lib'
+import { T_InvoiceRow } from '@/types'
+
+export const POST = async (req: NextRequest, _res: NextResponse) => {
+  const session = await getServerSession(authOptions)
+  if (!session) return noSessionResponse
+
+  const data = await req.json()
+  const { totalPrice, invoiceRows } = data
+  const invoiceId = data.invoiceId
+
+  if (!invoiceId || !totalPrice || invoiceRows.length === 0)
+    return badRequestError400
+
+  const invoiceToUpdate = await prisma.invoice.findUnique({
+    where: { id: invoiceId },
+  })
+
+  if (!invoiceToUpdate) return badRequestError400
+  if (invoiceToUpdate.isActive === false) return badRequestError400
+
+  await prisma.invoiceRow.deleteMany({
+    where: { invoiceId },
+  })
+
+  await prisma.invoiceRow.createMany({
+    data: invoiceRows.map((invoiceRow: T_InvoiceRow) => ({
+      invoiceId: invoiceId,
+      productId: invoiceRow.productId || invoiceRow.id,
+      quantity: invoiceRow.quantity,
+      name: invoiceRow.name,
+      description: invoiceRow.description,
+      VAT: invoiceRow.VAT,
+      buyPrice: invoiceRow.buyPrice,
+      sellPrice: invoiceRow.sellPrice,
+      totalPrice: invoiceRow.totalPrice,
+    })),
+  })
+
+  const updatedInvoice = await prisma.invoice.findUnique({
+    where: { id: invoiceId },
+  })
+
+  return NextResponse.json({ updatedInvoice }, { status: 201 })
+}

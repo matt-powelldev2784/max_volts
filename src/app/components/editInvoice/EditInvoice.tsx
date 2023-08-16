@@ -1,13 +1,15 @@
 'use client'
 
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
-import { useAppSelector } from '@/redux/hooks/reduxsHooks'
+import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
+import { updateInvoice } from '@/redux/slice/newInvoiceSlice'
 import Image from 'next/image'
 import { AddProduct } from '../createInvoice/components/addProduct/AddProduct'
 import { ClientText } from './components/ClientText'
 import { InvoiceRowText } from '../createInvoice/components/InvoiceRowText/InvoiceRowText'
 import { InvoiceRowHeader } from '../createInvoice/components/InvoiceRowHeader/InvoiceRowHeader'
 import { InvoiceRowModal } from '../createInvoice/components/invoiceRowModal/InvoiceRowModal'
+import { Button } from '@/ui/button/button'
 
 interface EditInvoiceProps {
   invoiceId: string
@@ -15,6 +17,7 @@ interface EditInvoiceProps {
 
 export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   useInvoice(invoiceId)
+  const dispatch = useAppDispatch()
   const invoice = useAppSelector(
     (state) => state.newInvoiceReducer.currentEditInvoice
   )
@@ -27,14 +30,15 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   const currentInvoiceRow = useAppSelector(
     (state) => state.newInvoiceReducer.currentInvoiceRow
   )
+  const totalPrice = useAppSelector(
+    (state) => state.newInvoiceReducer.totalPrice
+  )
 
   const invoiceNum = invoice?.invoiceNum
 
   const clientText = invoice?.Client.companyName
     ? `${invoice?.Client.name} @ ${invoice?.Client.companyName}`
     : invoice?.Client.name
-
-  console.log('invoiceRows', invoiceRows)
 
   const invoiceRowsJsx = invoiceRows.map((product) => {
     return <InvoiceRowText key={product.reduxId} {...product} />
@@ -53,15 +57,29 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         <p className="text-lg">Edit Invoice {invoiceNum}</p>
       </div>
 
-      <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
+      <div className="w-full flexCol p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
         <ClientText clientText={clientText} />
         <AddProduct />
-        <InvoiceRowHeader />
-        {invoiceRowsJsx}
-        {showProductModal && currentInvoiceRow?.reduxId ? (
-          <InvoiceRowModal {...currentInvoiceRow} />
-        ) : null}
+
+        <div className="w-full">
+          <InvoiceRowHeader />
+          {invoiceRowsJsx}
+        </div>
+
+        <Button
+          type="submit"
+          optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px]"
+          buttonText="Update Invoice"
+          disabled={false}
+          onClick={() => {
+            dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
+          }}
+        />
       </div>
+
+      {showProductModal && currentInvoiceRow?.reduxId ? (
+        <InvoiceRowModal {...currentInvoiceRow} />
+      ) : null}
     </section>
   )
 }

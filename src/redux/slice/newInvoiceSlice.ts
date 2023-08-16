@@ -4,7 +4,12 @@ import {
   createAsyncThunk,
   AnyAction,
 } from '@reduxjs/toolkit'
-import { T_InvoiceDetails, T_InvoiceRow, T_Product } from '@/types'
+import {
+  T_InvoiceDetails,
+  T_InvoiceRow,
+  T_Product,
+  T_UpdateInvoiceDetails,
+} from '@/types'
 import { v4 as uuidv4 } from 'uuid'
 import { apiCall } from '@/app/lib/apiCall'
 import { T_Invoice } from '@/types/invoice'
@@ -42,6 +47,23 @@ export const createInvoice = createAsyncThunk(
       })
 
       return newInvoice
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
+export const updateInvoice = createAsyncThunk(
+  'newInvoice/updateInvoice',
+  async (invoiceDetails: T_UpdateInvoiceDetails) => {
+    try {
+      const updatedInvoice = await apiCall({
+        httpMethod: 'POST',
+        route: '/api/protected/edit-invoice',
+        body: invoiceDetails,
+      })
+
+      return updatedInvoice
     } catch (err: any) {
       throw Error(err)
     }
@@ -179,6 +201,18 @@ export const newInvoiceSlice = createSlice({
         state.error = error.message || 'Server Error. Please try again later'
       })
       //---------------------------------------------------------------------
+      .addCase(updateInvoice.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(updateInvoice.fulfilled, (state) => {
+        state.isLoading = false
+      })
+      .addCase(updateInvoice.rejected, (state, { error }: AnyAction) => {
+        state.isLoading = false
+        state.error = error.message || 'Server Error. Please try again later'
+      })
+      //---------------------------------------------------------------------
       .addCase(getInvoices.pending, (state) => {
         state.isLoading = true
         state.error = null
@@ -204,10 +238,9 @@ export const newInvoiceSlice = createSlice({
       .addCase(
         getInvoice.fulfilled,
         (state, action: PayloadAction<T_Invoice>) => {
-          const reduxId = uuidv4()
           const invoiceRows = action.payload.InvoiceRow
           const invoiceRowsWithId = invoiceRows.map((invoiceRow) => {
-            return { ...invoiceRow, reduxId }
+            return { ...invoiceRow, reduxId: uuidv4() }
           })
 
           state.isLoading = false
