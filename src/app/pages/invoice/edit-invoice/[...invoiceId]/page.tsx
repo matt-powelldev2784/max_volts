@@ -10,7 +10,6 @@ export default function EditInvoicePage({
   return (
     <div>
       <NavBar />
-      Invoice Id: {invoiceId}
       <EditInvoice invoiceId={invoiceId} />
     </div>
   )

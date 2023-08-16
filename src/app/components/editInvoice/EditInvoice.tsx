@@ -45,8 +45,8 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   })
 
   return (
-    <section>
-      <div className="flexRow gap-2 mt-4 mb-4">
+    <section className="w-screen">
+      <div className="flexRow gap-2 mt-4 mb-5">
         <Image
           src="/icons/invoice.svg"
           alt="Person icon"
@@ -57,11 +57,13 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         <p className="text-lg">Edit Invoice {invoiceNum}</p>
       </div>
 
-      <div className="w-full flexCol p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
-        <ClientText clientText={clientText} />
-        <AddProduct />
+      <div className="w-full flexCol mim-w-[305px] px-2 lg:px-4">
+        <div className="w-full flexCol md:p-2 gap-4 lg:flexRow md:px-12 lg:gap-16 mb-8">
+          <ClientText clientText={clientText} />
+          <AddProduct />
+        </div>
 
-        <div className="w-full">
+        <div className="w-full lg:px:16 mim-w-[305px] md:p-2 ">
           <InvoiceRowHeader />
           {invoiceRowsJsx}
         </div>
