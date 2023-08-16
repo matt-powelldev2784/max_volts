@@ -9,6 +9,7 @@
     "lint": "next lint",
     "prettier": "prettier --write .",
     "prepare": "husky install",
+    "eslint": "npx eslint src/**",
     "postinstall": "prisma generate",
     "migrate:deploy": "npx dotenv -e .env.local -- prisma migrate deploy",
     "migrate:dev": "npx dotenv -e .env.local -- prisma migrate dev",
