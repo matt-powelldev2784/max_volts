@@ -7,6 +7,7 @@ import {
 import { T_InvoiceDetails, T_InvoiceRow, T_Product } from '@/types'
 import { v4 as uuidv4 } from 'uuid'
 import { apiCall } from '@/app/lib/apiCall'
+import { T_Invoice } from '@/types/invoice'
 
 type T_NewInvoiceState = {
   isLoading: boolean
@@ -15,6 +16,7 @@ type T_NewInvoiceState = {
   totalPrice: number
   displayAddProductModal: boolean
   currentInvoiceRow: T_InvoiceRow | null
+  invoices: T_Invoice[] | []
 }
 
 const initialState: T_NewInvoiceState = {
@@ -24,6 +26,7 @@ const initialState: T_NewInvoiceState = {
   totalPrice: 0,
   displayAddProductModal: false,
   currentInvoiceRow: null,
+  invoices: [],
 }
 
 export const createInvoice = createAsyncThunk(
@@ -37,6 +40,25 @@ export const createInvoice = createAsyncThunk(
       })
 
       return newInvoice
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
+export const getInvoices = createAsyncThunk(
+  'newInvoice/getInvoices',
+  async (page: string | number) => {
+    let apiRoute = `/api/protected/invoice`
+    if (page) apiRoute = `/api/protected/invoice?page=${page}`
+
+    try {
+      const invoices = await apiCall({
+        httpMethod: 'GET',
+        route: apiRoute,
+      })
+
+      return invoices
     } catch (err: any) {
       throw Error(err)
     }
@@ -135,6 +157,22 @@ export const newInvoiceSlice = createSlice({
         state.isLoading = false
       })
       .addCase(createInvoice.rejected, (state, { error }: AnyAction) => {
+        state.isLoading = false
+        state.error = error.message || 'Server Error. Please try again later'
+      })
+      //---------------------------------------------------------------------
+      .addCase(getInvoices.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(
+        getInvoices.fulfilled,
+        (state, action: PayloadAction<T_Invoice>) => {
+          state.isLoading = false
+          state.invoices = action.payload
+        }
+      )
+      .addCase(getInvoices.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
         state.error = error.message || 'Server Error. Please try again later'
       })
