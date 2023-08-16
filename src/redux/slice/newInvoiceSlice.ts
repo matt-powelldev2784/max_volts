@@ -17,6 +17,7 @@ type T_NewInvoiceState = {
   displayAddProductModal: boolean
   currentInvoiceRow: T_InvoiceRow | null
   invoices: T_Invoice[] | []
+  currentEditInvoice: T_Invoice | null
 }
 
 const initialState: T_NewInvoiceState = {
@@ -27,6 +28,7 @@ const initialState: T_NewInvoiceState = {
   displayAddProductModal: false,
   currentInvoiceRow: null,
   invoices: [],
+  currentEditInvoice: null,
 }
 
 export const createInvoice = createAsyncThunk(
@@ -59,6 +61,22 @@ export const getInvoices = createAsyncThunk(
       })
 
       return invoices
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
+export const getInvoice = createAsyncThunk(
+  'newInvoice/getInvoice',
+  async (invoiceId: string) => {
+    try {
+      const invoice = await apiCall({
+        httpMethod: 'GET',
+        route: `/api/protected/invoice/single/${invoiceId}`,
+      })
+
+      return invoice
     } catch (err: any) {
       throw Error(err)
     }
@@ -173,6 +191,22 @@ export const newInvoiceSlice = createSlice({
         }
       )
       .addCase(getInvoices.rejected, (state, { error }: AnyAction) => {
+        state.isLoading = false
+        state.error = error.message || 'Server Error. Please try again later'
+      })
+      //---------------------------------------------------------------------
+      .addCase(getInvoice.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(
+        getInvoice.fulfilled,
+        (state, action: PayloadAction<T_Invoice>) => {
+          state.isLoading = false
+          state.currentEditInvoice = action.payload
+        }
+      )
+      .addCase(getInvoice.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
         state.error = error.message || 'Server Error. Please try again later'
       })
