@@ -69,7 +69,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         </div>
 
         <Button
-          type="submit"
+          type="button"
           optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px]"
           buttonText="Update Invoice"
           disabled={false}
