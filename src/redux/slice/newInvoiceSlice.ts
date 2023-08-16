@@ -167,7 +167,7 @@ export const newInvoiceSlice = createSlice({
       })
       .addCase(
         getInvoices.fulfilled,
-        (state, action: PayloadAction<T_Invoice>) => {
+        (state, action: PayloadAction<T_Invoice[]>) => {
           state.isLoading = false
           state.invoices = action.payload
         }

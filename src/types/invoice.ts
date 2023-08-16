@@ -22,7 +22,9 @@ export interface T_Invoice {
   id: string
   invoiceNum: number
   clientId: string
+  date: string
   totalAmount: number
+  paid: boolean
   isActive: boolean
   Client: T_Client
   InvoiceRows: T_InvoiceRow[]
