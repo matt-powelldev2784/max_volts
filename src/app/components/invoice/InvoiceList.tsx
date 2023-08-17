@@ -2,8 +2,8 @@
 
 import { useInvoices } from '@/app/lib/hooks/useInvoices'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
-import { InvoiceItem } from './InvoiceItem'
-import { InvoiceItemHeader } from './InvoiceItemHeader'
+import { InvoiceItem } from './components/invoiceItem/InvoiceItem'
+import { InvoiceItemHeader } from './components/invoiceItemHeader/InvoiceItemHeader'
 import Image from 'next/image'
 
 export const InvoiceList = () => {
