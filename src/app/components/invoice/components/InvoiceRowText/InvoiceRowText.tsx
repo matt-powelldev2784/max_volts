@@ -4,7 +4,7 @@ import {
   setCurrentInvoiceRow,
   toggleAddProductModal,
   deleteInvoiceRow,
-} from '@/redux/slice/newInvoiceSlice'
+} from '@/redux/slice/invoiceSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
 interface InvoiceRowModalProps extends T_InvoiceRow {

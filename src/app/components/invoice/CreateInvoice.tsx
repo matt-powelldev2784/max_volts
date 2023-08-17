@@ -11,7 +11,7 @@ export const CreateInvoice = () => {
   const productsApiError = useAppSelector((state) => state.productReducer.error)
 
   const invoiceRows = useAppSelector(
-    (state) => state.newInvoiceReducer.invoiceRows
+    (state) => state.invoiceReducer.invoiceRows
   )
 
   const invoiceRowsJsx = invoiceRows.map((product) => {

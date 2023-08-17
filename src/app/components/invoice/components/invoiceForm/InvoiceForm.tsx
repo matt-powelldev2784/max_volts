@@ -18,16 +18,14 @@ interface InvoiceFormProps {
 export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const createInvoiceError = useAppSelector(
-    (state) => state.newInvoiceReducer.error
+    (state) => state.invoiceReducer.error
   )
-  const totalPrice = useAppSelector(
-    (state) => state.newInvoiceReducer.totalPrice
-  )
+  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
   const showProductModal = useAppSelector(
-    (state) => state.newInvoiceReducer.displayAddProductModal
+    (state) => state.invoiceReducer.displayAddProductModal
   )
   const currentInvoiceRow = useAppSelector(
-    (state) => state.newInvoiceReducer.currentInvoiceRow
+    (state) => state.invoiceReducer.currentInvoiceRow
   )
   const clients = useAppSelector((state) => state.clientReducer.clients)
   const formik = useInvoiceFormFormik(setIsLoading)

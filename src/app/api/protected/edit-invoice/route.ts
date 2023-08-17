@@ -40,8 +40,11 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
     })),
   })
 
-  const updatedInvoice = await prisma.invoice.findUnique({
+  const updatedInvoice = await prisma.invoice.update({
     where: { id: invoiceId },
+    data: {
+      totalAmount: totalPrice,
+    },
   })
 
   return NextResponse.json({ updatedInvoice }, { status: 201 })

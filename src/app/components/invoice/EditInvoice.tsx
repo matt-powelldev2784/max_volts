@@ -2,13 +2,13 @@
 
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { updateInvoice } from '@/redux/slice/newInvoiceSlice'
+import { updateInvoice } from '@/redux/slice/invoiceSlice'
 import Image from 'next/image'
-import { AddProduct } from '../createInvoice/components/addProduct/AddProduct'
-import { ClientText } from './components/ClientText'
-import { InvoiceRowText } from '../createInvoice/components/InvoiceRowText/InvoiceRowText'
-import { InvoiceRowHeader } from '../createInvoice/components/InvoiceRowHeader/InvoiceRowHeader'
-import { InvoiceRowModal } from '../createInvoice/components/invoiceRowModal/InvoiceRowModal'
+import { AddProduct } from './components/addProduct/AddProduct'
+import { ClientText } from './components/ClientText/ClientText'
+import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
+import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader'
+import { InvoiceRowModal } from './components/invoiceRowModal/InvoiceRowModal'
 import { Button } from '@/ui/button/button'
 
 interface EditInvoiceProps {
@@ -19,20 +19,18 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   useInvoice(invoiceId)
   const dispatch = useAppDispatch()
   const invoice = useAppSelector(
-    (state) => state.newInvoiceReducer.currentEditInvoice
+    (state) => state.invoiceReducer.currentEditInvoice
   )
   const invoiceRows = useAppSelector(
-    (state) => state.newInvoiceReducer.invoiceRows
+    (state) => state.invoiceReducer.invoiceRows
   )
   const showProductModal = useAppSelector(
-    (state) => state.newInvoiceReducer.displayAddProductModal
+    (state) => state.invoiceReducer.displayAddProductModal
   )
   const currentInvoiceRow = useAppSelector(
-    (state) => state.newInvoiceReducer.currentInvoiceRow
+    (state) => state.invoiceReducer.currentInvoiceRow
   )
-  const totalPrice = useAppSelector(
-    (state) => state.newInvoiceReducer.totalPrice
-  )
+  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
 
   const invoiceNum = invoice?.invoiceNum
 
@@ -67,6 +65,10 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           <InvoiceRowHeader />
           {invoiceRowsJsx}
         </div>
+
+        <p className="font-bold text-center mt-8 w-full mb-2">
+          Total Price : £{Number(totalPrice).toFixed(2)}
+        </p>
 
         <Button
           type="button"

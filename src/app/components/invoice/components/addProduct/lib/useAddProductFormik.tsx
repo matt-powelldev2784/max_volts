@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import {
   addProductToInvoice,
   toggleAddProductModal,
-} from '@/redux/slice/newInvoiceSlice'
+} from '@/redux/slice/invoiceSlice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
 export const useAddProductFormik = () => {

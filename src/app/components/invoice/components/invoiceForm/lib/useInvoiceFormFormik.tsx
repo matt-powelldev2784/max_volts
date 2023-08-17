@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { setErrorState, createInvoice } from '@/redux/slice/newInvoiceSlice'
+import { setErrorState, createInvoice } from '@/redux/slice/invoiceSlice'
 import { T_InvoiceDetails } from '@/types/invoice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 
@@ -9,11 +9,9 @@ export const useInvoiceFormFormik = (
   setIsLoading: Dispatch<SetStateAction<boolean>>
 ) => {
   const dispatch = useAppDispatch()
-  const totalPrice = useAppSelector(
-    (state) => state.newInvoiceReducer.totalPrice
-  )
+  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
   const invoiceRows = useAppSelector(
-    (state) => state.newInvoiceReducer.invoiceRows
+    (state) => state.invoiceReducer.invoiceRows
   )
 
   const formik = useFormik({
