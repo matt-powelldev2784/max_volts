@@ -68,6 +68,10 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           {invoiceRowsJsx}
         </div>
 
+        <p className="font-bold text-center mt-8 w-full mb-2">
+          Total Price : £{Number(totalPrice).toFixed(2)}
+        </p>
+
         <Button
           type="button"
           optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px]"
