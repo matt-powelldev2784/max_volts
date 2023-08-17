@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { apiCall } from '@/app/lib/apiCall'
 import { T_Invoice } from '@/types/invoice'
 
-type T_NewInvoiceState = {
+type T_InvoiceState = {
   isLoading: boolean
   error: string | null
   invoiceRows: T_InvoiceRow[]
@@ -25,7 +25,7 @@ type T_NewInvoiceState = {
   currentEditInvoice: T_Invoice | null
 }
 
-const initialState: T_NewInvoiceState = {
+const initialState: T_InvoiceState = {
   isLoading: false,
   error: null,
   invoiceRows: [],
@@ -37,7 +37,7 @@ const initialState: T_NewInvoiceState = {
 }
 
 export const createInvoice = createAsyncThunk(
-  'newInvoice/createInvoice',
+  'invoice/createInvoice',
   async (invoiceDetails: T_InvoiceDetails) => {
     try {
       const newInvoice = await apiCall({
@@ -54,7 +54,7 @@ export const createInvoice = createAsyncThunk(
 )
 
 export const updateInvoice = createAsyncThunk(
-  'newInvoice/updateInvoice',
+  'invoice/updateInvoice',
   async (invoiceDetails: T_UpdateInvoiceDetails) => {
     try {
       const updatedInvoice = await apiCall({
@@ -71,7 +71,7 @@ export const updateInvoice = createAsyncThunk(
 )
 
 export const getInvoices = createAsyncThunk(
-  'newInvoice/getInvoices',
+  'invoice/getInvoices',
   async (page: string | number) => {
     let apiRoute = `/api/protected/invoice`
     if (page) apiRoute = `/api/protected/invoice?page=${page}`
@@ -90,7 +90,7 @@ export const getInvoices = createAsyncThunk(
 )
 
 export const getInvoice = createAsyncThunk(
-  'newInvoice/getInvoice',
+  'invoice/getInvoice',
   async (invoiceId: string) => {
     try {
       const invoice = await apiCall({
@@ -105,8 +105,8 @@ export const getInvoice = createAsyncThunk(
   }
 )
 
-export const newInvoiceSlice = createSlice({
-  name: 'newInvoice',
+export const invoiceSlice = createSlice({
+  name: 'invoice',
   initialState,
   reducers: {
     setErrorState: (state, action: PayloadAction<string>) => {
@@ -262,5 +262,5 @@ export const {
   toggleAddProductModal,
   deleteInvoiceRow,
   setCurrentInvoiceRow,
-} = newInvoiceSlice.actions
-export default newInvoiceSlice.reducer
+} = invoiceSlice.actions
+export default invoiceSlice.reducer

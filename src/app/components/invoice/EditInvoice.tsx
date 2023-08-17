@@ -2,7 +2,7 @@
 
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { updateInvoice } from '@/redux/slice/newInvoiceSlice'
+import { updateInvoice } from '@/redux/slice/invoiceSlice'
 import Image from 'next/image'
 import { AddProduct } from './components/addProduct/AddProduct'
 import { ClientText } from './components/ClientText/ClientText'
@@ -19,20 +19,18 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   useInvoice(invoiceId)
   const dispatch = useAppDispatch()
   const invoice = useAppSelector(
-    (state) => state.newInvoiceReducer.currentEditInvoice
+    (state) => state.invoiceReducer.currentEditInvoice
   )
   const invoiceRows = useAppSelector(
-    (state) => state.newInvoiceReducer.invoiceRows
+    (state) => state.invoiceReducer.invoiceRows
   )
   const showProductModal = useAppSelector(
-    (state) => state.newInvoiceReducer.displayAddProductModal
+    (state) => state.invoiceReducer.displayAddProductModal
   )
   const currentInvoiceRow = useAppSelector(
-    (state) => state.newInvoiceReducer.currentInvoiceRow
+    (state) => state.invoiceReducer.currentInvoiceRow
   )
-  const totalPrice = useAppSelector(
-    (state) => state.newInvoiceReducer.totalPrice
-  )
+  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
 
   const invoiceNum = invoice?.invoiceNum
 

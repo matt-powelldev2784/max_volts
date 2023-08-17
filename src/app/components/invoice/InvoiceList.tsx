@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 export const InvoiceList = () => {
   useInvoices(1)
-  const invoices = useAppSelector((state) => state.newInvoiceReducer.invoices)
+  const invoices = useAppSelector((state) => state.invoiceReducer.invoices)
   console.log('invoices', invoices)
 
   const invoiceItemsJsx = invoices.map((invoice) => {

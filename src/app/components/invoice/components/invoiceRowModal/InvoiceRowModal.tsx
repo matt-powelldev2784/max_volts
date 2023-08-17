@@ -5,7 +5,7 @@ import { T_InvoiceRow } from '@/types'
 import {
   toggleAddProductModal,
   deleteInvoiceRow,
-} from '@/redux/slice/newInvoiceSlice'
+} from '@/redux/slice/invoiceSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import Image from 'next/image'
 import { useInvoiceRowFormik } from './lib/useInvoiceRowFormik'
@@ -13,7 +13,7 @@ import { useInvoiceRowFormik } from './lib/useInvoiceRowFormik'
 export const InvoiceRowModal = (invoiceRow: T_InvoiceRow) => {
   const dispatch = useAppDispatch()
   const displayAddProductModal = useAppSelector(
-    (state) => state.newInvoiceReducer.displayAddProductModal
+    (state) => state.invoiceReducer.displayAddProductModal
   )
   const formik = useInvoiceRowFormik(invoiceRow)
   const { quantity, sellPrice, VAT } = formik.values

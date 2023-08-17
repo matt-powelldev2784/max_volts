@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import {
   toggleAddProductModal,
   updateInvoiceRow,
-} from '@/redux/slice/newInvoiceSlice'
+} from '@/redux/slice/invoiceSlice'
 
 export const useInvoiceRowFormik = (invoiceRow: T_InvoiceRow) => {
   const dispatch = useAppDispatch()
