@@ -15,11 +15,12 @@ export const InvoiceList = () => {
   const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
 
   useInvoices(pageNum)
+
   const invoices = useAppSelector((state) => state.invoiceReducer.invoices)
-  console.log('invoices', invoices)
   const firstInvoice = invoices[0] ? invoices[0].invoiceNum : null
   const lastInvoice =
     invoices.length > 0 ? invoices[invoices.length - 1].invoiceNum : null
+  
   const invoiceItemsJsx = invoices.map((invoice) => {
     return <InvoiceItem key={invoice.id} {...invoice} />
   })
