@@ -23,6 +23,7 @@ type T_InvoiceState = {
   currentInvoiceRow: T_InvoiceRow | null
   invoices: T_Invoice[] | []
   currentEditInvoice: T_Invoice | null
+  invoiceListPageNum: number
 }
 
 const initialState: T_InvoiceState = {
@@ -34,6 +35,7 @@ const initialState: T_InvoiceState = {
   currentInvoiceRow: null,
   invoices: [],
   currentEditInvoice: null,
+  invoiceListPageNum: 1,
 }
 
 export const createInvoice = createAsyncThunk(
@@ -114,6 +116,12 @@ export const invoiceSlice = createSlice({
     },
     toggleAddProductModal: (state) => {
       state.displayAddProductModal = !state.displayAddProductModal
+    },
+    setNextInvoicePageNum: (state) => {
+      state.invoiceListPageNum = state.invoiceListPageNum + 1
+    },
+    setPrevInvoicePageNum: (state) => {
+     if( state.invoiceListPageNum > 1) state.invoiceListPageNum = state.invoiceListPageNum - 1
     },
     deleteInvoiceRow: (state) => {
       state.invoiceRows = state.invoiceRows.filter((invoiceRow) => {
@@ -226,6 +234,7 @@ export const invoiceSlice = createSlice({
       )
       .addCase(getInvoices.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
+        state.invoiceListPageNum = state.invoiceListPageNum - 1
         state.error = error.message || 'Server Error. Please try again later'
       })
       //---------------------------------------------------------------------
@@ -262,5 +271,7 @@ export const {
   toggleAddProductModal,
   deleteInvoiceRow,
   setCurrentInvoiceRow,
+  setNextInvoicePageNum,
+  setPrevInvoicePageNum,
 } = invoiceSlice.actions
 export default invoiceSlice.reducer
