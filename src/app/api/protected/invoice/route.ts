@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma, authOptions, noSessionResponse } from '@/app/lib'
+import {
+  prisma,
+  authOptions,
+  noSessionResponse,
+  badRequestError400,
+} from '@/app/lib'
 import { getServerSession } from 'next-auth'
 
 export const GET = async (req: NextRequest, _res: NextResponse) => {
@@ -22,6 +27,10 @@ export const GET = async (req: NextRequest, _res: NextResponse) => {
     skip,
     take: pageSize,
   })
+
+  if (invoices.length === 0) {
+    return badRequestError400
+  }
 
   return NextResponse.json(invoices, { status: 200 })
 }
