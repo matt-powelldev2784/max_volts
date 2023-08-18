@@ -5,12 +5,14 @@ import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { InvoiceItem } from './components/invoiceItem/InvoiceItem'
 import { InvoiceItemHeader } from './components/invoiceItemHeader/InvoiceItemHeader'
 import { SkipRecords } from './components/SkipRecords/SkipRecords'
+import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 import Image from 'next/image'
 
 export const InvoiceList = () => {
   const pageNum = useAppSelector(
     (state) => state.invoiceReducer.invoiceListPageNum
   )
+  const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
 
   useInvoices(pageNum)
   const invoices = useAppSelector((state) => state.invoiceReducer.invoices)
@@ -34,6 +36,7 @@ export const InvoiceList = () => {
         />
         <p className="text-lg">Invoice List</p>
       </div>
+      {invoiceApiError ? <ErrorMessage /> : null}
       <SkipRecords firstInvoice={firstInvoice} lastInvoice={lastInvoice} />
       <InvoiceItemHeader />
       {invoiceItemsJsx}

@@ -121,7 +121,8 @@ export const invoiceSlice = createSlice({
       state.invoiceListPageNum = state.invoiceListPageNum + 1
     },
     setPrevInvoicePageNum: (state) => {
-     if( state.invoiceListPageNum > 1) state.invoiceListPageNum = state.invoiceListPageNum - 1
+      if (state.invoiceListPageNum > 1)
+        state.invoiceListPageNum = state.invoiceListPageNum - 1
     },
     deleteInvoiceRow: (state) => {
       state.invoiceRows = state.invoiceRows.filter((invoiceRow) => {
@@ -234,8 +235,9 @@ export const invoiceSlice = createSlice({
       )
       .addCase(getInvoices.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
-        state.invoiceListPageNum = state.invoiceListPageNum - 1
         state.error = error.message || 'Server Error. Please try again later'
+        if (!state.error)
+          state.invoiceListPageNum = state.invoiceListPageNum - 1
       })
       //---------------------------------------------------------------------
       .addCase(getInvoice.pending, (state) => {
