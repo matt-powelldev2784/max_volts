@@ -2,7 +2,7 @@
 
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { updateInvoice } from '@/redux/slice/invoiceSlice'
+import { updateInvoice, resetToInitialState } from '@/redux/slice/invoiceSlice'
 import Image from 'next/image'
 import { AddProduct } from './components/addProduct/AddProduct'
 import { ClientText } from './components/ClientText/ClientText'
@@ -16,8 +16,10 @@ interface EditInvoiceProps {
 }
 
 export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
-  useInvoice(invoiceId)
   const dispatch = useAppDispatch()
+  dispatch(resetToInitialState)
+  useInvoice(invoiceId)
+
   const invoice = useAppSelector(
     (state) => state.invoiceReducer.currentEditInvoice
   )

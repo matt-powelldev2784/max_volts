@@ -111,6 +111,9 @@ export const invoiceSlice = createSlice({
   name: 'invoice',
   initialState,
   reducers: {
+    resetToInitialState: () => {
+      return initialState
+    },
     setErrorState: (state, action: PayloadAction<string>) => {
       state.error = action.payload
     },
@@ -275,5 +278,6 @@ export const {
   setCurrentInvoiceRow,
   setNextInvoicePageNum,
   setPrevInvoicePageNum,
+  resetToInitialState,
 } = invoiceSlice.actions
 export default invoiceSlice.reducer
