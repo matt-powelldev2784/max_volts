@@ -24,7 +24,7 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   await prisma.invoiceRow.createMany({
     data: invoiceRows.map((invoiceRow: T_InvoiceRow) => ({
       invoiceId: newInvoice.id,
-      productId: invoiceRow.id,
+      productId: invoiceRow.productId,
       quantity: invoiceRow.quantity,
       name: invoiceRow.name,
       description: invoiceRow.description,

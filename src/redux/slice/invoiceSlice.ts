@@ -156,6 +156,7 @@ export const invoiceSlice = createSlice({
           reduxId,
           quantity,
           totalPrice,
+          productId: action.payload.id,
         },
       ]
 
@@ -260,6 +261,7 @@ export const invoiceSlice = createSlice({
           state.isLoading = false
           state.currentEditInvoice = action.payload
           state.invoiceRows = invoiceRowsWithId
+          state.totalPrice = state.currentEditInvoice.totalAmount
         }
       )
       .addCase(getInvoice.rejected, (state, { error }: AnyAction) => {
