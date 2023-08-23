@@ -9,6 +9,7 @@ import {
   StyleSheet,
   PDFViewer,
   PDFDownloadLink,
+  BlobProvider,
 } from '@react-pdf/renderer'
 
 // Create styles
@@ -48,9 +49,28 @@ const PDFView = () => {
   if (!client) return null
 
   return (
-    <PDFDownloadLink document={<PdfLayout />} fileName="invoice.pdf">
-      Download
-    </PDFDownloadLink>
+    <div>
+      <BlobProvider document={<PdfLayout />}>
+        {({ blob, url, loading, error }) => {
+          // Do whatever you need with blob here
+
+          console.log('blob', blob)
+          console.log('url', url)
+
+          console.log('error', error)
+          console.log('loading', loading)
+
+          if (!loading && url) {
+            return (
+              <a href={url} download>
+                Download
+              </a>
+            )
+          }
+          return <div>There is something going on on the fly</div>
+        }}
+      </BlobProvider>
+    </div>
   )
 }
 export default PDFView
