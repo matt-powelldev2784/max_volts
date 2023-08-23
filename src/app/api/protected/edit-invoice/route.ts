@@ -22,30 +22,36 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   if (!invoiceToUpdate) return badRequestError400
   if (invoiceToUpdate.isActive === false) return badRequestError400
 
-  await prisma.invoiceRow.deleteMany({
-    where: { invoiceId },
-  })
+  try {
+    await prisma.invoiceRow.deleteMany({
+      where: { invoiceId },
+    })
 
-  await prisma.invoiceRow.createMany({
-    data: invoiceRows.map((invoiceRow: T_InvoiceRow) => ({
-      invoiceId: invoiceId,
-      productId: invoiceRow.productId,
-      quantity: invoiceRow.quantity,
-      name: invoiceRow.name,
-      description: invoiceRow.description,
-      VAT: invoiceRow.VAT,
-      buyPrice: invoiceRow.buyPrice,
-      sellPrice: invoiceRow.sellPrice,
-      totalPrice: invoiceRow.totalPrice,
-    })),
-  })
+    await prisma.invoiceRow.createMany({
+      data: invoiceRows.map((invoiceRow: T_InvoiceRow) => ({
+        invoiceId: invoiceId,
+        productId: invoiceRow.productId,
+        quantity: invoiceRow.quantity,
+        name: invoiceRow.name,
+        description: invoiceRow.description,
+        VAT: invoiceRow.VAT,
+        buyPrice: invoiceRow.buyPrice,
+        sellPrice: invoiceRow.sellPrice,
+        totalPrice: invoiceRow.totalPrice,
+      })),
+    })
 
-  const updatedInvoice = await prisma.invoice.update({
-    where: { id: invoiceId },
-    data: {
-      totalAmount: totalPrice,
-    },
-  })
+    const updatedInvoice = await prisma.invoice.update({
+      where: { id: invoiceId },
+      data: {
+        totalAmount: totalPrice,
+      },
+    })
 
-  return NextResponse.json({ updatedInvoice }, { status: 201 })
+    // throw Error
+
+    return NextResponse.json({ updatedInvoice }, { status: 201 })
+  } catch (error) {
+    console.log('invoiceToUpdate', invoiceToUpdate)
+  }
 }
