@@ -8,6 +8,7 @@ import {
   Document,
   StyleSheet,
   PDFViewer,
+  PDFDownloadLink,
 } from '@react-pdf/renderer'
 
 // Create styles
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
 
 // Create Document Component
 export const PdfLayout = () => (
-  <Document>
+  <Document pageLayout="singlePage">
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
         <Text>Section #1</Text>
@@ -47,9 +48,9 @@ const PDFView = () => {
   if (!client) return null
 
   return (
-    <PDFViewer className="w-screen">
-      <PdfLayout />
-    </PDFViewer>
+    <PDFDownloadLink document={<PdfLayout />} fileName="invoice.pdf">
+      Download
+    </PDFDownloadLink>
   )
 }
 export default PDFView
