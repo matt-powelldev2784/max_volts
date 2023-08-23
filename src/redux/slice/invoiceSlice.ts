@@ -156,6 +156,7 @@ export const invoiceSlice = createSlice({
           reduxId,
           quantity,
           totalPrice,
+          productId: action.payload.id,
         },
       ]
 

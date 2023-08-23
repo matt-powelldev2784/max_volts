@@ -1,7 +1,8 @@
 import { T_Client } from './client'
 
 export interface T_InvoiceRow {
-  id: string
+  id?: string
+  productId: string
   name: string
   description: string
   buyPrice: number
@@ -11,7 +12,6 @@ export interface T_InvoiceRow {
   totalPrice: number
   reduxId: string
   invoiceId?: string
-  productId?: string
 }
 
 export interface T_InvoiceDetails {
