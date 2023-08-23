@@ -3,6 +3,7 @@ import { prisma, authOptions, noSessionResponse } from '@/app/lib'
 import { getServerSession } from 'next-auth'
 import { badRequestError400 } from '@/app/lib'
 import { T_InvoiceRow } from '@/types'
+import { serverError500 } from '@/app/lib/apiErrors/serverError'
 
 export const POST = async (req: NextRequest, _res: NextResponse) => {
   const session = await getServerSession(authOptions)
@@ -23,35 +24,33 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   if (invoiceToUpdate.isActive === false) return badRequestError400
 
   try {
-    await prisma.$transaction(async (prisma) => {
-      await prisma.invoiceRow.deleteMany({
-        where: { invoiceId },
-      })
-
-      await prisma.invoiceRow.createMany({
-        data: invoiceRows.map((invoiceRow: T_InvoiceRow) => ({
-          invoiceId: invoiceId,
-          productId: invoiceRow.productId,
-          quantity: invoiceRow.quantity,
-          name: invoiceRow.name,
-          description: invoiceRow.description,
-          VAT: invoiceRow.VAT,
-          buyPrice: invoiceRow.buyPrice,
-          sellPrice: invoiceRow.sellPrice,
-          totalPrice: invoiceRow.totalPrice,
-        })),
-      })
-
-      const updatedInvoice = await prisma.invoice.update({
-        where: { id: invoiceId },
-        data: {
-          totalAmount: totalPrice,
-        },
-      })
-
-      return NextResponse.json({ updatedInvoice }, { status: 201 })
+    await prisma.invoiceRow.deleteMany({
+      where: { invoiceId },
     })
+
+    await prisma.invoiceRow.createMany({
+      data: invoiceRows.map((invoiceRow: T_InvoiceRow) => ({
+        invoiceId: invoiceId,
+        productId: invoiceRow.productId,
+        quantity: invoiceRow.quantity,
+        name: invoiceRow.name,
+        description: invoiceRow.description,
+        VAT: invoiceRow.VAT,
+        buyPrice: invoiceRow.buyPrice,
+        sellPrice: invoiceRow.sellPrice,
+        totalPrice: invoiceRow.totalPrice,
+      })),
+    })
+
+    const updatedInvoice = await prisma.invoice.update({
+      where: { id: invoiceId },
+      data: {
+        totalAmount: totalPrice,
+      },
+    })
+
+    return NextResponse.json({ updatedInvoice }, { status: 201 })
   } catch (error) {
-    console.log('error', error)
+    if (error) return serverError500
   }
 }
