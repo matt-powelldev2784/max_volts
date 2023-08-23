@@ -47,7 +47,7 @@ const PDFView = () => {
   if (!client) return null
 
   return (
-    <PDFViewer>
+    <PDFViewer className="w-screen">
       <PdfLayout />
     </PDFViewer>
   )
