@@ -1,15 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { Button } from '@/ui/button/button'
 import {
   Page,
   Text,
   View,
   Document,
   StyleSheet,
-  PDFViewer,
   PDFDownloadLink,
-  BlobProvider,
 } from '@react-pdf/renderer'
 
 // Create styles
@@ -39,7 +38,7 @@ export const PdfLayout = () => (
   </Document>
 )
 
-const PDFView = () => {
+const PdfDownload = () => {
   const [client, setClient] = useState(false)
 
   useEffect(() => {
@@ -49,28 +48,16 @@ const PDFView = () => {
   if (!client) return null
 
   return (
-    <div>
-      <BlobProvider document={<PdfLayout />}>
-        {({ blob, url, loading, error }) => {
-          // Do whatever you need with blob here
-
-          console.log('blob', blob)
-          console.log('url', url)
-
-          console.log('error', error)
-          console.log('loading', loading)
-
-          if (!loading && url) {
-            return (
-              <a href={url} download>
-                Download
-              </a>
-            )
-          }
-          return <div>There is something going on on the fly</div>
-        }}
-      </BlobProvider>
+    <div className="w-full flexCol">
+      <PDFDownloadLink document={<PdfLayout />} fileName="invoice.pdf">
+        <Button
+          type="button"
+          optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px] m-4"
+          buttonText="Download Invoice"
+          disabled={false}
+        />
+      </PDFDownloadLink>
     </div>
   )
 }
-export default PDFView
+export default PdfDownload
