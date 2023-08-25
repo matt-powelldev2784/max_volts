@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { PDFViewer } from '@react-pdf/renderer'
-import { PdfLayout } from './PdfLayout'
-import PdfDownload from './PdfDownload'
+import { PdfLayout } from './components/PdfLayout'
+import PdfDownload from './components/PdfDownload'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { resetToInitialState } from '@/redux/slice/invoiceSlice'
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
