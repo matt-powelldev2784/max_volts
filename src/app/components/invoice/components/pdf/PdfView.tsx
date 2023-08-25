@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
 // Create Document Component
 export const PdfLayout = () => (
-  <Document>
+  <Document pageLayout="singlePage">
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
         <Text>Section #1</Text>
@@ -47,7 +47,7 @@ const PDFView = () => {
   if (!client) return null
 
   return (
-    <PDFViewer className="w-screen">
+    <PDFViewer className="w-screen h-[600px]">
       <PdfLayout />
     </PDFViewer>
   )
