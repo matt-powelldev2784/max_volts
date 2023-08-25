@@ -40,6 +40,8 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
           <div style={styles.imageContainer}>
             <Image src={`/max_volts_logo.jpg`} />
           </div>
+          <Text>Max Volts Electrical Services</Text>
+          <Text>1 Road Name</Text>
         </View>
 
         <View style={styles.logoSection}>
