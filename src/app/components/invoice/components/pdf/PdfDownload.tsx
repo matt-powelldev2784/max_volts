@@ -2,43 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/ui/button/button'
-import {
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-  PDFDownloadLink,
-} from '@react-pdf/renderer'
+import { PdfLayout } from './PdfLayout'
+import { PDFDownloadLink } from '@react-pdf/renderer'
+import { T_Invoice } from '@/types/invoice'
 
-// Create styles
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: 'row',
-    backgroundColor: '#E4E4E4',
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-})
+interface PdfDownloadProps {
+  currentInvoice: T_Invoice
+}
 
-// Create Document Component
-export const PdfLayout = () => (
-  <Document pageLayout="singlePage">
-    <Page size="A4" style={styles.page}>
-      <View style={styles.section}>
-        <Text>Section #1</Text>
-      </View>
-      <View style={styles.section}>
-        <Text>Section #2</Text>
-      </View>
-    </Page>
-  </Document>
-)
-
-const PdfDownload = () => {
+const PdfDownload = ({ currentInvoice }: PdfDownloadProps) => {
   const [client, setClient] = useState(false)
 
   useEffect(() => {
@@ -49,7 +21,10 @@ const PdfDownload = () => {
 
   return (
     <div className="w-full flexCol">
-      <PDFDownloadLink document={<PdfLayout />} fileName="invoice.pdf">
+      <PDFDownloadLink
+        document={<PdfLayout currentInvoice={currentInvoice} />}
+        fileName="invoice.pdf"
+      >
         <Button
           type="button"
           optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px] m-4"
