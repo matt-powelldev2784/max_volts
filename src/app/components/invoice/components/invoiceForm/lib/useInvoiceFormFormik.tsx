@@ -4,10 +4,12 @@ import * as Yup from 'yup'
 import { setErrorState, createInvoice } from '@/redux/slice/invoiceSlice'
 import { T_InvoiceDetails } from '@/types/invoice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
+import { useRouter } from 'next/navigation'
 
 export const useInvoiceFormFormik = (
   setIsLoading: Dispatch<SetStateAction<boolean>>
 ) => {
+  const router = useRouter()
   const dispatch = useAppDispatch()
   const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
   const invoiceRows = useAppSelector(
@@ -40,11 +42,13 @@ export const useInvoiceFormFormik = (
         invoiceRows,
       }
 
-      await dispatch(createInvoice(invoiceDetails))
+      const newInvoice = await dispatch(createInvoice(invoiceDetails))
+      const invoiceId = newInvoice.payload.activeInvoice.id
 
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 1000)
+      console.log('invoiceId', invoiceId)
+
+      router.push(`/pages/invoice/pdf/${invoiceId}`)
+      setIsLoading(false)
     },
   })
 
