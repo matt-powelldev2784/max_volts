@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/ui/button/button'
-import { PdfLayout } from './PdfLayout'
+import { PdfLayout } from '../pdfLayout/PdfLayout'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { T_Invoice } from '@/types/invoice'
 
