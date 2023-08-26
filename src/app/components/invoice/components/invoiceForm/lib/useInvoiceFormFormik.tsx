@@ -24,31 +24,34 @@ export const useInvoiceFormFormik = (
       clientId: Yup.string().required('Please input a value client'),
     }),
     onSubmit: async (values) => {
-      setIsLoading(true)
+      try {
+        setIsLoading(true)
 
-      if (invoiceRows.length === 0) {
+        if (invoiceRows.length === 0) {
+          setIsLoading(false)
+          return dispatch(setErrorState('Please add at least one invoice row'))
+        }
+
+        if (!totalPrice || typeof totalPrice !== 'number') {
+          setIsLoading(false)
+          return dispatch(
+            setErrorState('Server error, please try again later.')
+          )
+        }
+
+        const invoiceDetails: T_InvoiceDetails = {
+          clientId: values.clientId,
+          totalPrice,
+          invoiceRows,
+        }
+
+        const newInvoice = await dispatch(createInvoice(invoiceDetails))
+        const invoiceId = newInvoice.payload.activeInvoice.id
+
+        router.push(`/pages/invoice/pdf/${invoiceId}`)
+      } catch (error) {
         setIsLoading(false)
-        return dispatch(setErrorState('Please add at least one invoice row'))
       }
-
-      if (!totalPrice || typeof totalPrice !== 'number') {
-        setIsLoading(false)
-        return dispatch(setErrorState('Server error, please try again later.'))
-      }
-
-      const invoiceDetails: T_InvoiceDetails = {
-        clientId: values.clientId,
-        totalPrice,
-        invoiceRows,
-      }
-
-      const newInvoice = await dispatch(createInvoice(invoiceDetails))
-      const invoiceId = newInvoice.payload.activeInvoice.id
-
-      console.log('invoiceId', invoiceId)
-
-      router.push(`/pages/invoice/pdf/${invoiceId}`)
-      setIsLoading(false)
     },
   })
 
