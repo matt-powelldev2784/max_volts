@@ -21,70 +21,92 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const createInvoiceError = useAppSelector(
     (state) => state.invoiceReducer.error
   )
-  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
-  const showProductModal = useAppSelector(
-    (state) => state.invoiceReducer.displayAddProductModal
-  )
-  const currentInvoiceRow = useAppSelector(
-    (state) => state.invoiceReducer.currentInvoiceRow
-  )
-  const clients = useAppSelector((state) => state.clientReducer.clients)
-  const formik = useInvoiceFormFormik(setIsLoading)
-  const clientSelectOptionsJsx = useClientSelectOptions()
+ const apiIsLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
+ const updateSuccess = useAppSelector(
+   (state) => state.invoiceReducer.updateSuccess
+ )
 
-  return (
-    <div className="min-h-screen relative w-full h-fit">
-      <div className="flexRow gap-2 mt-4 mb-4">
-        <Image
-          src="/icons/add_invoice.svg"
-          alt="Person icon"
-          width={30}
-          height={30}
-          className=""
-        />
-        <p className="text-lg">Add Invoice</p>
-      </div>
+ const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
+ const showProductModal = useAppSelector(
+   (state) => state.invoiceReducer.displayAddProductModal
+ )
+ const currentInvoiceRow = useAppSelector(
+   (state) => state.invoiceReducer.currentInvoiceRow
+ )
+ const clients = useAppSelector((state) => state.clientReducer.clients)
+ const formik = useInvoiceFormFormik(setIsLoading)
+ const clientSelectOptionsJsx = useClientSelectOptions()
 
-      <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
-        <form className="w-full">
-          <SelectField
-            formik={formik}
-            htmlFor="clientId"
-            labelText="Select Client"
-            imagePath="/icons/person.svg"
-          >
-            <option value="" disabled>
-              {clients.length > 0 ? 'Select a client' : 'Loading...'}
-            </option>
-            {clientSelectOptionsJsx}
-          </SelectField>
-        </form>
+ return (
+   <div className="min-h-screen relative w-full h-fit">
+     <div className="flexRow gap-2 mt-4 mb-4">
+       <Image
+         src="/icons/add_invoice.svg"
+         alt="Person icon"
+         width={30}
+         height={30}
+         className=""
+       />
+       <p className="text-lg">Add Invoice</p>
+     </div>
 
-        <AddProduct />
-      </div>
+     <div className="w-full flexCol">
+       <div className="flexCol w-full md:w-1/3">
+         {updateSuccess ? <ErrorMessage errorMessage={updateSuccess} /> : null}
+         {apiIsLoading ? (
+           <Image
+             src="/icons/loading.svg"
+             alt="Person icon"
+             width={30}
+             height={30}
+             className="animate-spin"
+           />
+         ) : null}
+       </div>
+     </div>
 
-      {showProductModal && currentInvoiceRow?.reduxId ? (
-        <InvoiceRowModal {...currentInvoiceRow} />
-      ) : null}
+     <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
+       <form className="w-full">
+         <SelectField
+           formik={formik}
+           htmlFor="clientId"
+           labelText="Select Client"
+           imagePath="/icons/person.svg"
+         >
+           <option value="" disabled>
+             {clients.length > 0 ? 'Select a client' : 'Loading...'}
+           </option>
+           {clientSelectOptionsJsx}
+         </SelectField>
+       </form>
 
-      {children}
+       <AddProduct />
+     </div>
 
-      <p className="font-bold text-center mt-8 w-full">
-        Total Price : £{Number(totalPrice).toFixed(2)}
-      </p>
+     {showProductModal && currentInvoiceRow?.reduxId ? (
+       <InvoiceRowModal {...currentInvoiceRow} />
+     ) : null}
 
-      <div className="flexCol p-2">
-        <Button
-          type="submit"
-          optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px]"
-          buttonText="Create Invoice"
-          disabled={isLoading}
-          onClick={formik.handleSubmit}
-        />
-        {createInvoiceError ? (
-          <ErrorMessage errorMessage={createInvoiceError} />
-        ) : null}
-      </div>
-    </div>
-  )
+     {children}
+
+     <p className="font-bold text-center mt-8 w-full">
+       Total Price : £{Number(totalPrice).toFixed(2)}
+     </p>
+
+     <div className="flexCol p-2">
+       <Button
+         type="submit"
+         optionalClasses={`text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px] ${
+           isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
+         } `}
+         buttonText="Create Invoice"
+         disabled={isLoading}
+         onClick={formik.handleSubmit}
+       />
+       {createInvoiceError ? (
+         <ErrorMessage errorMessage={createInvoiceError} />
+       ) : null}
+     </div>
+   </div>
+ )
 }

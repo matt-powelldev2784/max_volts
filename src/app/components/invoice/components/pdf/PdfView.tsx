@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import { PDFViewer } from '@react-pdf/renderer'
 import { PdfLayout } from './components/pdfLayout/PdfLayout'
 import PdfDownload from './components/pdfDownload/PdfDownload'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
-import { resetToInitialState } from '@/redux/slice/invoiceSlice'
+import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import Image from 'next/image'
 import { IsLoading } from '@/app/lib/IsLoading'
@@ -17,8 +16,11 @@ interface PdfViewProps {
 
 const PDFView = ({ invoiceId }: PdfViewProps) => {
   const [client, setClient] = useState(false)
-  const dispatch = useAppDispatch()
-  dispatch(resetToInitialState)
+
+  useEffect(() => {
+    setClient(true)
+  }, [])
+
   useInvoice(invoiceId)
 
   const currentInvoice = useAppSelector(
@@ -31,10 +33,6 @@ const PDFView = ({ invoiceId }: PdfViewProps) => {
       errorMessage={'Error generating PDF. Please try again later'}
     />
   )
-
-  useEffect(() => {
-    setClient(true)
-  }, [])
 
   if (!client || !currentInvoice) {
     return (

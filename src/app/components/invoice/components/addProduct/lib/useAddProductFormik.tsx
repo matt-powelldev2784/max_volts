@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 import {
   addProductToInvoice,
   toggleAddProductModal,
+  resetUpdateSuccessMessage,
 } from '@/redux/slice/invoiceSlice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
@@ -26,6 +27,7 @@ export const useAddProductFormik = () => {
       if (!selectedProduct) return
       dispatch(addProductToInvoice(selectedProduct))
       dispatch(toggleAddProductModal())
+      dispatch(resetUpdateSuccessMessage('Invoice updates not saved!'))
     },
   })
 
