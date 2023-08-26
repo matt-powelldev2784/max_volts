@@ -30,17 +30,17 @@ export const InvoiceRow = ({ invoiceRow, index }: PdfInvoiceRowProps) => {
       <Text style={{ width: 130, height: 'auto', paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
         {name}
       </Text>
-      <Text style={{ width: 210, height: 'auto',  paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}`}}>
+      <Text style={{ width: 200, height: 'auto',  paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}`}}>
         {description}
       </Text>
-      <Text style={{ width: 50, height: 'auto',  paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
-        {priceForEach}
+      <Text style={{ width: 70, height: 'auto',  paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
+        £{priceForEach.toFixed(2)}
       </Text>
       <Text style={{ width: 35, height: 'auto', paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
-        {VAT}
+        {VAT}%
       </Text>
-      <Text style={{ width: 80, height: 'auto', paddingVertical: 4, backgroundColor: `${backgroundColor}` }}>
-        {totalPrice}
+      <Text style={{ width: 70, height: 'auto', paddingVertical: 4, backgroundColor: `${backgroundColor}`, textAlign:'right', paddingRight:4}}>
+        £{totalPrice.toFixed(2)}
       </Text>
     </View>
   )

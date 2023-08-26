@@ -24,16 +24,16 @@ export const InvoiceRowHeader = () => {
       <Text style={{ width: 130, height: 'auto'}}>
         Name
       </Text>
-      <Text style={{ width: 210, height: 'auto'}}>
+      <Text style={{ width: 200, height: 'auto'}}>
         Description
       </Text>
-      <Text style={{ width: 50, height: 'auto'}}>
+      <Text style={{ width: 70, height: 'auto'}}>
         Each
       </Text>
       <Text style={{ width: 35, height: 'auto' }}>
         VAT
       </Text>
-      <Text style={{ width: 80, height: 'auto'}}>
+      <Text style={{ width: 70, height: 'auto', textAlign: 'right', paddingRight:4}}>
         Total Price
       </Text>
     </View>
