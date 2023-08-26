@@ -12,6 +12,7 @@ import {
 import { T_Invoice } from '@/types/invoice'
 import { InvoiceRow } from './components/invoiceRow/InvoiceRow'
 import { InvoiceRowHeader } from './components/invoiceRowsHeader/InvoiceRowHeader'
+import { formatDate } from '@/app/lib/formatDate'
 
 Font.register({
   family: 'BrandonBold',
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 200,
     height: 40,
-    margin: 8,
+    margin: 16,
   },
   textBold: {
     fontFamily: 'BrandonBold',
@@ -77,17 +78,22 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
             <Image src={`/max_volts_logo.jpg`} />
           </View>
 
+            <View style={{ height: 32 }}></View>
+
           <View style={styles.flexCenter}>
             <Text style={styles.textBold}>Invoice</Text>
             <Text>Invoice Number: {currentInvoice.invoiceNum}</Text>
-            <Text>Date: {currentInvoice.invoiceDate}</Text>
+            <Text>Date: {formatDate(currentInvoice.invoiceDate)}</Text>
           </View>
 
-          <View style={{ height: 8 }}></View>
+          <View style={{ height: 32 }}></View>
+
           <View style={styles.flexCenter}>
             <InvoiceRowHeader />
             {InvoiceRowsJsx}
           </View>
+
+          <View style={{ height: 32 }}></View>
 
           <View style={styles.flexCenter}>
             <Text>
@@ -97,6 +103,7 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
             <Text>Tel: 07877 695 996</Text>
             <Text>Email: max-volts-electrical@gmail.com</Text>
           </View>
+
         </View>
       </Page>
       {/* eslint-enable jsx-a11y/alt-text */}
