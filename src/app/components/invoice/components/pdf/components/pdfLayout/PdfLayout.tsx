@@ -55,6 +55,38 @@ const styles = StyleSheet.create({
     marginRight: 8,
     width: '90%',
   },
+  totalSection: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+  },
+  totalContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginLeft: 8,
+    marginRight: 8,
+    width: '90%',
+  },
+  totalText: {
+    flexDirection: 'column',
+    textAlign: 'right',
+    fontFamily: 'BrandonBold',
+    backgroundColor: '#f07e19',
+    color: 'white',
+    padding: 6,
+    paddingHorizontal: 10,
+    paddingLeft: 12,
+    paddingTop: 9,
+  },
+  totalNum: {
+    flexDirection: 'column',
+    textAlign: 'right',
+    fontFamily: 'BrandonBold',
+    padding: 6,
+    paddingTop: 9,
+    paddingLeft: 10,
+    border: '2px solid black',
+  },
 })
 
 interface PdfLayoutProps {
@@ -65,8 +97,10 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
   console.log('currentInvoice', currentInvoice)
   const invoiceRows = currentInvoice.InvoiceRow
 
-  const InvoiceRowsJsx = invoiceRows.map((invoiceRow,index) => {
-    return <InvoiceRow key={invoiceRow.id} invoiceRow={invoiceRow} index={index} />
+  const InvoiceRowsJsx = invoiceRows.map((invoiceRow, index) => {
+    return (
+      <InvoiceRow key={invoiceRow.id} invoiceRow={invoiceRow} index={index} />
+    )
   })
 
   return (
@@ -78,7 +112,7 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
             <Image src={`/max_volts_logo.jpg`} />
           </View>
 
-            <View style={{ height: 32 }}></View>
+          <View style={{ height: 32 }}></View>
 
           <View style={styles.flexCenter}>
             <Text style={styles.textBold}>Invoice</Text>
@@ -93,6 +127,17 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
             {InvoiceRowsJsx}
           </View>
 
+          <View style={{ height: 8 }}></View>
+
+          <View style={styles.totalSection}>
+            <View style={styles.totalContainer}>
+              <Text style={styles.totalText}>Total Amount:</Text>
+              <Text style={styles.totalNum}>
+                £ {currentInvoice.totalAmount.toFixed(2)}
+              </Text>
+            </View>
+          </View>
+
           <View style={{ height: 32 }}></View>
 
           <View style={styles.flexCenter}>
@@ -103,7 +148,6 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
             <Text>Tel: 07877 695 996</Text>
             <Text>Email: max-volts-electrical@gmail.com</Text>
           </View>
-
         </View>
       </Page>
       {/* eslint-enable jsx-a11y/alt-text */}
