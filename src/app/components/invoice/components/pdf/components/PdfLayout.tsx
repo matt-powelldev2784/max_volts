@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 8,
   },
+  textBold: {
+    fontFamily: 'BrandonBold',
+    fontSize: '14px',
+  },
   flexCenter: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -44,12 +48,9 @@ const styles = StyleSheet.create({
   flexRow: {
     flexDirection: 'row',
     justifyItems: 'space-between',
-    width: '100%',
-    border: '2px solid green'
-  },
-  textBold: {
-    fontFamily: 'BrandonBold',
-    fontSize: '14px',
+    marginLeft: 8,
+    marginRight: 8,
+    width: '90%',
   },
 })
 
@@ -63,12 +64,24 @@ const PdfInvoiceRow = ({ invoiceRow }: PdfInvoiceRowProps) => {
 
   return (
     <View style={styles.flexRow}>
-      <Text>{quantity}</Text>
-      <Text>{name}</Text>
-      <Text>{description}</Text>
-      <Text>{priceForEach}</Text>
-      <Text>{VAT}</Text>
-      <Text>{totalPrice}</Text>
+      <Text style={{ width: 50, height: 'auto', border: '2px solid green' }}>
+        {quantity}
+      </Text>
+      <Text style={{ width: 130, height: 'auto', border: '2px solid green' }}>
+        {name}
+      </Text>
+      <Text style={{ width: 210, height: 'auto', border: '2px solid green' }}>
+        {description}
+      </Text>
+      <Text style={{ width: 50, height: 'auto', border: '2px solid green' }}>
+        {priceForEach}
+      </Text>
+      <Text style={{ width: 35, height: 'auto', border: '2px solid green' }}>
+        {VAT}
+      </Text>
+      <Text style={{ width: 80, height: 'auto', border: '2px solid green' }}>
+        {totalPrice}
+      </Text>
     </View>
   )
 }
@@ -100,6 +113,7 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
             <Text>Date: {currentInvoice.invoiceDate}</Text>
           </View>
 
+          <View style={{ height: 8 }}></View>
           <View style={styles.flexCenter}>{InvoiceRowsJsx}</View>
 
           <View style={styles.flexCenter}>
