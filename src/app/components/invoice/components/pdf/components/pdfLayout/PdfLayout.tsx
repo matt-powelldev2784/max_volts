@@ -64,8 +64,8 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
   console.log('currentInvoice', currentInvoice)
   const invoiceRows = currentInvoice.InvoiceRow
 
-  const InvoiceRowsJsx = invoiceRows.map((invoiceRow) => {
-    return <InvoiceRow key={invoiceRow.id} invoiceRow={invoiceRow} />
+  const InvoiceRowsJsx = invoiceRows.map((invoiceRow,index) => {
+    return <InvoiceRow key={invoiceRow.id} invoiceRow={invoiceRow} index={index} />
   })
 
   return (

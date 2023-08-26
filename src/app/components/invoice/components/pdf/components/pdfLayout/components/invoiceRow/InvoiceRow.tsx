@@ -3,6 +3,7 @@ import { T_InvoiceRow } from '@/types/invoice'
 
 interface PdfInvoiceRowProps {
   invoiceRow: T_InvoiceRow
+  index: number
 }
 
 const styles = StyleSheet.create({
@@ -12,30 +13,33 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
     width: '90%',
+    fontSize: '11px',
+    padding: 0,
   },
 })
-export const InvoiceRow = ({ invoiceRow }: PdfInvoiceRowProps) => {
+export const InvoiceRow = ({ invoiceRow, index }: PdfInvoiceRowProps) => {
   const { quantity, name, description, VAT, totalPrice } = invoiceRow
   const priceForEach = invoiceRow.sellPrice
+  const backgroundColor = index % 2 === 0 ? '#ffffff' : '#dedede'
 
   return (
     <View style={styles.flexRow}>
-      <Text style={{ width: 50, height: 'auto', border: '2px solid green' }}>
+      <Text style={{ width: 50, height: 'auto', paddingVertical: 4, paddingLeft: 4, backgroundColor: `${backgroundColor}`}}>
         {quantity}
       </Text>
-      <Text style={{ width: 130, height: 'auto', border: '2px solid green' }}>
+      <Text style={{ width: 130, height: 'auto', paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
         {name}
       </Text>
-      <Text style={{ width: 210, height: 'auto', border: '2px solid green' }}>
+      <Text style={{ width: 210, height: 'auto',  paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}`}}>
         {description}
       </Text>
-      <Text style={{ width: 50, height: 'auto', border: '2px solid green' }}>
+      <Text style={{ width: 50, height: 'auto',  paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
         {priceForEach}
       </Text>
-      <Text style={{ width: 35, height: 'auto', border: '2px solid green' }}>
+      <Text style={{ width: 35, height: 'auto', paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
         {VAT}
       </Text>
-      <Text style={{ width: 80, height: 'auto', border: '2px solid green' }}>
+      <Text style={{ width: 80, height: 'auto', paddingVertical: 4, backgroundColor: `${backgroundColor}` }}>
         {totalPrice}
       </Text>
     </View>

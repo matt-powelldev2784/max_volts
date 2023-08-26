@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
     fontSize: '10px',
     backgroundColor: '#f07e19',
     color: 'white', 
-    padding: 2,
+    paddingVertical: 2,
   },
 })
 export const InvoiceRowHeader = () => {
   return (
     <View style={styles.flexRow}>
-      <Text style={{ width: 50, height: 'auto'}}>
+      <Text style={{ width: 50, height: 'auto', paddingLeft: 4}}>
         Quantity
       </Text>
       <Text style={{ width: 130, height: 'auto'}}>
