@@ -97,7 +97,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
             isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
           } `}
           buttonText="Update Invoice"
-          disabled={false}
+          disabled={isLoading}
           onClick={() => {
             dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
           }}
