@@ -20,6 +20,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   const dispatch = useAppDispatch()
   useInvoice(invoiceId)
 
+  const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
   const isLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
   const updateSuccess = useAppSelector(
     (state) => state.invoiceReducer.updateSuccess
@@ -64,6 +65,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
           {updateSuccess ? <ErrorMessage errorMessage={updateSuccess} /> : null}
+          {invoiceApiError ? <ErrorMessage /> : null}
           {isLoading ? (
             <Image
               src="/icons/loading.svg"

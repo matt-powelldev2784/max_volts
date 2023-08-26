@@ -9,6 +9,7 @@ import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 export const CreateInvoice = () => {
   const clientsApiError = useAppSelector((state) => state.clientReducer.error)
   const productsApiError = useAppSelector((state) => state.productReducer.error)
+  const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
 
   const invoiceRows = useAppSelector(
     (state) => state.invoiceReducer.invoiceRows
@@ -26,7 +27,7 @@ export const CreateInvoice = () => {
 
   return (
     <section className="w-full flexCol">
-      {clientsApiError || productsApiError ? <ErrorMessage /> : null}
+      {clientsApiError || productsApiError || invoiceApiError ? <ErrorMessage /> : null}
       <InvoiceForm>
         <InvoiceRowHeader />
         {invoiceRowsJsx}

@@ -1,7 +1,11 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { setErrorState, createInvoice } from '@/redux/slice/invoiceSlice'
+import {
+  setErrorState,
+  createInvoice,
+  resetToInitialState,
+} from '@/redux/slice/invoiceSlice'
 import { T_InvoiceDetails } from '@/types/invoice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { useRouter } from 'next/navigation'
@@ -47,6 +51,7 @@ export const useInvoiceFormFormik = (
 
         const newInvoice = await dispatch(createInvoice(invoiceDetails))
         const invoiceId = newInvoice.payload.activeInvoice.id
+        dispatch(resetToInitialState())
 
         router.push(`/pages/invoice/pdf/${invoiceId}`)
       } catch (error) {
