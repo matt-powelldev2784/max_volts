@@ -9,7 +9,8 @@ import {
   StyleSheet,
   Font,
 } from '@react-pdf/renderer'
-import { T_Invoice, T_InvoiceRow } from '@/types/invoice'
+import { T_Invoice } from '@/types/invoice'
+import { InvoiceRow } from './components/invoiceRow/InvoiceRow'
 
 Font.register({
   family: 'BrandonBold',
@@ -54,38 +55,6 @@ const styles = StyleSheet.create({
   },
 })
 
-interface PdfInvoiceRowProps {
-  invoiceRow: T_InvoiceRow
-}
-
-const PdfInvoiceRow = ({ invoiceRow }: PdfInvoiceRowProps) => {
-  const { quantity, name, description, VAT, totalPrice } = invoiceRow
-  const priceForEach = invoiceRow.sellPrice
-
-  return (
-    <View style={styles.flexRow}>
-      <Text style={{ width: 50, height: 'auto', border: '2px solid green' }}>
-        {quantity}
-      </Text>
-      <Text style={{ width: 130, height: 'auto', border: '2px solid green' }}>
-        {name}
-      </Text>
-      <Text style={{ width: 210, height: 'auto', border: '2px solid green' }}>
-        {description}
-      </Text>
-      <Text style={{ width: 50, height: 'auto', border: '2px solid green' }}>
-        {priceForEach}
-      </Text>
-      <Text style={{ width: 35, height: 'auto', border: '2px solid green' }}>
-        {VAT}
-      </Text>
-      <Text style={{ width: 80, height: 'auto', border: '2px solid green' }}>
-        {totalPrice}
-      </Text>
-    </View>
-  )
-}
-
 interface PdfLayoutProps {
   currentInvoice: T_Invoice
 }
@@ -95,7 +64,7 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
   const invoiceRows = currentInvoice.InvoiceRow
 
   const InvoiceRowsJsx = invoiceRows.map((invoiceRow) => {
-    return <PdfInvoiceRow key={invoiceRow.id} invoiceRow={invoiceRow} />
+    return <InvoiceRow key={invoiceRow.id} invoiceRow={invoiceRow} />
   })
 
   return (
