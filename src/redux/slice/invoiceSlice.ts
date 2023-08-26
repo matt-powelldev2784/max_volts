@@ -16,6 +16,7 @@ import { T_Invoice } from '@/types/invoice'
 
 type T_InvoiceState = {
   isLoading: boolean
+  updateSuccess: string
   error: string | null
   invoiceRows: T_InvoiceRow[]
   totalPrice: number
@@ -28,6 +29,7 @@ type T_InvoiceState = {
 
 const initialState: T_InvoiceState = {
   isLoading: false,
+  updateSuccess: '',
   error: null,
   invoiceRows: [],
   totalPrice: 0,
@@ -119,6 +121,9 @@ export const invoiceSlice = createSlice({
     },
     toggleAddProductModal: (state) => {
       state.displayAddProductModal = !state.displayAddProductModal
+    },
+    resetUpdateSuccessMessage: (state, action: PayloadAction<string>) => {
+      state.updateSuccess = action.payload
     },
     setNextInvoicePageNum: (state) => {
       state.invoiceListPageNum = state.invoiceListPageNum + 1
@@ -215,6 +220,7 @@ export const invoiceSlice = createSlice({
       .addCase(updateInvoice.pending, (state) => {
         state.isLoading = true
         state.error = null
+        state.updateSuccess = ''
       })
       .addCase(updateInvoice.fulfilled, (state) => {
         state.isLoading = false
@@ -274,6 +280,7 @@ export const {
   updateInvoiceRow,
   setErrorState,
   toggleAddProductModal,
+  resetUpdateSuccessMessage,
   deleteInvoiceRow,
   setCurrentInvoiceRow,
   setNextInvoicePageNum,

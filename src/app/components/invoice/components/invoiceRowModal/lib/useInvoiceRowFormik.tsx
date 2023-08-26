@@ -5,6 +5,7 @@ import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import {
   toggleAddProductModal,
   updateInvoiceRow,
+  resetUpdateSuccessMessage,
 } from '@/redux/slice/invoiceSlice'
 
 export const useInvoiceRowFormik = (invoiceRow: T_InvoiceRow) => {
@@ -40,6 +41,7 @@ export const useInvoiceRowFormik = (invoiceRow: T_InvoiceRow) => {
     onSubmit: async (values) => {
       dispatch(updateInvoiceRow({ ...invoiceRow, ...values }))
       dispatch(toggleAddProductModal())
+      dispatch(resetUpdateSuccessMessage('Invoice updates not saved!'))
     },
   })
 
