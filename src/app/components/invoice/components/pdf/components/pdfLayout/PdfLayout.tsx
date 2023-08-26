@@ -11,6 +11,7 @@ import {
 } from '@react-pdf/renderer'
 import { T_Invoice } from '@/types/invoice'
 import { InvoiceRow } from './components/invoiceRow/InvoiceRow'
+import { InvoiceRowHeader } from './components/invoiceRowsHeader/InvoiceRowHeader'
 
 Font.register({
   family: 'BrandonBold',
@@ -83,7 +84,10 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
           </View>
 
           <View style={{ height: 8 }}></View>
-          <View style={styles.flexCenter}>{InvoiceRowsJsx}</View>
+          <View style={styles.flexCenter}>
+            <InvoiceRowHeader />
+            {InvoiceRowsJsx}
+          </View>
 
           <View style={styles.flexCenter}>
             <Text>
