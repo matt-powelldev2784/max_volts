@@ -27,7 +27,7 @@ const PdfDownload = ({ currentInvoice }: PdfDownloadProps) => {
       >
         <Button
           type="button"
-          optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px] m-4"
+          optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] max-w-[320px] my-4"
           buttonText="Download Invoice"
           disabled={false}
         />

@@ -7,6 +7,7 @@ import PdfDownload from './components/pdfDownload/PdfDownload'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { resetToInitialState } from '@/redux/slice/invoiceSlice'
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
+import Image from 'next/image'
 
 interface PdfViewProps {
   invoiceId: string
@@ -31,6 +32,16 @@ const PDFView = ({ invoiceId }: PdfViewProps) => {
 
   return (
     <>
+      <div className="flexRow gap-2 mt-4 mb-4">
+        <Image
+          src="/icons/invoice.svg"
+          alt="Person icon"
+          width={30}
+          height={30}
+          className=""
+        />
+        <p className="text-lg">PDF Invoice Generated</p>
+      </div>
       <PdfDownload currentInvoice={currentInvoice} />
       <PDFViewer className="w-screen h-[600px]">
         <PdfLayout currentInvoice={currentInvoice} />
