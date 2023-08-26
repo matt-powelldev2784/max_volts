@@ -94,7 +94,6 @@ interface PdfLayoutProps {
 }
 
 export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
-  console.log('currentInvoice', currentInvoice)
   const invoiceRows = currentInvoice.InvoiceRow
 
   const InvoiceRowsJsx = invoiceRows.map((invoiceRow, index) => {

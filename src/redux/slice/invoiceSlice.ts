@@ -141,8 +141,6 @@ export const invoiceSlice = createSlice({
       state.currentInvoiceRow = action.payload
     },
     addProductToInvoice: (state, action: PayloadAction<T_Product>) => {
-      console.log('action.payload', action.payload)
-
       const reduxId = uuidv4()
       const quantity = 1
       const totalPrice =
