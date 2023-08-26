@@ -3,9 +3,16 @@
 import { Button } from '@/ui/button/button'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
+import { resetToInitialState } from '@/redux/slice/invoiceSlice'
 
 export const InvoiceMenu = () => {
   const router = useRouter()
+  const dispatch = useAppDispatch()
+
+  const resetInvoiceState = () => {
+    dispatch(resetToInitialState())
+  }
 
   return (
     <nav className="flexCol gap-4 m-4">
@@ -26,6 +33,7 @@ export const InvoiceMenu = () => {
         buttonText="Create Invoice"
         disabled={false}
         onClick={() => {
+          resetInvoiceState()
           router.push('/pages/invoice/create-invoice')
         }}
       />
@@ -35,6 +43,7 @@ export const InvoiceMenu = () => {
         buttonText="Invoice List"
         disabled={false}
         onClick={() => {
+          resetInvoiceState()
           router.push('/pages/invoice/invoice-list')
         }}
       />

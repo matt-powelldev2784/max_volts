@@ -17,6 +17,7 @@ interface InvoiceFormProps {
 
 export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const createInvoiceError = useAppSelector(
     (state) => state.invoiceReducer.error
   )

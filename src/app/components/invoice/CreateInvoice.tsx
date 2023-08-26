@@ -1,17 +1,14 @@
 'use client'
 
 import { InvoiceForm } from './components/invoiceForm/InvoiceForm'
-import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { resetToInitialState } from '@/redux/slice/invoiceSlice'
+import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
 import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 
 export const CreateInvoice = () => {
-  const dispatch = useAppDispatch()
   const clientsApiError = useAppSelector((state) => state.clientReducer.error)
   const productsApiError = useAppSelector((state) => state.productReducer.error)
-  dispatch(resetToInitialState)
 
   const invoiceRows = useAppSelector(
     (state) => state.invoiceReducer.invoiceRows
