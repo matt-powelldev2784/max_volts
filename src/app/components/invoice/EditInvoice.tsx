@@ -11,6 +11,7 @@ import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader
 import { InvoiceRowModal } from './components/invoiceRowModal/InvoiceRowModal'
 import { Button } from '@/ui/button/button'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
+import { InvoiceIsLoading } from './components/invoiceIsLoading/InvoiceIsLoading'
 
 interface EditInvoiceProps {
   invoiceId: string
@@ -62,19 +63,12 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         <p className="text-lg">Edit Invoice {invoiceNum}</p>
       </div>
 
+      {isLoading ? <InvoiceIsLoading /> : null}
+
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
           {updateSuccess ? <ErrorMessage errorMessage={updateSuccess} /> : null}
           {invoiceApiError ? <ErrorMessage /> : null}
-          {isLoading ? (
-            <Image
-              src="/icons/loading.svg"
-              alt="Person icon"
-              width={30}
-              height={30}
-              className="animate-spin"
-            />
-          ) : null}
         </div>
       </div>
 
