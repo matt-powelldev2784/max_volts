@@ -2,8 +2,8 @@
 
 import { InputField } from '@/app/lib/formElements/InputField'
 import { Button } from '@/ui/button/button'
-import Image from 'next/image'
 import { useAddClientFormik } from './lib/useAddClientFormik'
+import { PageTitle } from '@/app/lib/PageTitle'
 
 export const AddClient = () => {
   const formik = useAddClientFormik()
@@ -11,16 +11,8 @@ export const AddClient = () => {
   return (
     <section className="min-h-screen w-screen">
       <div className="flexCol">
-        <div className="flexRow gap-2 mt-4">
-          <Image
-            src="/icons/add_client.svg"
-            alt="Person icon"
-            width={30}
-            height={30}
-            className=""
-          />
-          <p className="text-lg">Add Client</p>
-        </div>
+        <PageTitle text={'Add Client'} imgPath={'/icons/add_client.svg'} />
+
         <form
           className="w-screen md:w-[400px] flexCol min-w-[310px] p-2"
           onSubmit={formik.handleSubmit}

@@ -1,4 +1,4 @@
-export { InvoiceMenu } from './invoice/InvoiceMenu'
+export { InvoiceMenu } from './Menus/InvoiceMenu'
 export { EditInvoice } from './invoice/EditInvoice'
 export { InvoiceList } from './invoice/InvoiceList'
 export { AddProduct } from './addProduct/AddProduct'

@@ -10,7 +10,7 @@ import { useInvoiceFormFormik } from './lib/useInvoiceFormFormik'
 import { useClientSelectOptions } from './lib/useClientSelectOptions'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 import { InvoiceIsLoading } from '../invoiceIsLoading/InvoiceIsLoading'
-import Image from 'next/image'
+import { PageTitle } from '@/app/lib/PageTitle'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -40,16 +40,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
 
   return (
     <div className="min-h-screen relative w-full h-fit">
-      <div className="flexRow gap-2 mt-4 mb-4">
-        <Image
-          src="/icons/add_invoice.svg"
-          alt="Person icon"
-          width={30}
-          height={30}
-          className=""
-        />
-        <p className="text-lg">Add Invoice</p>
-      </div>
+      <PageTitle text={'Add Invoice'} imgPath={'/icons/invoice.svg'} />
 
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
@@ -97,6 +88,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
           disabled={isLoading}
           onClick={formik.handleSubmit}
         />
+
         {createInvoiceError ? (
           <ErrorMessage errorMessage={createInvoiceError} />
         ) : null}
