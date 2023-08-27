@@ -23,23 +23,72 @@ export const InvoiceRow = ({ invoiceRow, index }: PdfInvoiceRowProps) => {
   const backgroundColor = index % 2 === 0 ? '#ffffff' : '#dedede'
 
   return (
-    <View style={styles.flexRow}>
-      <Text style={{ width: 50, height: 'auto', paddingVertical: 4, paddingLeft: 4, backgroundColor: `${backgroundColor}`}}>
+    <View style={styles.flexRow} wrap={false}>
+      <Text
+        style={{
+          width: 50,
+          height: 'auto',
+          paddingVertical: 4,
+          paddingLeft: 4,
+          backgroundColor: `${backgroundColor}`,
+        }}
+      >
         {quantity}
       </Text>
-      <Text style={{ width: 130, height: 'auto', paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
+      <Text
+        style={{
+          width: 130,
+          height: 'auto',
+          paddingVertical: 4,
+          paddingRight: 4,
+          backgroundColor: `${backgroundColor}`,
+        }}
+      >
         {name}
       </Text>
-      <Text style={{ width: 200, height: 'auto',  paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}`}}>
+      <Text
+        style={{
+          width: 200,
+          height: 'auto',
+          paddingVertical: 4,
+          paddingRight: 4,
+          backgroundColor: `${backgroundColor}`,
+        }}
+      >
         {description}
       </Text>
-      <Text style={{ width: 70, height: 'auto',  paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
+      <Text
+        style={{
+          width: 70,
+          height: 'auto',
+          paddingVertical: 4,
+          paddingRight: 4,
+          backgroundColor: `${backgroundColor}`,
+        }}
+      >
         £{priceForEach.toFixed(2)}
       </Text>
-      <Text style={{ width: 35, height: 'auto', paddingVertical: 4, paddingRight: 4, backgroundColor: `${backgroundColor}` }}>
+      <Text
+        style={{
+          width: 35,
+          height: 'auto',
+          paddingVertical: 4,
+          paddingRight: 4,
+          backgroundColor: `${backgroundColor}`,
+        }}
+      >
         {VAT}%
       </Text>
-      <Text style={{ width: 70, height: 'auto', paddingVertical: 4, backgroundColor: `${backgroundColor}`, textAlign:'right', paddingRight:4}}>
+      <Text
+        style={{
+          width: 70,
+          height: 'auto',
+          paddingVertical: 4,
+          backgroundColor: `${backgroundColor}`,
+          textAlign: 'right',
+          paddingRight: 4,
+        }}
+      >
         £{totalPrice.toFixed(2)}
       </Text>
     </View>
