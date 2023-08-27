@@ -32,13 +32,13 @@ export const InvoiceItem = ({
       <p className="h-full w-full max-w-[80px] text-sm flex">
         {header ? 'Date' : `${formatDate(invoiceDate)}`}
       </p>
-      <p className="h-full w-full max-w-[100px] text-sm md:flex hidden">
+      <p className="h-full w-full max-w-[100px] text-sm lg:flex hidden">
         {header ? 'Invoice No' : `${Number(invoiceNum)}`}
       </p>
       <p className="h-full w-full text-sm flex">
         {header ? 'Client' : `${clientString}`}
       </p>
-      <p className="h-full w-full max-w-[50px] text-sm md:flex hidden">
+      <p className="h-full w-full max-w-[50px] text-sm lg:flex hidden">
         {header ? 'Paid' : `${paid}`}
       </p>
       <p className="h-full min-w-[70px] text-sm flex">
@@ -50,12 +50,20 @@ export const InvoiceItem = ({
           header ? 'opacity-0 h-0' : null
         }`}
       >
-        <Button
-          type="button"
-          optionalClasses="text-white text-sm bg-mvOrange h-full w-fit max-h-[40px]"
-          buttonText="Edit"
-          onClick={() => router.push(`/pages/invoice/edit-invoice/${id}`)}
-        />
+        <div className="flexCol gap-2 md:flexRow">
+          <Button
+            type="button"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[40px]"
+            buttonText="Edit"
+            onClick={() => router.push(`/pages/invoice/edit-invoice/${id}`)}
+          />
+          <Button
+            type="button"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[40px]"
+            buttonText="View"
+            onClick={() => router.push(`/pages/invoice/pdf/${id}`)}
+          />
+        </div>
       </div>
     </section>
   )
