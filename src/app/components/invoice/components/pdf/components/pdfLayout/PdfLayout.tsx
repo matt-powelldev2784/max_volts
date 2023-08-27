@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 200,
     height: 40,
-    marginTop: 16,
     marginRight: 16,
     marginBottom: 8,
   },
@@ -119,6 +118,8 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
     <Document pageLayout="singlePage">
       {/* eslint-disable jsx-a11y/alt-text */}
       <Page size="A4" style={styles.page}>
+        <View style={{ height: 16 }} fixed></View>
+
         <View style={styles.logoSection}>
           <View style={styles.imageContainer}>
             <Image src={`/max_volts_logo.jpg`} />
