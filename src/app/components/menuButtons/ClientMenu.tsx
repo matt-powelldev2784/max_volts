@@ -8,11 +8,11 @@ export const ClientMenu = () => {
   const router = useRouter()
 
   return (
-    <div className="flexCol gap-4 mx-8 mb-2">
+    <div className="flexCol gap-4 mb-2">
       <PageTitle
         text={'Client Menu'}
         imgPath={'/icons/person.svg'}
-        divClasses="mb-0"
+        divClasses="sm:my-0"
       />
 
       <Button
