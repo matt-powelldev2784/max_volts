@@ -37,7 +37,9 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 200,
     height: 40,
-    margin: 16,
+    marginTop: 16,
+    marginRight: 16,
+    marginBottom: 8,
   },
   textBold: {
     fontFamily: 'BrandonBold',
@@ -48,12 +50,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
+  flexCol: {
+    flexDirection: 'column',
+    width: '100%',
+  },
   flexRow: {
     flexDirection: 'row',
     justifyItems: 'space-between',
     marginLeft: 8,
     marginRight: 8,
     width: '90%',
+  },
+  invoiceDetails: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginLeft: 8,
+    marginRight: 8,
+    width: '80%',
   },
   totalSection: {
     flexDirection: 'column',
@@ -111,12 +124,27 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
             <Image src={`/max_volts_logo.jpg`} />
           </View>
 
-          <View style={{ height: 32 }}></View>
+          <View style={{ height: 8 }}></View>
 
           <View style={styles.flexCenter}>
             <Text style={styles.textBold}>Invoice</Text>
-            <Text>Invoice Number: {currentInvoice.invoiceNum}</Text>
-            <Text>Date: {formatDate(currentInvoice.invoiceDate)}</Text>
+            <View style={{ height: 8 }}></View>
+
+            <View style={styles.invoiceDetails}>
+              <View>
+                <Text>{'Bill To:'}</Text>
+                <Text>{currentInvoice.Client.name}</Text>
+                <Text>{currentInvoice.Client.companyName}</Text>
+                <Text>{currentInvoice.Client.add1}</Text>
+                <Text>{currentInvoice.Client.add2}</Text>
+                <Text>{currentInvoice.Client.postcode}</Text>
+              </View>
+
+              <View style={styles.logoSection}>
+                <Text>Invoice Number: {currentInvoice.invoiceNum}</Text>
+                <Text>Date: {formatDate(currentInvoice.invoiceDate)}</Text>
+              </View>
+            </View>
           </View>
 
           <View style={{ height: 32 }}></View>
