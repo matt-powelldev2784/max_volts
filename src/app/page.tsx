@@ -1,5 +1,5 @@
 import { NavBar } from '@/app/components'
-import { ClientMenu, ProductMenu, InvoiceMenu } from '@/app/components/menus'
+import { ClientMenu, ProductMenu, InvoiceMenu } from '@/app/components'
 
 export default async function Home() {
   return (
