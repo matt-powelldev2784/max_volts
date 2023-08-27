@@ -88,6 +88,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
           disabled={isLoading}
           onClick={formik.handleSubmit}
         />
+
         {createInvoiceError ? (
           <ErrorMessage errorMessage={createInvoiceError} />
         ) : null}
