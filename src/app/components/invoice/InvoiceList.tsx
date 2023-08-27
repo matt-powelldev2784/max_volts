@@ -6,7 +6,7 @@ import { InvoiceItem } from './components/invoiceItem/InvoiceItem'
 import { InvoiceListHeader } from './components/invoiceListHeader/InvoiceListHeader'
 import { SkipRecords } from './components/SkipRecords/SkipRecords'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
-import Image from 'next/image'
+import { PageTitle } from '@/app/lib/PageTitle'
 
 export const InvoiceList = () => {
   const pageNum = useAppSelector(
@@ -27,16 +27,7 @@ export const InvoiceList = () => {
 
   return (
     <section className="w-full flexCol">
-      <div className="flexRow gap-2 mt-4 mb-4">
-        <Image
-          src="/icons/invoice.svg"
-          alt="Person icon"
-          width={30}
-          height={30}
-          className=""
-        />
-        <p className="text-lg">Invoice List</p>
-      </div>
+      <PageTitle text={'Invoice List'} imgPath={'/icons/invoice.svg'} />
       {invoiceApiError ? <ErrorMessage /> : null}
       <SkipRecords firstInvoice={firstInvoice} lastInvoice={lastInvoice} />
       <InvoiceListHeader />

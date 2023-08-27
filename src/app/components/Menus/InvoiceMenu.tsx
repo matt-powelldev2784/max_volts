@@ -2,9 +2,9 @@
 
 import { Button } from '@/ui/button/button'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { resetToInitialState } from '@/redux/slice/invoiceSlice'
+import { PageTitle } from '@/app/lib/PageTitle'
 
 export const InvoiceMenu = () => {
   const router = useRouter()
@@ -16,16 +16,7 @@ export const InvoiceMenu = () => {
 
   return (
     <nav className="flexCol gap-4 m-4">
-      <div className="flexRow gap-2 mt-4 mb-5">
-        <Image
-          src="/icons/invoice.svg"
-          alt="Person icon"
-          width={30}
-          height={30}
-          className=""
-        />
-        <p className="text-lg">Invoice Menu</p>
-      </div>
+      <PageTitle text={'Invoice Menu'} imgPath={'/icons/invoice.svg'} />
 
       <Button
         type="button"

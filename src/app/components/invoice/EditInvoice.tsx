@@ -3,7 +3,6 @@
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { updateInvoice } from '@/redux/slice/invoiceSlice'
-import Image from 'next/image'
 import { AddProduct } from './components/addProduct/AddProduct'
 import { ClientText } from './components/ClientText/ClientText'
 import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
@@ -12,6 +11,7 @@ import { InvoiceRowModal } from './components/invoiceRowModal/InvoiceRowModal'
 import { Button } from '@/ui/button/button'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 import { InvoiceIsLoading } from './components/invoiceIsLoading/InvoiceIsLoading'
+import { PageTitle } from '@/app/lib/PageTitle'
 
 interface EditInvoiceProps {
   invoiceId: string
@@ -52,16 +52,10 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
 
   return (
     <section className="w-screen">
-      <div className="flexRow gap-2 mt-4 mb-5">
-        <Image
-          src="/icons/invoice.svg"
-          alt="Person icon"
-          width={30}
-          height={30}
-          className=""
-        />
-        <p className="text-lg">Edit Invoice {invoiceNum}</p>
-      </div>
+      <PageTitle
+        text={`Edit Invoice ${invoiceNum ? invoiceNum : ''}`}
+        imgPath={'/icons/invoice.svg'}
+      />
 
       {isLoading ? <InvoiceIsLoading /> : null}
 
