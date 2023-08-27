@@ -3,7 +3,7 @@
 import { useInvoices } from '@/app/lib/hooks/useInvoices'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { InvoiceItem } from './components/invoiceItem/InvoiceItem'
-import { InvoiceItemHeader } from './components/invoiceItemHeader/InvoiceItemHeader'
+import { InvoiceListHeader } from './components/invoiceListHeader/InvoiceListHeader'
 import { SkipRecords } from './components/SkipRecords/SkipRecords'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 import Image from 'next/image'
@@ -20,7 +20,7 @@ export const InvoiceList = () => {
   const firstInvoice = invoices[0] ? invoices[0].invoiceNum : null
   const lastInvoice =
     invoices.length > 0 ? invoices[invoices.length - 1].invoiceNum : null
-  
+
   const invoiceItemsJsx = invoices.map((invoice) => {
     return <InvoiceItem key={invoice.id} {...invoice} />
   })
@@ -39,7 +39,7 @@ export const InvoiceList = () => {
       </div>
       {invoiceApiError ? <ErrorMessage /> : null}
       <SkipRecords firstInvoice={firstInvoice} lastInvoice={lastInvoice} />
-      <InvoiceItemHeader />
+      <InvoiceListHeader />
       {invoiceItemsJsx}
     </section>
   )

@@ -1,6 +1,6 @@
 import { InvoiceItem } from '../invoiceItem/InvoiceItem'
 
-export const InvoiceItemHeader = () => {
+export const InvoiceListHeader = () => {
   const invoiceRowsHeader = {
     invoiceNum: 'Invoice Number',
     Client: { name: 'Client' },
