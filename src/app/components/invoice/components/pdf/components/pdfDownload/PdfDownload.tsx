@@ -23,7 +23,7 @@ const PdfDownload = ({ currentInvoice }: PdfDownloadProps) => {
     <div className="w-full flexCol">
       <PDFDownloadLink
         document={<PdfLayout currentInvoice={currentInvoice} />}
-        fileName="invoice.pdf"
+        fileName={`max-volts-invoice-${currentInvoice.invoiceNum}.pdf`}
       >
         <Button
           type="button"
