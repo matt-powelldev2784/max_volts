@@ -5,6 +5,7 @@ interface PageTitleProps {
   text: string
   imgClasses?: string
   pClasses?: string
+  divClasses?: string
 }
 
 export const PageTitle = ({
@@ -12,9 +13,10 @@ export const PageTitle = ({
   text,
   imgClasses,
   pClasses,
+  divClasses,
 }: PageTitleProps) => {
   return (
-    <div className="flexRow gap-2 mt-4 mb-5">
+    <div className={`flexRow gap-2 mt-4 mb-5 ${divClasses}`}>
       <Image
         src={imgPath}
         alt=""
