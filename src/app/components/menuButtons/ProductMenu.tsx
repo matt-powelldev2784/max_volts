@@ -17,7 +17,7 @@ export const ProductMenu = () => {
 
       <Button
         type="button"
-        optionalClasses="text-white text-sm bg-mvOrange w-full h-[42.5px] w-[300px]"
+        optionalClasses="text-white text-sm bg-mvOrange h-[42.5px] w-[300px]"
         buttonText="Add Product"
         disabled={false}
         onClick={() => {
