@@ -87,7 +87,7 @@ export const productSlice = createSlice({
       })
       .addCase(getProducts.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
-        state.error = error.message || ''
+        error.message || 'Server Error. Please try again later'
       })
       //---------------------------------------------------------------------
       .addCase(addProduct.pending, (state) => {
@@ -100,21 +100,19 @@ export const productSlice = createSlice({
       })
       .addCase(addProduct.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
-        state.error = error.message || ''
+        error.message || 'Server Error. Please try again later'
       })
       //---------------------------------------------------------------------
-      .addCase(getProduct.pending, (state) => {
-        state.isLoading = true
-        state.error = ''
-        state.products = []
+      .addCase(getProduct.pending, () => {
+        return initialState
       })
       .addCase(getProduct.fulfilled, (state, { payload }) => {
         state.isLoading = false
-        state.products = payload
+        state.currentProduct = payload
       })
       .addCase(getProduct.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
-        state.error = error.message || ''
+        error.message || 'Server Error. Please try again later'
       })
   },
 })
