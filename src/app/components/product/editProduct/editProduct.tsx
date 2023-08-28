@@ -70,7 +70,7 @@ export const EditProduct = ({ product }: EditProductProps) => {
           <Button
             type="submit"
             optionalClasses="w-full text-white text-sm bg-mvOrange h-[42.5px] m-4"
-            buttonText="Add Product"
+            buttonText="Edit Product"
             disabled={formik.isSubmitting}
           />
         </form>
