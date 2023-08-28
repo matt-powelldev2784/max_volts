@@ -9,7 +9,7 @@ export { InvoiceList } from './invoice/InvoiceList'
 
 //product
 export { AddProduct } from './product/addProduct/AddProduct'
-export { EditProduct } from './product/editProduct/EditProduct'
+export { EditProduct } from './product/editProducts/EditProduct'
 
 //client
 export { AddClient } from './clients/AddClient'
