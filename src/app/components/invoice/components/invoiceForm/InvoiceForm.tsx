@@ -39,8 +39,12 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const clientSelectOptionsJsx = useClientSelectOptions()
 
   return (
-    <div className="min-h-screen relative w-full h-fit">
-      <PageTitle text={'Add Invoice'} imgPath={'/icons/invoice.svg'} />
+    <div className="min-h-screen relative w-full h-fit mt-4">
+      <PageTitle
+        text={'Add Invoice'}
+        imgPath={'/icons/invoice.svg'}
+        divClasses="mb-2"
+      />
 
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">

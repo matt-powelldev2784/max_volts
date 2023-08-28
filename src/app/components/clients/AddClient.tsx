@@ -10,7 +10,7 @@ export const AddClient = () => {
 
   return (
     <section className="min-h-screen w-screen">
-      <div className="flexCol">
+      <div className="flexCol mt-4">
         <PageTitle text={'Add Client'} imgPath={'/icons/add_client.svg'} />
 
         <form
