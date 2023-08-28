@@ -12,6 +12,7 @@ import { Button } from '@/ui/button/button'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 import { InvoiceIsLoading } from './components/invoiceIsLoading/InvoiceIsLoading'
 import { PageTitle } from '@/app/lib/PageTitle'
+import { useRouter } from 'next/navigation'
 
 interface EditInvoiceProps {
   invoiceId: string
@@ -19,6 +20,7 @@ interface EditInvoiceProps {
 
 export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   const dispatch = useAppDispatch()
+  const router = useRouter()
   useInvoice(invoiceId)
 
   const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
@@ -91,6 +93,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           disabled={isLoading}
           onClick={() => {
             dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
+            router.push(`/pages/invoice/pdf/${invoiceId}`)
           }}
         />
       </div>
