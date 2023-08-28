@@ -6,6 +6,7 @@ import { useEditProductFormik } from './lib/useEditProductFormik'
 import { PageTitle } from '@/app/lib/PageTitle'
 
 export const EditProduct = () => {
+
   const formik = useEditProductFormik()
 
   return (
