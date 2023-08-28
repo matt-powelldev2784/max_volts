@@ -24,6 +24,16 @@ export const ProductMenu = () => {
           router.push('/pages/product/add-product')
         }}
       />
+
+      <Button
+        type="button"
+        optionalClasses="text-white text-sm bg-mvOrange h-[42.5px] w-[300px]"
+        buttonText="Product List"
+        disabled={false}
+        onClick={() => {
+          router.push('/pages/product/product-list')
+        }}
+      />
     </div>
   )
 }

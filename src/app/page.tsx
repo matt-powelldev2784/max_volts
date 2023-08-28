@@ -5,7 +5,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
-      <nav className="flex flex-row w-full justify-center items-start flex-wrap gap-8 md:mt-4">
+      <nav className="flex flex-row w-full justify-center items-start flex-wrap gap-2 md:mt-4">
         <InvoiceMenu />
         <ClientMenu />
         <ProductMenu />
