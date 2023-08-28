@@ -21,7 +21,7 @@ export const ProductMenu = () => {
         buttonText="Add Product"
         disabled={false}
         onClick={() => {
-          router.push('/pages/add-product')
+          router.push('/pages/product/add-product')
         }}
       />
     </div>
