@@ -12,7 +12,6 @@ interface EditProductProps {
 
 export const EditProduct = ({ product }: EditProductProps) => {
   const formik = useEditProductFormik(product)
-  console.log('product', product)
 
   return (
     <section className="min-h-screen w-screen">

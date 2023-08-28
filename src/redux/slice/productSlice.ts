@@ -72,7 +72,7 @@ export const updateProduct = createAsyncThunk(
     try {
       const updatedProduct = await apiCall({
         httpMethod: 'PUT',
-        route: `/api/protected/product/single}`,
+        route: `/api/protected/product/single`,
         body: product,
       })
 

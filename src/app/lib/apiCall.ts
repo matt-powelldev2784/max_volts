@@ -15,7 +15,7 @@ export const apiCall = async (apiOptions: ApiOptions) => {
         response = await axios.get(route)
         break
       case 'PUT':
-        response = await axios.put(route)
+        response = await axios.put(route, body)
         break
       case 'DELETE':
         response = await axios.delete(route)
