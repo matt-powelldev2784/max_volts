@@ -23,9 +23,6 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
     (state) => state.invoiceReducer.error
   )
   const apiIsLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
-  const updateSuccess = useAppSelector(
-    (state) => state.invoiceReducer.updateSuccess
-  )
 
   const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
   const showProductModal = useAppSelector(
@@ -46,11 +43,11 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
         divClasses="mb-2"
       />
 
-      <div className="w-full flexCol">
+      {/* <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
           {updateSuccess ? <ErrorMessage errorMessage={updateSuccess} /> : null}
         </div>
-      </div>
+      </div> */}
 
       {apiIsLoading ? <InvoiceIsLoading /> : null}
 
