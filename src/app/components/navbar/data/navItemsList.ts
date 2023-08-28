@@ -15,7 +15,7 @@ export const navItemList = [
   },
   {
     key: 3,
-    href: '/pages/add-product',
+    href: '/pages/product/add-product',
     image: 'add_product.svg',
     alt: 'open door icon',
     text: 'Product',
