@@ -6,6 +6,7 @@ import {
   badRequestError400,
 } from '@/app/lib'
 import { getServerSession } from 'next-auth'
+import { T_Product } from '@/types'
 
 export const GET = async (req: NextRequest, _res: NextResponse) => {
   const session = await getServerSession(authOptions)
@@ -25,4 +26,32 @@ export const GET = async (req: NextRequest, _res: NextResponse) => {
   })
 
   return NextResponse.json(product, { status: 200 })
+}
+
+export const PUT = async (req: NextRequest, _res: NextResponse) => {
+  const session = await getServerSession(authOptions)
+  if (!session) return noSessionResponse
+
+  const data: T_Product = await req.json()
+  const { id, name, description, buyPrice, sellPrice, VAT } = data
+
+  if (
+    !id ||
+    !name ||
+    !description ||
+    buyPrice < 0 ||
+    sellPrice < 0 ||
+    VAT < 0
+  ) {
+    return badRequestError400
+  }
+
+  const updatedProduct = await prisma.product.update({
+    where: { id: data.id },
+    data: {
+      ...data,
+    },
+  })
+
+  return NextResponse.json({ updatedProduct }, { status: 200 })
 }
