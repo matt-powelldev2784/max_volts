@@ -16,7 +16,7 @@ export const PageTitle = ({
   divClasses,
 }: PageTitleProps) => {
   return (
-    <div className={`flexRow gap-2 mt-4 mb-5 ${divClasses}`}>
+    <div className={`flexRow gap-2 ${divClasses}`}>
       <Image
         src={imgPath}
         alt=""
