@@ -5,9 +5,13 @@ import { Button } from '@/ui/button/button'
 import { useEditProductFormik } from './lib/useEditProductFormik'
 import { PageTitle } from '@/app/lib/PageTitle'
 
-export const EditProduct = () => {
+interface EditProductProps {
+  productId: string
+}
 
+export const EditProduct = ({ productId }: EditProductProps) => {
   const formik = useEditProductFormik()
+  console.log('productId', productId)
 
   return (
     <section className="min-h-screen w-screen">

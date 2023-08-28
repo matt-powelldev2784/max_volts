@@ -6,12 +6,11 @@ export default function AddProductPage({
   params: { productId: string }
 }) {
   const productId = params.productId[0]
-  console.log('productId', productId)
 
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
-      <EditProduct />
+      <EditProduct productId={productId} />
     </main>
   )
 }
