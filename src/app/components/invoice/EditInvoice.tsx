@@ -51,10 +51,11 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   })
 
   return (
-    <section className="w-screen">
+    <section className="w-screen mt-4 mb-8">
       <PageTitle
         text={`Edit Invoice ${invoiceNum ? invoiceNum : ''}`}
         imgPath={'/icons/invoice.svg'}
+        divClasses="mb-2"
       />
 
       {isLoading ? <InvoiceIsLoading /> : null}

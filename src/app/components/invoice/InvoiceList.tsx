@@ -27,7 +27,11 @@ export const InvoiceList = () => {
 
   return (
     <section className="w-full flexCol">
-      <PageTitle text={'Invoice List'} imgPath={'/icons/invoice.svg'} />
+      <PageTitle
+        text={'Invoice List'}
+        imgPath={'/icons/invoice.svg'}
+        divClasses="mt-4 mb-4"
+      />
       {invoiceApiError ? <ErrorMessage /> : null}
       <SkipRecords firstInvoice={firstInvoice} lastInvoice={lastInvoice} />
       <InvoiceListHeader />

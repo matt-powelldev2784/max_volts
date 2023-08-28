@@ -10,7 +10,7 @@ export const AddProduct = () => {
 
   return (
     <section className="min-h-screen w-screen">
-      <div className="flexCol">
+      <div className="flexCol mt-4">
         <PageTitle text={'Add Product'} imgPath={'/icons/add_product.svg'} />
 
         <form
