@@ -4,6 +4,7 @@ import { InputField } from '@/app/lib/formElements/InputField'
 import { Button } from '@/ui/button/button'
 import { useEditProductFormik } from './lib/useEditProductFormik'
 import { PageTitle } from '@/app/lib/PageTitle'
+import { useProduct } from '@/app/lib/hooks/useProduct'
 
 interface EditProductProps {
   productId: string
@@ -11,6 +12,7 @@ interface EditProductProps {
 
 export const EditProduct = ({ productId }: EditProductProps) => {
   const formik = useEditProductFormik()
+  useProduct(productId)
   console.log('productId', productId)
 
   return (
