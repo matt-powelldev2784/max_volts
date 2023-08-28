@@ -50,6 +50,22 @@ export const addProduct = createAsyncThunk(
   }
 )
 
+export const getProduct = createAsyncThunk(
+  'product/getProduct',
+  async (productId: string) => {
+    try {
+      const product = await apiCall({
+        httpMethod: 'GET',
+        route: `/api/protected/product/single?product_id=${productId}`,
+      })
+
+      return product
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
 export const productSlice = createSlice({
   name: 'product',
   initialState,
@@ -83,6 +99,20 @@ export const productSlice = createSlice({
         state.currentProduct = payload.newProduct
       })
       .addCase(addProduct.rejected, (state, { error }: AnyAction) => {
+        state.isLoading = false
+        state.error = error.message || ''
+      })
+      //---------------------------------------------------------------------
+      .addCase(getProduct.pending, (state) => {
+        state.isLoading = true
+        state.error = ''
+        state.products = []
+      })
+      .addCase(getProduct.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        state.products = payload
+      })
+      .addCase(getProduct.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
         state.error = error.message || ''
       })
