@@ -5,13 +5,13 @@ import { Button } from '@/ui/button/button'
 import { useEditProductFormik } from './lib/useEditProductFormik'
 import { PageTitle } from '@/app/lib/PageTitle'
 
-export const AddProduct = () => {
+export const EditProduct = () => {
   const formik = useEditProductFormik()
 
   return (
     <section className="min-h-screen w-screen">
       <div className="flexCol mt-4">
-        <PageTitle text={'Add Product'} imgPath={'/icons/add_product.svg'} />
+        <PageTitle text={'Edit Product'} imgPath={'/icons/add_product.svg'} />
 
         <form
           className="w-screen md:w-[400px] flexCol min-w-[310px] p-2"
