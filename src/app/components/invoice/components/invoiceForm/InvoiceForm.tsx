@@ -43,12 +43,6 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
         divClasses="mb-2"
       />
 
-      {/* <div className="w-full flexCol">
-        <div className="flexCol w-full md:w-1/3">
-          {updateSuccess ? <ErrorMessage errorMessage={updateSuccess} /> : null}
-        </div>
-      </div> */}
-
       {apiIsLoading ? <InvoiceIsLoading /> : null}
 
       <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
