@@ -4,16 +4,15 @@ import { InputField } from '@/app/lib/formElements/InputField'
 import { Button } from '@/ui/button/button'
 import { useEditProductFormik } from './lib/useEditProductFormik'
 import { PageTitle } from '@/app/lib/PageTitle'
-import { useProduct } from '@/app/lib/hooks/useProduct'
+import { T_Product } from '@/types'
 
 interface EditProductProps {
-  productId: string
+  product: T_Product
 }
 
-export const EditProduct = ({ productId }: EditProductProps) => {
-  const formik = useEditProductFormik()
-  useProduct(productId)
-  console.log('productId', productId)
+export const EditProduct = ({ product }: EditProductProps) => {
+  const formik = useEditProductFormik(product)
+  console.log('product', product)
 
   return (
     <section className="min-h-screen w-screen">

@@ -1,19 +1,20 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { addProduct } from '@/redux/slice/productSlice'
-import { T_ProductWithoutId } from '@/types'
+import { T_Product } from '@/types'
 
-export const useEditProductFormik = () => {
+export const useEditProductFormik = (product: T_Product) => {
   const dispatch = useAppDispatch()
+
+  const { id, name, buyPrice, sellPrice, VAT, description } = product
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      description: '',
-      buyPrice: 0,
-      sellPrice: 0,
-      VAT: 20,
+      name: name,
+      description: description,
+      buyPrice: buyPrice,
+      sellPrice: sellPrice,
+      VAT: VAT,
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Please input a name'),
@@ -44,8 +45,8 @@ export const useEditProductFormik = () => {
         ),
     }),
     onSubmit: async (values) => {
-      const newProduct: T_ProductWithoutId = values
-      dispatch(addProduct(newProduct))
+      const newProduct: T_Product = values
+      //dispatch(addProduct(newProduct))
     },
   })
 
