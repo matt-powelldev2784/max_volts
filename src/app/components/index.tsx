@@ -14,6 +14,7 @@ export { ProductList } from './product/productList/ProductList'
 
 //client
 export { AddClient } from './clients/AddClient'
+export { ClientList } from './clients/clientList/ClientList'
 
 //menus
 export { InvoiceMenu } from './menuButtons/InvoiceMenu'
