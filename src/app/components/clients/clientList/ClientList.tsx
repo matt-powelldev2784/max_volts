@@ -2,6 +2,7 @@ import { PageTitle } from '@/app/lib'
 import { T_Client } from '@/types'
 import { SetPage } from '@/app/ui/setPage/SetPage'
 import { ClientListItem } from './components/ClientListItem/ClientListItem'
+import { ClientListHeader } from './components/ClientListItemHeader/ClientListHeader'
 
 interface ClientListProps {
   clients: T_Client[]
@@ -28,7 +29,7 @@ export const ClientList = async ({
         currentPageNum={currentPageNum}
         baseUrl="/pages/product/client-list/"
       />
-      {/* <ProductListHeader /> */}
+      <ClientListHeader />
       {clientsJsx}
     </section>
   )
