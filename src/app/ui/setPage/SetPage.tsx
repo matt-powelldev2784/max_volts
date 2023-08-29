@@ -5,19 +5,27 @@ import Image from 'next/image'
 
 interface SkipRecordsProps {
   pageNumberProp: number
+  maxPageNumber: number
 }
 
-export const SetPage = ({ pageNumberProp }: SkipRecordsProps) => {
+export const SetPage = ({
+  pageNumberProp,
+  maxPageNumber,
+}: SkipRecordsProps) => {
   const [pageNumber, setPageNumber] = React.useState<number>(pageNumberProp)
 
   console.log('pageNumber', pageNumber)
 
   const onClickNextRecords = () => {
-    setPageNumber((prevState) => prevState + 1)
+    setPageNumber((prevState) => {
+      return prevState + 1 <= maxPageNumber ? prevState + 1 : prevState
+    })
   }
 
   const onClickPrevRecords = () => {
-    setPageNumber((prevState) => prevState - 1)
+    setPageNumber((prevState) => {
+      return prevState - 1 >= 1 ? prevState - 1 : prevState
+    })
   }
 
   return (
