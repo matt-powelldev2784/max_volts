@@ -4,15 +4,11 @@ import React from 'react'
 import Image from 'next/image'
 
 interface SkipRecordsProps {
-  pageNumberProp: number
   maxPageNumber: number
 }
 
-export const SetPage = ({
-  pageNumberProp,
-  maxPageNumber,
-}: SkipRecordsProps) => {
-  const [pageNumber, setPageNumber] = React.useState<number>(pageNumberProp)
+export const SetPage = ({ maxPageNumber }: SkipRecordsProps) => {
+  const [pageNumber, setPageNumber] = React.useState<number>(1)
 
   console.log('pageNumber', pageNumber)
 
