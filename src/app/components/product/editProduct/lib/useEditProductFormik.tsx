@@ -52,7 +52,6 @@ export const useEditProductFormik = (product: T_Product) => {
       } catch (error) {
         console.log('error', error)
       } finally {
-        // Set isSubmitting back to false when the API call is completed
         setSubmitting(false)
       }
     },
