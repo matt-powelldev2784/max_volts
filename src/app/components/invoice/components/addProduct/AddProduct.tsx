@@ -1,4 +1,4 @@
-import { Button } from '@/ui/button/button'
+import { Button } from '@/app/ui/button/button'
 import { SelectField } from '../../../../lib/formElements/SelectField'
 import { useAddProductFormik } from './lib/useAddProductFormik'
 import { useProductSelectOptions } from './lib/useProductSelectOptions'

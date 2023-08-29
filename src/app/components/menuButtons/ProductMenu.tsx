@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/ui/button/button'
+import { Button } from '@/app/ui/button/button'
 import { useRouter } from 'next/navigation'
 import { PageTitle } from '@/app/lib/PageTitle'
 

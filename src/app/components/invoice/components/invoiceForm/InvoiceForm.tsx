@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { SelectField } from '../../../../lib/formElements/SelectField'
-import { Button } from '@/ui/button/button'
+import { Button } from '@/app/ui/button/button'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { AddProduct } from '../addProduct/AddProduct'
 import { InvoiceRowModal } from '../invoiceRowModal/InvoiceRowModal'

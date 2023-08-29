@@ -1,7 +1,7 @@
 'use client'
 
 import { T_Product } from '@/types'
-import { Button } from '@/ui/button/button'
+import { Button } from '@/app/ui/button/button'
 import { useRouter } from 'next/navigation'
 
 interface T_ProductListItem extends T_Product {

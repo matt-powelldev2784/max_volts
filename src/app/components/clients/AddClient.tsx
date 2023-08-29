@@ -1,7 +1,7 @@
 'use client'
 
 import { InputField } from '@/app/lib/formElements/InputField'
-import { Button } from '@/ui/button/button'
+import { Button } from '@/app/ui/button/button'
 import { useAddClientFormik } from './lib/useAddClientFormik'
 import { PageTitle } from '@/app/lib/PageTitle'
 
