@@ -1,4 +1,4 @@
-import { Button } from '@/ui/button/button'
+import { Button } from '@/app/ui/button/button'
 import { T_InvoiceRow } from '@/types'
 import {
   setCurrentInvoiceRow,

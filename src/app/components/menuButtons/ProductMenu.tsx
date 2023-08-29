@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/ui/button/button'
+import { Button } from '@/app/ui/button/button'
 import { useRouter } from 'next/navigation'
 import { PageTitle } from '@/app/lib/PageTitle'
 
@@ -31,7 +31,7 @@ export const ProductMenu = () => {
         buttonText="Product List"
         disabled={false}
         onClick={() => {
-          router.push('/pages/product/product-list')
+          router.push('/pages/product/product-list/1')
         }}
       />
     </div>

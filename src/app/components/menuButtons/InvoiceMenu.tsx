@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/ui/button/button'
+import { Button } from '@/app/ui/button/button'
 import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { resetToInitialState } from '@/redux/slice/invoiceSlice'
