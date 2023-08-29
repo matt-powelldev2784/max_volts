@@ -23,26 +23,26 @@ export const ClientListItem = ({ client }: ClientListItemProps) => {
         header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
-      <p className="h-full w-full md:max-w-[200px] text-sm flex">
+      <p className="h-full w-full lg:max-w-[200px] text-sm flex">
         {header ? 'Name' : `${name}`}
       </p>
-      <p className="h-full w-full text-sm md:flex hidden">
+      <p className="h-full w-full text-sm lg:flex hidden">
         {header ? 'Company' : `${companyName}`}
       </p>
-      <p className="h-full w-full max-w-[75px] text-sm flex">
+      <p className="h-full w-full max-w-[200px] text-sm lg:flex hidden ">
         {header ? 'Add1' : `${add1}`}
       </p>
-      <p className="h-full w-full max-w-[75px] text-sm flex">
+      <p className="h-full w-full max-w-[2000px] text-sm lg:flex hidden">
         {header ? 'Add2' : `${add2}`}
       </p>
-      <p className="h-full w-full max-w-[75px] text-sm flex">
+      <p className="h-full w-full max-w-[120px] text-sm flex">
         {header ? 'Tel' : `${tel}`}
       </p>
-      <p className="h-full w-full max-w-[75px] text-sm flex">
+      <p className="h-full w-full max-w-[150px] text-sm md:flex hidden">
         {header ? 'Email' : `${email}`}
       </p>
 
-      <p className="h-full min-w-[35px] text-sm flex">
+      <p className="h-full min-w-[75px] text-sm lg:flex hidden">
         {header ? 'Post Code' : `${postcode}`}
       </p>
 
