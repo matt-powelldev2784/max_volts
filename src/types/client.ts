@@ -1,5 +1,5 @@
 export interface T_Client {
-  id: string
+  id?: string
   name: string
   companyName: string | null
   add1: string | null
