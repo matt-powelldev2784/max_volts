@@ -24,6 +24,16 @@ export const ClientMenu = () => {
           router.push('/pages/client/add-client')
         }}
       />
+
+      <Button
+        type="button"
+        optionalClasses="text-white text-sm bg-mvOrange h-[42.5px] w-[300px]"
+        buttonText="Client List"
+        disabled={false}
+        onClick={() => {
+          router.push('/pages/client/client-list')
+        }}
+      />
     </div>
   )
 }
