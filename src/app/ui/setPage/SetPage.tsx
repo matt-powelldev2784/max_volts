@@ -2,26 +2,33 @@
 
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 interface SkipRecordsProps {
   maxPageNumber: number
+  currentPageNum: number
+  baseUrl: string
 }
 
-export const SetPage = ({ maxPageNumber }: SkipRecordsProps) => {
-  const [pageNumber, setPageNumber] = React.useState<number>(1)
+export const SetPage = ({
+  maxPageNumber,
+  currentPageNum,
+  baseUrl,
+}: SkipRecordsProps) => {
+  const router = useRouter()
 
-  console.log('pageNumber', pageNumber)
+  console.log('currentPageNum', currentPageNum)
 
   const onClickNextRecords = () => {
-    setPageNumber((prevState) => {
-      return prevState + 1 <= maxPageNumber ? prevState + 1 : prevState
-    })
+    if (currentPageNum + 1 <= maxPageNumber) {
+      router.push(`${baseUrl}${currentPageNum + 1}`)
+    }
   }
 
   const onClickPrevRecords = () => {
-    setPageNumber((prevState) => {
-      return prevState - 1 >= 1 ? prevState - 1 : prevState
-    })
+    if (currentPageNum - 1 >= 1) {
+      router.push(`${baseUrl}${currentPageNum - 1}`)
+    }
   }
 
   return (
@@ -33,11 +40,7 @@ export const SetPage = ({ maxPageNumber }: SkipRecordsProps) => {
         height={30}
         onClick={onClickPrevRecords}
       />
-      {/* <p>
-        {isLoading || (!firstInvoice && !lastInvoice)
-          ? 'loading...'
-          : `Invoices: ${lastInvoice} - ${firstInvoice}`}
-      </p> */}
+
       <Image
         src="/icons/next.svg"
         alt="Person icon"

@@ -14,7 +14,11 @@ export default async function ProductListPage({
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
-      <ProductList products={products} maxProductPages={maxProductPage} />
+      <ProductList
+        products={products}
+        maxProductPages={maxProductPage}
+        currentPageNum={page}
+      />
     </main>
   )
 }
