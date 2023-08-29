@@ -1,6 +1,7 @@
 import { PageTitle } from '@/app/lib'
 import { T_Client } from '@/types'
 import { SetPage } from '@/app/ui/setPage/SetPage'
+import { ClientListItem } from './components/ClientListItem/ClientListItem'
 
 interface ClientListProps {
   clients: T_Client[]
@@ -13,9 +14,9 @@ export const ClientList = async ({
   maxClientPages,
   currentPageNum,
 }: ClientListProps) => {
-  // const productsJsx = products.map((product) => {
-  //   return <ProductListItem key={product.id} product={product} />
-  // })
+  const clientsJsx = clients.map((client) => {
+    return <ClientListItem key={client.id} client={client} />
+  })
 
   return (
     <section className="min-h-screen w-screen">
@@ -27,8 +28,8 @@ export const ClientList = async ({
         currentPageNum={currentPageNum}
         baseUrl="/pages/product/client-list/"
       />
-      {/* <ProductListHeader />
-      {productsJsx} */}
+      {/* <ProductListHeader /> */}
+      {clientsJsx}
     </section>
   )
 }
