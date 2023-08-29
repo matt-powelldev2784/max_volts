@@ -27,7 +27,7 @@ export const ClientList = async ({
       <SetPage
         maxPageNumber={maxClientPages}
         currentPageNum={currentPageNum}
-        baseUrl="/pages/product/client-list/"
+        baseUrl="/pages/client/client-list/"
       />
       <ClientListHeader />
       {clientsJsx}
