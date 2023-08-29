@@ -1,5 +1,5 @@
 import { EditProduct, NavBar } from '@/app/components'
-import { getProduct } from './getProduct'
+import { getProduct } from '../getProduct'
 import { ServerError } from '@/app/lib/ServerError'
 
 export default async function AddProductPage({
