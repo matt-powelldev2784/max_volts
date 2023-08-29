@@ -44,20 +44,12 @@ export const ProductListItem = ({ product }: ProductListItemProps) => {
           header ? 'opacity-0 h-0' : null
         }`}
       >
-        <div className="flexCol gap-2 md:flexRow">
-          <Button
-            type="button"
-            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[40px]"
-            buttonText="Edit"
-            onClick={() => router.push(`/pages/invoice/edit-invoice/${id}`)}
-          />
-          <Button
-            type="button"
-            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[40px]"
-            buttonText="View"
-            onClick={() => router.push(`/pages/invoice/pdf/${id}`)}
-          />
-        </div>
+        <Button
+          type="button"
+          optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[40px]"
+          buttonText="Edit"
+          onClick={() => router.push(`/pages/product/edit-product/${id}`)}
+        />
       </div>
     </section>
   )
