@@ -2,6 +2,7 @@ import { ProductListItem } from '../ProductListItem/ProductListItem'
 
 export const ProductListHeader = () => {
   const productListHeader = {
+    id: 'productListHeader',
     name: 'Name',
     description: 'Description',
     buyPrice: 'Buy Price',
