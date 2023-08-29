@@ -22,20 +22,20 @@ export const ProductListItem = ({ product }: ProductListItemProps) => {
         header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
-      <p className="h-full w-full max-w-[150px] text-sm lg:flex hidden">
-        {header ? 'name' : `${name}`}
+      <p className="h-full w-full md:max-w-[200px] text-sm flex">
+        {header ? 'Name' : `${name}`}
       </p>
-      <p className="h-full w-full text-sm flex">
+      <p className="h-full w-full text-sm md:flex hidden">
         {header ? 'Description' : `${description}`}
       </p>
-      <p className="h-full w-full max-w-[80px] text-sm lg:flex hidden">
-        {header ? 'Buy Price' : `£${Number(buyPrice)}`}
+      <p className="h-full w-full max-w-[75px] text-sm flex">
+        {header ? 'Buy' : `£${Number(buyPrice)}`}
       </p>
-      <p className="h-full w-full text-sm flex">
-        {header ? 'Sell Price' : `£${sellPrice}`}
+      <p className="h-full w-full max-w-[75px] text-sm flex">
+        {header ? 'Sell' : `£${sellPrice}`}
       </p>
 
-      <p className="h-full min-w-[70px] text-sm flex">
+      <p className="h-full min-w-[35px] text-sm flex">
         {header ? 'VAT' : `${Number(VAT)}%`}
       </p>
 
