@@ -7,14 +7,20 @@ export default async function ClienttListPage({
 }: {
   params: { pageNum: string }
 }) {
-  const maxProductPage = await getMaxClienttPages()
+  const maxClientPages = await getMaxClienttPages()
   const page = Number(params.pageNum[0])
-  const products = await getTenClients(page)
+  const clients = await getTenClients(page)
+
+  console.log('clients', clients)
 
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
-      <ClientList />
+      <ClientList
+        clients={clients}
+        maxClientPages={maxClientPages}
+        currentPageNum={page}
+      />
       {/* <ProductList
         products={products}
         maxProductPages={maxProductPage}

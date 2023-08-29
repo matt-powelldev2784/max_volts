@@ -1,10 +1,10 @@
 export interface T_Client {
-  id?: string
+  id: string
   name: string
-  companyName: string
-  add1: string
-  add2: string
-  postcode: string
-  tel: string
-  email: string
+  companyName: string | null
+  add1: string | null
+  add2: string | null
+  postcode: string | null
+  tel: string | null
+  email: string | null
 }
