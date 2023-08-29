@@ -21,7 +21,7 @@ export const ClientMenu = () => {
         buttonText="Add Client"
         disabled={false}
         onClick={() => {
-          router.push('/pages/add-client')
+          router.push('/pages/client/add-client')
         }}
       />
     </div>
