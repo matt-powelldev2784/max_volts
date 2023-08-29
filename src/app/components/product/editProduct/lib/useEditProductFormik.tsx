@@ -45,9 +45,16 @@ export const useEditProductFormik = (product: T_Product) => {
           (value) => value > 0 || value === 0
         ),
     }),
-    onSubmit: async (values) => {
-      const updatedProduct: T_Product = { id, ...values }
-      dispatch(updateProduct(updatedProduct))
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        const updatedProduct: T_Product = { id, ...values }
+        await dispatch(updateProduct(updatedProduct))
+      } catch (error) {
+        console.log('error', error)
+      } finally {
+        // Set isSubmitting back to false when the API call is completed
+        setSubmitting(false)
+      }
     },
   })
 

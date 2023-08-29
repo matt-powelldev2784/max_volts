@@ -12,6 +12,7 @@ interface EditProductProps {
 
 export const EditProduct = ({ product }: EditProductProps) => {
   const formik = useEditProductFormik(product)
+  console.log('formik.isSubmitting', formik.isSubmitting)
 
   return (
     <section className="min-h-screen w-screen">
@@ -69,7 +70,9 @@ export const EditProduct = ({ product }: EditProductProps) => {
 
           <Button
             type="submit"
-            optionalClasses="w-full text-white text-sm bg-mvOrange h-[42.5px] m-4"
+            optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] m-4 ${
+              formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            }`}
             buttonText="Update Product"
             disabled={formik.isSubmitting}
           />
