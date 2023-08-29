@@ -14,7 +14,7 @@ export const ProductList = ({ products }: ProductListProps) => {
 
   return (
     <section className="min-h-screen w-screen">
-      <div className="flexCol mt-4">
+      <div className="flexCol mt-4 mb-4">
         <PageTitle text={'Product List'} imgPath={'/icons/add_product.svg'} />
       </div>
       <ProductListHeader />
