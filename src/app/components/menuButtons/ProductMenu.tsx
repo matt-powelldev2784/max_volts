@@ -8,7 +8,7 @@ export const ProductMenu = () => {
   const router = useRouter()
 
   return (
-    <div className="flexCol gap-4 mt-4 mb-2">
+    <div className="flexCol gap-4 mt-4 mb-2 mx-4">
       <PageTitle
         text={'Product Menu'}
         imgPath={'/icons/add_product.svg'}
