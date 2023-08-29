@@ -4,16 +4,17 @@ import { T_Product } from '@/types'
 import { Button } from '@/ui/button/button'
 import { useRouter } from 'next/navigation'
 
-interface ProductListItemProps {
-  product: T_Product
+interface T_ProductListItem extends T_Product {
   header?: boolean
 }
+interface ProductListItemProps {
+  product: T_ProductListItem
+}
 
-export const ProductListItem = ({ product, header }: ProductListItemProps) => {
+export const ProductListItem = ({ product }: ProductListItemProps) => {
   const router = useRouter()
-  console.log('product', product)
 
-  const { id, name, buyPrice, sellPrice, description, VAT } = product
+  const { id, name, buyPrice, sellPrice, description, VAT, header } = product
 
   return (
     <section
@@ -21,20 +22,21 @@ export const ProductListItem = ({ product, header }: ProductListItemProps) => {
         header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
-      <p className="h-full w-full max-w-[80px] text-sm flex">
+      <p className="h-full w-full max-w-[150px] text-sm lg:flex hidden">
         {header ? 'name' : `${name}`}
       </p>
-      <p className="h-full w-full max-w-[100px] text-sm lg:flex hidden">
-        {header ? 'Buy Price' : `${Number(buyPrice)}`}
-      </p>
       <p className="h-full w-full text-sm flex">
-        {header ? 'Sell Price' : `${sellPrice}`}
-      </p>
-      <p className="h-full w-full max-w-[50px] text-sm lg:flex hidden">
         {header ? 'Description' : `${description}`}
       </p>
+      <p className="h-full w-full max-w-[80px] text-sm lg:flex hidden">
+        {header ? 'Buy Price' : `£${Number(buyPrice)}`}
+      </p>
+      <p className="h-full w-full text-sm flex">
+        {header ? 'Sell Price' : `£${sellPrice}`}
+      </p>
+
       <p className="h-full min-w-[70px] text-sm flex">
-        {header ? 'VAT' : `£${Number(VAT)}`}
+        {header ? 'VAT' : `${Number(VAT)}%`}
       </p>
 
       <div
