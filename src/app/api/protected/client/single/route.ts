@@ -6,7 +6,7 @@ import {
   badRequestError400,
 } from '@/app/lib'
 import { getServerSession } from 'next-auth'
-import { T_Client } from '../../../../types/client'
+import { T_Client } from '@/types'
 
 export const PUT = async (req: NextRequest, _res: NextResponse) => {
   const session = await getServerSession(authOptions)
