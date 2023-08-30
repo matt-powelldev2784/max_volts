@@ -43,10 +43,11 @@ export const useAddProductFormik = () => {
           (value) => value > 0 || value === 0
         ),
     }),
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
         const newProduct: T_ProductWithoutId = values
         await dispatch(addProduct(newProduct))
+        resetForm()
       } catch (error) {
         console.log('error', error)
       } finally {

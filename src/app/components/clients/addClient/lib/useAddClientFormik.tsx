@@ -26,10 +26,11 @@ export const useAddClientFormik = () => {
       tel: Yup.string(),
       email: Yup.string(),
     }),
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
         const newClient: T_Client = values
         await dispatch(addClient(newClient))
+        resetForm()
       } catch (error) {
         console.log('error', error)
       } finally {
