@@ -84,7 +84,7 @@ export const EditClient = ({ client }: EditClientProps) => {
             optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] m-4 ${
               formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
-            buttonText="Edit Client"
+            buttonText="Update Client"
             disabled={formik.isSubmitting}
           />
         </form>
