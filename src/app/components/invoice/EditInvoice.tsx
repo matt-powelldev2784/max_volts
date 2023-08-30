@@ -117,7 +117,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
             optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
               isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
-            buttonText={`${isPaid ? 'Invoice Is NOT Paid' : 'Invoice Is Paid'}`}
+            buttonText={`${isPaid ? 'Set NOT Paid' : 'Set Paid'}`}
             disabled={isLoading || !isActive}
             onClick={() => dispatch(toggleInvoiceIsPaid(invoiceId))}
           />
