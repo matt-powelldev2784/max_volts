@@ -20,7 +20,7 @@ export const InvoiceListItem = ({
   header,
 }: InvoiceItemProps) => {
   const router = useRouter()
-  const { name, companyName } = Client ? Client : { name: '', companyName: '' }
+  const { name, companyName } = Client
   let clientString = companyName ? `${name} @ ${companyName}` : name
 
   return (
