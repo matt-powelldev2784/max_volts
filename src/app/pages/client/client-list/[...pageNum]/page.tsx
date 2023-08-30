@@ -11,8 +11,6 @@ export default async function ClienttListPage({
   const page = Number(params.pageNum[0])
   const clients = await getTenClients(page)
 
-  console.log('clients', clients)
-
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
