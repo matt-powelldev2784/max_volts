@@ -18,14 +18,22 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
     return badRequestError400
   }
 
-  const invoice = await prisma.invoice.update({
+  const invoice = await prisma.invoice.findUnique({
+    where: {
+      id: invoiceId,
+    },
+  })
+
+  const isActive = invoice?.isActive
+
+  const updatedInvoice = await prisma.invoice.update({
     where: {
       id: invoiceId,
     },
     data: {
-      isActive: false,
+      isActive: !isActive,
     },
   })
 
-  return NextResponse.json(invoice, { status: 200 })
+  return NextResponse.json(updatedInvoice, { status: 200 })
 }
