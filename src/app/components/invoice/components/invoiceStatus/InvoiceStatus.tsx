@@ -1,6 +1,6 @@
 import React from 'react'
-import { IsPaidText } from './isPaidText/IsPaidText'
-import { IsActiveText } from './isActiveText/IsActiveText'
+import { IsPaidText } from './isPaidText/IsPaidTextBlock'
+import { IsActiveText } from './isActiveText/IsActiveTextBlock'
 
 interface InvoiceStatusProps {
   isPaid: boolean | undefined
@@ -9,7 +9,6 @@ interface InvoiceStatusProps {
 
 export const InvoiceStatus = ({ isPaid, isActive }: InvoiceStatusProps) => {
   if (isPaid && isActive === null) return <></>
-
   if (isPaid === false && isActive === true) return <></>
 
   return (
