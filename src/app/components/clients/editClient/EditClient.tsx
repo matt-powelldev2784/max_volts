@@ -13,12 +13,10 @@ interface EditClientProps {
 export const EditClient = ({ client }: EditClientProps) => {
   const formik = useEditClientFormik(client)
 
-  console.log('client', client)
-
   return (
     <section className="min-h-screen w-screen">
       <div className="flexCol mt-4">
-        <PageTitle text={'Add Client'} imgPath={'/icons/add_client.svg'} />
+        <PageTitle text={'Edit Client'} imgPath={'/icons/person.svg'} />
 
         <form
           className="w-screen md:w-[400px] flexCol min-w-[310px] p-2"
@@ -86,7 +84,7 @@ export const EditClient = ({ client }: EditClientProps) => {
             optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] m-4 ${
               formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
-            buttonText="Add Client"
+            buttonText="Edit Client"
             disabled={formik.isSubmitting}
           />
         </form>
