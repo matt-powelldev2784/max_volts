@@ -19,7 +19,7 @@ export const PUT = async (req: NextRequest, _res: NextResponse) => {
     return badRequestError400
   }
 
-  const updatedClient = await prisma.product.update({
+  const updatedClient = await prisma.client.update({
     where: { id: data.id },
     data: {
       ...data,

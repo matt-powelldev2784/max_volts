@@ -15,8 +15,6 @@ export default async function AddProductPage({
     return <ServerError />
   }
 
-  console.log('client', client)
-
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />

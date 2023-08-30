@@ -11,7 +11,6 @@ interface EditClientProps {
 }
 
 export const EditClient = ({ client }: EditClientProps) => {
-  console.log('------------client', client)
   const formik = useEditClientFormik(client)
 
   console.log('client', client)

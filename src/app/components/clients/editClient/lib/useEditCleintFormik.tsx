@@ -1,14 +1,13 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { addClient } from '@/redux/slice/clientSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { T_Client } from '@/types'
+import { updateClient } from '@/redux/slice/clientSlice'
 
 export const useEditClientFormik = (client: T_Client) => {
   const dispatch = useAppDispatch()
-  console.log('client********', client)
 
-  const { name, companyName, add1, add2, postcode, tel, email } = client
+  const { id, name, companyName, add1, add2, postcode, tel, email } = client
 
   const formik = useFormik({
     initialValues: {
@@ -29,10 +28,15 @@ export const useEditClientFormik = (client: T_Client) => {
       tel: Yup.string(),
       email: Yup.string(),
     }),
-    onSubmit: async (values) => {
-      console.log('values', values)
-      const newClient: T_Client = values
-      // dispatch(addClient(newClient))
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        const updatedClient: T_Client = { id, ...values }
+        await dispatch(updateClient(updatedClient))
+      } catch (error) {
+        console.log('error', error)
+      } finally {
+        setSubmitting(false)
+      }
     },
   })
 

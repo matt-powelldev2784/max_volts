@@ -50,6 +50,23 @@ export const addClient = createAsyncThunk(
   }
 )
 
+export const updateClient = createAsyncThunk(
+  'client/updateClient',
+  async (clientDetails: T_Client) => {
+    try {
+      const clientData = await apiCall({
+        httpMethod: 'PUT',
+        route: `/api/protected/client/single`,
+        body: clientDetails,
+      })
+
+      return clientData
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
 export const clientSlice = createSlice({
   name: 'client',
   initialState,
@@ -85,6 +102,20 @@ export const clientSlice = createSlice({
       .addCase(addClient.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
         state.error = error.message || ''
+      })
+      //---------------------------------------------------------------------
+      .addCase(updateClient.pending, (state) => {
+        state.isLoading = true
+        state.error = ''
+        state.currentClient = null
+      })
+      .addCase(updateClient.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        state.currentClient = payload
+      })
+      .addCase(updateClient.rejected, (state, { error }: AnyAction) => {
+        state.isLoading = false
+        error.message || 'Server Error. Please try again later'
       })
   },
 })
