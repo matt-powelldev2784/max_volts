@@ -41,7 +41,7 @@ export const InvoiceListItem = ({
       <p className="h-full w-full max-w-[50px] text-sm lg:flex hidden">
         {header ? 'Paid' : `${paid}`}
       </p>
-      <p className="h-full min-w-[70px] text-sm lg:flex hidden">
+      <p className="h-full min-w-[80px] text-sm lg:flex hidden">
         {header ? 'Total' : `£${Number(totalAmount).toFixed(2)}`}
       </p>
 
