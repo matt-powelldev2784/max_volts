@@ -10,7 +10,7 @@ interface InvoiceItemProps extends T_Invoice {
   header?: boolean
 }
 
-export const InvoiceItem = ({
+export const InvoiceListItem = ({
   id,
   invoiceNum,
   Client,
@@ -29,10 +29,10 @@ export const InvoiceItem = ({
         header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
-      <p className="h-full w-full max-w-[80px] text-sm flex">
+      <p className="h-full min-w-[65px] text-sm flex">
         {header ? 'Date' : `${formatDate(invoiceDate)}`}
       </p>
-      <p className="h-full w-full max-w-[100px] text-sm lg:flex hidden">
+      <p className="h-full w-fit min-w-[50px] md:w-[150px] text-sm flex">
         {header ? 'Invoice No' : `${Number(invoiceNum)}`}
       </p>
       <p className="h-full w-full text-sm flex">
@@ -41,7 +41,7 @@ export const InvoiceItem = ({
       <p className="h-full w-full max-w-[50px] text-sm lg:flex hidden">
         {header ? 'Paid' : `${paid}`}
       </p>
-      <p className="h-full min-w-[70px] text-sm flex">
+      <p className="h-full min-w-[80px] text-sm lg:flex hidden">
         {header ? 'Total' : `£${Number(totalAmount).toFixed(2)}`}
       </p>
 

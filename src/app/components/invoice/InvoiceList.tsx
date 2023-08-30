@@ -1,28 +1,24 @@
 'use client'
 
-import { useInvoices } from '@/app/lib/hooks/useInvoices'
-import { useAppSelector } from '@/redux/hooks/reduxsHooks'
-import { InvoiceItem } from './components/invoiceItem/InvoiceItem'
+import { InvoiceListItem } from './components/invoiceListItem/InvoiceListItem'
 import { InvoiceListHeader } from './components/invoiceListHeader/InvoiceListHeader'
-import { SkipRecords } from './components/SkipRecords/SkipRecords'
-import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 import { PageTitle } from '@/app/lib/PageTitle'
+import { SetPage } from '@/app/ui/setPage/SetPage'
+import { T_Invoice } from '@/types/invoice'
 
-export const InvoiceList = () => {
-  const pageNum = useAppSelector(
-    (state) => state.invoiceReducer.invoiceListPageNum
-  )
-  const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
+interface InvoiceListProps {
+  invoices: T_Invoice[]
+  maxInvoicePages: number
+  currentPageNum: number
+}
 
-  useInvoices(pageNum)
-
-  const invoices = useAppSelector((state) => state.invoiceReducer.invoices)
-  const firstInvoice = invoices[0] ? invoices[0].invoiceNum : null
-  const lastInvoice =
-    invoices.length > 0 ? invoices[invoices.length - 1].invoiceNum : null
-
+export const InvoiceList = ({
+  invoices,
+  maxInvoicePages,
+  currentPageNum,
+}: InvoiceListProps) => {
   const invoiceItemsJsx = invoices.map((invoice) => {
-    return <InvoiceItem key={invoice.id} {...invoice} />
+    return <InvoiceListItem key={invoice.id} {...invoice} />
   })
 
   return (
@@ -32,8 +28,11 @@ export const InvoiceList = () => {
         imgPath={'/icons/invoice.svg'}
         divClasses="mt-4 mb-4"
       />
-      {invoiceApiError ? <ErrorMessage /> : null}
-      <SkipRecords firstInvoice={firstInvoice} lastInvoice={lastInvoice} />
+      <SetPage
+        maxPageNumber={maxInvoicePages}
+        currentPageNum={currentPageNum}
+        baseUrl="/pages/invoice/invoice-list/"
+      />
       <InvoiceListHeader />
       {invoiceItemsJsx}
     </section>
