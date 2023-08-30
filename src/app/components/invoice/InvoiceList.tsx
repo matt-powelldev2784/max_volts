@@ -2,7 +2,7 @@
 
 import { useInvoices } from '@/app/lib/hooks/useInvoices'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
-import { InvoiceItem } from './components/invoiceItem/InvoiceItem'
+import { InvoiceListItem } from './components/invoiceItem/InvoiceListItem'
 import { InvoiceListHeader } from './components/invoiceListHeader/InvoiceListHeader'
 import { SkipRecords } from './components/SkipRecords/SkipRecords'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
@@ -22,7 +22,7 @@ export const InvoiceList = () => {
     invoices.length > 0 ? invoices[invoices.length - 1].invoiceNum : null
 
   const invoiceItemsJsx = invoices.map((invoice) => {
-    return <InvoiceItem key={invoice.id} {...invoice} />
+    return <InvoiceListItem key={invoice.id} {...invoice} />
   })
 
   return (

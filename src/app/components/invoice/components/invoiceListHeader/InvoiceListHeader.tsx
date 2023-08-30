@@ -1,4 +1,4 @@
-import { InvoiceItem } from '../invoiceItem/InvoiceItem'
+import { InvoiceListItem } from '../invoiceItem/InvoiceListItem'
 
 export const InvoiceListHeader = () => {
   const invoiceRowsHeader = {
@@ -10,7 +10,7 @@ export const InvoiceListHeader = () => {
 
   const invoiceItemHeaderJsx = (
     // @ts-ignore: ignore erros to allow insertion of invoice row header
-    <InvoiceItem key={invoiceRowsHeader.id} {...invoiceRowsHeader} />
+    <InvoiceListItem key={invoiceRowsHeader.id} {...invoiceRowsHeader} />
   )
 
   return <>{invoiceItemHeaderJsx}</>

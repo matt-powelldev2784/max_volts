@@ -10,7 +10,7 @@ interface InvoiceItemProps extends T_Invoice {
   header?: boolean
 }
 
-export const InvoiceItem = ({
+export const InvoiceListItem = ({
   id,
   invoiceNum,
   Client,
