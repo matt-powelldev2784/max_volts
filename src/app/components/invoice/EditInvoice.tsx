@@ -52,6 +52,11 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
     return <InvoiceRowText key={product.reduxId} {...product} />
   })
 
+  const onUpdateInvoiceClick = async () => {
+    await dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
+    router.push(`/pages/invoice/pdf/${invoiceId}`)
+  }
+
   return (
     <section className="w-screen mt-4 mb-8">
       <PageTitle
@@ -91,12 +96,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           } `}
           buttonText="Update Invoice"
           disabled={isLoading}
-          onClick={async () => {
-            await dispatch(
-              updateInvoice({ invoiceId, totalPrice, invoiceRows })
-            )
-            router.push(`/pages/invoice/pdf/${invoiceId}`)
-          }}
+          onClick={onUpdateInvoiceClick}
         />
       </div>
 
