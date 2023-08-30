@@ -34,6 +34,6 @@ export interface T_Invoice {
   totalAmount: number
   paid: boolean
   isActive: boolean
-  Client: T_Client | null
+  Client: T_Client
   InvoiceRow: T_InvoiceRow[]
 }

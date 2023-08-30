@@ -21,6 +21,7 @@ export const InvoiceListItem = ({
 }: InvoiceItemProps) => {
   const router = useRouter()
   const { name, companyName } = Client
+  const invoiceDateString = invoiceDate.toString()
   let clientString = companyName ? `${name} @ ${companyName}` : name
 
   return (
@@ -30,7 +31,7 @@ export const InvoiceListItem = ({
       }`}
     >
       <p className="h-full min-w-[65px] text-sm flex">
-        {header ? 'Date' : `${formatDate(invoiceDate)}`}
+        {header ? 'Date' : `${formatDate(invoiceDateString)}`}
       </p>
       <p className="h-full w-fit min-w-[50px] md:w-[150px] text-sm flex">
         {header ? 'Invoice No' : `${Number(invoiceNum)}`}
