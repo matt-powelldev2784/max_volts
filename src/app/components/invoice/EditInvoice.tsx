@@ -91,8 +91,10 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           } `}
           buttonText="Update Invoice"
           disabled={isLoading}
-          onClick={() => {
-            dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
+          onClick={async () => {
+            await dispatch(
+              updateInvoice({ invoiceId, totalPrice, invoiceRows })
+            )
             router.push(`/pages/invoice/pdf/${invoiceId}`)
           }}
         />
