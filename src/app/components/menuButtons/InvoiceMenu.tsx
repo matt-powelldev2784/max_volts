@@ -39,7 +39,7 @@ export const InvoiceMenu = () => {
         disabled={false}
         onClick={() => {
           resetInvoiceState()
-          router.push('/pages/invoice/invoice-list')
+          router.push('/pages/invoice/invoice-list/1')
         }}
       />
     </div>
