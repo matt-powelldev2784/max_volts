@@ -31,7 +31,7 @@ export const ClientMenu = () => {
         buttonText="Client List"
         disabled={false}
         onClick={() => {
-          router.push('/pages/client/client-list')
+          router.push('/pages/client/client-list/1')
         }}
       />
     </div>
