@@ -16,6 +16,12 @@ export default async function InvoiceListPage({
     return <ServerError />
   }
 
+  invoices.forEach((invoice) => {
+    if (!invoice.Client) {
+      return <ServerError />
+    }
+  })
+
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
