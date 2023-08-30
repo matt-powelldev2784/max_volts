@@ -1,6 +1,6 @@
 'use client'
 
-import { InvoiceListItem } from './components/invoiceItem/InvoiceListItem'
+import { InvoiceListItem } from './components/invoiceListItem/InvoiceListItem'
 import { InvoiceListHeader } from './components/invoiceListHeader/InvoiceListHeader'
 import { PageTitle } from '@/app/lib/PageTitle'
 import { SetPage } from '@/app/ui/setPage/SetPage'

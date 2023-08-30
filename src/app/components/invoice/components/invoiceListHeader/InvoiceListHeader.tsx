@@ -1,4 +1,4 @@
-import { InvoiceListItem } from '../invoiceItem/InvoiceListItem'
+import { InvoiceListItem } from '../invoiceListItem/InvoiceListItem'
 
 export const InvoiceListHeader = () => {
   const invoiceRowsHeader = {
