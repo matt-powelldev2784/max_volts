@@ -33,6 +33,10 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
     data: {
       isActive: !isActive,
     },
+    include: {
+      Client: true,
+      InvoiceRow: true,
+    },
   })
 
   return NextResponse.json(updatedInvoice, { status: 200 })
