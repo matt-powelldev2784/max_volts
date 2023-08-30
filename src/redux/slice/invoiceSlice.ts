@@ -115,7 +115,7 @@ export const toggleInvoiceIsActive = createAsyncThunk(
     try {
       const invoice = await apiCall({
         httpMethod: 'POST',
-        route: `/api/protected/invoice/toggle-close-invoice?invoice_id=${invoiceId}`,
+        route: `/api/protected/invoice/toggle-invoice-is-active?invoice_id=${invoiceId}`,
       })
 
       return invoice

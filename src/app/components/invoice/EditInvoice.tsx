@@ -117,12 +117,16 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
             type="button"
             optionalClasses="text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px]"
             buttonText={`Invoice Paid`}
+            disabled={isLoading}
             onClick={() => router.push(`/pages/invoice/edit-invoice/`)}
           />
           <Button
             type="button"
-            optionalClasses="text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px]"
+            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
+              isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            }`}
             buttonText={`${isActive ? 'Close Invoice' : 'Open Invoice'}`}
+            disabled={isLoading}
             onClick={() => dispatch(toggleInvoiceIsActive(invoiceId))}
           />
         </div>
