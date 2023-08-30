@@ -29,8 +29,8 @@ export interface T_UpdateInvoiceDetails {
 export interface T_Invoice {
   id: string
   invoiceNum: number
-  clientId: string
-  invoiceDate: string | Date
+  clientId: string | Date
+  invoiceDate: Date
   totalAmount: number
   paid: boolean
   isActive: boolean
