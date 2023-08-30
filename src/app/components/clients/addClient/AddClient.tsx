@@ -76,7 +76,9 @@ export const AddClient = () => {
 
           <Button
             type="submit"
-            optionalClasses="w-full text-white text-sm bg-mvOrange h-[42.5px] m-4"
+            optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] m-4 ${
+              formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            }`}
             buttonText="Add Client"
             disabled={formik.isSubmitting}
           />
