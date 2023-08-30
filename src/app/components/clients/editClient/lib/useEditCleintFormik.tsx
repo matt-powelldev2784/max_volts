@@ -4,18 +4,21 @@ import { addClient } from '@/redux/slice/clientSlice'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { T_Client } from '@/types'
 
-export const useEditClientFormik = () => {
+export const useEditClientFormik = (client: T_Client) => {
   const dispatch = useAppDispatch()
+  console.log('client********', client)
+
+  const { name, companyName, add1, add2, postcode, tel, email } = client
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      companyName: '',
-      add1: '',
-      add2: '',
-      postcode: '',
-      tel: '',
-      email: '',
+      name: name,
+      companyName: companyName,
+      add1: add1,
+      add2: add2,
+      postcode: postcode,
+      tel: tel,
+      email: email,
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Please input a name'),
@@ -29,7 +32,7 @@ export const useEditClientFormik = () => {
     onSubmit: async (values) => {
       console.log('values', values)
       const newClient: T_Client = values
-      dispatch(addClient(newClient))
+      // dispatch(addClient(newClient))
     },
   })
 

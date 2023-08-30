@@ -1,6 +1,7 @@
 import { EditClient, NavBar } from '@/app/components'
 import { getClient } from '../getClient'
 import { ServerError } from '@/app/lib/ServerError'
+import { T_Client } from '@/types'
 
 export default async function AddProductPage({
   params,
@@ -14,10 +15,12 @@ export default async function AddProductPage({
     return <ServerError />
   }
 
+  console.log('client', client)
+
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
-      {/* <EditClient product={product} /> */}
+      <EditClient client={client} />
     </main>
   )
 }

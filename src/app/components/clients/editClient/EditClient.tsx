@@ -4,9 +4,17 @@ import { InputField } from '@/app/lib/formElements/InputField'
 import { Button } from '@/app/ui/button/button'
 import { useEditClientFormik } from './lib/useEditCleintFormik'
 import { PageTitle } from '@/app/lib/PageTitle'
+import { T_Client } from '@/types'
 
-export const EditClient = () => {
-  const formik = useEditClientFormik()
+interface EditClientProps {
+  client: T_Client
+}
+
+export const EditClient = ({ client }: EditClientProps) => {
+  console.log('------------client', client)
+  const formik = useEditClientFormik(client)
+
+  console.log('client', client)
 
   return (
     <section className="min-h-screen w-screen">
