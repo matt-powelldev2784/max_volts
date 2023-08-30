@@ -9,6 +9,7 @@ interface InvoiceStatusProps {
 
 export const InvoiceStatus = ({ isPaid, isActive }: InvoiceStatusProps) => {
   if (isPaid && isActive === null) return <></>
+
   if (isPaid === false && isActive === true) return <></>
 
   return (
