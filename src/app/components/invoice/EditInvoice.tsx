@@ -3,6 +3,7 @@
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import {
+  toggleInvoiceIsPaid,
   toggleInvoiceIsActive,
   updateInvoice,
 } from '@/redux/slice/invoiceSlice'
@@ -108,17 +109,19 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
             isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
           } `}
           buttonText="Update Invoice"
-          disabled={isLoading}
+          disabled={isLoading || !isActive}
           onClick={onUpdateInvoiceClick}
         />
 
         <div className="flexRow gap-2 mt-4">
           <Button
             type="button"
-            optionalClasses="text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px]"
-            buttonText={`Invoice Paid`}
-            disabled={isLoading}
-            onClick={() => router.push(`/pages/invoice/edit-invoice/`)}
+            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
+              isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            }`}
+            buttonText={`${isPaid ? 'Invoice Is NOT Paid' : 'Invoice Is Paid'}`}
+            disabled={isLoading || !isActive}
+            onClick={() => dispatch(toggleInvoiceIsPaid(invoiceId))}
           />
           <Button
             type="button"
