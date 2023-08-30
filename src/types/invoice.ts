@@ -10,7 +10,7 @@ export interface T_InvoiceRow {
   VAT: number
   quantity: number
   totalPrice: number
-  reduxId: string
+  reduxId?: string
   invoiceId?: string
 }
 
@@ -30,10 +30,10 @@ export interface T_Invoice {
   id: string
   invoiceNum: number
   clientId: string
-  invoiceDate: string
+  invoiceDate: string | Date
   totalAmount: number
   paid: boolean
   isActive: boolean
-  Client: T_Client
+  Client: T_Client | null
   InvoiceRow: T_InvoiceRow[]
 }

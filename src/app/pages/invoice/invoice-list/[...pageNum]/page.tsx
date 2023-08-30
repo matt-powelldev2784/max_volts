@@ -1,6 +1,7 @@
 import { InvoiceList, NavBar } from '@/app/components'
 import { getTenInvoices } from '../getTenInvoices'
 import { getMaxInvoicePages } from '../getMaxInvoicePages'
+import { ServerError } from '@/app/lib/ServerError'
 
 export default async function InvoiceListPage({
   params,
@@ -11,12 +12,18 @@ export default async function InvoiceListPage({
   const page = Number(params.pageNum[0])
   const invoices = await getTenInvoices(page)
 
-  console.log('invoices', invoices)
+  if (!invoices) {
+    return <ServerError />
+  }
 
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />
-      <InvoiceList />
+      <InvoiceList
+        invoices={invoices}
+        maxInvoicePages={maxInvoicePages}
+        currentPageNum={page}
+      />
     </main>
   )
 }

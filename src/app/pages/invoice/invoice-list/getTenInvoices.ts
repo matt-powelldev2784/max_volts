@@ -5,7 +5,11 @@ export const getTenInvoices = async (pageNumber: number) => {
   const skip = (pageNumber - 1) * pageSize
 
   const invoices = await prisma.invoice.findMany({
-    orderBy: { invoiceNum: 'asc' },
+    include: {
+      Client: true,
+      InvoiceRow: true,
+    },
+    orderBy: { invoiceNum: 'desc' },
     skip,
     take: pageSize,
   })
