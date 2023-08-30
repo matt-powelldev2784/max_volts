@@ -67,8 +67,6 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
     router.push(`/pages/invoice/pdf/${invoiceId}`)
   }
 
-  console.log('isPaid----', isPaid)
-  console.log('isActive----', isActive)
   return (
     <section className="w-screen mt-4 mb-8">
       <PageTitle

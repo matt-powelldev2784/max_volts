@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '@/app/ui/button/button'
+import { IsPaidText } from './isPaidText/IsPaidText'
 
 interface InvoiceStatusProps {
   isPaid: boolean | undefined
@@ -7,30 +8,13 @@ interface InvoiceStatusProps {
 }
 
 export const InvoiceStatus = ({ isPaid, isActive }: InvoiceStatusProps) => {
-  console.log('isPaid----', isPaid)
-  console.log('isActive----', isActive)
-  
   if (isPaid && isActive === null) return <></>
   if (isPaid === false && isActive === true) return <></>
 
   return (
     <div className="flexRow gap-2 mt-4">
-      <Button
-        type="button"
-        optionalClasses={`text-white text-sm h-full w-[160px] max-h-[40px]} ${
-          isPaid ? 'bg-mvGreen' : 'hidden'
-        }`}
-        buttonText={`${isPaid ? 'Invoice Is Paid' : 'Error'}`}
-        onClick={() => null}
-      />
-      <Button
-        type="button"
-        optionalClasses={`text-white text-sm h-full w-[160px] max-h-[40px]} ${
-          isActive ? '' : 'bg-mvGreen'
-        }`}
-        buttonText={`${isActive ? 'Error' : 'Invoice Is Closed'}`}
-        onClick={() => null}
-      />
+      {isPaid ? <IsPaidText /> : null}
+      {isActive ? null : <IsPaidText />}
     </div>
   )
 }
