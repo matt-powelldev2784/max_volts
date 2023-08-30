@@ -13,8 +13,9 @@ export { EditProduct } from './product/editProduct/EditProduct'
 export { ProductList } from './product/productList/ProductList'
 
 //client
-export { AddClient } from './clients/AddClient'
+export { AddClient } from './clients/addClient/AddClient'
 export { ClientList } from './clients/clientList/ClientList'
+export { EditClient } from './clients/editClient/EditClient'
 
 //menus
 export { InvoiceMenu } from './menuButtons/InvoiceMenu'
