@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '@/app/ui/button/button'
 import { IsPaidText } from './isPaidText/IsPaidText'
 
 interface InvoiceStatusProps {
