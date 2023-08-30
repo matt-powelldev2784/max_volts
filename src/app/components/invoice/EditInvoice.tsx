@@ -13,6 +13,7 @@ import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 import { InvoiceIsLoading } from './components/invoiceIsLoading/InvoiceIsLoading'
 import { PageTitle } from '@/app/lib/PageTitle'
 import { useRouter } from 'next/navigation'
+import { InvoiceStatus } from './components/invoiceStatus/InvoiceStatus'
 
 interface EditInvoiceProps {
   invoiceId: string
@@ -23,25 +24,29 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   const router = useRouter()
   useInvoice(invoiceId)
 
-  const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
-  const isLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
-  const updateSuccess = useAppSelector(
-    (state) => state.invoiceReducer.updateSuccess
-  )
-
-  const invoice = useAppSelector(
-    (state) => state.invoiceReducer.currentEditInvoice
-  )
-  const invoiceRows = useAppSelector(
-    (state) => state.invoiceReducer.invoiceRows
-  )
-  const showProductModal = useAppSelector(
-    (state) => state.invoiceReducer.displayAddProductModal
-  )
-  const currentInvoiceRow = useAppSelector(
-    (state) => state.invoiceReducer.currentInvoiceRow
-  )
-  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
+  const {
+    invoiceApiError,
+    isLoading,
+    updateSuccess,
+    invoice,
+    invoiceRows,
+    showProductModal,
+    currentInvoiceRow,
+    totalPrice,
+    isPaid,
+    isActive,
+  } = useAppSelector((state) => ({
+    invoiceApiError: state.invoiceReducer.error,
+    isLoading: state.invoiceReducer.isLoading,
+    updateSuccess: state.invoiceReducer.updateSuccess,
+    invoice: state.invoiceReducer.currentEditInvoice,
+    invoiceRows: state.invoiceReducer.invoiceRows,
+    showProductModal: state.invoiceReducer.displayAddProductModal,
+    currentInvoiceRow: state.invoiceReducer.currentInvoiceRow,
+    totalPrice: state.invoiceReducer.totalPrice,
+    isPaid: state.invoiceReducer.currentEditInvoice?.paid,
+    isActive: state.invoiceReducer.currentEditInvoice?.isActive,
+  }))
   const invoiceNum = invoice?.invoiceNum
 
   const clientText = invoice?.Client.companyName
@@ -64,6 +69,10 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         imgPath={'/icons/invoice.svg'}
         divClasses="mb-2"
       />
+
+      {isPaid != undefined && isActive != undefined ? (
+        <InvoiceStatus isPaid={isPaid} isActive={isActive} />
+      ) : null}
 
       {isLoading ? <InvoiceIsLoading /> : null}
 
@@ -98,6 +107,21 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           disabled={isLoading}
           onClick={onUpdateInvoiceClick}
         />
+
+        <div className="flexRow gap-2 mt-4">
+          <Button
+            type="button"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-[160px] max-h-[40px]"
+            buttonText={`Invoice Paid`}
+            onClick={() => router.push(`/pages/invoice/edit-invoice/`)}
+          />
+          <Button
+            type="button"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-[160px] max-h-[40px]"
+            buttonText={`Close Invoice`}
+            onClick={() => router.push(`/pages/invoice/edit-invoice/`)}
+          />
+        </div>
       </div>
 
       {showProductModal && currentInvoiceRow?.reduxId ? (
