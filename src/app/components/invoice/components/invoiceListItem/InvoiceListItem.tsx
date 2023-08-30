@@ -17,6 +17,7 @@ export const InvoiceListItem = ({
   totalAmount,
   invoiceDate,
   paid,
+  isActive,
   header,
 }: InvoiceItemProps) => {
   const router = useRouter()
@@ -37,6 +38,9 @@ export const InvoiceListItem = ({
       </p>
       <p className="h-full w-full text-sm flex">
         {header ? 'Client' : `${clientString}`}
+      </p>
+      <p className="h-full w-full max-w-[60px] text-sm lg:flex hidden">
+        {header ? 'Closed' : `${!isActive}`}
       </p>
       <p className="h-full w-full max-w-[50px] text-sm lg:flex hidden">
         {header ? 'Paid' : `${paid}`}

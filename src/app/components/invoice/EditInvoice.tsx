@@ -2,7 +2,11 @@
 
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { updateInvoice } from '@/redux/slice/invoiceSlice'
+import {
+  toggleInvoiceIsPaid,
+  toggleInvoiceIsActive,
+  updateInvoice,
+} from '@/redux/slice/invoiceSlice'
 import { AddProduct } from './components/addProduct/AddProduct'
 import { ClientText } from './components/ClientText/ClientText'
 import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
@@ -13,6 +17,7 @@ import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
 import { InvoiceIsLoading } from './components/invoiceIsLoading/InvoiceIsLoading'
 import { PageTitle } from '@/app/lib/PageTitle'
 import { useRouter } from 'next/navigation'
+import { InvoiceStatus } from './components/invoiceStatus/InvoiceStatus'
 
 interface EditInvoiceProps {
   invoiceId: string
@@ -23,25 +28,29 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   const router = useRouter()
   useInvoice(invoiceId)
 
-  const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
-  const isLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
-  const updateSuccess = useAppSelector(
-    (state) => state.invoiceReducer.updateSuccess
-  )
-
-  const invoice = useAppSelector(
-    (state) => state.invoiceReducer.currentEditInvoice
-  )
-  const invoiceRows = useAppSelector(
-    (state) => state.invoiceReducer.invoiceRows
-  )
-  const showProductModal = useAppSelector(
-    (state) => state.invoiceReducer.displayAddProductModal
-  )
-  const currentInvoiceRow = useAppSelector(
-    (state) => state.invoiceReducer.currentInvoiceRow
-  )
-  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
+  const {
+    invoiceApiError,
+    isLoading,
+    updateSuccess,
+    invoice,
+    invoiceRows,
+    showProductModal,
+    currentInvoiceRow,
+    totalPrice,
+    isPaid,
+    isActive,
+  } = useAppSelector((state) => ({
+    invoiceApiError: state.invoiceReducer.error,
+    isLoading: state.invoiceReducer.isLoading,
+    updateSuccess: state.invoiceReducer.updateSuccess,
+    invoice: state.invoiceReducer.currentEditInvoice,
+    invoiceRows: state.invoiceReducer.invoiceRows,
+    showProductModal: state.invoiceReducer.displayAddProductModal,
+    currentInvoiceRow: state.invoiceReducer.currentInvoiceRow,
+    totalPrice: state.invoiceReducer.totalPrice,
+    isPaid: state.invoiceReducer.currentEditInvoice?.paid,
+    isActive: state.invoiceReducer.currentEditInvoice?.isActive,
+  }))
   const invoiceNum = invoice?.invoiceNum
 
   const clientText = invoice?.Client.companyName
@@ -52,6 +61,12 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
     return <InvoiceRowText key={product.reduxId} {...product} />
   })
 
+  const onUpdateInvoiceClick = async () => {
+    if (!isActive) return
+    await dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
+    router.push(`/pages/invoice/pdf/${invoiceId}`)
+  }
+
   return (
     <section className="w-screen mt-4 mb-8">
       <PageTitle
@@ -59,6 +74,8 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         imgPath={'/icons/invoice.svg'}
         divClasses="mb-2"
       />
+
+      <InvoiceStatus isPaid={isPaid} isActive={isActive} />
 
       {isLoading ? <InvoiceIsLoading /> : null}
 
@@ -87,17 +104,33 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         <Button
           type="button"
           optionalClasses={`text-white text-sm w-full h-[42.5px] max-w-[320px] ${
-            isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
           } `}
           buttonText="Update Invoice"
-          disabled={isLoading}
-          onClick={async () => {
-            await dispatch(
-              updateInvoice({ invoiceId, totalPrice, invoiceRows })
-            )
-            router.push(`/pages/invoice/pdf/${invoiceId}`)
-          }}
+          disabled={isLoading || !isActive}
+          onClick={onUpdateInvoiceClick}
         />
+
+        <div className="flexRow gap-2 mt-4">
+          <Button
+            type="button"
+            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
+              isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            }`}
+            buttonText={`${isPaid ? 'Invoice Is NOT Paid' : 'Invoice Is Paid'}`}
+            disabled={isLoading || !isActive}
+            onClick={() => dispatch(toggleInvoiceIsPaid(invoiceId))}
+          />
+          <Button
+            type="button"
+            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
+              isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            }`}
+            buttonText={`${isActive ? 'Close Invoice' : 'Open Invoice'}`}
+            disabled={isLoading}
+            onClick={() => dispatch(toggleInvoiceIsActive(invoiceId))}
+          />
+        </div>
       </div>
 
       {showProductModal && currentInvoiceRow?.reduxId ? (

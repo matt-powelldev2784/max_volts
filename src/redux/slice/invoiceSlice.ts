@@ -109,6 +109,38 @@ export const getInvoice = createAsyncThunk(
   }
 )
 
+export const toggleInvoiceIsActive = createAsyncThunk(
+  'invoice/toggleInvoiceIsActive',
+  async (invoiceId: string) => {
+    try {
+      const invoice = await apiCall({
+        httpMethod: 'POST',
+        route: `/api/protected/invoice/toggle-invoice-is-active?invoice_id=${invoiceId}`,
+      })
+
+      return invoice
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
+export const toggleInvoiceIsPaid = createAsyncThunk(
+  'invoice/toggleInvoiceIsPaid',
+  async (invoiceId: string) => {
+    try {
+      const invoice = await apiCall({
+        httpMethod: 'POST',
+        route: `/api/protected/invoice/toggle-invoice-paid?invoice_id=${invoiceId}`,
+      })
+
+      return invoice
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
 export const invoiceSlice = createSlice({
   name: 'invoice',
   initialState,
@@ -272,6 +304,59 @@ export const invoiceSlice = createSlice({
         state.isLoading = false
         state.error = error.message || 'Server Error. Please try again later'
       })
+      //---------------------------------------------------------------------
+      .addCase(toggleInvoiceIsActive.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+        state.updateSuccess = ''
+      })
+      .addCase(
+        toggleInvoiceIsActive.fulfilled,
+        (state, action: PayloadAction<T_Invoice>) => {
+          const invoiceRows = action.payload.InvoiceRow
+          const invoiceRowsWithId = invoiceRows.map((invoiceRow) => {
+            return { ...invoiceRow, reduxId: uuidv4() }
+          })
+
+          state.isLoading = false
+          state.currentEditInvoice = action.payload
+          state.invoiceRows = invoiceRowsWithId
+          state.totalPrice = state.currentEditInvoice.totalAmount
+        }
+      )
+      .addCase(
+        toggleInvoiceIsActive.rejected,
+        (state, { error }: AnyAction) => {
+          state.isLoading = false
+          state.error = error.message || 'Server Error. Please try again later'
+        }
+      )
+      //---------------------------------------------------------------------
+      //---------------------------------------------------------------------
+      .addCase(toggleInvoiceIsPaid.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+        state.updateSuccess = ''
+      })
+      .addCase(
+        toggleInvoiceIsPaid.fulfilled,
+        (state, action: PayloadAction<T_Invoice>) => {
+          const invoiceRows = action.payload.InvoiceRow
+          const invoiceRowsWithId = invoiceRows.map((invoiceRow) => {
+            return { ...invoiceRow, reduxId: uuidv4() }
+          })
+
+          state.isLoading = false
+          state.currentEditInvoice = action.payload
+          state.invoiceRows = invoiceRowsWithId
+          state.totalPrice = state.currentEditInvoice.totalAmount
+        }
+      )
+      .addCase(toggleInvoiceIsPaid.rejected, (state, { error }: AnyAction) => {
+        state.isLoading = false
+        state.error = error.message || 'Server Error. Please try again later'
+      })
+    //---------------------------------------------------------------------
   },
 })
 

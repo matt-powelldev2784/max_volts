@@ -21,7 +21,7 @@ export const ClientText = ({ clientText }: ClientTextProps) => {
             Client
           </label>
         </div>
-        <p className="w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-3 h-[42px] border-darkBlack/25 text-darkBlack/50">
+        <p className="w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-3 h-[42px] border-darkBlack/25 text-darkBlack/50 truncate">
           {clientText ? clientText : 'Loading...'}
         </p>
       </div>
