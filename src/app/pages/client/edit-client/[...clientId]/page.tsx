@@ -1,7 +1,6 @@
 import { EditClient, NavBar } from '@/app/components'
 import { getClient } from '../getClient'
 import { ServerError } from '@/app/lib/ServerError'
-import { T_Client } from '@/types'
 
 export default async function AddProductPage({
   params,
