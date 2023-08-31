@@ -63,19 +63,19 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
         <Button
           type="button"
           optionalClasses={`text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[40px] ${
-            !isActive ? 'opacity-50' : null
+            isActive === false ? 'opacity-50' : null
           }`}
           buttonText="Delete"
-          disabled={!isActive}
+          disabled={isActive === false}
           onClick={onDeleteInvoiceRow}
         />
         <Button
           type="button"
           optionalClasses={`text-white text-sm bg-mvOrange h-full w-fit max-h-[40px] ${
-            !isActive ? 'opacity-50' : null
+            isActive === false ? 'opacity-50' : null
           }`}
           buttonText="Edit"
-          disabled={!isActive}
+          disabled={isActive === false}
           onClick={onEditInvoiceRow}
         />
       </div>
