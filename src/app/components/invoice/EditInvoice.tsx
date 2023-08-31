@@ -14,8 +14,7 @@ import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader
 import { InvoiceRowModal } from './components/invoiceRowModal/InvoiceRowModal'
 import { Button } from '@/app/ui/button/button'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
-import { IsLoadingJsx } from '@/app/ui/isLoading/IsLoadingJsx'
-import { PageTitle } from '@/app/ui/'
+import { PageTitle, IsLoadingJsx } from '@/app/ui/'
 import { useRouter } from 'next/navigation'
 import { InvoiceStatus } from './components/invoiceStatus/InvoiceStatus'
 

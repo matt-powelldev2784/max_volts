@@ -9,8 +9,7 @@ import { InvoiceRowModal } from '../invoiceRowModal/InvoiceRowModal'
 import { useInvoiceFormFormik } from './lib/useInvoiceFormFormik'
 import { useClientSelectOptions } from './lib/useClientSelectOptions'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
-import { PageTitle } from '@/app/ui/'
-import { IsLoadingJsx } from '@/app/ui/isLoading/IsLoadingJsx'
+import { PageTitle, IsLoadingJsx } from '@/app/ui/'
 
 interface InvoiceFormProps {
   children: React.ReactNode
