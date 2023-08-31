@@ -267,8 +267,6 @@ export const invoiceSlice = createSlice({
       .addCase(getInvoices.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
         state.error = error.message || 'Server Error. Please try again later'
-        if (!state.error)
-          state.invoiceListPageNum = state.invoiceListPageNum - 1
       })
       //---------------------------------------------------------------------
       .addCase(getInvoice.pending, (state) => {
@@ -359,8 +357,6 @@ export const {
   resetUpdateSuccessMessage,
   deleteInvoiceRow,
   setCurrentInvoiceRow,
-  setNextInvoicePageNum,
-  setPrevInvoicePageNum,
   resetToInitialState,
 } = invoiceSlice.actions
 export default invoiceSlice.reducer
