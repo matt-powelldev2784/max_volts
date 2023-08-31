@@ -24,7 +24,6 @@ type T_InvoiceState = {
   currentInvoiceRow: T_InvoiceRow | null
   invoices: T_Invoice[] | []
   currentEditInvoice: T_Invoice | null
-  invoiceListPageNum: number
 }
 
 const initialState: T_InvoiceState = {
@@ -37,7 +36,6 @@ const initialState: T_InvoiceState = {
   currentInvoiceRow: null,
   invoices: [],
   currentEditInvoice: null,
-  invoiceListPageNum: 1,
 }
 
 export const createInvoice = createAsyncThunk(
@@ -157,13 +155,6 @@ export const invoiceSlice = createSlice({
     resetUpdateSuccessMessage: (state, action: PayloadAction<string>) => {
       state.updateSuccess = action.payload
     },
-    setNextInvoicePageNum: (state) => {
-      state.invoiceListPageNum = state.invoiceListPageNum + 1
-    },
-    setPrevInvoicePageNum: (state) => {
-      if (state.invoiceListPageNum > 1)
-        state.invoiceListPageNum = state.invoiceListPageNum - 1
-    },
     deleteInvoiceRow: (state) => {
       state.invoiceRows = state.invoiceRows.filter((invoiceRow) => {
         return invoiceRow.reduxId !== state.currentInvoiceRow?.reduxId
@@ -276,8 +267,6 @@ export const invoiceSlice = createSlice({
       .addCase(getInvoices.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
         state.error = error.message || 'Server Error. Please try again later'
-        if (!state.error)
-          state.invoiceListPageNum = state.invoiceListPageNum - 1
       })
       //---------------------------------------------------------------------
       .addCase(getInvoice.pending, (state) => {
@@ -368,8 +357,6 @@ export const {
   resetUpdateSuccessMessage,
   deleteInvoiceRow,
   setCurrentInvoiceRow,
-  setNextInvoicePageNum,
-  setPrevInvoicePageNum,
   resetToInitialState,
 } = invoiceSlice.actions
 export default invoiceSlice.reducer

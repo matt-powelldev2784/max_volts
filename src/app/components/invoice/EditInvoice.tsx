@@ -14,7 +14,7 @@ import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader
 import { InvoiceRowModal } from './components/invoiceRowModal/InvoiceRowModal'
 import { Button } from '@/app/ui/button/button'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
-import { InvoiceIsLoading } from './components/invoiceIsLoading/InvoiceIsLoading'
+import { IsLoadingJsx } from '@/app/ui/isLoading/IsLoadingJsx'
 import { PageTitle } from '@/app/lib/PageTitle'
 import { useRouter } from 'next/navigation'
 import { InvoiceStatus } from './components/invoiceStatus/InvoiceStatus'
@@ -28,29 +28,31 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   const router = useRouter()
   useInvoice(invoiceId)
 
-  const {
-    invoiceApiError,
-    isLoading,
-    updateSuccess,
-    invoice,
-    invoiceRows,
-    showProductModal,
-    currentInvoiceRow,
-    totalPrice,
-    isPaid,
-    isActive,
-  } = useAppSelector((state) => ({
-    invoiceApiError: state.invoiceReducer.error,
-    isLoading: state.invoiceReducer.isLoading,
-    updateSuccess: state.invoiceReducer.updateSuccess,
-    invoice: state.invoiceReducer.currentEditInvoice,
-    invoiceRows: state.invoiceReducer.invoiceRows,
-    showProductModal: state.invoiceReducer.displayAddProductModal,
-    currentInvoiceRow: state.invoiceReducer.currentInvoiceRow,
-    totalPrice: state.invoiceReducer.totalPrice,
-    isPaid: state.invoiceReducer.currentEditInvoice?.paid,
-    isActive: state.invoiceReducer.currentEditInvoice?.isActive,
-  }))
+  const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
+  const isLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
+  const updateSuccess = useAppSelector(
+    (state) => state.invoiceReducer.updateSuccess
+  )
+  const invoice = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice
+  )
+  const invoiceRows = useAppSelector(
+    (state) => state.invoiceReducer.invoiceRows
+  )
+  const showProductModal = useAppSelector(
+    (state) => state.invoiceReducer.displayAddProductModal
+  )
+  const currentInvoiceRow = useAppSelector(
+    (state) => state.invoiceReducer.currentInvoiceRow
+  )
+  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
+  const isPaid = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice?.paid
+  )
+  const isActive = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice?.isActive
+  )
+
   const invoiceNum = invoice?.invoiceNum
 
   const clientText = invoice?.Client.companyName
@@ -77,7 +79,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
 
       <InvoiceStatus isPaid={isPaid} isActive={isActive} />
 
-      {isLoading ? <InvoiceIsLoading /> : null}
+      {isLoading ? <IsLoadingJsx /> : null}
 
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
@@ -114,7 +116,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         <div className="flexRow gap-2 mt-4">
           <Button
             type="button"
-            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
+            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
               isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
             buttonText={`${isPaid ? 'Set NOT Paid' : 'Set Paid'}`}
@@ -123,7 +125,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           />
           <Button
             type="button"
-            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
+            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
               isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
             buttonText={`${isActive ? 'Close Invoice' : 'Open Invoice'}`}

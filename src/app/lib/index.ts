@@ -1,5 +1,4 @@
 export { PageTitle } from './PageTitle'
-export { IsLoading } from './IsLoading'
 export { getLoggedInUser } from './getLoggedInUser'
 export { noSessionResponse } from './apiErrors/noSessionResponse'
 export { badRequestError400 } from './apiErrors/badRequestError'

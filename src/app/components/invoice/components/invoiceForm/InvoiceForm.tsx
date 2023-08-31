@@ -9,8 +9,8 @@ import { InvoiceRowModal } from '../invoiceRowModal/InvoiceRowModal'
 import { useInvoiceFormFormik } from './lib/useInvoiceFormFormik'
 import { useClientSelectOptions } from './lib/useClientSelectOptions'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
-import { InvoiceIsLoading } from '../invoiceIsLoading/InvoiceIsLoading'
 import { PageTitle } from '@/app/lib/PageTitle'
+import { IsLoadingJsx } from '@/app/ui/isLoading/IsLoadingJsx'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -43,7 +43,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
         divClasses="mb-2"
       />
 
-      {apiIsLoading ? <InvoiceIsLoading /> : null}
+      {apiIsLoading ? <IsLoadingJsx /> : null}
 
       <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
         <form className="w-full">

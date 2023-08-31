@@ -4,8 +4,9 @@ import {
   setCurrentInvoiceRow,
   toggleAddProductModal,
   deleteInvoiceRow,
+  resetUpdateSuccessMessage,
 } from '@/redux/slice/invoiceSlice'
-import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 
 interface InvoiceRowModalProps extends T_InvoiceRow {
   header?: boolean
@@ -16,6 +17,10 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const { quantity, name, description, VAT, sellPrice, totalPrice, header } =
     productWithId
 
+  const isActive = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice?.isActive
+  )
+
   const onEditInvoiceRow = () => {
     dispatch(setCurrentInvoiceRow(productWithId))
     dispatch(toggleAddProductModal())
@@ -24,6 +29,7 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const onDeleteInvoiceRow = () => {
     dispatch(setCurrentInvoiceRow(productWithId))
     dispatch(deleteInvoiceRow())
+    dispatch(resetUpdateSuccessMessage('Invoice updates not saved!'))
   }
 
   return (
@@ -58,14 +64,20 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
       >
         <Button
           type="button"
-          optionalClasses="text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[40px]"
+          optionalClasses={`text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[37px] ${
+            isActive === false ? 'opacity-50' : null
+          }`}
           buttonText="Delete"
+          disabled={isActive === false}
           onClick={onDeleteInvoiceRow}
         />
         <Button
           type="button"
-          optionalClasses="text-white text-sm bg-mvOrange h-full w-fit max-h-[40px]"
+          optionalClasses={`text-white text-sm bg-mvOrange h-full w-fit max-h-[37px] ${
+            isActive === false ? 'opacity-50' : null
+          }`}
           buttonText="Edit"
+          disabled={isActive === false}
           onClick={onEditInvoiceRow}
         />
       </div>

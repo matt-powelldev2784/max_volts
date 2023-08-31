@@ -46,7 +46,7 @@ export const ProductListItem = ({ product }: ProductListItemProps) => {
       >
         <Button
           type="button"
-          optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[40px]"
+          optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px]"
           buttonText="Edit"
           onClick={() => router.push(`/pages/product/edit-product/${id}`)}
         />

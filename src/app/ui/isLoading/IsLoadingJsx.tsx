@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export const InvoiceIsLoading = () => {
+export const IsLoadingJsx = () => {
   return (
     <div className="fixed bottom-0 w-full flexRow">
       <div className="">
