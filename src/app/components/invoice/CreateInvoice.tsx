@@ -5,7 +5,7 @@ import { InvoiceForm } from './components/invoiceForm/InvoiceForm'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
 import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader'
-import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
+import { ErrorMessage } from '@/app/ui/formElements/ErrorMessage'
 import { resetToInitialState } from '@/redux/slice/invoiceSlice'
 
 export const CreateInvoice = () => {

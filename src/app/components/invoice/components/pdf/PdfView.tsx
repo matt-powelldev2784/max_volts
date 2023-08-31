@@ -7,7 +7,7 @@ import PdfDownload from './components/pdfDownload/PdfDownload'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import Image from 'next/image'
-import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
+import { ErrorMessage } from '@/app/ui/formElements/ErrorMessage'
 import { PdfIsLoading } from './components/pdfIsLoading/PdfIsLoading'
 
 interface PdfViewProps {

@@ -1,6 +1,6 @@
 'use client'
 
-import { InputField } from '@/app/lib/formElements/InputField'
+import { InputField } from '@/app/ui/formElements/InputField'
 import { useEditProductFormik } from './lib/useEditProductFormik'
 import { PageTitle, Button } from '@/app/ui/'
 import { T_Product } from '@/types'

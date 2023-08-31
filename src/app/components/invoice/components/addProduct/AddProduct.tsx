@@ -1,5 +1,5 @@
 import { Button } from '@/app/ui/'
-import { SelectField } from '../../../../lib/formElements/SelectField'
+import { SelectField } from '../../../../ui/formElements/SelectField'
 import { useAddProductFormik } from './lib/useAddProductFormik'
 import { useProductSelectOptions } from './lib/useProductSelectOptions'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'

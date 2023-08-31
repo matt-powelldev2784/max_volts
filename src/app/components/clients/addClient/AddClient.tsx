@@ -1,6 +1,6 @@
 'use client'
 
-import { InputField } from '@/app/lib/formElements/InputField'
+import { InputField } from '@/app/ui/formElements/InputField'
 import { useAddClientFormik } from './lib/useAddClientFormik'
 import { PageTitle, Button } from '@/app/ui/'
 
