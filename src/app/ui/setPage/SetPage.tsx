@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { IsLoadingJsx } from '@/app/ui/isLoading/IsLoadingJsx'
 
 interface SkipRecordsProps {
   maxPageNumber: number
@@ -16,17 +17,18 @@ export const SetPage = ({
   baseUrl,
 }: SkipRecordsProps) => {
   const router = useRouter()
-
-  console.log('currentPageNum', currentPageNum)
+  const [isLoading, setIsLoading] = React.useState(false)
 
   const onClickNextRecords = () => {
     if (currentPageNum + 1 <= maxPageNumber) {
+      setIsLoading(true)
       router.push(`${baseUrl}${currentPageNum + 1}`)
     }
   }
 
   const onClickPrevRecords = () => {
     if (currentPageNum - 1 >= 1) {
+      setIsLoading(true)
       router.push(`${baseUrl}${currentPageNum - 1}`)
     }
   }
@@ -40,6 +42,8 @@ export const SetPage = ({
         height={30}
         onClick={onClickPrevRecords}
       />
+
+      {isLoading ? <IsLoadingJsx /> : null}
 
       <Image
         src="/icons/next.svg"
