@@ -7,8 +7,8 @@ import PdfDownload from './components/pdfDownload/PdfDownload'
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import Image from 'next/image'
-import { IsLoading } from '@/app/lib/IsLoading'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
+import { PdfIsLoading } from './components/pdfIsLoading/PdfIsLoading'
 
 interface PdfViewProps {
   invoiceId: string
@@ -34,23 +34,7 @@ const PDFView = ({ invoiceId }: PdfViewProps) => {
     />
   )
 
-  if (!client || !currentInvoice) {
-    return (
-      <>
-        <div className="flexCol gap-2 w-full mt-4 mb-4">
-          <Image
-            src="/icons/invoice.svg"
-            alt="Person icon"
-            width={30}
-            height={30}
-            className=""
-          />
-          <p className="flexRow text-lg text-center">PDF Invoice Generating</p>
-        </div>
-        <IsLoading isLoading={true} imgPath={'/icons/loading.svg'} />
-      </>
-    )
-  }
+  if (!client || !currentInvoice) return <PdfIsLoading />
 
   return (
     <>
