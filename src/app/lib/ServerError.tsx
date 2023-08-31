@@ -1,4 +1,4 @@
-import { PageTitle } from '.'
+import { PageTitle } from '@/app/ui/'
 import { NavBar } from '../components'
 
 export const ServerError = () => {

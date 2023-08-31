@@ -1,4 +1,4 @@
-import { PageTitle } from '@/app/lib'
+import { PageTitle } from '@/app/ui/'
 import { T_Product } from '@/types'
 import { ProductListItem } from './components/ProductListItem/ProductListItem'
 import { ProductListHeader } from './components/ProductListHeader/ProductListHeader'
@@ -27,7 +27,7 @@ export const ProductList = async ({
       <SetPage
         maxPageNumber={maxProductPages}
         currentPageNum={currentPageNum}
-        baseUrl='/pages/product/product-list/'
+        baseUrl="/pages/product/product-list/"
       />
       <ProductListHeader />
       {productsJsx}

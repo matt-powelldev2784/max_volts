@@ -1,4 +1,4 @@
-import { PageTitle } from '@/app/lib'
+import { PageTitle } from '@/app/ui/'
 import { T_Client } from '@/types'
 import { SetPage } from '@/app/ui/setPage/SetPage'
 import { ClientListItem } from './components/ClientListItem/ClientListItem'

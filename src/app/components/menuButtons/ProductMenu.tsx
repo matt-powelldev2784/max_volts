@@ -2,7 +2,7 @@
 
 import { Button } from '@/app/ui/button/button'
 import { useRouter } from 'next/navigation'
-import { PageTitle } from '@/app/lib/PageTitle'
+import { PageTitle } from '@/app/ui/'
 
 export const ProductMenu = () => {
   const router = useRouter()

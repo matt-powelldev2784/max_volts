@@ -9,7 +9,7 @@ import { InvoiceRowModal } from '../invoiceRowModal/InvoiceRowModal'
 import { useInvoiceFormFormik } from './lib/useInvoiceFormFormik'
 import { useClientSelectOptions } from './lib/useClientSelectOptions'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
-import { PageTitle } from '@/app/lib/PageTitle'
+import { PageTitle } from '@/app/ui/'
 import { IsLoadingJsx } from '@/app/ui/isLoading/IsLoadingJsx'
 
 interface InvoiceFormProps {

@@ -3,7 +3,7 @@
 import { InputField } from '@/app/lib/formElements/InputField'
 import { Button } from '@/app/ui/button/button'
 import { useAddClientFormik } from './lib/useAddClientFormik'
-import { PageTitle } from '@/app/lib/PageTitle'
+import { PageTitle } from '@/app/ui/'
 
 export const AddClient = () => {
   const formik = useAddClientFormik()
