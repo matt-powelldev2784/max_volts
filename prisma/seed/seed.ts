@@ -23,9 +23,16 @@ async function main(): Promise<void> {
       add2: 'Jane Town',
       postcode: 'JS1 1JS',
       tel: '01234 567890',
+      email: '',
     },
     {
       name: 'Matthew Powell',
+      companyName: '',
+      add1: '',
+      add2: '',
+      postcode: '',
+      tel: '',
+      email: '',
     },
   ]
 
@@ -46,14 +53,14 @@ async function main(): Promise<void> {
     {
       name: 'Labour',
       description: '',
-      buyPrice: 100,
+      buyPrice: 0,
       sellPrice: 200,
     },
     {
       name: 'Electrical Part 1',
       description: 'Electrical Part 1 Description',
-      buyPrice: 200,
-      sellPrice: 400,
+      buyPrice: 10,
+      sellPrice: 20,
     },
     {
       name: 'Misc',
