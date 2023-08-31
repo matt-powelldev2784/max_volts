@@ -42,6 +42,16 @@ export const InvoiceMenu = () => {
           router.push('/pages/invoice/invoice-list/1')
         }}
       />
+      <Button
+        type="button"
+        optionalClasses="text-white text-sm bg-mvOrange h-[42.5px] w-[300px]"
+        buttonText="Active Invoice List"
+        disabled={false}
+        onClick={() => {
+          resetInvoiceState()
+          router.push('/pages/invoice/active-invoices/1')
+        }}
+      />
     </div>
   )
 }
