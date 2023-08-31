@@ -1,6 +1,6 @@
 import { PageTitle } from '@/app/ui/'
 import { T_Client } from '@/types'
-import { SetPage } from '@/app/ui/setPage/SetPage'
+import { SetPage } from '@/app/ui/'
 import { ClientListItem } from './components/ClientListItem/ClientListItem'
 import { ClientListHeader } from './components/ClientListItemHeader/ClientListHeader'
 

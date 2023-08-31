@@ -2,7 +2,7 @@ import { PageTitle } from '@/app/ui/'
 import { T_Product } from '@/types'
 import { ProductListItem } from './components/ProductListItem/ProductListItem'
 import { ProductListHeader } from './components/ProductListHeader/ProductListHeader'
-import { SetPage } from '@/app/ui/setPage/SetPage'
+import { SetPage } from '@/app/ui/'
 
 interface ProductListProps {
   products: T_Product[]
