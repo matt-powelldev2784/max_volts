@@ -7,9 +7,9 @@ import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 export const AddProduct = () => {
   const formik = useAddProductFormik()
   const products = useAppSelector((state) => state.productReducer.products)
-   const { isActive } = useAppSelector((state) => ({
-     isActive: state.invoiceReducer.currentEditInvoice?.isActive,
-   }))
+  const isActive = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice?.isActive
+  )
    const productSelectOptionsJsx = useProductSelectOptions()
 
    return (

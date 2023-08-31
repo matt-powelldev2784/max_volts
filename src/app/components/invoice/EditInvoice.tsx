@@ -28,29 +28,31 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
   const router = useRouter()
   useInvoice(invoiceId)
 
-  const {
-    invoiceApiError,
-    isLoading,
-    updateSuccess,
-    invoice,
-    invoiceRows,
-    showProductModal,
-    currentInvoiceRow,
-    totalPrice,
-    isPaid,
-    isActive,
-  } = useAppSelector((state) => ({
-    invoiceApiError: state.invoiceReducer.error,
-    isLoading: state.invoiceReducer.isLoading,
-    updateSuccess: state.invoiceReducer.updateSuccess,
-    invoice: state.invoiceReducer.currentEditInvoice,
-    invoiceRows: state.invoiceReducer.invoiceRows,
-    showProductModal: state.invoiceReducer.displayAddProductModal,
-    currentInvoiceRow: state.invoiceReducer.currentInvoiceRow,
-    totalPrice: state.invoiceReducer.totalPrice,
-    isPaid: state.invoiceReducer.currentEditInvoice?.paid,
-    isActive: state.invoiceReducer.currentEditInvoice?.isActive,
-  }))
+  const invoiceApiError = useAppSelector((state) => state.invoiceReducer.error)
+  const isLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
+  const updateSuccess = useAppSelector(
+    (state) => state.invoiceReducer.updateSuccess
+  )
+  const invoice = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice
+  )
+  const invoiceRows = useAppSelector(
+    (state) => state.invoiceReducer.invoiceRows
+  )
+  const showProductModal = useAppSelector(
+    (state) => state.invoiceReducer.displayAddProductModal
+  )
+  const currentInvoiceRow = useAppSelector(
+    (state) => state.invoiceReducer.currentInvoiceRow
+  )
+  const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
+  const isPaid = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice?.paid
+  )
+  const isActive = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice?.isActive
+  )
+
   const invoiceNum = invoice?.invoiceNum
 
   const clientText = invoice?.Client.companyName

@@ -17,9 +17,9 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const { quantity, name, description, VAT, sellPrice, totalPrice, header } =
     productWithId
 
-  const { isActive } = useAppSelector((state) => ({
-    isActive: state.invoiceReducer.currentEditInvoice?.isActive,
-  }))
+  const isActive = useAppSelector(
+    (state) => state.invoiceReducer.currentEditInvoice?.isActive
+  )
 
   const onEditInvoiceRow = () => {
     dispatch(setCurrentInvoiceRow(productWithId))
