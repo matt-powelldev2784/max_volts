@@ -12,7 +12,7 @@ export const InvoiceStatus = ({ isPaid, isActive }: InvoiceStatusProps) => {
   if (isPaid === false && isActive === true) return null
 
   return (
-    <div className="flexRow gap-2 mt-4 mb-4">
+    <div className="flexRow gap-2 mt-4 mb-2 md:mb-0">
       {isPaid === true ? <IsPaidText /> : null}
       {isActive === true ? null : <IsActiveText />}
     </div>
