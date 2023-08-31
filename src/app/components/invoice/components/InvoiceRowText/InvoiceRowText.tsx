@@ -4,6 +4,7 @@ import {
   setCurrentInvoiceRow,
   toggleAddProductModal,
   deleteInvoiceRow,
+  resetUpdateSuccessMessage,
 } from '@/redux/slice/invoiceSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
 
@@ -28,6 +29,7 @@ export const InvoiceRowText = (productWithId: InvoiceRowModalProps) => {
   const onDeleteInvoiceRow = () => {
     dispatch(setCurrentInvoiceRow(productWithId))
     dispatch(deleteInvoiceRow())
+    dispatch(resetUpdateSuccessMessage('Invoice updates not saved!'))
   }
 
   return (
