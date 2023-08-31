@@ -1,10 +1,9 @@
 'use client'
 
-import { Button } from '@/app/ui/button/button'
 import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import { resetToInitialState } from '@/redux/slice/invoiceSlice'
-import { PageTitle } from '@/app/lib/PageTitle'
+import { PageTitle, Button } from '@/app/ui/'
 
 export const InvoiceMenu = () => {
   const router = useRouter()

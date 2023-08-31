@@ -2,7 +2,7 @@
 
 import { T_Invoice } from '@/types/invoice'
 import React from 'react'
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/'
 import { formatDate } from '@/app/lib/formatDate'
 import { useRouter } from 'next/navigation'
 

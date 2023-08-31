@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/'
 import { PdfLayout } from '../pdfLayout/PdfLayout'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { T_Invoice } from '@/types/invoice'

@@ -2,8 +2,7 @@
 
 import { InvoiceListItem } from './components/invoiceListItem/InvoiceListItem'
 import { InvoiceListHeader } from './components/invoiceListHeader/InvoiceListHeader'
-import { PageTitle } from '@/app/lib/PageTitle'
-import { SetPage } from '@/app/ui/setPage/SetPage'
+import { SetPage, PageTitle } from '@/app/ui/'
 import { T_Invoice } from '@/types/invoice'
 
 interface InvoiceListProps {

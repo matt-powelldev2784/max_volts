@@ -1,9 +1,8 @@
 'use client'
 
-import { InputField } from '@/app/lib/formElements/InputField'
-import { Button } from '@/app/ui/button/button'
+import { InputField } from '@/app/ui/formElements/InputField'
 import { useAddProductFormik } from './lib/useAddProductFormik'
-import { PageTitle } from '@/app/lib/PageTitle'
+import { PageTitle, Button } from '@/app/ui/'
 
 export const AddProduct = () => {
   const formik = useAddProductFormik()

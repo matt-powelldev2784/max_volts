@@ -1,6 +1,6 @@
-import { InputField } from '../../../../lib/formElements/InputField'
-import { TextAreaField } from '../../../../lib/formElements/TextArea'
-import { Button } from '@/app/ui/button/button'
+import { InputField } from '../../../../ui/formElements/InputField'
+import { TextAreaField } from '../../../../ui/formElements/TextArea'
+import { Button } from '@/app/ui/'
 import { T_InvoiceRow } from '@/types'
 import {
   toggleAddProductModal,
