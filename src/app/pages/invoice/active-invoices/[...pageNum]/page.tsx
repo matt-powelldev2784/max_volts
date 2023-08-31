@@ -1,6 +1,6 @@
 import { InvoiceList, NavBar } from '@/app/components'
-import { getTenInvoices } from '../getTenInvoices'
-import { getMaxInvoicePages } from '../getMaxInvoicePages'
+import { getTenActiveInvoices } from '../getTenActiveInvoices'
+import { getMaxActiveInvoicePages } from '../getMaxActiveInvoicePages'
 import { ServerError } from '@/app/lib/ServerError'
 
 export default async function InvoiceListPage({
@@ -8,9 +8,9 @@ export default async function InvoiceListPage({
 }: {
   params: { pageNum: string }
 }) {
-  const maxInvoicePages = await getMaxInvoicePages()
+  const maxInvoicePages = await getMaxActiveInvoicePages()
   const page = Number(params.pageNum[0])
-  const invoices = await getTenInvoices(page)
+  const invoices = await getTenActiveInvoices(page)
 
   if (!invoices) {
     return <ServerError />
@@ -23,7 +23,7 @@ export default async function InvoiceListPage({
         invoices={invoices}
         maxInvoicePages={maxInvoicePages}
         currentPageNum={page}
-        pageTitle="Invoice List"
+        pageTitle="Open Invoices"
       />
     </main>
   )
