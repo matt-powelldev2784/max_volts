@@ -23,6 +23,7 @@ export default async function InvoiceListPage({
         invoices={invoices}
         maxInvoicePages={maxInvoicePages}
         currentPageNum={page}
+        pageTitle="Open Invoices"
       />
     </main>
   )
