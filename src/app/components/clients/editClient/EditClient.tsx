@@ -1,9 +1,8 @@
 'use client'
 
 import { InputField } from '@/app/lib/formElements/InputField'
-import { Button } from '@/app/ui/button/button'
 import { useEditClientFormik } from './lib/useEditCleintFormik'
-import { PageTitle } from '@/app/ui/'
+import { PageTitle, Button } from '@/app/ui/'
 import { T_Client } from '@/types'
 
 interface EditClientProps {

@@ -1,4 +1,4 @@
-import { Button } from '@/app/ui/button/button'
+import { Button } from '@/app/ui/'
 
 export const IsActiveText = () => {
   return (
