@@ -24,7 +24,6 @@ type T_InvoiceState = {
   currentInvoiceRow: T_InvoiceRow | null
   invoices: T_Invoice[] | []
   currentEditInvoice: T_Invoice | null
-  invoiceListPageNum: number
 }
 
 const initialState: T_InvoiceState = {
@@ -37,7 +36,6 @@ const initialState: T_InvoiceState = {
   currentInvoiceRow: null,
   invoices: [],
   currentEditInvoice: null,
-  invoiceListPageNum: 1,
 }
 
 export const createInvoice = createAsyncThunk(
@@ -156,13 +154,6 @@ export const invoiceSlice = createSlice({
     },
     resetUpdateSuccessMessage: (state, action: PayloadAction<string>) => {
       state.updateSuccess = action.payload
-    },
-    setNextInvoicePageNum: (state) => {
-      state.invoiceListPageNum = state.invoiceListPageNum + 1
-    },
-    setPrevInvoicePageNum: (state) => {
-      if (state.invoiceListPageNum > 1)
-        state.invoiceListPageNum = state.invoiceListPageNum - 1
     },
     deleteInvoiceRow: (state) => {
       state.invoiceRows = state.invoiceRows.filter((invoiceRow) => {
