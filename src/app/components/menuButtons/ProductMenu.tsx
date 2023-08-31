@@ -31,7 +31,7 @@ export const ProductMenu = () => {
         buttonText="Product List"
         disabled={false}
         onClick={() => {
-          router.push('/pages/product/product-list/1')
+          window.location.href = '/pages/product/product-list/1'
         }}
       />
     </div>
