@@ -8,7 +8,8 @@ interface InvoiceStatusProps {
 }
 
 export const InvoiceStatus = ({ isPaid, isActive }: InvoiceStatusProps) => {
-  if (isPaid !== true) return <></>
+  if (isPaid === undefined || isActive === undefined) return null
+  if (isPaid === false && isActive === true) return null
 
   return (
     <div className="flexRow gap-2 mt-4 mb-4">
