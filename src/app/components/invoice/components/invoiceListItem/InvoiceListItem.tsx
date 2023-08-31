@@ -57,13 +57,13 @@ export const InvoiceListItem = ({
         <div className="flexCol gap-2 md:flexRow">
           <Button
             type="button"
-            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[40px]"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px]"
             buttonText="Edit"
             onClick={() => router.push(`/pages/invoice/edit-invoice/${id}`)}
           />
           <Button
             type="button"
-            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[40px]"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px]"
             buttonText="View"
             onClick={() => router.push(`/pages/invoice/pdf/${id}`)}
           />

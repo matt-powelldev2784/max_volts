@@ -116,7 +116,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
         <div className="flexRow gap-2 mt-4">
           <Button
             type="button"
-            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
+            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
               isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
             buttonText={`${isPaid ? 'Set NOT Paid' : 'Set Paid'}`}
@@ -125,7 +125,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           />
           <Button
             type="button"
-            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[40px] ${
+            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
               isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
             buttonText={`${isActive ? 'Close Invoice' : 'Open Invoice'}`}
