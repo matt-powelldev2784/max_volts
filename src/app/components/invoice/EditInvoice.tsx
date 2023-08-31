@@ -14,7 +14,7 @@ import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader
 import { InvoiceRowModal } from './components/invoiceRowModal/InvoiceRowModal'
 import { Button } from '@/app/ui/button/button'
 import { ErrorMessage } from '@/app/lib/formElements/ErrorMessage'
-import { InvoiceIsLoading } from './components/invoiceIsLoading/InvoiceIsLoading'
+import { IsLoadingJsx } from '@/app/ui/isLoading/IsLoadingJsx'
 import { PageTitle } from '@/app/lib/PageTitle'
 import { useRouter } from 'next/navigation'
 import { InvoiceStatus } from './components/invoiceStatus/InvoiceStatus'
@@ -77,7 +77,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
 
       <InvoiceStatus isPaid={isPaid} isActive={isActive} />
 
-      {isLoading ? <InvoiceIsLoading /> : null}
+      {isLoading ? <IsLoadingJsx /> : null}
 
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
