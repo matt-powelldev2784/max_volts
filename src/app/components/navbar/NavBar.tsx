@@ -3,7 +3,6 @@ import { NavItems } from './components/NavItems'
 import { IsLoggedIn } from '@/app/components'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import { redirect } from 'next/navigation'
 
 export const NavBar = async () => {
   const session = await getServerSession(authOptions)
