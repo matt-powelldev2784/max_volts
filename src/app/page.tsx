@@ -1,7 +1,10 @@
 import { NavBar } from '@/app/components'
 import { ClientMenu, ProductMenu, InvoiceMenu } from '@/app/components'
+import { getLoggedInUser } from './lib'
 
 export default async function Home() {
+  
+
   return (
     <main className="min-h-screen min-w-screen">
       <NavBar />

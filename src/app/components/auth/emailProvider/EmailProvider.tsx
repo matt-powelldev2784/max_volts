@@ -2,7 +2,7 @@
 
 import { signIn } from 'next-auth/react'
 import { Provider } from '@/types'
-import { AuthButton } from '../AuthButton/AuthButton'
+import { AuthButton } from '../authButton/AuthButton'
 
 interface EmailProviderProps {
   emailProvider: Provider[]

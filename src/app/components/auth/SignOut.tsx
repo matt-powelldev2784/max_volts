@@ -1,7 +1,7 @@
 'use client'
 
 import { signOut } from 'next-auth/react'
-import { AuthButton } from './AuthButton/AuthButton'
+import { AuthButton } from './authButton/AuthButton'
 
 export const SignOut = () => {
   const onSignOutClick = async () => {
@@ -11,7 +11,7 @@ export const SignOut = () => {
     <>
       <AuthButton
         type="button"
-        onClick={() => onSignOutClick}
+        onClick={onSignOutClick}
         buttonText={`Log Out`}
         optionalClasses="text-white text-sm bg-darkBlack w-[300px] mt-8"
         imgPath={`/icons/signout.svg`}
