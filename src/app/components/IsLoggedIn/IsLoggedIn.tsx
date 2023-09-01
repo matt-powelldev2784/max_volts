@@ -4,10 +4,10 @@ export const IsLoggedIn = async () => {
   const user = await getLoggedInUser()
 
   if (user) {
-    return <div>{user?.name} signed in</div>
+    return <div className="hidden">{user?.name} signed in</div>
   }
 
   if (!user) {
-    return <div>not signed in</div>
+    return <div className="hidden">not signed in</div>
   }
 }

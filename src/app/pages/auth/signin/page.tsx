@@ -1,6 +1,6 @@
 import { NavBar } from '@/app/components'
 import { getAuthProviders } from '../getProviders'
-import { ServerError } from '@/app/lib/ServerError'
+// import { ServerError } from '@/app/lib/ServerError'
 import { SignIn } from '@/app/components'
 
 export default async function SignInPage() {
