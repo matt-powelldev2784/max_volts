@@ -1,17 +1,20 @@
 import { NavBar } from '@/app/components'
 import { getAuthProviders } from '../getProviders'
-import { ServerError } from '@/app/lib/ServerError'
+// import { ServerError } from '@/app/lib/ServerError'
 import { SignIn } from '@/app/components'
 
 export default async function SignInPage() {
   const providers = await getAuthProviders()
-  if (!providers) return <ServerError />
-  const { oAuthProviders, emailProvider } = providers
 
   return (
     <>
       <NavBar />
-      <SignIn oAuthProviders={oAuthProviders} emailProvider={emailProvider} />
+      {providers ? (
+        <SignIn
+          oAuthProviders={providers.oAuthProviders}
+          emailProvider={providers.emailProvider}
+        />
+      ) : null}
     </>
   )
 }
