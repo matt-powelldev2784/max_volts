@@ -13,7 +13,7 @@ export const SignIn = ({ oAuthProviders, emailProvider }: SignInProps) => {
     <>
       <PageTitle
         text={'Login'}
-        imgPath={'/icons/invoice.svg'}
+        imgPath={'/icons/signin.svg'}
         divClasses="mt-4 mb-8"
       />
       <div className="flexCol gap-4">
