@@ -1,6 +1,6 @@
 'use client'
 
-import { OAuthButton } from '../oAuthButton/OAuthButton'
+import { AuthButton } from '../AuthButton/AuthButton'
 import { signIn } from 'next-auth/react'
 import { Provider } from '@/types'
 interface OAuthProviderProps {
@@ -11,7 +11,7 @@ export const OAuthProviders = ({ oAuthProviders }: OAuthProviderProps) => {
   const oAuthProvidersJsx = oAuthProviders.map((provider) => {
     return (
       <div key={provider.name}>
-        <OAuthButton
+        <AuthButton
           type="button"
           onClick={() => signIn(provider.id)}
           buttonText={`Sign in with ${provider.name}`}

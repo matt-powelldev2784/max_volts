@@ -12,7 +12,7 @@ interface ButtonProps {
   imgPath: string
 }
 
-export const OAuthButton = ({
+export const AuthButton = ({
   onClick,
   optionalClasses,
   buttonText,
@@ -29,13 +29,7 @@ export const OAuthButton = ({
       disabled={disabled}
       className={`rounded-lg font-semibold outline-none p-2 h-[50px] flexRow gap-4 ${optionalClasses}`}
     >
-      <Image
-        src={imgPath.toLowerCase()}
-        alt=""
-        width={30}
-        height={30}
-        className={''}
-      />
+      <Image src={imgPath.toLowerCase()} alt="" width={30} height={30} />
       <p className="text-white text-base">{buttonText}</p>
     </button>
   )

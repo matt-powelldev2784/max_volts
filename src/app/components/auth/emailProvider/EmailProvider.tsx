@@ -2,7 +2,7 @@
 
 import { signIn } from 'next-auth/react'
 import { Provider } from '@/types'
-import { OAuthButton } from '../oAuthButton/OAuthButton'
+import { AuthButton } from '../AuthButton/AuthButton'
 
 interface EmailProviderProps {
   emailProvider: Provider[]
@@ -43,7 +43,7 @@ export const EmailProvider = ({ emailProvider }: EmailProviderProps) => {
           className="w-full rounded border p-2"
         />
 
-        <OAuthButton
+        <AuthButton
           type="submit"
           onClick={() => signIn(provider.id)}
           buttonText={`Sign in with ${provider.name}`}
