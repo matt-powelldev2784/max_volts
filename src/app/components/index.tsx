@@ -22,5 +22,5 @@ export { InvoiceMenu } from './menuButtons/InvoiceMenu'
 export { ClientMenu } from './menuButtons/ClientMenu'
 export { ProductMenu } from './menuButtons/ProductMenu'
 
-//aith
-export {SignIn} from './auth/SignIn'
+//auth
+export { SignIn } from './auth/SignIn'
