@@ -1,8 +1,8 @@
 'use client'
 
-import { AuthButton } from '../authButton/AuthButton'
 import { signIn } from 'next-auth/react'
 import { Provider } from '@/types'
+import { AuthButton } from '../authButton/Auth-Button'
 interface OAuthProviderProps {
   oAuthProviders: Provider[]
 }

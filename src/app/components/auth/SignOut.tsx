@@ -1,7 +1,8 @@
 'use client'
 
 import { signOut } from 'next-auth/react'
-import { AuthButton } from './authButton/AuthButton'
+import { AuthButton } from './authButton/Auth-Button'
+
 
 export const SignOut = () => {
   const onSignOutClick = async () => {
