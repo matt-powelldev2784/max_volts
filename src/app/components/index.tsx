@@ -21,3 +21,6 @@ export { EditClient } from './clients/editClient/EditClient'
 export { InvoiceMenu } from './menuButtons/InvoiceMenu'
 export { ClientMenu } from './menuButtons/ClientMenu'
 export { ProductMenu } from './menuButtons/ProductMenu'
+
+//auth
+export { SignIn } from './auth/SignIn'

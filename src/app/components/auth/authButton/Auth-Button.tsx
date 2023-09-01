@@ -1,4 +1,4 @@
-import React from 'react'
+import Image from 'next/image'
 
 interface ButtonProps {
   // eslint-disable-next-line no-unused-vars
@@ -9,15 +9,17 @@ interface ButtonProps {
   type?: 'submit' | 'reset' | 'button'
   buttonText: string
   disabled?: boolean
+  imgPath: string
 }
 
-export const Button = ({
+export const AuthButton = ({
   onClick,
   optionalClasses,
   buttonText,
   type,
   onSubmit,
   disabled,
+  imgPath,
 }: ButtonProps) => {
   return (
     <button
@@ -25,9 +27,10 @@ export const Button = ({
       onClick={onClick}
       onSubmit={onSubmit}
       disabled={disabled}
-      className={`rounded-lg font-semibold outline-none p-2 h-[42.5px] ${optionalClasses}`}
+      className={`rounded-lg font-semibold outline-none p-2 h-[50px] flexRow gap-4 ${optionalClasses}`}
     >
-      {buttonText}
+      <Image src={imgPath.toLowerCase()} alt="" width={30} height={30} />
+      <p className="text-white text-base">{buttonText}</p>
     </button>
   )
 }

@@ -7,6 +7,11 @@ import EmailProvider from 'next-auth/providers/email'
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
+  pages: {
+    signIn: '/pages/auth/signin',
+    signOut: '/pages/auth/signout',
+    error: '/auth/error',
+  },
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID!,
@@ -22,6 +27,11 @@ export const authOptions = {
       maxAge: 1 * 60 * 60, // 1 hour
     }),
   ],
+  callbacks: {
+    async redirect() {
+      return '/'
+    },
+  },
 }
 
 const handler = NextAuth(authOptions)
