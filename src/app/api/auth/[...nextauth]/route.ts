@@ -27,6 +27,11 @@ export const authOptions = {
       maxAge: 1 * 60 * 60, // 1 hour
     }),
   ],
+  callbacks: {
+    async redirect() {
+      return '/'
+    },
+  },
 }
 
 const handler = NextAuth(authOptions)
