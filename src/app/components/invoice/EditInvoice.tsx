@@ -6,6 +6,7 @@ import {
   toggleInvoiceIsPaid,
   toggleInvoiceIsActive,
   updateInvoice,
+  setErrorState,
 } from '@/redux/slice/invoiceSlice'
 import { AddProduct } from './components/addProduct/AddProduct'
 import { ClientText } from './components/ClientText/ClientText'
@@ -63,6 +64,9 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
 
   const onUpdateInvoiceClick = async () => {
     if (!isActive) return
+    if (invoiceRows.length === 0) {
+      return dispatch(setErrorState('Please add at least one invoice row'))
+    }
     await dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
     router.push(`/pages/invoice/pdf/${invoiceId}`)
   }
@@ -82,7 +86,9 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
           {updateSuccess ? <ErrorMessage errorMessage={updateSuccess} /> : null}
-          {invoiceApiError ? <ErrorMessage /> : null}
+          {invoiceApiError ? (
+            <ErrorMessage errorMessage={invoiceApiError || undefined} />
+          ) : null}
         </div>
       </div>
 
