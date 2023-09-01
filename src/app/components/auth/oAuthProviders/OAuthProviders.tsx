@@ -2,16 +2,7 @@
 
 import { Button } from '@/app/ui'
 import { signIn } from 'next-auth/react'
-import { OAuthProviderType } from 'next-auth/providers/oauth-types'
-
-type Provider = {
-  id: string
-  name: string
-  type: string
-  signinUrl: string
-  callbackUrl: string
-}
-
+import { Provider } from '@/types'
 interface OAuthProviderProps {
   oAuthProviders: Provider[]
 }
