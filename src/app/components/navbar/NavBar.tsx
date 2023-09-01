@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import { NavItems } from './components/NavItems'
-import { IsLoggedIn } from '@/app/components'
 
 export const NavBar = () => {
   return (
     <header className="">
-      <IsLoggedIn />
       <nav className="flex flex-col items-center md:justify-center lg:flex-row lg:justify-between h-fit w-full bg-darkBlack">
         <a
           href="/"
