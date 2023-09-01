@@ -8,12 +8,10 @@ export default async function SignInPage() {
   if (!providers) return <ServerError />
   const { oAuthProviders, emailProvider } = providers
 
-  console.log('emailProvider', emailProvider)
-
   return (
     <>
       <NavBar />
-      <SignIn oAuthProviders={oAuthProviders} />
+      <SignIn oAuthProviders={oAuthProviders} emailProvider={emailProvider} />
     </>
   )
 }
