@@ -1,5 +1,6 @@
 import { NavBar } from '@/app/components'
 import { getAuthProviders } from '../getProviders'
+import { CheckEmail } from '@/app/components'
 
 export default async function VerifyEmailPage() {
   const providers = await getAuthProviders()
@@ -7,6 +8,7 @@ export default async function VerifyEmailPage() {
   return (
     <>
       <NavBar />
+      <CheckEmail />
     </>
   )
 }
