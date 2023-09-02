@@ -1,4 +1,3 @@
-import { isInteger } from 'formik'
 import Image from 'next/image'
 
 interface IsLoadingJsxProps {
