@@ -4,14 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default async function AuthErrorPage() {
-  const homeNavaData = {
-    key: 1,
-    href: '/pages/auth/signin',
-    image: 'home.svg',
-    alt: 'home',
-    text: 'Click here to go back to the login page',
-  }
-
   return (
     <>
       <NavBar />
