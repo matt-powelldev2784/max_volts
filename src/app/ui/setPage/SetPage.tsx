@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { IsLoadingJsx } from '@/app/ui/'
@@ -17,7 +17,7 @@ export const SetPage = ({
   baseUrl,
 }: SkipRecordsProps) => {
   const router = useRouter()
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const onClickNextRecords = () => {
     if (currentPageNum + 1 <= maxPageNumber && !isLoading) {

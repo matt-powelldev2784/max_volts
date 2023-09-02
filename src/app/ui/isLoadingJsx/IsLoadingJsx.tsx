@@ -1,8 +1,16 @@
 import Image from 'next/image'
 
-export const IsLoadingJsx = () => {
+interface IsLoadingJsxProps {
+  positionRelative?: boolean
+}
+
+export const IsLoadingJsx = (positionRelative: IsLoadingJsxProps) => {
   return (
-    <div className="fixed bottom-0 w-full flexRow">
+    <div
+      className={`bottom-0 w-full flexRow ${
+        positionRelative ? 'relative' : 'fixed'
+      }`}
+    >
       <div className="">
         <Image
           src="/icons/loading.svg"

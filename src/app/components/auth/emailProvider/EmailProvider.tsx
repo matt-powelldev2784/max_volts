@@ -1,14 +1,18 @@
 'use client'
 
+import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { Provider } from '@/types'
 import { AuthButton } from '../authButton/Auth-Button'
+import { IsLoadingJsx } from '@/app/ui'
 
 interface EmailProviderProps {
   emailProvider: Provider[]
 }
 
 export const EmailProvider = ({ emailProvider }: EmailProviderProps) => {
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleEmailSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -17,7 +21,10 @@ export const EmailProvider = ({ emailProvider }: EmailProviderProps) => {
     const emailInput = elements.namedItem('email') as HTMLInputElement
     const email = emailInput.value
 
+    console.log('email', email)
+
     if (email) {
+      setIsLoading(true)
       await signIn('email', {
         email,
         callbackUrl: '/',
@@ -45,11 +52,11 @@ export const EmailProvider = ({ emailProvider }: EmailProviderProps) => {
 
         <AuthButton
           type="submit"
-          onClick={() => signIn(provider.id)}
           buttonText={`Sign in with ${provider.name}`}
           optionalClasses="text-white text-sm bg-darkBlack w-[300px]"
           imgPath={`/icons/${provider.name}.svg`}
         />
+        {isLoading ? <IsLoadingJsx positionRelative={true} /> : null}
       </form>
     )
   })
