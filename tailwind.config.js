@@ -16,7 +16,7 @@ module.exports = {
       },
       screens: {
         sm: '0px',
-        md: '700px',
+        md: '600px',
         lg: '1100px',
       },
     },
@@ -42,6 +42,9 @@ module.exports = {
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'row',
+        },
+        '.clipPathCircle': {
+          clipPath: 'circle(50% at 50% 50%)',
         },
       })
     },

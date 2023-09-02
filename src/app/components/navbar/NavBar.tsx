@@ -6,6 +6,8 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
 export const NavBar = async () => {
   const session = await getServerSession(authOptions)
+  const userImage =
+    typeof session?.user?.image === 'string' ? session?.user?.image : null
 
   return (
     <header className="">
@@ -28,7 +30,18 @@ export const NavBar = async () => {
           />
         </a>
 
-        {session ? <NavItems /> : null}
+        <div className="flexRow w-full md:w-auto lg:mr-6">
+          {session ? <NavItems /> : null}
+          {userImage !== null ? (
+            <Image
+              src={userImage}
+              alt="User Image"
+              width={40}
+              height={40}
+              className="clipPathCircle mr-4 lg:block hidden"
+            />
+          ) : null}
+        </div>
       </nav>
     </header>
   )
