@@ -1,8 +1,13 @@
 import { navItemList } from '../data/navItemsList'
 import { NavItem } from './NavItem'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
-export const NavItems = () => {
+export const NavItems = async () => {
+  const session = await getServerSession(authOptions)
+
   const NavItems = navItemList.map((item) => {
+    if (session && item.text === 'Login') return null
     return <NavItem key={item.key} itemDetails={item} />
   })
 
