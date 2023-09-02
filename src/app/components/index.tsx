@@ -24,3 +24,5 @@ export { ProductMenu } from './menuButtons/ProductMenu'
 
 //auth
 export { SignIn } from './auth/SignIn'
+export { SignOut } from './auth/SignOut'
+export { CheckEmail } from './auth/checkEmail/CheckEmail'

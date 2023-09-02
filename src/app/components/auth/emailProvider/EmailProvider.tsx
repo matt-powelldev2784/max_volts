@@ -21,8 +21,6 @@ export const EmailProvider = ({ emailProvider }: EmailProviderProps) => {
     const emailInput = elements.namedItem('email') as HTMLInputElement
     const email = emailInput.value
 
-    console.log('email', email)
-
     if (email) {
       setIsLoading(true)
       await signIn('email', {

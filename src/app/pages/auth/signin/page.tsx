@@ -1,7 +1,8 @@
 import { NavBar } from '@/app/components'
 import { getAuthProviders } from '../getProviders'
-// import { ServerError } from '@/app/lib/ServerError'
 import { SignIn } from '@/app/components'
+import { redirect } from 'next/navigation'
+
 
 export default async function SignInPage() {
   const providers = await getAuthProviders()
@@ -14,7 +15,9 @@ export default async function SignInPage() {
           oAuthProviders={providers.oAuthProviders}
           emailProvider={providers.emailProvider}
         />
-      ) : null}
+      ) : (
+        redirect('/pages/auth/error')
+      )}
     </>
   )
 }
