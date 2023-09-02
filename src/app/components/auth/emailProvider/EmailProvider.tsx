@@ -17,6 +17,8 @@ export const EmailProvider = ({ emailProvider }: EmailProviderProps) => {
     const emailInput = elements.namedItem('email') as HTMLInputElement
     const email = emailInput.value
 
+    console.log('email', email)
+
     if (email) {
       await signIn('email', {
         email,
@@ -45,7 +47,6 @@ export const EmailProvider = ({ emailProvider }: EmailProviderProps) => {
 
         <AuthButton
           type="submit"
-          onClick={() => signIn(provider.id)}
           buttonText={`Sign in with ${provider.name}`}
           optionalClasses="text-white text-sm bg-darkBlack w-[300px]"
           imgPath={`/icons/${provider.name}.svg`}
