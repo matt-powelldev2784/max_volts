@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { IsLoadingJsx } from '@/app/ui/'
 
 interface SkipRecordsProps {
   maxPageNumber: number
