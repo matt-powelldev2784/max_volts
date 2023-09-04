@@ -1,7 +1,5 @@
 import { NavBar } from '@/app/components'
 import { PageTitle } from '@/app/ui'
-import Image from 'next/image'
-import Link from 'next/link'
 
 export default async function NotAuthorisedPage() {
   return (
