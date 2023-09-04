@@ -31,7 +31,7 @@ export const NavBar = async () => {
         </a>
 
         <div className="flexRow w-full md:w-auto lg:mr-6">
-          {session.isAdmin ? <NavItems /> : null}
+          {session.user.isAdmin ? <NavItems /> : null}
           {userImage !== null ? (
             <Image
               src={userImage}
