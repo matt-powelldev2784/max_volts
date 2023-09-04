@@ -12,6 +12,7 @@ export default async function ClienttListPage({
 }) {
   const session = await getServerSession(authOptions)
   if (!session) return redirect('/api/auth/signin')
+   if (!session.user.isAdmin) return redirect('/pages/auth/not-authorised')
 
   const maxClientPages = await getMaxClienttPages()
   const page = Number(params.pageNum[0])

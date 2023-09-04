@@ -12,6 +12,7 @@ export default async function ProductListPage({
 }) {
   const session = await getServerSession(authOptions)
   if (!session) return redirect('/api/auth/signin')
+   if (!session.user.isAdmin) return redirect('/pages/auth/not-authorised')
 
   const maxProductPage = await getMaxProductPage()
   const page = Number(params.pageNum[0])
