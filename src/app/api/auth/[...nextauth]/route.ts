@@ -32,6 +32,9 @@ export const authOptions = {
     async redirect() {
       return '/'
     },
+    async session(session: any) {
+      return session
+    },
   },
 }
 
