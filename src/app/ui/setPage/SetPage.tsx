@@ -44,8 +44,6 @@ export const SetPage = ({
         className={`${isLoading ? 'opacity-50' : 'opacity-100'}`}
       />
 
-      {isLoading ? <IsLoadingJsx /> : null}
-
       <Image
         src="/icons/next.svg"
         alt="Person icon"
