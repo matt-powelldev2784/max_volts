@@ -6,6 +6,7 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
 export const NavBar = async () => {
   const session = await getServerSession(authOptions)
+  const isAdmin = session.user.isAdmin
   const userImage =
     typeof session?.user?.image === 'string' ? session?.user?.image : null
 
@@ -31,7 +32,7 @@ export const NavBar = async () => {
         </a>
 
         <div className="flexRow w-full md:w-auto lg:mr-6">
-          {session ? <NavItems /> : null}
+          {session.isAdmin ? <NavItems /> : null}
           {userImage !== null ? (
             <Image
               src={userImage}

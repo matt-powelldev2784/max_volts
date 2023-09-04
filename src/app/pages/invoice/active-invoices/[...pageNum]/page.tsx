@@ -13,6 +13,7 @@ export default async function InvoiceListPage({
 }) {
   const session = await getServerSession(authOptions)
   if (!session) return redirect('/api/auth/signin')
+   if (!session.user.isAdmin) return redirect('/pages/auth/not-authorised')
 
   const maxInvoicePages = await getMaxActiveInvoicePages()
   const page = Number(params.pageNum[0])
