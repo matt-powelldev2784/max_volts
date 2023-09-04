@@ -6,7 +6,6 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
 export const NavBar = async () => {
   const session = await getServerSession(authOptions)
-  const isAdmin = session.user.isAdmin
   const userImage =
     typeof session?.user?.image === 'string' ? session?.user?.image : null
 
