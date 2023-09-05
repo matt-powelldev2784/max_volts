@@ -18,7 +18,7 @@ export const NavBar = async () => {
           />
         </Link>
 
-        <div className="w-full flex justify-evenly md:w-auto md:mx-8 md:my-2 md:justify-evenly md:gap-4 lg:gap-8 h-[40px]">
+        <div className="w-full flex justify-evenly mt-1 md:mt-0md:w-auto md:mx-8 md:my-2 md:justify-evenly md:gap-4 lg:gap-8 h-[40px]">
           <Link
             href="https://www.facebook.com/MaxVoltsElectricalServices"
             className=""
