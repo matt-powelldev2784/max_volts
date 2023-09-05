@@ -7,7 +7,7 @@ export const NavBar = async () => {
       <nav className="w-full flex flex-col justify-between items-center bg-darkBlack md:flex-row">
         <Link
           href="/"
-          className="w-[260px] md:w-[275px] lg:w-[300px] h-full m-2 md:ml-8"
+          className="w-[280px] md:w-[275px] lg:w-[300px] h-full m-2 md:ml-8"
         >
           <Image
             src="/max_volts_logo.svg"
@@ -18,7 +18,7 @@ export const NavBar = async () => {
           />
         </Link>
 
-        <div className="flexRow gap-8 mx-8 mb-2 md:my-2 md:justify-evenly md:gap-4 lg:gap-8 h-[40px]">
+        <div className="w-full flex justify-evenly md:w-auto md:mx-8 md:my-2 md:justify-evenly md:gap-4 lg:gap-8 h-[40px]">
           <Link
             href="https://www.facebook.com/MaxVoltsElectricalServices"
             className=""
@@ -28,7 +28,7 @@ export const NavBar = async () => {
               alt="Facebook Logo"
               width={40}
               height={40}
-              className=""
+              className="h-[30px] md:h-[40px]"
             />
           </Link>
           <Link
@@ -40,7 +40,7 @@ export const NavBar = async () => {
               alt="Instagram Logo"
               width={40}
               height={40}
-              className=""
+              className="h-[30px] md:h-[40px]"
             />
           </Link>
           <Link href="mailto:info@max-volts.co.uk" className="">
@@ -49,7 +49,7 @@ export const NavBar = async () => {
               alt="EmailLogo"
               width={40}
               height={40}
-              className=""
+              className="h-[30px] md:h-[40px]"
             />
           </Link>
 
@@ -59,7 +59,7 @@ export const NavBar = async () => {
               alt="EmailLogo"
               width={40}
               height={40}
-              className=""
+              className="h-[30px] md:h-[40px]"
             />
           </Link>
         </div>
