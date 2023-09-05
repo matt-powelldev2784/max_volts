@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const NavBar = async () => {
+export const NavBar = () => {
   return (
     <header className="">
       <nav className="w-full flex flex-col justify-between items-center bg-darkBlack md:flex-row">

@@ -1,9 +1,10 @@
-import { NavBar } from '@/app/components/static'
+import { NavBar, Hero } from '@/app/components/static'
 
 export default function StaticPage() {
   return (
     <>
       <NavBar />
+      <Hero />
     </>
   )
 }
