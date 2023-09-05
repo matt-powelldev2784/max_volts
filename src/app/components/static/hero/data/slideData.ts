@@ -1,21 +1,21 @@
 export const slideImages = [
   {
-    key: 2,
-    image: 'elect_man.jpg',
-    alt: 'Blue Boots',
-    text: 'Sale. 20% off all boots',
-  },
-  {
     key: 0,
-    image: 'elec_switch.jpg',
-    alt: 'Christiano Ronaldo',
-    text: 'New Ronaldo CR7 Collection now in stock',
+    image: 'lights.jpg',
+    alt: 'Photo of hanging lights',
+    text: 'Serving Commercial and Domestic Customers in Surrey and London.',
   },
   {
     key: 1,
-    image: 'lights.jpg',
-    alt: 'Adidas Black and White Boots',
-    text: 'New adidas collection now in stock',
+    image: 'elec_man.jpg',
+    alt: 'Blue Boots',
+    text: 'The Electrical Contractor You Can Rely On',
+  },
+  {
+    key: 2,
+    image: 'elec_switch.jpg',
+    alt: 'Christiano Ronaldo',
+    text: 'Get A Free Quote Today',
   },
 ]
 
