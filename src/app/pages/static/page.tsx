@@ -1,5 +1,9 @@
-import React from 'react'
+import { NavBar } from '@/app/components/static'
 
 export default function StaticPage() {
-  return <div>Static page</div>
+  return (
+    <>
+      <NavBar />
+    </>
+  )
 }
