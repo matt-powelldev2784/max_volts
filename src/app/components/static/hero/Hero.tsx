@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Slide } from 'react-slideshow-image'
+import { Fade } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 import { slideImages } from './data/slideData'
 import Image from 'next/image'
@@ -30,13 +30,14 @@ export const Hero = () => {
   ))
 
   const properties = {
-    prevArrow: <></>,
-    nextArrow: <></>,
+    arrows: false,
+    transitionDuration: 700,
+    duration: 5000,
   }
 
   return (
-    <section className="relative">
-      <Slide {...properties}>{SlidesJsx}</Slide>
+    <section className="relative overflow-hidden">
+      <Fade {...properties}>{SlidesJsx}</Fade>
     </section>
   )
 }
