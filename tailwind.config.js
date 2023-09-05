@@ -26,6 +26,8 @@ module.exports = {
       base: ['18px', '24px'],
       lg: ['22px', '28px'],
       xl: ['26px', '32px'],
+      '3xl': ['36px', '48px'],
+      '5xl': ['52px', '64px'],
     },
   },
   plugins: [
