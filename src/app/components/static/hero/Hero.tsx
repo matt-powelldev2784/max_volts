@@ -5,7 +5,6 @@ import { Fade } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 import { slideImages } from './data/slideData'
 import Image from 'next/image'
-import { Button } from '@/app/ui'
 
 export const Hero = () => {
   const [isClient, setIsClient] = useState(false)
@@ -18,7 +17,7 @@ export const Hero = () => {
     ({ key, image, alt, title1, title2, title3, text }) => (
       <div
         key={key}
-        className="slide-container w-full h-[250px] md:h-[500px] lg:h-[620px] relative overflow-hidden"
+        className="slide-container w-full h-[215px] md:h-[380px] lg:h-[620px] relative overflow-hidden"
       >
         <div className="absolute w-full h-full bg-black/[0.6]"></div>
 
@@ -31,22 +30,22 @@ export const Hero = () => {
         />
 
         <div className="absolute top-0 flexCol lg:items-start lg:left-32 lg:max-w-[750px] h-full w-full z-10">
-          <p className="text-center lg:text-left font-bold text-xl md:text-3xl lg:text-5xl text-white mx-6 md:mx-16 lg:mx-0 rounded-xl p-4">
+          <p className="text-center lg:text-left font-bold text-xl md:text-3xl lg:text-5xl text-white mx-6 md:mx-16 lg:mx-0 rounded-xl mb-2">
             {title1.toUpperCase()}
-            <span className="text-mvOrange text-justify">
+            <span className="text-mvOrange">
               {' ' + title2.toUpperCase() + ' '}
             </span>
             <span> {title3.toUpperCase()}</span>
           </p>
-          <p className="text-center text-lg lg:text-left text-white mx-6 md:mx-16 lg:mx-0 rounded-xl p-4">
+          <p className="hidden md:block text-justify md:text-center text-sm lg:text-left text-white mx-6 md:mx-16 lg:mx-0 rounded-xl py-2 md:text-base mb-4 ">
             {text}
           </p>
-          <Button
+          <button
             type="button"
-            optionalClasses="text-white bg-mvOrange h-full w-[150px] md:w-[300px] max-h-[45px] ml-4 mt-4"
-            buttonText={`Get A Quote Now`}
-            disabled={false}
-          />
+            className="text-white bg-mvOrange h-full w-[280px] md:w-[300px] max-h-[45px] mt-4 md:mt-0 rounded-xl"
+          >
+            Get Your Quote Now
+          </button>
         </div>
       </div>
     )
@@ -55,7 +54,7 @@ export const Hero = () => {
   const properties = {
     arrows: false,
     transitionDuration: 700,
-    duration: 5000,
+    duration: 10000,
   }
 
   return (

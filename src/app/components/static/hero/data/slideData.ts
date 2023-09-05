@@ -3,7 +3,7 @@
 export const slideImages = [
   {
     key: 0,
-    image: 'lights.jpg',
+    image: 'lights2.jpg',
     alt: 'Photo of hanging lights',
     title1: 'High',
     title2: 'Quality',
@@ -12,7 +12,7 @@ export const slideImages = [
   },
   {
     key: 2,
-    image: 'elec_switch.jpg',
+    image: 'elec_switch2.jpg',
     alt: 'Electrical switch',
     title1: 'Spark',
     title2: 'Your',
@@ -21,7 +21,7 @@ export const slideImages = [
   },
   {
     key: 2,
-    image: 'elec_man1.jpg',
+    image: 'elec_man2.jpg',
     alt: 'Electrician',
     title1: 'Your',
     title2: 'Trusted',
