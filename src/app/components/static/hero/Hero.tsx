@@ -42,7 +42,7 @@ export const Hero = () => {
           </p>
           <button
             type="button"
-            className="text-white bg-mvOrange h-full w-[280px] md:w-[300px] max-h-[45px] mt-4 md:mt-0 rounded-xl"
+            className="text-white bg-mvOrange h-full w-[280px] md:w-[300px] max-h-[45px] mt-4 md:mt-0 rounded-xl hidden md:block "
           >
             Get Your Quote Now
           </button>
@@ -58,7 +58,7 @@ export const Hero = () => {
   }
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-darkBlack">
       {isClient ? <Fade {...properties}>{SlidesJsx}</Fade> : null}
     </section>
   )
