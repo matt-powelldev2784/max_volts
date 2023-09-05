@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const NavBar = async () => {
+export const NavBar = () => {
   return (
     <header className="">
       <nav className="w-full flex flex-col justify-between items-center bg-darkBlack md:flex-row">
@@ -18,7 +18,7 @@ export const NavBar = async () => {
           />
         </Link>
 
-        <div className="w-full flex justify-evenly mt-1 md:mt-0md:w-auto md:mx-8 md:my-2 md:justify-evenly md:gap-4 lg:gap-8 h-[40px]">
+        <div className="w-full flex justify-evenly md:justify-center md:w-auto mt-1 md:mt-0md:w-auto md:mx-8 md:my-2 md:gap-4 lg:gap-8 h-[40px]">
           <Link
             href="https://www.facebook.com/MaxVoltsElectricalServices"
             className=""
