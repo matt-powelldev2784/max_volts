@@ -14,9 +14,9 @@ export const slideImages = [
     key: 2,
     image: 'elec_switch2.jpg',
     alt: 'Electrical switch',
-    title1: 'Spark',
-    title2: 'Your',
-    title3: 'Imagination',
+    title1: 'A',
+    title2: 'Bright',
+    title3: 'Choice for Your Electrical Needs',
     text: 'Max Volts is an electrical contractor that can turn your vision into reality. We offer creative and customised solutions for your electrical needs. Contact us today and let us show you what we can do.',
   },
   {
