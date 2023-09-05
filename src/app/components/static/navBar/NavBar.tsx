@@ -4,10 +4,10 @@ import Link from 'next/link'
 export const NavBar = async () => {
   return (
     <header className="">
-      <nav className="flex flex-row justify-between items-center bg-darkBlack">
+      <nav className="w-full flex flex-col justify-between items-center bg-darkBlack md:flex-row">
         <Link
           href="/"
-          className="w-[250px] md:w-[275px] lg:w-[300px] h-full m-2 lg:ml-8"
+          className="w-[260px] md:w-[275px] lg:w-[300px] h-full m-2 md:ml-8"
         >
           <Image
             src="/max_volts_logo.svg"
@@ -18,7 +18,7 @@ export const NavBar = async () => {
           />
         </Link>
 
-        <div className="flexRow gap-8 mx-8">
+        <div className="flexRow gap-8 mx-8 mb-2 md:my-2 md:justify-evenly md:gap-4 lg:gap-8 h-[40px]">
           <Link
             href="https://www.facebook.com/MaxVoltsElectricalServices"
             className=""
