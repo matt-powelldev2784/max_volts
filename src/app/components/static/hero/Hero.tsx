@@ -14,10 +14,11 @@ export const Hero = () => {
       <Image
         src={`/slides/${image}`}
         alt={alt}
-        fill
-        style={{ objectFit: 'cover' }}
+        width={1920}
+        height={1080}
+        className="object-cover z-0"
       />
-      <div className="absolute flexCol lg:items-start lg:left-32 lg:max-w-[800px] h-full w-full">
+      <div className="absolute top-0 flexCol lg:items-start lg:left-32 lg:max-w-[800px] h-full w-full z-10">
         <p className="text-center lg:text-left font-bold text-xl md:text-3xl lg:text-5xl text-white mx-6 md:mx-16 lg:mx-0 bg-mvOrange/[0.9] rounded-xl p-4">
           {text}
         </p>
