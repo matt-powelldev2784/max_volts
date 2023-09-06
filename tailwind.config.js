@@ -31,7 +31,8 @@ module.exports = {
     },
   },
   fontFamily: {
-    sans: ['var(--font-LibreFranklinr)', 'ui-sans-serif', 'system-ui'],
+    sans: ['var(--font-LibreFranklinReg)', 'ui-sans-serif', 'system-ui'],
+    bold: ['var(--font-LibreFranklinBold)', 'ui-sans-serif', 'system-ui'],
   },
   plugins: [
     function ({ addUtilities }) {
