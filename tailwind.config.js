@@ -29,11 +29,11 @@ module.exports = {
       '3xl': ['32px', '42px'],
       '5xl': ['52px', '64px'],
     },
+    fontFamily: {
+      sans: ['Libre_Franklin', 'Courier', 'ui-sans-serif', 'system-ui'],
+    },
   },
-  fontFamily: {
-    sans: ['var(--font-LibreFranklinReg)', 'ui-sans-serif', 'system-ui'],
-    bold: ['var(--font-LibreFranklinBold)', 'ui-sans-serif', 'system-ui'],
-  },
+
   plugins: [
     function ({ addUtilities }) {
       addUtilities({

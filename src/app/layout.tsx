@@ -1,26 +1,14 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
 import AuthProvider from './AuthProvider'
 import { ReduxProvider } from '@/redux/provider/provider'
+import { Libre_Franklin } from 'next/font/google'
 
-const LibreFranklinRegFont = localFont({
-  src: [
-    {
-      path: '../../public/fonts/libre-franklin.regular.otf',
-    },
-  ],
-  variable: '--font-LibreFranklinReg',
+const Libre = Libre_Franklin({
+  subsets: ['latin'],
+  display: 'swap',
 })
 
-const LibreFranklinBoldFont = localFont({
-  src: [
-    {
-      path: '../../public/fonts/libre-franklin.bold.otf',
-    },
-  ],
-  variable: '--font-LibreFranklinBold',
-})
 export const metadata: Metadata = {
   title: 'Max Volts Web Portal',
   description: 'Max Volts web Portal',
@@ -34,9 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body
-          className={`${LibreFranklinRegFont.className} ${LibreFranklinBoldFont.className} text-base font-sans`}
-        >
+        <body className={`${Libre.className}`}>
           <ReduxProvider>{children}</ReduxProvider>
         </body>
       </AuthProvider>
