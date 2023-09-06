@@ -3,7 +3,6 @@ import { ClientMenu, ProductMenu, InvoiceMenu } from '@/app/components'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { redirect } from 'next/navigation'
-import { Hero } from './components/static'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
