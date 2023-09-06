@@ -30,6 +30,9 @@ module.exports = {
       '5xl': ['52px', '64px'],
     },
   },
+  fontFamily: {
+    sans: ['var(--font-LibreFranklinr)', 'ui-sans-serif', 'system-ui'],
+  },
   plugins: [
     function ({ addUtilities }) {
       addUtilities({
