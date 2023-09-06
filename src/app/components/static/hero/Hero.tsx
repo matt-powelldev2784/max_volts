@@ -42,7 +42,7 @@ export const Hero = () => {
           </p>
           <button
             type="button"
-            className="text-white bg-mvOrange h-full w-[280px] md:w-[300px] max-h-[45px] mt-4 md:mt-0 rounded-xl hidden md:block "
+            className="text-white bg-mvOrange h-full w-[250px] md:w-[300px] sm:max-h-[40px] max-h-[45px] mt-4 md:mt-0 rounded-xl"
           >
             Get Your Quote Now
           </button>
