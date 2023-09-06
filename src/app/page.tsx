@@ -18,9 +18,6 @@ export default async function Home() {
         <ClientMenu />
         <ProductMenu />
       </nav>
-      <p className="">Font text</p>
-      <p className="font-bold">Font text</p>
-      <Hero />
     </main>
   )
 }
