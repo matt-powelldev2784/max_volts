@@ -30,7 +30,7 @@ export const Hero = () => {
         />
 
         <div className="absolute top-0 flexCol lg:items-start lg:left-32 lg:max-w-[750px] h-full w-full z-10">
-          <p className="text-center sm:max-w-[280px] md:max-w-full lg:text-left font-bold text-xl md:text-3xl lg:text-5xl text-white mx-6 md:mx-16 lg:mx-0 rounded-xl mb-2">
+          <p className="text-center sm:max-w-[280px] md:max-w-full lg:text-left font-bold text-xl md:text-3xl lg:text-5xl text-white mx-2 md:mx-16 lg:mx-0 rounded-xl mb-2">
             {title1.toUpperCase()}
             <span className="text-mvOrange">
               {' ' + title2.toUpperCase() + ' '}
