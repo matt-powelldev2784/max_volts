@@ -7,7 +7,10 @@ import { ReduxProvider } from '@/redux/provider/provider'
 const LibreFranklinFont = localFont({
   src: [
     {
-      path: '../../public/fonts/LibreFranklin-VariableFont_wght.ttf',
+      path: '../../public/fonts/libre-franklin.regular.otf',
+    },
+    {
+      path: '../../public/fonts/libre-franklin.bold.otf',
     },
   ],
   variable: '--font-LibreFranklin',
