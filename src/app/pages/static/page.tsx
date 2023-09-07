@@ -1,4 +1,4 @@
-import { NavBar, Hero, About } from '@/app/components/static'
+import { NavBar, Hero, About, Cards } from '@/app/components/static'
 
 export default function StaticPage() {
   return (
@@ -6,6 +6,7 @@ export default function StaticPage() {
       <NavBar />
       <Hero />
       <About />
+      <Cards />
     </>
   )
 }
