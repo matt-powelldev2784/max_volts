@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const Card = () => (
+export const CardItem = () => (
   <div className="flexCol p-4 bg-white lg:max-w-[400px] mx-auto">
     <div className="md:flexRow gap-8 lg:flexCol w-full md:h-[300px] lg:h-fit overflow-hidden">
       <div className="md:grow-2 lg:w-fit">
@@ -13,7 +13,7 @@ const Card = () => (
         />
       </div>
       <div className="w-full min-w-[250px]">
-        <h2 className="text-center text-mvOrange text-lg font-bold my-2">
+        <h2 className="text-center text-mvGreen text-lg font-bold my-2">
           Electrical Installations
         </h2>
         <p className="text-justify">
@@ -23,13 +23,5 @@ const Card = () => (
         </p>
       </div>
     </div>
-  </div>
-)
-
-export const Cards = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-2 md:p-8 mx-auto place-content-center justify-center">
-    <Card />
-    <Card />
-    <Card />
   </div>
 )
