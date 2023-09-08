@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
 const Card = () => (
-  <div className="flexCol p-4 shadow rounded bg-white border-2 border-red-500">
-    <div className="flexRow lg:flexCol max-w-[600px] md:h-[300px] lg:h-fit border-2 border-green-500">
-      <div className="md:w-[2000px] lg:w-fit border-2 border-blue-500">
+  <div className="flexCol p-4 bg-white lg:max-w-[400px] mx-auto">
+    <div className="md:flexRow gap-8 lg:flexCol w-full md:h-[300px] lg:h-fit overflow-hidden">
+      <div className="md:grow-2 lg:w-fit">
         <Image
           src={`/services/car_charge_woman.jpg`}
           alt={'Electrician tools'}
@@ -12,19 +12,22 @@ const Card = () => (
           className="object-cover"
         />
       </div>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industrys standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting.
-      </p>
+      <div className="w-full min-w-[250px]">
+        <h2 className="text-center text-mvOrange text-lg font-bold my-2">
+          Electrical Installations
+        </h2>
+        <p className="text-justify">
+          Electrical Installations Quality electrical installations for
+          residential and commercial properties. Trust our expert electricians
+          for a reliable service.
+        </p>
+      </div>
     </div>
   </div>
 )
 
 export const Cards = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 p-16 mx-auto place-content-center justify-center border-2 border-blue-500">
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-2 md:p-8 mx-auto place-content-center justify-center">
     <Card />
     <Card />
     <Card />
