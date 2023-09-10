@@ -54,7 +54,7 @@ export const Hero = () => {
   const properties = {
     arrows: false,
     transitionDuration: 700,
-    duration: 10000,
+    duration: 5000,
   }
 
   return (
