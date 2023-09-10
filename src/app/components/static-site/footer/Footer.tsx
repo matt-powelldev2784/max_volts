@@ -55,7 +55,7 @@ export const Footer = () => {
 
           <div className="min-w-[320px] mt-8 gap-2 flexCol md:flex md:gap-4 md:items-start md:justify-start md:flex-col">
             <p className="text-lg font-bold">Employee Dashboard</p>
-            <Link href="/dashboard" className="">
+            <Link href="/pages/dashboard" className="">
               <Image
                 src="/icons/dashboard.svg"
                 alt="EmailLogo"
