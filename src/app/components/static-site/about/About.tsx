@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export const About = () => {
   return (
-    <div className="w-full h-full flexCol lg:flexRow gap-20 bg-darkBlack p-8 md:p-16">
+    <section className="w-full h-full flexCol lg:flexRow gap-20 bg-darkBlack p-8 md:p-16">
       <div className="relative hidden lg:block w-[440px] pt-20 pb-20">
         <Image
           src={`/services/tools_fan.png`}
@@ -37,6 +37,6 @@ export const About = () => {
           engineer.
         </p>
       </div>
-    </div>
+    </section>
   )
 }
