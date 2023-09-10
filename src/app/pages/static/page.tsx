@@ -1,4 +1,4 @@
-import { NavBar, Hero, About, Services } from '@/app/components/static'
+import { NavBar, Hero, About, Services } from '@/app/components/static-site'
 
 export default function StaticPage() {
   return (
