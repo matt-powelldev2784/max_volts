@@ -30,7 +30,7 @@ export const authOptions = {
   ],
   callbacks: {
     async redirect() {
-      return '/'
+      return '/pages/dashboard'
     },
     async session(session: any) {
       return session
