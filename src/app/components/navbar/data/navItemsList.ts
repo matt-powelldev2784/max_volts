@@ -1,7 +1,7 @@
 export const navItemList = [
   {
     key: 1,
-    href: '/',
+    href: '/pages/dashboard',
     image: 'home.svg',
     alt: 'home icon',
     text: 'Home',
