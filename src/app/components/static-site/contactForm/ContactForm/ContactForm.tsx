@@ -8,14 +8,11 @@ export const ContactForm = () => {
   const formik = useContactFormFormik()
 
   return (
-    <div>
-      <h1 className="w-full text-center text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-4">
+    <div className="w-full">
+      <h1 className="w-full text-center lg:text-left lg:ml-11 text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-4">
         ENQUIRY FORM
       </h1>
-      <form
-        className="flexCol w-full lg:w-[850px] lg:mr-8"
-        onSubmit={formik.handleSubmit}
-      >
+      <form className="flexCol w-full lg:mx-8" onSubmit={formik.handleSubmit}>
         <div className="w-11/12 flexCol max-w-[850px] md:w-full px-2">
           <InputField
             formik={formik}

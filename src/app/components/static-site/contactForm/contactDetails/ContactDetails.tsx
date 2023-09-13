@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export const ContactDetails = () => {
   return (
-    <div className="hidden lg:flexCol gap-12 w-[220px] min-w-[220px] text-lightGrey lg:mx-8">
+    <div className="hidden lg:flexCol gap-16 w-[250px] min-w-[250px] text-lightGrey lg:mx-8">
       <div className="flexCol gap-2">
         <Image
           src="/icons/contact_tel.svg"
