@@ -24,34 +24,11 @@ export const ContactForm = () => {
 
         <InputField
           formik={formik}
-          htmlFor="companyName"
-          labelText="Company Name"
+          htmlFor="email"
+          labelText="Email"
           inputType="text"
-          imagePath="/icons/id_badge.svg"
-        />
-
-        <InputField
-          formik={formik}
-          htmlFor="add1"
-          labelText="Address 1"
-          inputType="text"
-          imagePath="/icons/location.svg"
-        />
-
-        <InputField
-          formik={formik}
-          htmlFor="add2"
-          labelText="Address 2"
-          inputType="text"
-          imagePath="/icons/location.svg"
-        />
-
-        <InputField
-          formik={formik}
-          htmlFor="postcode"
-          labelText="Post Code"
-          inputType="text"
-          imagePath="/icons/location.svg"
+          imagePath="/icons/email.svg"
+          spanText=" *"
         />
 
         <InputField
@@ -60,14 +37,15 @@ export const ContactForm = () => {
           labelText="Telelphone Number"
           inputType="text"
           imagePath="/icons/tel.svg"
+          spanText=" *"
         />
 
         <InputField
           formik={formik}
-          htmlFor="email"
-          labelText="Email"
+          htmlFor="message"
+          labelText="Message"
           inputType="text"
-          imagePath="/icons/email.svg"
+          imagePath="/icons/description.svg"
         />
 
         <Button

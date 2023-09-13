@@ -10,32 +10,31 @@ export const useContactFormFormik = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
-      companyName: '',
-      add1: '',
-      add2: '',
-      postcode: '',
-      tel: '',
       email: '',
+      tel: '',
+      message: '',
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Please input a name'),
-      companyName: Yup.string(),
-      add1: Yup.string(),
-      add2: Yup.string(),
-      postcode: Yup.string(),
-      tel: Yup.string(),
-      email: Yup.string(),
+      email: Yup.string()
+        .email('Please input a valid email address')
+        .required('Email is required'),
+      tel: Yup.number()
+        .typeError('Please input a valid telephone number')
+        .required('Telephone number is required'),
+      message: Yup.string(),
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
-      try {
-        const newClient: T_Client = values
-        await dispatch(addClient(newClient))
-        resetForm()
-      } catch (error) {
-        console.log('error', error)
-      } finally {
-        setSubmitting(false)
-      }
+      console.log('values', values)
+      // try {
+      //   const newClient: T_Client = values
+      //   await dispatch(addClient(newClient))
+      //   resetForm()
+      // } catch (error) {
+      //   console.log('error', error)
+      // } finally {
+      //   setSubmitting(false)
+      // }
     },
   })
 
