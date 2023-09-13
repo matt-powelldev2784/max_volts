@@ -8,13 +8,16 @@ export const ContactForm = () => {
   const formik = useContactFormFormik()
 
   return (
-    <div className="bg-darkBlack w-screen py-8 lg:pt-16 md:py-16 px-8">
+    <div className="bg-darkBlack w-screen py-8 lg:pt-16 md:py-16 md:px-8">
       <h1 className="w-full text-center text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-8">
         ENQUIRY FORM
       </h1>
 
-      <form className="w-full flexCol" onSubmit={formik.handleSubmit}>
-        <div className="w-11/12 min-w-[310px] max-w-[800px]">
+      <form
+        className="w-full flexCol border-2 border-red-500"
+        onSubmit={formik.handleSubmit}
+      >
+        <div className="w-11/12 flexCol max-w-[800px] md:w-full px-2 border-2 border-green-500">
           <InputField
             formik={formik}
             htmlFor="name"
@@ -52,7 +55,7 @@ export const ContactForm = () => {
 
           <Button
             type="submit"
-            optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] mt-4 ${
+            optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] md:max-w-[320px] mt-4 ${
               formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
             buttonText="Add Client"
