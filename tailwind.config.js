@@ -13,6 +13,8 @@ module.exports = {
         darkGreen: '#006B3D',
         darkRed: '#d3212C',
         darkBlack: '#212121',
+        lightBlack: '#414141',
+        lightGrey: '#f5f5f5',
       },
       screens: {
         sm: '0px',
