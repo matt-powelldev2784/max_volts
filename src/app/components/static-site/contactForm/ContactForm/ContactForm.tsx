@@ -8,12 +8,16 @@ export const ContactForm = () => {
   const formik = useContactFormFormik()
 
   return (
-    <div className="w-full">
+    <div className="w-full lg:w-[800px]">
       <h1 className="w-full text-center lg:text-left lg:ml-11 text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-4">
         ENQUIRY FORM
       </h1>
-      <form className="flexCol w-full lg:mx-8" onSubmit={formik.handleSubmit}>
-        <div className="w-11/12 flexCol max-w-[850px] md:w-full px-2">
+
+      <form
+        className="flexCol lg:flex lg:flex-col w-full lg:mx-8"
+        onSubmit={formik.handleSubmit}
+      >
+        <div className="w-11/12 flexCol gap-4 max-w-[850px] md:w-full px-2">
           <InputField
             formik={formik}
             htmlFor="name"
@@ -49,16 +53,16 @@ export const ContactForm = () => {
             imagePath="/icons/description.svg"
             optionalClassNames="h-[150px]"
           />
-
-          <Button
-            type="submit"
-            optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] md:max-w-[320px] mt-4 ${
-              formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
-            }`}
-            buttonText="Add Client"
-            disabled={formik.isSubmitting}
-          />
         </div>
+
+        <Button
+          type="submit"
+          optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] md:max-w-[320px] mt-4 ${
+            formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
+          }`}
+          buttonText="Add Client"
+          disabled={formik.isSubmitting}
+        />
       </form>
     </div>
   )
