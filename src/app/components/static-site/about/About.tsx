@@ -4,7 +4,7 @@ import Image from 'next/image'
 export const About = () => {
   return (
     <section className="w-full h-full flexCol lg:flexRow gap-20 bg-darkBlack p-8 md:p-16">
-      <div className="relative hidden lg:block w-[440px] pt-20 pb-20">
+      <div className="relative hidden lg:block w-[440px] pt-8 pb-8">
         <Image
           src={`/services/tools_fan.png`}
           alt={'Electrician tools'}

@@ -8,54 +8,57 @@ export const ContactForm = () => {
   const formik = useContactFormFormik()
 
   return (
-    <div className="bg-darkBlack w-screen">
-      <form
-        className="w-screen md:w-[400px] flexCol min-w-[310px] p-2"
-        onSubmit={formik.handleSubmit}
-      >
-        <InputField
-          formik={formik}
-          htmlFor="name"
-          labelText="Name"
-          inputType="text"
-          imagePath="/icons/person.svg"
-          spanText=" *"
-        />
+    <div className="bg-darkBlack w-screen py-8 lg:pt-16 md:py-16 px-8">
+      <h1 className="w-full text-center text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-8">
+        ENQUIRY FORM
+      </h1>
 
-        <InputField
-          formik={formik}
-          htmlFor="email"
-          labelText="Email"
-          inputType="text"
-          imagePath="/icons/email_lightgrey.svg"
-          spanText=" *"
-        />
+      <form className="w-full flexCol" onSubmit={formik.handleSubmit}>
+        <div className="w-11/12 min-w-[310px] max-w-[800px]">
+          <InputField
+            formik={formik}
+            htmlFor="name"
+            labelText="Name"
+            inputType="text"
+            imagePath="/icons/person.svg"
+            spanText=" *"
+          />
 
-        <InputField
-          formik={formik}
-          htmlFor="tel"
-          labelText="Telelphone Number"
-          inputType="text"
-          imagePath="/icons/tel.svg"
-          spanText=" *"
-        />
+          <InputField
+            formik={formik}
+            htmlFor="email"
+            labelText="Email"
+            inputType="text"
+            imagePath="/icons/email_lightgrey.svg"
+            spanText=" *"
+          />
 
-        <InputField
-          formik={formik}
-          htmlFor="message"
-          labelText="Message"
-          inputType="text"
-          imagePath="/icons/description.svg"
-        />
+          <InputField
+            formik={formik}
+            htmlFor="tel"
+            labelText="Telelphone Number"
+            inputType="text"
+            imagePath="/icons/tel.svg"
+            spanText=" *"
+          />
 
-        <Button
-          type="submit"
-          optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] m-4 ${
-            formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
-          }`}
-          buttonText="Add Client"
-          disabled={formik.isSubmitting}
-        />
+          <InputField
+            formik={formik}
+            htmlFor="message"
+            labelText="Message"
+            inputType="text"
+            imagePath="/icons/description.svg"
+          />
+
+          <Button
+            type="submit"
+            optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] mt-4 ${
+              formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            }`}
+            buttonText="Add Client"
+            disabled={formik.isSubmitting}
+          />
+        </div>
       </form>
     </div>
   )
