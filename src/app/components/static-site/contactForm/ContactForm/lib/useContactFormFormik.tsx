@@ -23,6 +23,8 @@ export const useContactFormFormik = () => {
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       console.log('values', values)
+      console.log('setSubmitting', setSubmitting)
+      console.log('resetForm', resetForm)
 
       // try {
       //   const newClient: T_Client = values
