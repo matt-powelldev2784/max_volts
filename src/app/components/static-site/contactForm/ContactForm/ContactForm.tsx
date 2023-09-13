@@ -1,6 +1,7 @@
 'use client'
 
 import { InputField } from '../ui/InputField'
+import { TextArea } from '../ui/TextArea'
 import { useContactFormFormik } from './lib/useContactFormFormik'
 import { Button } from '@/app/ui/'
 
@@ -45,7 +46,7 @@ export const ContactForm = () => {
             spanText=" *"
           />
 
-          <InputField
+          <TextArea
             formik={formik}
             htmlFor="message"
             labelText="Message"
