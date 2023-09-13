@@ -4,6 +4,7 @@ import {
   About,
   Services,
   Footer,
+  ContactForm,
 } from '@/app/components/static-site'
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Hero />
       <About />
       <Services />
+      <ContactForm />
       <Footer />
     </>
   )
