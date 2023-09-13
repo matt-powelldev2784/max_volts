@@ -1,6 +1,6 @@
 'use client'
 
-import { InputField } from '../ui/InputField'
+import { InputField } from '../../ui/InputField'
 import { useContactFormFormik } from './lib/useContactFormFormik'
 import { Button } from '@/app/ui/'
 
@@ -8,16 +8,15 @@ export const ContactForm = () => {
   const formik = useContactFormFormik()
 
   return (
-    <div className="bg-darkBlack w-screen py-8 lg:pt-16 md:py-16 md:px-8">
-      <h1 className="w-full text-center text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-8">
+    <div>
+      <h1 className="w-full text-center text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-4">
         ENQUIRY FORM
       </h1>
-
       <form
-        className="w-full flexCol border-2 border-red-500"
+        className="flexCol w-full lg:w-[850px] lg:mr-8"
         onSubmit={formik.handleSubmit}
       >
-        <div className="w-11/12 flexCol max-w-[800px] md:w-full px-2 border-2 border-green-500">
+        <div className="w-11/12 flexCol max-w-[850px] md:w-full px-2">
           <InputField
             formik={formik}
             htmlFor="name"
@@ -51,6 +50,7 @@ export const ContactForm = () => {
             labelText="Message"
             inputType="text"
             imagePath="/icons/description.svg"
+            optionalClassNames="h-[150px]"
           />
 
           <Button
