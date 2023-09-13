@@ -27,7 +27,7 @@ export const ContactForm = () => {
           htmlFor="email"
           labelText="Email"
           inputType="text"
-          imagePath="/icons/email.svg"
+          imagePath="/icons/email_lightgrey.svg"
           spanText=" *"
         />
 
