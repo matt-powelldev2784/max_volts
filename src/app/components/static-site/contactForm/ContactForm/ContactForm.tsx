@@ -9,16 +9,16 @@ export const ContactForm = () => {
   const formik = useContactFormFormik()
 
   return (
-    <div className="w-full lg:w-[800px]">
-      <h1 className="w-full text-center lg:text-left lg:ml-11 text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-4">
+    <div className="w-full lg:w-[800px] lg:ml-8">
+      <h1 className="w-full text-center lg:text-left text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-4">
         ENQUIRY FORM
       </h1>
 
       <form
-        className="flexCol lg:flex lg:flex-col w-full lg:mx-8"
+        className="flex flex-col items-center lg:flex lg:flex-col lg:items-start w-full"
         onSubmit={formik.handleSubmit}
       >
-        <div className="w-11/12 flexCol gap-4 max-w-[850px] md:w-full px-2">
+        <div className="w-full px-6 lg:px-0 flexCol gap-4 md:max-w-[800px] md:w-full">
           <InputField
             formik={formik}
             htmlFor="name"
@@ -58,10 +58,10 @@ export const ContactForm = () => {
 
         <Button
           type="submit"
-          optionalClasses={`w-full text-white text-sm bg-mvOrange h-[42.5px] md:max-w-[320px] mt-4 ${
+          optionalClasses={`text-white bg-mvOrange h-[45px] mt-6 rounded-xl font-bold lg:w-fit px-8 ${
             formik.isSubmitting ? 'bg-mvOrange/50' : 'bg-mvOrange'
           }`}
-          buttonText="Add Client"
+          buttonText="SEND MESSAGE"
           disabled={formik.isSubmitting}
         />
       </form>
