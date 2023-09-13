@@ -1,11 +1,8 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { addClient } from '@/redux/slice/clientSlice'
-import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import { T_Client } from '@/types'
 
 export const useContactFormFormik = () => {
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
 
   const formik = useFormik({
     initialValues: {
@@ -26,6 +23,7 @@ export const useContactFormFormik = () => {
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       console.log('values', values)
+
       // try {
       //   const newClient: T_Client = values
       //   await dispatch(addClient(newClient))
