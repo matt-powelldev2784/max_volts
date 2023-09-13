@@ -13,7 +13,9 @@ export const FormikError = ({
 }: FormikErrorProps) => {
   if (formik.touched[name] && formik.errors[name]) {
     return (
-      <p className={`text-sm text-red-500 ${optionalClassNames}`}>
+      <p
+        className={`absolute -bottom-5 text-sm text-red-500 ${optionalClassNames}`}
+      >
         {String(formik.errors[name])}
       </p>
     )
