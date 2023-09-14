@@ -37,20 +37,30 @@ export const ContactDetails = () => {
       </div>
 
       <div className="flexRow gap-8">
-        <Image
-          src="/icons/facebook.svg"
-          alt="Email Icon"
-          width={40}
-          height={40}
-          className="w-[50px]"
-        />
-        <Image
-          src="/icons/insta.svg"
-          alt="Email Icon"
-          width={40}
-          height={40}
-          className="w-[50px]"
-        />
+        <Link
+          href="https://www.facebook.com/MaxVoltsElectricalServices"
+          target="_blank"
+        >
+          <Image
+            src="/icons/facebook.svg"
+            alt="Email Icon"
+            width={40}
+            height={40}
+            className="w-[50px]"
+          />
+        </Link>
+        <Link
+          href="https://www.instagram.com/max.volts.electricalservices/?hl=en"
+          target="_blank"
+        >
+          <Image
+            src="/icons/insta.svg"
+            alt="Email Icon"
+            width={40}
+            height={40}
+            className="w-[50px]"
+          />
+        </Link>
       </div>
     </div>
   )
