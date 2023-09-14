@@ -21,7 +21,7 @@ export const NavBar = () => {
         <div className="w-full flex justify-evenly md:justify-center md:w-auto mt-1 md:mt-0md:w-auto md:mx-8 md:my-2 md:gap-4 lg:gap-8 h-[40px]">
           <Link
             href="https://www.facebook.com/MaxVoltsElectricalServices"
-            className=""
+            target="_blank"
           >
             <Image
               src="/icons/facebook.svg"
@@ -31,9 +31,10 @@ export const NavBar = () => {
               className="h-[30px] md:h-[40px]"
             />
           </Link>
+
           <Link
             href="https://www.instagram.com/max.volts.electricalservices/?hl=en"
-            className=""
+            target="_blank"
           >
             <Image
               src="/icons/insta.svg"
@@ -43,7 +44,8 @@ export const NavBar = () => {
               className="h-[30px] md:h-[40px]"
             />
           </Link>
-          <Link href="mailto:info@max-volts.co.uk" className="">
+
+          <Link href="mailto:info@max-volts.co.uk">
             <Image
               src="/icons/email_circle.svg"
               alt="EmailLogo"
