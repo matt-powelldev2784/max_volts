@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const ContactDetails = () => {
   return (
@@ -12,9 +13,9 @@ export const ContactDetails = () => {
           className="w-[80px]"
         />
         <p className="text-lg">PHONE:</p>
-        <a className="text-lg border-b-[2px]" href="tel:07877 695 996">
-          0208 888 8888
-        </a>
+        <Link className="text-lg border-b-[2px]" href="tel:07877695996">
+          07877 695 996
+        </Link>
       </div>
 
       <div className="flexCol gap-2">
@@ -26,12 +27,13 @@ export const ContactDetails = () => {
           className="w-[80px]"
         />
         <p className="text-lg">EMAIL:</p>
-        <a
+
+        <Link
           className="text-lg border-b-[2px]"
           href="mailto:info@max-volts.co.uk"
         >
           info@max-volts.co.uk
-        </a>
+        </Link>
       </div>
 
       <div className="flexRow gap-8">
