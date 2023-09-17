@@ -24,12 +24,13 @@ export const useContactFormFormik = () => {
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
-        await apiCall({
+        const res = await apiCall({
           route: '/api/email-enquiry',
           httpMethod: 'POST',
           body: values,
         })
-        resetForm()
+        if (res.status === 200) resetForm()
+      
       } catch (error) {
         console.log('error', error)
       } finally {
