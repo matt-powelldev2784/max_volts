@@ -18,7 +18,10 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   }
   try {
     await sgMail.send(msg)
-    return NextResponse.json({ message: 'Email sent' }, { status: 200 })
+    return NextResponse.json(
+      { message: 'Email sent', status: 200 },
+      { status: 200 }
+    )
   } catch (error: any) {
     console.error(error)
     return serverError500
