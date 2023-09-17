@@ -56,6 +56,7 @@ export const ContactForm = () => {
             inputType="text"
             imagePath="/icons/description.svg"
             optionalClassNames="h-[150px]"
+            spanText=" *"
           />
         </div>
 
