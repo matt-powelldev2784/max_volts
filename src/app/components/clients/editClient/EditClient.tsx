@@ -87,6 +87,16 @@ export const EditClient = ({ client }: EditClientProps) => {
             disabled={formik.isSubmitting}
           />
         </form>
+
+        <div className="w-screen md:w-[400px] flexCol min-w-[310px] p-2">
+          <Button
+            type="button"
+            optionalClasses={`text-white text-sm bg-darkRed h-full w-[150px] md:w-[160px]l max-h-[42.5px]`}
+            buttonText="Delete Client"
+            // disabled={isActive === false}
+            onClick={() => {}}
+          />
+        </div>
       </div>
     </section>
   )
