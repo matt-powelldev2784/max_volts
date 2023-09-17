@@ -67,6 +67,22 @@ export const updateClient = createAsyncThunk(
   }
 )
 
+export const setClientIsHidden = createAsyncThunk(
+  'client/setClientIsHidden',
+  async (id: string) => {
+    try {
+      const clientData = await apiCall({
+        httpMethod: 'PUT',
+        route: `/api/protected/client/hide-client?client_id=${id}`,
+      })
+
+      return clientData
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
 export const clientSlice = createSlice({
   name: 'client',
   initialState,
@@ -114,6 +130,18 @@ export const clientSlice = createSlice({
         state.currentClient = payload
       })
       .addCase(updateClient.rejected, (state, { error }: AnyAction) => {
+        state.isLoading = false
+        error.message || 'Server Error. Please try again later'
+      })
+      //---------------------------------------------------------------------
+      .addCase(setClientIsHidden.pending, (state) => {
+        state.isLoading = true
+        state.error = ''
+      })
+      .addCase(setClientIsHidden.fulfilled, (state) => {
+        state.isLoading = false
+      })
+      .addCase(setClientIsHidden.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
         error.message || 'Server Error. Please try again later'
       })

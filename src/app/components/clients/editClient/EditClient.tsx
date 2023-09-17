@@ -1,16 +1,31 @@
 'use client'
 
+import { useState } from 'react'
 import { InputField } from '@/app/ui/formElements/InputField'
 import { useEditClientFormik } from './lib/useEditCleintFormik'
 import { PageTitle, Button } from '@/app/ui/'
 import { T_Client } from '@/types'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
+import { setClientIsHidden } from '@/redux/slice/clientSlice'
 
 interface EditClientProps {
   client: T_Client
 }
 
 export const EditClient = ({ client }: EditClientProps) => {
+  const [confirmDelete, setConfirmDelete] = useState<boolean>(false)
+  const dispatch = useAppDispatch()
   const formik = useEditClientFormik(client)
+
+  const isLoading = useAppSelector((state) => state.clientReducer.isLoading)
+  console.log('isLoading', isLoading)
+
+  const onDeleteClientClick = async () => {
+    if (client.id) {
+      await dispatch(setClientIsHidden(client.id))
+      window.location.href = `/pages/client/client-list/1`
+    }
+  }
 
   return (
     <section className="min-h-screen w-screen">
@@ -88,14 +103,28 @@ export const EditClient = ({ client }: EditClientProps) => {
           />
         </form>
 
-        <div className="w-screen md:w-[400px] flexCol min-w-[310px] p-2">
-          <Button
-            type="button"
-            optionalClasses={`text-white text-sm bg-darkRed h-full w-[150px] md:w-[160px]l max-h-[42.5px]`}
-            buttonText="Delete Client"
-            // disabled={isActive === false}
-            onClick={() => {}}
-          />
+        <div className="w-screen md:w-[400px] flexCol min-w-[310px] p-2 mt-4">
+          {confirmDelete ? (
+            <Button
+              type="button"
+              optionalClasses={`text-white text-sm h-full w-full max-h-[42.5px] ${
+                isLoading ? 'bg-darkRed/25' : 'bg-darkRed'
+              }`}
+              buttonText="Confirm Delete Client"
+              disabled={isLoading === true}
+              onClick={onDeleteClientClick}
+            />
+          ) : (
+            <Button
+              type="button"
+              optionalClasses={`text-white text-sm bg-darkRed h-full w-full max-h-[42.5px]`}
+              buttonText="Delete Client"
+              disabled={isLoading === true}
+              onClick={() => {
+                setConfirmDelete(true)
+              }}
+            />
+          )}
         </div>
       </div>
     </section>
