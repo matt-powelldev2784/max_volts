@@ -1,3 +1,4 @@
+import { apiCall } from '@/app/lib/apiCall'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -19,22 +20,21 @@ export const useContactFormFormik = () => {
       tel: Yup.number()
         .typeError('Please input a valid telephone number')
         .required('Telephone number is required'),
-      message: Yup.string(),
+      message: Yup.string().required('Message is required'),
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
-      console.log('values', values)
-      console.log('setSubmitting', setSubmitting)
-      console.log('resetForm', resetForm)
-
-      // try {
-      //   const newClient: T_Client = values
-      //   await dispatch(addClient(newClient))
-      //   resetForm()
-      // } catch (error) {
-      //   console.log('error', error)
-      // } finally {
-      //   setSubmitting(false)
-      // }
+      try {
+        await apiCall({
+          route: '/api/email-enquiry',
+          httpMethod: 'POST',
+          body: values,
+        })
+        resetForm()
+      } catch (error) {
+        console.log('error', error)
+      } finally {
+        setSubmitting(false)
+      }
     },
   })
 
