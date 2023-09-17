@@ -1,9 +1,10 @@
 import { apiCall } from '@/app/lib/apiCall'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useState } from 'react'
 
 export const useContactFormFormik = () => {
-  // const dispatch = useAppDispatch()
+  const [submissionSuccessful, setSubmissionSuccessful] = useState(false)
 
   const formik = useFormik({
     initialValues: {
@@ -29,8 +30,10 @@ export const useContactFormFormik = () => {
           httpMethod: 'POST',
           body: values,
         })
-        if (res.status === 200) resetForm()
-      
+        if (res.status === 200) {
+          resetForm()
+          setSubmissionSuccessful(true)
+        }
       } catch (error) {
         console.log('error', error)
       } finally {
@@ -39,5 +42,5 @@ export const useContactFormFormik = () => {
     },
   })
 
-  return formik
+  return { formik, submissionSuccessful }
 }

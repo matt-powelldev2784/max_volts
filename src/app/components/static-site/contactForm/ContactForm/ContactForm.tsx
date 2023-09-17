@@ -6,7 +6,7 @@ import { useContactFormFormik } from './lib/useContactFormFormik'
 import { Button } from '@/app/ui/'
 
 export const ContactForm = () => {
-  const formik = useContactFormFormik()
+  const { formik, submissionSuccessful } = useContactFormFormik()
 
   return (
     <div className="w-full lg:w-[800px] lg:ml-8">
@@ -68,6 +68,11 @@ export const ContactForm = () => {
           buttonText="SEND MESSAGE"
           disabled={formik.isSubmitting}
         />
+        {submissionSuccessful ? (
+          <p className="text-mvGreen text-lg m-4 mx-6 lg:mx-0 text-center lg:text-left">
+            Thank you for your enquiry, we will be contact soon.
+          </p>
+        ) : null}
       </form>
     </div>
   )
