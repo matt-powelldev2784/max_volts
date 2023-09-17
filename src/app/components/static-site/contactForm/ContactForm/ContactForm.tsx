@@ -13,6 +13,9 @@ export const ContactForm = () => {
       <h1 className="w-full text-center lg:text-left text-xl lg:text-2xl font-bold text-mvOrange mb-4 md:mb-4">
         ENQUIRY FORM
       </h1>
+      <p className="text-white mb-2 text-center lg:text-left sm:mx-6 md:mx-0">
+        Leave your details below and we will contact you:
+      </p>
 
       <form
         className="flex flex-col items-center lg:flex lg:flex-col lg:items-start w-full"
