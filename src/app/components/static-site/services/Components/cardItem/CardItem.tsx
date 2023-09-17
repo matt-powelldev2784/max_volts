@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { LinkButton } from '../linkButton/LinkButton'
 
 interface CardItemProps {
   title: string
@@ -38,12 +39,7 @@ export const CardItem = ({ title, text, image }: CardItemProps) => (
           {text}
         </p>
 
-        <button
-          type="button"
-          className="text-white bg-mvOrange h-[45px] mt-4 md:mt-0 rounded-xl font-bold w-full"
-        >
-          MORE INFO
-        </button>
+        <LinkButton linkTo="contact" text="MORE INFO" />
       </div>
     </div>
   </article>
