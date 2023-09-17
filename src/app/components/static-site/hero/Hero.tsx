@@ -5,6 +5,7 @@ import { Fade } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 import { slideImages } from './data/slideData'
 import Image from 'next/image'
+import { Link } from 'react-scroll'
 
 export const Hero = () => {
   const [isClient, setIsClient] = useState(false)
@@ -37,15 +38,19 @@ export const Hero = () => {
             </span>
             <span> {title3.toUpperCase()}</span>
           </p>
+
           <p className="hidden md:block text-justify md:text-center text-sm lg:text-left text-white mx-6 md:mx-16 lg:mx-0 rounded-xl py-2 md:text-base mb-4 ">
             {text}
           </p>
-          <button
-            type="button"
-            className="text-white bg-mvOrange h-full w-[265px] md:w-[300px] sm:max-h-[40px] max-h-[45px] mt-4 md:mt-0 rounded-xl font-bold"
+
+          <Link
+            to="contact"
+            smooth={true}
+            duration={500}
+            className="text-white bg-mvOrange flexCol h-full w-[265px] md:w-[300px] sm:max-h-[40px] max-h-[45px] mt-4 md:mt-0 rounded-xl font-bold"
           >
             GET A FREE QUOTE TODAY
-          </button>
+          </Link>
         </div>
       </div>
     )
