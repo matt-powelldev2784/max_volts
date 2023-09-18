@@ -19,6 +19,7 @@ model Client {
   postcode    String?
   tel         String?
   email       String?
+  isHidden      Boolean  @default(false)
   Invoice     Invoice[]
 }
 
@@ -29,6 +30,7 @@ model Product {
   description   String
   sellPrice     Float
   VAT           Float @default(20)
+  isHidden      Boolean  @default(false)
   InvoiceRow    InvoiceRow[]
 }
 

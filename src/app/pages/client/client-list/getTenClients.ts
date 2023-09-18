@@ -4,6 +4,7 @@ export const getTenClients = async (pageNumber: number) => {
   const skip = (pageNumber - 1) * pageSize
 
   const clients = await prisma.client.findMany({
+    where: { isHidden: false },
     orderBy: { name: 'asc' },
     skip,
     take: pageSize,
