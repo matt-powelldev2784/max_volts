@@ -117,7 +117,7 @@ export const EditClient = ({ client }: EditClientProps) => {
           ) : (
             <Button
               type="button"
-              optionalClasses={`text-white text-sm bg-darkRed h-full w-full max-h-[42.5px]`}
+              optionalClasses={`text-white text-sm bg-darkBlack h-full w-full max-h-[42.5px]`}
               buttonText="Delete Client"
               disabled={isLoading === true}
               onClick={() => {
