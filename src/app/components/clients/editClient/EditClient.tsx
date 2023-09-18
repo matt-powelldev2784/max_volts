@@ -18,7 +18,6 @@ export const EditClient = ({ client }: EditClientProps) => {
   const formik = useEditClientFormik(client)
 
   const isLoading = useAppSelector((state) => state.clientReducer.isLoading)
-  console.log('isLoading', isLoading)
 
   const onDeleteClientClick = async () => {
     if (client.id) {
