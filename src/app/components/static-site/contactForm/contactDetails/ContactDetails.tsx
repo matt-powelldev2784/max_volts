@@ -28,12 +28,12 @@ export const ContactDetails = () => {
         />
         <p className="text-lg">EMAIL:</p>
 
-        <Link
+        <a
           className="text-lg text-center"
           href="mailto:max.volts.electricalservices@gmail.com"
         >
           MaxVoltsElectricalServices<br></br>@gmail.com
-        </Link>
+        </a>
       </div>
 
       <div className="flexRow gap-8">

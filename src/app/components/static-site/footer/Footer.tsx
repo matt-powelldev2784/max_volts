@@ -32,10 +32,7 @@ export const Footer = () => {
                 className="h-[30px] md:h-[40px]"
               />
             </Link>
-            <Link
-              href="mailto:maxvoltselectricalservices@gmail.com"
-              className=""
-            >
+            <a href="mailto:maxvoltselectricalservices@gmail.com" className="">
               <Image
                 src="/icons/email_circle.svg"
                 alt="EmailLogo"
@@ -43,7 +40,7 @@ export const Footer = () => {
                 height={40}
                 className="h-[30px] md:h-[40px]"
               />
-            </Link>
+            </a>
 
             <Link href="tel:07877695996" className="">
               <Image
@@ -75,12 +72,12 @@ export const Footer = () => {
           <p>07877 695 996</p>
 
           <p className="font-bold mt-8">Email</p>
-          <Link
+          <a
             href="mailto:maxvoltselectricalservices@gmail.com"
             className="text-sm md:text-base lg:text-lg"
           >
             MaxVoltsElectricalServices<br></br>@gmail.com
-          </Link>
+          </a>
         </div>
       </div>
     </footer>
