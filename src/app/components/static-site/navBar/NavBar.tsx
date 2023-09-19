@@ -45,7 +45,7 @@ export const NavBar = () => {
             />
           </Link>
 
-          <Link href="mailto:maxvoltselectricalservices@gmail.com">
+          <a href="mailto:maxvoltselectricalservices@gmail.com">
             <Image
               src="/icons/email_circle.svg"
               alt="EmailLogo"
@@ -53,7 +53,7 @@ export const NavBar = () => {
               height={40}
               className="h-[30px] md:h-[40px]"
             />
-          </Link>
+          </a>
 
           <Link href="tel:07877695996" className="">
             <Image
