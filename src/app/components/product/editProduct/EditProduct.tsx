@@ -27,7 +27,7 @@ export const EditProduct = ({ product }: EditProductProps) => {
   const isLoading = useAppSelector((state) => state.productReducer.isLoading)
 
   return (
-    <section className="min-h-screen w-screen">
+    <section className="min-h-screen w-screen min-w-[320px]">
       <div className="flexCol mt-4">
         <PageTitle text={'Edit Product'} imgPath={'/icons/add_product.svg'} />
 

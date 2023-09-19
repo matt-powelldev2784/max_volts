@@ -8,7 +8,7 @@ export const AddProduct = () => {
   const formik = useAddProductFormik()
 
   return (
-    <section className="min-h-screen w-screen">
+    <section className="min-h-screen w-screen min-w-[320px]">
       <div className="flexCol mt-4">
         <PageTitle text={'Add Product'} imgPath={'/icons/add_product.svg'} />
 
