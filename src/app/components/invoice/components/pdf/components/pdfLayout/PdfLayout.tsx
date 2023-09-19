@@ -169,12 +169,9 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
           <View style={{ height: 32 }}></View>
 
           <View style={styles.flexCenter}>
-            <Text>
-              Max Volts Electrical Services, 1 Road Name, Worcester Park,
-              Surrey, KT11 1AA
-            </Text>
+            <Text>72 Ardrossan Gardens, Worcester Park, Surrey, KT4 7AX</Text>
             <Text>Tel: 07877 695 996</Text>
-            <Text>Email: max-volts-electrical@gmail.com</Text>
+            <Text>Email: MaxVoltsElectricalServices@gmail.com</Text>
           </View>
         </View>
       </Page>
