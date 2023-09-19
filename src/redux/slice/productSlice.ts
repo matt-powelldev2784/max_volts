@@ -83,6 +83,22 @@ export const updateProduct = createAsyncThunk(
   }
 )
 
+export const setProductIsHidden = createAsyncThunk(
+  'client/setProductIsHidden',
+  async (id: string) => {
+    try {
+      const productData = await apiCall({
+        httpMethod: 'PUT',
+        route: `/api/protected/product/hide-product?product_id=${id}`,
+      })
+
+      return productData
+    } catch (err: any) {
+      throw Error(err)
+    }
+  }
+)
+
 export const productSlice = createSlice({
   name: 'product',
   initialState,
@@ -145,6 +161,18 @@ export const productSlice = createSlice({
         state.currentProduct = payload
       })
       .addCase(updateProduct.rejected, (state, { error }: AnyAction) => {
+        state.isLoading = false
+        error.message || 'Server Error. Please try again later'
+      })
+      //---------------------------------------------------------------------
+      .addCase(setProductIsHidden.pending, (state) => {
+        state.isLoading = true
+        state.error = ''
+      })
+      .addCase(setProductIsHidden.fulfilled, (state) => {
+        state.isLoading = false
+      })
+      .addCase(setProductIsHidden.rejected, (state, { error }: AnyAction) => {
         state.isLoading = false
         error.message || 'Server Error. Please try again later'
       })
