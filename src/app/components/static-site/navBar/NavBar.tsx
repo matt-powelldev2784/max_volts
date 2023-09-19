@@ -45,7 +45,7 @@ export const NavBar = () => {
             />
           </Link>
 
-          <Link href="mailto:info@max-volts.co.uk">
+          <Link href="mailto:maxvoltselectricalservices@gmail.com">
             <Image
               src="/icons/email_circle.svg"
               alt="EmailLogo"

@@ -13,7 +13,7 @@ export const ContactDetails = () => {
           className="w-[80px]"
         />
         <p className="text-lg">PHONE:</p>
-        <Link className="text-lg border-b-[2px]" href="tel:07877695996">
+        <Link className="text-lg" href="tel:07877695996">
           07877 695 996
         </Link>
       </div>
@@ -29,10 +29,10 @@ export const ContactDetails = () => {
         <p className="text-lg">EMAIL:</p>
 
         <Link
-          className="text-lg border-b-[2px]"
-          href="mailto:info@max-volts.co.uk"
+          className="text-lg text-center"
+          href="mailto:max.volts.electricalservices@gmail.com"
         >
-          info@max-volts.co.uk
+          MaxVoltsElectricalServices<br></br>@gmail.com
         </Link>
       </div>
 

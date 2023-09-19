@@ -32,7 +32,10 @@ export const Footer = () => {
                 className="h-[30px] md:h-[40px]"
               />
             </Link>
-            <Link href="mailto:info@max-volts.co.uk" className="">
+            <Link
+              href="mailto:maxvoltselectricalservices@gmail.com"
+              className=""
+            >
               <Image
                 src="/icons/email_circle.svg"
                 alt="EmailLogo"
@@ -68,11 +71,10 @@ export const Footer = () => {
         </div>
 
         <div className="grow text-center md:pr-10 md:pt-4 md:text-right">
-          <p className="font-bold ">Contact Us</p>
-          <p>Max Volts Electrical Services</p>
-          <p>Worcester Park</p>
-          <p>Surrey</p>
-          <p>KT11 1AA</p>
+          <p className="font-bold ">Email</p>
+          <Link href="mailto:maxvoltselectricalservices@gmail.com" className="">
+            MaxVoltsElectricalServices@gmail.com
+          </Link>
 
           <p className="font-bold  mt-8">Telephone</p>
           <p>07877 695 996</p>
