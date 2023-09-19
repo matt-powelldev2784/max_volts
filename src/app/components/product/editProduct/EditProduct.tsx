@@ -94,7 +94,7 @@ export const EditProduct = ({ product }: EditProductProps) => {
           {confirmDelete ? (
             <Button
               type="button"
-              optionalClasses={`text-white text-sm h-full w-full max-h-[42.5px] ${
+              optionalClasses={`text-white text-sm h-full w-fit max-h-[42.5px] ${
                 isLoading ? 'bg-darkRed/25' : 'bg-darkRed'
               }`}
               buttonText="Confirm Delete Product"
