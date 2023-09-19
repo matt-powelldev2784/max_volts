@@ -10,7 +10,7 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
   const msg = {
-    to: 'maxvoltsenquires@gmail.com',
+    to: 'maxvoltselectricalservices@gmail.com',
     from: 'maxvoltsenquires@gmail.com',
     subject: `Max Volts Website Enquiry from ${name}`,
     text: 'text',
