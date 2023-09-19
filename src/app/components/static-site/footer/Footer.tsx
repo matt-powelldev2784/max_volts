@@ -71,13 +71,16 @@ export const Footer = () => {
         </div>
 
         <div className="grow text-center md:pr-10 md:pt-4 md:text-right">
-          <p className="font-bold ">Email</p>
-          <Link href="mailto:maxvoltselectricalservices@gmail.com" className="">
-            MaxVoltsElectricalServices@gmail.com
-          </Link>
-
-          <p className="font-bold  mt-8">Telephone</p>
+          <p className="font-bold">Telephone</p>
           <p>07877 695 996</p>
+
+          <p className="font-bold mt-8">Email</p>
+          <Link
+            href="mailto:maxvoltselectricalservices@gmail.com"
+            className="text-sm md:text-base lg:text-lg"
+          >
+            MaxVoltsElectricalServices<br></br>@gmail.com
+          </Link>
         </div>
       </div>
     </footer>
