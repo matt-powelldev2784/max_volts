@@ -27,7 +27,7 @@ export const EditClient = ({ client }: EditClientProps) => {
   }
 
   return (
-    <section className="min-h-screen w-screen">
+    <section className="min-h-screen w-screen min-w-[320px]">
       <div className="flexCol mt-4">
         <PageTitle text={'Edit Client'} imgPath={'/icons/person.svg'} />
 

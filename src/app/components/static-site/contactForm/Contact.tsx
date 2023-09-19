@@ -7,7 +7,7 @@ export const Contact = () => {
       className="bg-darkBlack w-screen py-8 pb-16 lg:pt-24 md:py-16 md:px-8 lg:pb-32"
       id="contact"
     >
-      <div className="flexRow gap-12">
+      <div className="flexRow gap-12 min-w-[320px]">
         <ContactForm />
         <ContactDetails />
       </div>

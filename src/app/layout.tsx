@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body className={`${Libre.className}`}>
+        <body className={`${Libre.className} min-w-[320px]`}>
           <ReduxProvider>{children}</ReduxProvider>
         </body>
       </AuthProvider>
