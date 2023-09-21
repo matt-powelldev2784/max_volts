@@ -42,7 +42,7 @@ export const Footer = () => {
               />
             </a>
 
-            <Link href="tel:07877695996" className="">
+            <a href="tel:07877695996" className="">
               <Image
                 src="/icons/tel_circle.svg"
                 alt="EmailLogo"
@@ -50,7 +50,7 @@ export const Footer = () => {
                 height={40}
                 className="h-[30px] md:h-[40px]"
               />
-            </Link>
+            </a>
           </div>
 
           <div className="min-w-[320px] mt-8 gap-2 flexCol md:flex md:gap-4 md:items-start md:justify-start md:flex-col">
@@ -69,7 +69,7 @@ export const Footer = () => {
 
         <div className="grow text-center md:pr-10 md:pt-4 md:text-right">
           <p className="font-bold">Telephone</p>
-          <p>07877 695 996</p>
+          <a href="tel:07877695996">07877 695 996</a>
 
           <p className="font-bold mt-8">Email</p>
           <a
