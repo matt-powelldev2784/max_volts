@@ -49,7 +49,7 @@ export const Hero = () => {
             duration={500}
             className="text-white bg-mvOrange flexCol h-full w-[265px] md:w-[300px] sm:max-h-[40px] max-h-[45px] mt-4 md:mt-0 rounded-xl font-bold"
           >
-            GET A FREE QUOTE TODAY
+            <button>GET A FREE QUOTE TODAY</button>
           </Link>
         </div>
       </div>
