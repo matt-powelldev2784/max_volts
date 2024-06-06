@@ -2,6 +2,9 @@
 export { IsLoggedIn } from './IsLoggedIn/IsLoggedIn'
 export { NavBar } from './navbar/NavBar'
 
+//quote
+export { CreateQuote } from './quote/CreateQuote'
+
 //invoice
 export { CreateInvoice } from './invoice/CreateInvoice'
 export { EditInvoice } from './invoice/EditInvoice'
