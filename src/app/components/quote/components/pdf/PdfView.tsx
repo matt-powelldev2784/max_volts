@@ -8,7 +8,7 @@ import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 import { useQuote } from '@/app/lib/hooks/useQuote' // Replace with your quote hook
 import Image from 'next/image'
 import { ErrorMessage } from '@/app/ui/formElements/ErrorMessage'
-import { PdfIsLoading } from '@/app/components/invoice/components/pdf/components/pdfIsLoading/PdfIsLoading'
+import { PdfIsLoading } from './pdfIsLoading/PdfIsLoading'
 
 interface PdfViewProps {
   quoteId: string

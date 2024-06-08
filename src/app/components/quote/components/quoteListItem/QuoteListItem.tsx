@@ -5,6 +5,7 @@ import React from 'react'
 import { Button } from '@/app/ui/'
 import { formatDate } from '@/app/lib/formatDate'
 import { useRouter } from 'next/navigation'
+import { apiCall } from '@/app/lib/apiCall'
 
 interface QuoteItemProps extends T_Quote {
   header?: boolean
@@ -22,6 +23,18 @@ export const QuoteListItem = ({
   const router = useRouter()
   const { name, companyName } = Client
   let clientString = companyName ? `${name} @ ${companyName}` : name
+
+  const createInvoice = async () => {
+    const body = { quoteId: id }
+
+    const newInvoice = await apiCall({
+      httpMethod: 'POST',
+      route: '/api/protected/quote-to-invoice',
+      body,
+    })
+
+    router.push(`/pages/invoice/pdf/${newInvoice.activeInvoice.id}`)
+  }
 
   return (
     <section
@@ -63,6 +76,12 @@ export const QuoteListItem = ({
             optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px]"
             buttonText="View"
             onClick={() => router.push(`/pages/quote/pdf/${id}`)}
+          />
+          <Button
+            type="button"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px]"
+            buttonText="Invoice"
+            onClick={createInvoice}
           />
         </div>
       </div>
