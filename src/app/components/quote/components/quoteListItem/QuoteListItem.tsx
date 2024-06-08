@@ -1,7 +1,7 @@
 'use client'
 
 import { T_Quote } from '@/types/quote'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '@/app/ui/'
 import { formatDate } from '@/app/lib/formatDate'
 import { useRouter } from 'next/navigation'
@@ -21,6 +21,8 @@ export const QuoteListItem = ({
   isActive,
   header,
 }: QuoteItemProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const router = useRouter()
   const { name, companyName } = Client
   let clientString = companyName ? `${name} @ ${companyName}` : name
@@ -28,11 +30,15 @@ export const QuoteListItem = ({
   const createInvoice = async () => {
     const body = { quoteId: id }
 
+    setIsLoading(true)
+
     const newInvoice = await apiCall({
       httpMethod: 'POST',
       route: '/api/protected/quote-to-invoice',
       body,
     })
+
+    setIsLoading(false)
 
     router.push(`/pages/invoice/pdf/${newInvoice.activeInvoice.id}`)
   }
@@ -43,17 +49,17 @@ export const QuoteListItem = ({
         header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
-      <p className="h-full min-w-[65px] text-sm flex">
+      <p className="h-full min-w-[75px] text-sm flex sm:hidden md:flex">
         {header ? 'Date' : `${formatDate(quoteDate)}`}
       </p>
-      <p className="h-full w-fit min-w-[50px] md:w-[150px] text-sm flex">
+      <p className="h-full w-fit min-w-[70px] md:w-[150px] text-sm flex">
         {header ? 'Quote No' : `${Number(quoteNum)}`}
       </p>
       <p className="h-full w-full text-sm flex">
         {header ? 'Client' : `${clientString}`}
       </p>
-      <div className="flexCol h-full w-full max-w-[100px] text-sm lg:flex hidden">
-        {header ? 'Job Is Live' : null}
+      <div className="flexCol h-full w-full max-w-[200px] text-sm md:flex sm:hidden">
+        {header ? 'Quote Has Invoice' : null}
 
         {isActive ? (
           <Image src="/icons/tick.svg" alt="Tick icon" width={30} height={30} />
@@ -84,9 +90,10 @@ export const QuoteListItem = ({
           />
           <Button
             type="button"
-            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px]"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px] min-w-[100px]"
             buttonText="Invoice"
             onClick={createInvoice}
+            isLoading={isLoading}
           />
         </div>
       </div>
