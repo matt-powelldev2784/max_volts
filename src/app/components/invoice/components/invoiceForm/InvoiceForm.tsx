@@ -42,8 +42,6 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
         divClasses="mb-2"
       />
 
-      {apiIsLoading ? <IsLoadingJsx /> : null}
-
       <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
         <form className="w-full sm:px-0 md:px-0">
           <SelectField
@@ -80,6 +78,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
           } `}
           buttonText="Create Invoice"
           disabled={isLoading}
+          isLoading={isLoading}
           onClick={formik.handleSubmit}
         />
       </div>
