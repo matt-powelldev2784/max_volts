@@ -28,7 +28,7 @@ export const QuoteMenu = () => {
         disabled={false}
         onClick={() => {
           resetInvoiceState()
-          router.push('/pages/invoice/create-quote')
+          router.push('/pages/quote/create-quote')
         }}
       />
       <Button
