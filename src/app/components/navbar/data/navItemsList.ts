@@ -25,14 +25,14 @@ export const navItemList = [
     href: '/pages/client/add-client',
     image: 'add_client.svg',
     alt: 'open door icon',
-    text: 'Client',
+    text: 'Add Client',
   },
   {
     key: 5,
     href: '/pages/product/add-product',
     image: 'add_product.svg',
     alt: 'open door icon',
-    text: 'Product',
+    text: 'Add Product',
   },
   {
     key: 6,

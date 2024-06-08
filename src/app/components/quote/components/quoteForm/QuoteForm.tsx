@@ -42,8 +42,8 @@ export const QuoteForm = ({ children }: QuoteFormProps) => {
 
       {apiIsLoading ? <IsLoadingJsx /> : null}
 
-      <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
-        <form className="w-full">
+      <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8 ">
+        <form className="w-full sm:px-2 md:px-0">
           <SelectField
             formik={formik}
             htmlFor="clientId"

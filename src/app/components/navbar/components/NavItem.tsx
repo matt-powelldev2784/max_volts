@@ -17,7 +17,7 @@ export const NavItem = ({ itemDetails }: NavItemProps) => {
 
   return (
     <li>
-      <Link href={href} className="flexRow gap-2">
+      <Link href={href} className="flexRow gap-1">
         <Image
           src={`/icons/${image}`}
           alt={alt}
@@ -25,7 +25,11 @@ export const NavItem = ({ itemDetails }: NavItemProps) => {
           height={25}
           className=""
         />
-        <p className="hidden md:block text-white">{text}</p>
+        <div className="flexRow flex-start gap-0">
+          <p className="hidden md:block text-white text-md leading-tight">
+            {text}
+          </p>
+        </div>
       </Link>
     </li>
   )

@@ -13,7 +13,7 @@ export const AddProduct = () => {
   const productSelectOptionsJsx = useProductSelectOptions()
 
   return (
-    <form className="w-full flex gap-2 items-end flex-col md:flex-row min-w-[320px]">
+    <form className="w-full flex gap-2 items-end flex-col md:flex-row min-w-[320px] sm:px-2 md:px-0">
       <div className="w-full">
         <SelectField
           formik={formik}
