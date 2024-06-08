@@ -93,7 +93,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
       </div>
 
       <div className="w-full flexCol mim-w-[305px] px-2 lg:px-4">
-        <div className="w-full flexCol md:p-2 gap-4 lg:flexRow md:px-12 lg:gap-16 mb-8">
+        <div className="w-full flexCol md:p-2 gap-4 lg:flexRow md:px-12 lg:gap-16 mb-8 ">
           <ClientText clientText={clientText} />
           <AddProduct />
         </div>

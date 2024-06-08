@@ -49,12 +49,10 @@ export const useQuoteFormFormik = (
 
         const newQuote = await dispatch(createQuote(quoteDetails))
         const quoteId = newQuote.payload.activeQuote.id
-        console.log('quoteId', quoteId)
+
         dispatch(resetToInitialState())
 
-        console.log('quote created')
-        router.push(`/pages/dashboard`) // Update the route
-        router.push(`/pages/quote/pdf/${quoteId}`) // Update the route
+        router.push(`/pages/quote/pdf/${quoteId}`)
       } catch (error) {
         setIsLoading(false)
       }

@@ -2,18 +2,14 @@
 
 import { useQuote } from '@/app/lib/hooks/useQuote'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
-import {
-  toggleQuoteIsActive,
-  updateQuote,
-  setErrorState,
-} from '@/redux/slice/quoteSlice'
+import { updateQuote, setErrorState } from '@/redux/slice/quoteSlice'
 import { AddProduct } from './components/addProduct/AddProduct'
 import { ClientText } from '../invoice/components/ClientText/ClientText'
 import { QuoteRowText } from './components/quoteRowText/QuoteRowText'
 import { QuoteRowHeader } from './components/quoteRowHeader/InvoiceRowHeader'
 import { QuoteRowModal } from './components/quoteRowModal/QuoteRowModal'
 import { ErrorMessage } from '@/app/ui/formElements/ErrorMessage'
-import { PageTitle, IsLoadingJsx, Button } from '@/app/ui/'
+import { PageTitle, Button } from '@/app/ui/'
 import { useRouter } from 'next/navigation'
 
 interface EditQuoteProps {
@@ -39,11 +35,6 @@ export const EditQuote = ({ quoteId }: EditQuoteProps) => {
     (state) => state.quoteReducer.currentQuoteRow
   )
   const totalPrice = useAppSelector((state) => state.quoteReducer.totalPrice)
-
-  const isActive = useAppSelector(
-    (state) => state.quoteReducer.currentEditQuote?.isActive
-  )
-
   const quoteNum = quote?.quoteNum
 
   const clientText = quote?.Client.companyName
@@ -55,7 +46,6 @@ export const EditQuote = ({ quoteId }: EditQuoteProps) => {
   })
 
   const onUpdateQuoteClick = async () => {
-    if (!isActive) return
     if (quoteRows.length === 0) {
       return dispatch(setErrorState('Please add at least one quote row'))
     }
@@ -70,8 +60,6 @@ export const EditQuote = ({ quoteId }: EditQuoteProps) => {
         imgPath={'/icons/quote.svg'}
         divClasses="mb-2"
       />
-
-      {isLoading ? <IsLoadingJsx /> : null}
 
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
@@ -100,24 +88,13 @@ export const EditQuote = ({ quoteId }: EditQuoteProps) => {
         <Button
           type="button"
           optionalClasses={`text-white text-sm w-full h-[42.5px] max-w-[320px] ${
-            isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
           } `}
           buttonText="Update Quote"
-          disabled={isLoading || !isActive}
+          disabled={isLoading}
+          isLoading={isLoading}
           onClick={onUpdateQuoteClick}
         />
-
-        <div className="flexRow gap-2 mt-4">
-          <Button
-            type="button"
-            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
-              isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
-            }`}
-            buttonText={`${isActive ? 'Close Quote' : 'Open Quote'}`}
-            disabled={isLoading}
-            onClick={() => dispatch(toggleQuoteIsActive(quoteId))}
-          />
-        </div>
       </div>
 
       {showProductModal && currentQuoteRow?.reduxId ? (

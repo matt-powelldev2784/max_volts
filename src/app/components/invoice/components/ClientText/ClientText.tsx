@@ -6,9 +6,9 @@ interface ClientTextProps {
 
 export const ClientText = ({ clientText }: ClientTextProps) => {
   return (
-    <div className="w-full">
+    <div className="w-full min-w-[320px] sm:px-2 md:px-0">
       <div className="relative">
-        <div className="flexRow justify-end">
+        <div className="flexRow justify-end ">
           <Image
             src="/icons/person.svg"
             alt="arrow-down"
@@ -21,7 +21,8 @@ export const ClientText = ({ clientText }: ClientTextProps) => {
             Client
           </label>
         </div>
-        <p className="w-full rounded-lg border-2 bg-white p-2 px-4 outline-none pl-3 h-[42px] border-darkBlack/25 text-darkBlack/50 truncate">
+
+        <p className="w-full rounded-lg border-2 bg-white p-2 outline-none pl-3 h-[42px] border-darkBlack/25 text-darkBlack/50 truncate">
           {clientText ? clientText : 'Loading...'}
         </p>
       </div>

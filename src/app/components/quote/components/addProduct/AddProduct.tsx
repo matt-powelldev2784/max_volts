@@ -5,12 +5,9 @@ import { useProductSelectOptions } from '@/app/components/invoice/components/add
 import { useAppSelector } from '@/redux/hooks/reduxsHooks'
 
 export const AddProduct = () => {
-  const formik = useAddProductFormik() 
+  const formik = useAddProductFormik()
   const products = useAppSelector((state) => state.productReducer.products)
-  const isActive = useAppSelector(
-    (state) => state.quoteReducer.currentEditQuote?.isActive 
-  )
-  const productSelectOptionsJsx = useProductSelectOptions() 
+  const productSelectOptionsJsx = useProductSelectOptions()
 
   return (
     <form className="w-full flex gap-2 items-end flex-col md:flex-row min-w-[320px] sm:px-2 md:px-0">
@@ -30,11 +27,9 @@ export const AddProduct = () => {
 
       <Button
         type="button"
-        optionalClasses={`w-full md:w-[150px] text-white text-sm bg-mvOrange ${
-          isActive === false ? 'opacity-50' : null
-        }`}
+        optionalClasses={`w-full md:w-[150px] text-white text-sm bg-mvOrange`}
         buttonText="Add Product"
-        disabled={formik.isSubmitting || isActive === false}
+        disabled={formik.isSubmitting}
         onClick={formik.handleSubmit}
       />
     </form>

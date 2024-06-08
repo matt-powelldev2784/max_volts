@@ -23,7 +23,6 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   })
 
   if (!quoteToUpdate) return badRequestError400
-  if (quoteToUpdate.isActive === false) return badRequestError400
 
   try {
     await prisma.quoteRow.deleteMany({

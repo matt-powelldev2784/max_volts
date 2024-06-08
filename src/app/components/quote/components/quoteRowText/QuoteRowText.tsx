@@ -6,7 +6,7 @@ import {
   deleteQuoteRow,
   resetUpdateSuccessMessage,
 } from '@/redux/slice/quoteSlice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks/reduxsHooks'
+import { useAppDispatch } from '@/redux/hooks/reduxsHooks'
 
 interface QuoteRowModalProps extends T_QuoteRow {
   header?: boolean
@@ -16,10 +16,6 @@ export const QuoteRowText = (productWithId: QuoteRowModalProps) => {
   const dispatch = useAppDispatch()
   const { quantity, name, description, VAT, sellPrice, totalPrice, header } =
     productWithId
-
-  const isActive = useAppSelector(
-    (state) => state.quoteReducer.currentEditQuote?.isActive
-  )
 
   const onEditQuoteRow = () => {
     dispatch(setCurrentQuoteRow(productWithId))
@@ -64,20 +60,14 @@ export const QuoteRowText = (productWithId: QuoteRowModalProps) => {
       >
         <Button
           type="button"
-          optionalClasses={`text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[37px] ${
-            isActive === false ? 'opacity-50' : null
-          }`}
+          optionalClasses={`text-white text-sm bg-darkRed h-full w-fit md:flexRow sm:hidden max-h-[37px]`}
           buttonText="Delete"
-          disabled={isActive === false}
           onClick={onDeleteQuoteRow}
         />
         <Button
           type="button"
-          optionalClasses={`text-white text-sm bg-mvOrange h-full w-fit max-h-[37px] ${
-            isActive === false ? 'opacity-50' : null
-          }`}
+          optionalClasses={`text-white text-sm bg-mvOrange h-full w-fit max-h-[37px] `}
           buttonText="Edit"
-          disabled={isActive === false}
           onClick={onEditQuoteRow}
         />
       </div>
