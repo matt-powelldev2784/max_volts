@@ -1,0 +1,71 @@
+'use client'
+
+import { T_Quote } from '@/types/quote'
+import React from 'react'
+import { Button } from '@/app/ui/'
+import { formatDate } from '@/app/lib/formatDate'
+import { useRouter } from 'next/navigation'
+
+interface QuoteItemProps extends T_Quote {
+  header?: boolean
+}
+
+export const QuoteListItem = ({
+  id,
+  quoteNum,
+  Client,
+  totalAmount,
+  quoteDate,
+  isActive,
+  header,
+}: QuoteItemProps) => {
+  const router = useRouter()
+  const { name, companyName } = Client
+  let clientString = companyName ? `${name} @ ${companyName}` : name
+
+  return (
+    <section
+      className={`w-full flex flex-row gap-4 sm:gap-2 h-fit max-w-[1100px] overflow-hidden sm:max-w-[95vw] m-auto rounded-lg mb-1 min-w-[306px] p-2 break-all ${
+        header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
+      }`}
+    >
+      <p className="h-full min-w-[65px] text-sm flex">
+        {header ? 'Date' : `${formatDate(quoteDate)}`}
+      </p>
+      <p className="h-full w-fit min-w-[50px] md:w-[150px] text-sm flex">
+        {header ? 'Quote No' : `${Number(quoteNum)}`}
+      </p>
+      <p className="h-full w-full text-sm flex">
+        {header ? 'Client' : `${clientString}`}
+      </p>
+      <p className="h-full w-full max-w-[60px] text-sm lg:flex hidden">
+        {header ? 'Closed' : `${!isActive}`}
+      </p>
+
+      <p className="h-full min-w-[80px] text-sm lg:flex hidden">
+        {header ? 'Total' : `£${Number(totalAmount).toFixed(2)}`}
+      </p>
+
+      <div
+        className={`flex flex-row gap-2 md:pl-2 break-normal ${
+          header ? 'opacity-0 h-0' : null
+        }`}
+      >
+        <div className="flexCol gap-2 md:flexRow">
+          <Button
+            type="button"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px]"
+            buttonText="Edit"
+            onClick={() => router.push(`/pages/quote/edit-quote/${id}`)}
+          />
+          <Button
+            type="button"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px]"
+            buttonText="View"
+            onClick={() => router.push(`/pages/quote/pdf/${id}`)}
+          />
+        </div>
+      </div>
+    </section>
+  )
+}

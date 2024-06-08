@@ -5,6 +5,7 @@ export { NavBar } from './navbar/NavBar'
 //quote
 export { CreateQuote } from './quote/CreateQuote'
 export { EditQuote } from './quote/EditQuote'
+export { QuoteList } from './quote/QuoteList'
 
 //invoice
 export { CreateInvoice } from './invoice/CreateInvoice'
