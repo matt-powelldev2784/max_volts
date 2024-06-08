@@ -10,6 +10,7 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   if (!session) return noSessionResponse
 
   const data = await req.json()
+
   const { totalPrice, invoiceRows } = data
   const invoiceId = data.invoiceId
 
