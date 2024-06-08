@@ -21,7 +21,6 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const createInvoiceError = useAppSelector(
     (state) => state.invoiceReducer.error
   )
-  const apiIsLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
 
   const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
   const showProductModal = useAppSelector(
