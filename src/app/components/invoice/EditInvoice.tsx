@@ -14,7 +14,7 @@ import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
 import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader'
 import { InvoiceRowModal } from './components/invoiceRowModal/InvoiceRowModal'
 import { ErrorMessage } from '@/app/ui/formElements/ErrorMessage'
-import { PageTitle, IsLoadingJsx, Button } from '@/app/ui/'
+import { PageTitle, Button } from '@/app/ui/'
 import { useRouter } from 'next/navigation'
 import { InvoiceStatus } from './components/invoiceStatus/InvoiceStatus'
 
@@ -84,8 +84,6 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
 
       <InvoiceStatus isPaid={isPaid} isActive={isActive} />
 
-      {isLoading ? <IsLoadingJsx /> : null}
-
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
           {updateSuccess ? <ErrorMessage errorMessage={updateSuccess} /> : null}
@@ -117,6 +115,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           } `}
           buttonText="Update Invoice"
           disabled={isLoading || !isActive}
+          isLoading={isLoading}
           onClick={onUpdateInvoiceClick}
         />
 
@@ -128,6 +127,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
             }`}
             buttonText={`${isPaid ? 'Set NOT Paid' : 'Set Paid'}`}
             disabled={isLoading || !isActive}
+            isLoading={isLoading}
             onClick={() => dispatch(toggleInvoiceIsPaid(invoiceId))}
           />
           <Button
@@ -137,6 +137,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
             }`}
             buttonText={`${isActive ? 'Close Invoice' : 'Open Invoice'}`}
             disabled={isLoading}
+            isLoading={isLoading}
             onClick={() => dispatch(toggleInvoiceIsActive(invoiceId))}
           />
         </div>
