@@ -38,7 +38,7 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
   const activeQuote = await prisma.quote.update({
     where: { id: newQuote.id },
     data: {
-      isActive: true,
+      isActive: false,
     },
   })
 

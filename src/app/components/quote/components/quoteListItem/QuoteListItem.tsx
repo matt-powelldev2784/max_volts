@@ -6,6 +6,7 @@ import { Button } from '@/app/ui/'
 import { formatDate } from '@/app/lib/formatDate'
 import { useRouter } from 'next/navigation'
 import { apiCall } from '@/app/lib/apiCall'
+import Image from 'next/image'
 
 interface QuoteItemProps extends T_Quote {
   header?: boolean
@@ -51,9 +52,13 @@ export const QuoteListItem = ({
       <p className="h-full w-full text-sm flex">
         {header ? 'Client' : `${clientString}`}
       </p>
-      <p className="h-full w-full max-w-[60px] text-sm lg:flex hidden">
-        {header ? 'Closed' : `${!isActive}`}
-      </p>
+      <div className="flexCol h-full w-full max-w-[100px] text-sm lg:flex hidden">
+        {header ? 'Job Is Live' : null}
+
+        {isActive ? (
+          <Image src="/icons/tick.svg" alt="Tick icon" width={30} height={30} />
+        ) : null}
+      </div>
 
       <p className="h-full min-w-[80px] text-sm lg:flex hidden">
         {header ? 'Total' : `£${Number(totalAmount).toFixed(2)}`}
