@@ -25,6 +25,7 @@ export const POST = async (req: NextRequest, _res: NextResponse) => {
     data: {
       clientId: quote.clientId,
       totalAmount: quote.totalAmount,
+      quoteNum: quote.quoteNum,
     },
   })
 

@@ -143,6 +143,9 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
 
               <View style={styles.logoSection}>
                 <Text>Invoice Number: {currentInvoice.invoiceNum}</Text>
+                {currentInvoice.quoteNum ? (
+                  <Text>Quote Number: {currentInvoice.quoteNum}</Text>
+                ) : null}
                 <Text>Date: {formatDate(currentInvoice.invoiceDate)}</Text>
               </View>
             </View>

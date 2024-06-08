@@ -57,6 +57,7 @@ model InvoiceRow {
 model Invoice {
   id          String      @id @default(cuid())
   invoiceNum  Int         @default(autoincrement())
+  quoteNum    Int?   
   invoiceDate DateTime    @default(now())
   clientId    String
   totalAmount Float       @default(0)
