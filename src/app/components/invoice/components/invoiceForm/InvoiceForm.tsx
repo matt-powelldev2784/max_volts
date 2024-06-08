@@ -35,7 +35,7 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const clientSelectOptionsJsx = useClientSelectOptions()
 
   return (
-    <div className="min-h-screen relative w-full h-fit mt-4">
+    <div className=" min-h-screen relative w-full h-fit mt-4">
       <PageTitle
         text={'Add Invoice'}
         imgPath={'/icons/invoice.svg'}
@@ -82,11 +82,13 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
           disabled={isLoading}
           onClick={formik.handleSubmit}
         />
-
-        {createInvoiceError ? (
-          <ErrorMessage errorMessage={createInvoiceError} />
-        ) : null}
       </div>
+
+      {createInvoiceError ? (
+        <div className="flexRow">
+          <ErrorMessage errorMessage={createInvoiceError} />
+        </div>
+      ) : null}
     </div>
   )
 }

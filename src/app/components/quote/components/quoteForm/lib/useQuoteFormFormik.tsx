@@ -34,12 +34,10 @@ export const useQuoteFormFormik = (
           return dispatch(setErrorState('Please add at least one quote row'))
         }
 
-        if (!totalPrice || typeof totalPrice !== 'number') {
-          setIsLoading(false)
-          return dispatch(
-            setErrorState('Server error, please try again later.')
-          )
-        }
+       if (!totalPrice || typeof totalPrice !== 'number') {
+         setIsLoading(false)
+         return dispatch(setErrorState('Total price must be greater than 0'))
+       }
 
         const quoteDetails: T_QuoteDetails = {
           clientId: values.clientId,

@@ -67,6 +67,9 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
     if (invoiceRows.length === 0) {
       return dispatch(setErrorState('Please add at least one invoice row'))
     }
+    if (!totalPrice || typeof totalPrice !== 'number') {
+      return dispatch(setErrorState('Total price must be greater than 0'))
+    }
     await dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
     router.push(`/pages/invoice/pdf/${invoiceId}`)
   }
