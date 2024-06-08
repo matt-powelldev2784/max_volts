@@ -10,6 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// cleint model -----------------------------------------
 model Client {
   id          String   @id @default(cuid())
   name        String
@@ -21,8 +22,10 @@ model Client {
   email       String?
   isHidden      Boolean  @default(false)
   Invoice     Invoice[]
+  Quote       Quote[] 
 }
 
+// product model -----------------------------------------
 model Product {
   id            String @id @default(cuid())
   name          String
@@ -32,8 +35,10 @@ model Product {
   VAT           Float @default(20)
   isHidden      Boolean  @default(false)
   InvoiceRow    InvoiceRow[]
+  QuoteRow      QuoteRow[]  
 }
 
+// invoice models -----------------------------------------
 model InvoiceRow {
   id        String   @id @default(cuid())
   invoiceId String
@@ -61,7 +66,34 @@ model Invoice {
   InvoiceRow  InvoiceRow[]
 }
 
+// quote models -----------------------------------------
+model Quote {
+  id          String      @id @default(cuid())
+  quoteNum    Int         @default(autoincrement())
+  quoteDate   DateTime    @default(now())
+  clientId    String
+  totalAmount Float       @default(0)
+  isActive    Boolean     @default(false)
+  Client      Client?     @relation(fields: [clientId], references: [id])
+  QuoteRow    QuoteRow[]
+}
 
+model QuoteRow {
+  id        String   @id @default(cuid())
+  quoteId   String
+  productId String
+  quantity  Int
+  name      String
+  description  String
+  VAT       Float
+  buyPrice     Float
+  sellPrice     Float
+  totalPrice Float
+  Quote     Quote?   @relation(fields: [quoteId], references: [id])
+  Product   Product? @relation(fields: [productId], references: [id])
+}
+
+// user models -----------------------------------------
 model User {
   id            String    @id @default(cuid())
   name          String?
