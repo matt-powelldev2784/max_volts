@@ -54,7 +54,7 @@ export const useQuoteFormFormik = (
 
         console.log('quote created')
         router.push(`/pages/dashboard`) // Update the route
-        // router.push(`/pages/quote/pdf/${quoteId}`) // Update the route
+        router.push(`/pages/quote/pdf/${quoteId}`) // Update the route
       } catch (error) {
         setIsLoading(false)
       }
