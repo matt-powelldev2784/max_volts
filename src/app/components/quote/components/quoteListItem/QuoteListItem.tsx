@@ -58,7 +58,7 @@ export const QuoteListItem = ({
       <p className="h-full w-full text-sm flex">
         {header ? 'Client' : `${clientString}`}
       </p>
-      <div className="flexCol h-full w-full max-w-[200px] text-sm md:flex sm:hidden">
+      <div className="flexCol h-full w-full max-w-[200px] text-sm lg:flex sm:hidden">
         {header ? 'Quote Has Invoice' : null}
 
         {isActive ? (
@@ -66,7 +66,7 @@ export const QuoteListItem = ({
         ) : null}
       </div>
 
-      <p className="h-full min-w-[80px] text-sm lg:flex hidden">
+      <p className="h-full min-w-[80px] text-sm md:flex hidden">
         {header ? 'Total' : `£${Number(totalAmount).toFixed(2)}`}
       </p>
 
@@ -90,7 +90,7 @@ export const QuoteListItem = ({
           />
           <Button
             type="button"
-            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px] min-w-[100px]"
+            optionalClasses="text-white text-sm bg-mvOrange h-full w-full max-h-[37px] min-w-[80px]"
             buttonText="Invoice"
             onClick={createInvoice}
             isLoading={isLoading}
