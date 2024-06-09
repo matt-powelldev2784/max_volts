@@ -31,7 +31,7 @@ export const InvoiceListItem = ({
         header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
-      <p className="h-full min-w-[65px] text-sm flex ">
+      <p className="h-full min-w-[65px] text-sm flex sm:hidden ">
         {header ? 'Date' : `${formatDate(invoiceDate)}`}
       </p>
       <p className="h-full w-fit min-w-[50px] md:w-[150px] text-sm flex">
@@ -58,7 +58,7 @@ export const InvoiceListItem = ({
           />
         ) : null}
       </p>
-      <p className="h-full min-w-[80px] text-sm lg:flex hidden">
+      <p className="h-full min-w-[80px] text-sm md:flex hidden">
         {header ? 'Total' : `£${Number(totalAmount).toFixed(2)}`}
       </p>
 
