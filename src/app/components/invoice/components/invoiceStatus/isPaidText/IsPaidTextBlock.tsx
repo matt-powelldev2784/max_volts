@@ -6,7 +6,7 @@ export const IsPaidText = () => {
       <Button
         type="button"
         optionalClasses="text-white text-sm h-full w-[150px] md:w-[160px] max-h-[40==37px] bg-mvGreen"
-        buttonText="Invoice Is Paid"
+        buttonText="Invoice Paid"
       />
     </>
   )

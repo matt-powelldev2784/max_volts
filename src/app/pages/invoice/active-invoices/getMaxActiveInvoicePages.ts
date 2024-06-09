@@ -4,7 +4,7 @@ export const getMaxActiveInvoicePages = async () => {
   const pageSize = 10
 
   const totalProducts = await prisma.invoice.count({
-    where: { isActive: true },
+    where: { paid: false },
   })
 
   const maxPage = Math.ceil(totalProducts / pageSize)

@@ -18,6 +18,7 @@ export const InvoiceList = ({
   currentPageNum,
   pageTitle,
 }: InvoiceListProps) => {
+
   const invoiceItemsJsx = invoices.map((invoice) => {
     return <InvoiceListItem key={invoice.id} {...invoice} />
   })

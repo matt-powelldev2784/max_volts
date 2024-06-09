@@ -27,6 +27,7 @@ export interface T_UpdateInvoiceDetails {
 export interface T_Invoice {
   id: string
   invoiceNum: number
+  quoteNum?: number | null
   clientId: string | Date
   invoiceDate: Date
   totalAmount: number

@@ -4,7 +4,6 @@ import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import {
   toggleInvoiceIsPaid,
-  toggleInvoiceIsActive,
   updateInvoice,
   setErrorState,
 } from '@/redux/slice/invoiceSlice'
@@ -14,7 +13,7 @@ import { InvoiceRowText } from './components/InvoiceRowText/InvoiceRowText'
 import { InvoiceRowHeader } from './components/InvoiceRowHeader/InvoiceRowHeader'
 import { InvoiceRowModal } from './components/invoiceRowModal/InvoiceRowModal'
 import { ErrorMessage } from '@/app/ui/formElements/ErrorMessage'
-import { PageTitle, IsLoadingJsx, Button } from '@/app/ui/'
+import { PageTitle, Button } from '@/app/ui/'
 import { useRouter } from 'next/navigation'
 import { InvoiceStatus } from './components/invoiceStatus/InvoiceStatus'
 
@@ -67,6 +66,9 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
     if (invoiceRows.length === 0) {
       return dispatch(setErrorState('Please add at least one invoice row'))
     }
+    if (!totalPrice || typeof totalPrice !== 'number') {
+      return dispatch(setErrorState('Total price must be greater than 0'))
+    }
     await dispatch(updateInvoice({ invoiceId, totalPrice, invoiceRows }))
     router.push(`/pages/invoice/pdf/${invoiceId}`)
   }
@@ -81,8 +83,6 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
 
       <InvoiceStatus isPaid={isPaid} isActive={isActive} />
 
-      {isLoading ? <IsLoadingJsx /> : null}
-
       <div className="w-full flexCol">
         <div className="flexCol w-full md:w-1/3">
           {updateSuccess ? <ErrorMessage errorMessage={updateSuccess} /> : null}
@@ -93,7 +93,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
       </div>
 
       <div className="w-full flexCol mim-w-[305px] px-2 lg:px-4">
-        <div className="w-full flexCol md:p-2 gap-4 lg:flexRow md:px-12 lg:gap-16 mb-8">
+        <div className="w-full flexCol md:p-2 gap-4 lg:flexRow md:px-12 lg:gap-16 mb-8 ">
           <ClientText clientText={clientText} />
           <AddProduct />
         </div>
@@ -107,35 +107,41 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           Total Price : £{Number(totalPrice).toFixed(2)}
         </p>
 
-        <Button
-          type="button"
-          optionalClasses={`text-white text-sm w-full h-[42.5px] max-w-[320px] ${
-            isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
-          } `}
-          buttonText="Update Invoice"
-          disabled={isLoading || !isActive}
-          onClick={onUpdateInvoiceClick}
-        />
-
-        <div className="flexRow gap-2 mt-4">
+        <div className="flexRow flex-wrap gap-4 mt-4 w-full min-w-[320px]">
           <Button
             type="button"
-            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
-              isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            optionalClasses={`text-white text-sm w-full h-[42.5px] max-w-[320px] ${
+              isLoading ? 'bg-mvGreen/50' : 'bg-mvGreen'
+            } `}
+            buttonText={`${
+              isPaid ? 'Set Invoice To Due' : 'Set Invoice To Paid'
             }`}
-            buttonText={`${isPaid ? 'Set NOT Paid' : 'Set Paid'}`}
-            disabled={isLoading || !isActive}
+            disabled={isLoading}
+            isLoading={isLoading}
             onClick={() => dispatch(toggleInvoiceIsPaid(invoiceId))}
           />
+
           <Button
+            type="button"
+            optionalClasses={`text-white text-sm w-full h-[42.5px] max-w-[320px] ${
+              isLoading || isPaid ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            } `}
+            buttonText="Update Invoice"
+            disabled={isLoading || isPaid}
+            isLoading={isLoading}
+            onClick={onUpdateInvoiceClick}
+          />
+
+          {/* <Button
             type="button"
             optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
               isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
             }`}
             buttonText={`${isActive ? 'Close Invoice' : 'Open Invoice'}`}
             disabled={isLoading}
+            isLoading={isLoading}
             onClick={() => dispatch(toggleInvoiceIsActive(invoiceId))}
-          />
+          /> */}
         </div>
       </div>
 

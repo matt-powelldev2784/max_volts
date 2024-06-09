@@ -5,6 +5,7 @@ import React from 'react'
 import { Button } from '@/app/ui/'
 import { formatDate } from '@/app/lib/formatDate'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 interface InvoiceItemProps extends T_Invoice {
   header?: boolean
@@ -17,7 +18,6 @@ export const InvoiceListItem = ({
   totalAmount,
   invoiceDate,
   paid,
-  isActive,
   header,
 }: InvoiceItemProps) => {
   const router = useRouter()
@@ -30,7 +30,7 @@ export const InvoiceListItem = ({
         header ? 'bg-darkBlack text-white' : 'bg-darkBlack/5'
       }`}
     >
-      <p className="h-full min-w-[65px] text-sm flex">
+      <p className="h-full min-w-[65px] text-sm flex sm:hidden ">
         {header ? 'Date' : `${formatDate(invoiceDate)}`}
       </p>
       <p className="h-full w-fit min-w-[50px] md:w-[150px] text-sm flex">
@@ -39,13 +39,27 @@ export const InvoiceListItem = ({
       <p className="h-full w-full text-sm flex">
         {header ? 'Client' : `${clientString}`}
       </p>
-      <p className="h-full w-full max-w-[60px] text-sm lg:flex hidden">
-        {header ? 'Closed' : `${!isActive}`}
+
+      <p className="flexCol h-full w-full max-w-[150px] text-sm lg:flex hidden sm:hidden">
+        {header ? 'Invoice Paid' : null}
+        {paid ? (
+          <Image
+            src="/icons/tick_green.svg"
+            alt="Tick icon"
+            width={30}
+            height={30}
+          />
+        ) : null}
+        {!paid && header === undefined ? (
+          <Image
+            src="/icons/cross.svg"
+            alt="Tick icon"
+            width={30}
+            height={30}
+          />
+        ) : null}
       </p>
-      <p className="h-full w-full max-w-[50px] text-sm lg:flex hidden">
-        {header ? 'Paid' : `${paid}`}
-      </p>
-      <p className="h-full min-w-[80px] text-sm lg:flex hidden">
+      <p className="h-full min-w-[80px] text-sm md:flex hidden">
         {header ? 'Total' : `£${Number(totalAmount).toFixed(2)}`}
       </p>
 

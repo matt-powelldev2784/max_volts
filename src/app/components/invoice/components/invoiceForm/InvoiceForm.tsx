@@ -9,7 +9,7 @@ import { InvoiceRowModal } from '../invoiceRowModal/InvoiceRowModal'
 import { useInvoiceFormFormik } from './lib/useInvoiceFormFormik'
 import { useClientSelectOptions } from './lib/useClientSelectOptions'
 import { ErrorMessage } from '@/app/ui/formElements/ErrorMessage'
-import { PageTitle, IsLoadingJsx } from '@/app/ui/'
+import { PageTitle } from '@/app/ui/'
 
 interface InvoiceFormProps {
   children: React.ReactNode
@@ -21,7 +21,6 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const createInvoiceError = useAppSelector(
     (state) => state.invoiceReducer.error
   )
-  const apiIsLoading = useAppSelector((state) => state.invoiceReducer.isLoading)
 
   const totalPrice = useAppSelector((state) => state.invoiceReducer.totalPrice)
   const showProductModal = useAppSelector(
@@ -35,17 +34,15 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
   const clientSelectOptionsJsx = useClientSelectOptions()
 
   return (
-    <div className="min-h-screen relative w-full h-fit mt-4">
+    <div className=" min-h-screen relative w-full h-fit mt-4">
       <PageTitle
         text={'Add Invoice'}
         imgPath={'/icons/invoice.svg'}
         divClasses="mb-2"
       />
 
-      {apiIsLoading ? <IsLoadingJsx /> : null}
-
       <div className="w-full flexRow p-2 md:px-12 lg:px-16 gap-4 lg:gap-16 flex-wrap lg:flex-nowrap mb-8">
-        <form className="w-full">
+        <form className="w-full sm:px-0 md:px-0">
           <SelectField
             formik={formik}
             htmlFor="clientId"
@@ -80,13 +77,16 @@ export const InvoiceForm = ({ children }: InvoiceFormProps) => {
           } `}
           buttonText="Create Invoice"
           disabled={isLoading}
+          isLoading={isLoading}
           onClick={formik.handleSubmit}
         />
-
-        {createInvoiceError ? (
-          <ErrorMessage errorMessage={createInvoiceError} />
-        ) : null}
       </div>
+
+      {createInvoiceError ? (
+        <div className="flexRow">
+          <ErrorMessage errorMessage={createInvoiceError} />
+        </div>
+      ) : null}
     </div>
   )
 }

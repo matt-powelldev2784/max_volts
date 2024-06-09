@@ -38,9 +38,7 @@ export const useInvoiceFormFormik = (
 
         if (!totalPrice || typeof totalPrice !== 'number') {
           setIsLoading(false)
-          return dispatch(
-            setErrorState('Server error, please try again later.')
-          )
+          return dispatch(setErrorState('Total price must be greater than 0'))
         }
 
         const invoiceDetails: T_InvoiceDetails = {

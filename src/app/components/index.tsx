@@ -2,6 +2,11 @@
 export { IsLoggedIn } from './IsLoggedIn/IsLoggedIn'
 export { NavBar } from './navbar/NavBar'
 
+//quote
+export { CreateQuote } from './quote/CreateQuote'
+export { EditQuote } from './quote/EditQuote'
+export { QuoteList } from './quote/QuoteList'
+
 //invoice
 export { CreateInvoice } from './invoice/CreateInvoice'
 export { EditInvoice } from './invoice/EditInvoice'
@@ -21,6 +26,7 @@ export { EditClient } from './clients/editClient/EditClient'
 export { InvoiceMenu } from './menuButtons/InvoiceMenu'
 export { ClientMenu } from './menuButtons/ClientMenu'
 export { ProductMenu } from './menuButtons/ProductMenu'
+export { QuoteMenu } from './menuButtons/QuoteMenu'
 
 //auth
 export { SignIn } from './auth/SignIn'
