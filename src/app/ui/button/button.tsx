@@ -30,7 +30,7 @@ export const Button = ({
       onClick={onClick}
       onSubmit={onSubmit}
       disabled={disabled}
-      className={`flexCol rounded-lg font-semibold outline-none p-2 h-[42.5px] ${optionalClasses}`}
+      className={`flexCol rounded-lg font-semibold outline-none p-2  ${optionalClasses}`}
     >
       {!isLoading ? [children] : null}
       {!isLoading ? buttonText : null}
