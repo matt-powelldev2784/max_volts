@@ -4,7 +4,6 @@ import { useInvoice } from '@/app/lib/hooks/useInvoice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks/reduxsHooks'
 import {
   toggleInvoiceIsPaid,
-  toggleInvoiceIsActive,
   updateInvoice,
   setErrorState,
 } from '@/redux/slice/invoiceSlice'
@@ -108,29 +107,32 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
           Total Price : £{Number(totalPrice).toFixed(2)}
         </p>
 
-        <Button
-          type="button"
-          optionalClasses={`text-white text-sm w-full h-[42.5px] max-w-[320px] ${
-            isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
-          } `}
-          buttonText="Update Invoice"
-          disabled={isLoading || !isActive}
-          isLoading={isLoading}
-          onClick={onUpdateInvoiceClick}
-        />
-
-        <div className="flexRow gap-2 mt-4">
+        <div className="flexRow flex-wrap gap-4 mt-4 w-full min-w-[320px]">
           <Button
             type="button"
-            optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
-              isLoading || !isActive ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            optionalClasses={`text-white text-sm w-full h-[42.5px] max-w-[320px] ${
+              isLoading ? 'bg-mvGreen/50' : 'bg-mvGreen'
+            } `}
+            buttonText={`${
+              isPaid ? 'Set Invoice To Due' : 'Set Invoice To Paid'
             }`}
-            buttonText={`${isPaid ? 'Set NOT Paid' : 'Set Paid'}`}
-            disabled={isLoading || !isActive}
+            disabled={isLoading}
             isLoading={isLoading}
             onClick={() => dispatch(toggleInvoiceIsPaid(invoiceId))}
           />
+
           <Button
+            type="button"
+            optionalClasses={`text-white text-sm w-full h-[42.5px] max-w-[320px] ${
+              isLoading || isPaid ? 'bg-mvOrange/50' : 'bg-mvOrange'
+            } `}
+            buttonText="Update Invoice"
+            disabled={isLoading || isPaid}
+            isLoading={isLoading}
+            onClick={onUpdateInvoiceClick}
+          />
+
+          {/* <Button
             type="button"
             optionalClasses={`text-white text-sm bg-mvOrange h-full w-[150px] md:w-[160px] max-h-[37px] ${
               isLoading ? 'bg-mvOrange/50' : 'bg-mvOrange'
@@ -139,7 +141,7 @@ export const EditInvoice = ({ invoiceId }: EditInvoiceProps) => {
             disabled={isLoading}
             isLoading={isLoading}
             onClick={() => dispatch(toggleInvoiceIsActive(invoiceId))}
-          />
+          /> */}
         </div>
       </div>
 

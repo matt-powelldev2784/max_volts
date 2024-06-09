@@ -44,7 +44,7 @@ export const InvoiceMenu = () => {
       <Button
         type="button"
         optionalClasses="text-white text-sm bg-mvOrange h-[42.5px] w-[300px]"
-        buttonText="Active Invoice List"
+        buttonText="Due Invoice List"
         disabled={false}
         onClick={() => {
           resetInvoiceState()

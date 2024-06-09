@@ -18,7 +18,6 @@ export const InvoiceListItem = ({
   totalAmount,
   invoiceDate,
   paid,
-  isActive,
   header,
 }: InvoiceItemProps) => {
   const router = useRouter()
@@ -40,18 +39,20 @@ export const InvoiceListItem = ({
       <p className="h-full w-full text-sm flex">
         {header ? 'Client' : `${clientString}`}
       </p>
-      <p className="flexCol h-full w-full max-w-[120px] text-sm lg:flex hidden sm:hidden">
-        {header ? 'Closed' : null}
 
-        {!isActive && !header ? (
-          <Image src="/icons/tick.svg" alt="Tick icon" width={30} height={30} />
-        ) : null}
-      </p>
-      <p className="flexCol h-full w-full max-w-[120px] text-sm lg:flex hidden sm:hidden">
+      <p className="flexCol h-full w-full max-w-[150px] text-sm lg:flex hidden sm:hidden">
         {header ? 'Invoice Paid' : null}
         {paid ? (
           <Image
             src="/icons/tick_green.svg"
+            alt="Tick icon"
+            width={30}
+            height={30}
+          />
+        ) : null}
+        {!paid && header === undefined ? (
+          <Image
+            src="/icons/cross.svg"
             alt="Tick icon"
             width={30}
             height={30}

@@ -5,7 +5,7 @@ export const getTenActiveInvoices = async (pageNumber: number) => {
   const skip = (pageNumber - 1) * pageSize
 
   const invoices = await prisma.invoice.findMany({
-    where: { isActive: true },
+    where: { paid: false },
     include: {
       Client: true,
       InvoiceRow: true,
