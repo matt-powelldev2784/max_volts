@@ -11,6 +11,7 @@ interface ButtonProps {
   buttonText: string
   disabled?: boolean
   isLoading?: boolean
+  children?: React.ReactNode
 }
 
 export const Button = ({
@@ -21,6 +22,7 @@ export const Button = ({
   onSubmit,
   disabled,
   isLoading,
+  children,
 }: ButtonProps) => {
   return (
     <button
@@ -30,6 +32,7 @@ export const Button = ({
       disabled={disabled}
       className={`flexCol rounded-lg font-semibold outline-none p-2 h-[42.5px] ${optionalClasses}`}
     >
+      {!isLoading ? [children] : null}
       {!isLoading ? buttonText : null}
       {isLoading ? (
         <Image
