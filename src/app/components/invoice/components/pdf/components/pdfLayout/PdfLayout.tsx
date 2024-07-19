@@ -99,6 +99,22 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     border: '2px solid black',
   },
+  termsContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  termsText: {
+    flexDirection: 'column',
+    textAlign: 'center',
+    fontFamily: 'BrandonReg',
+    padding: 6,
+    paddingTop: 9,
+    color: 'grey',
+    fontSize: '8px',
+    width: '90%',
+  },
 })
 
 interface PdfLayoutProps {
@@ -175,6 +191,18 @@ export const PdfLayout = ({ currentInvoice }: PdfLayoutProps) => {
             <Text>72 Ardrossan Gardens, Worcester Park, Surrey, KT4 7AX</Text>
             <Text>Tel: 07877 695 996</Text>
             <Text>Email: MaxVoltsElectricalServices@gmail.com</Text>
+          </View>
+
+          <View style={styles.termsContainer}>
+            <Text style={styles.termsText}>
+              All work is guaranteed for one year from the invoice date. The
+              NAPIT guarantee applies to all domestic and commercial work for up
+              to six years. All materials are covered solely by the
+              manufacturers warranties and guarantees. Any replacements will
+              incur charges. For any issues or complaints, please provide
+              detailed information via email to
+              MaxVoltsElectricalServices@gmail.com.
+            </Text>
           </View>
         </View>
       </Page>
