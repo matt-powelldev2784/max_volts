@@ -2,6 +2,7 @@ import { getProviders } from 'next-auth/react'
 
 export const getAuthProviders = async () => {
   const providers = await getProviders()
+  console.log('providers', providers)
 
   if (!providers) return null
 
@@ -12,7 +13,7 @@ export const getAuthProviders = async () => {
   })
 
   const oAuthProviders = Object.values(providers).filter((provider) => {
-    if (provider.name !== 'Email') {
+    if (provider.name == 'Google') {
       return true
     }
   })
