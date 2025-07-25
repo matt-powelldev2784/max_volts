@@ -7,6 +7,7 @@ import { Libre_Franklin } from 'next/font/google'
 const Libre = Libre_Franklin({
   subsets: ['latin'],
   display: 'swap',
+  fallback: ['system-ui', 'arial', 'sans-serif'],
 })
 
 export const metadata: Metadata = {
