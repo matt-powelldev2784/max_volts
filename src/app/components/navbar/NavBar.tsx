@@ -4,7 +4,6 @@ import { auth } from '@clerk/nextjs/server'
 
 export const NavBar = async () => {
   const { userId } = await auth()
-  const authorisedUser = userId === process.env.AUTHORISED_USER1
 
   return (
     <header className="">
