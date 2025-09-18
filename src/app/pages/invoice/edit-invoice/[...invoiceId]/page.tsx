@@ -1,23 +1,19 @@
 import { EditInvoice, NavBar } from '@/app/components'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import { redirect } from 'next/navigation'
 
 export default async function EditInvoicePage({
   params,
 }: {
-  params: { invoiceId: string }
+  params: Promise<{ invoiceId: string[] }>
 }) {
-  const session = await getServerSession(authOptions)
-  if (!session) return redirect('/api/auth/signin')
-   if (!session.user.isAdmin) return redirect('/pages/auth/not-authorised')
+  const { invoiceId } = await params
+  const id = invoiceId?.[0]
 
-  const invoiceId = params.invoiceId[0]
+  if (!id) return null
 
   return (
     <div>
       <NavBar />
-      <EditInvoice invoiceId={invoiceId} />
+      <EditInvoice invoiceId={id} />
     </div>
   )
 }
