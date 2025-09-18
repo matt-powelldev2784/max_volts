@@ -27,7 +27,7 @@ export const NavBar = async () => {
         </a>
 
         <div className="flexRow w-full md:w-auto lg:mr-6">
-          {authorisedUser ? <NavItems /> : null}
+          {userId ? <NavItems /> : null}
         </div>
       </nav>
     </header>
