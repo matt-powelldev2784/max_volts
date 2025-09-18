@@ -1,18 +1,18 @@
 import { EditQuote, NavBar } from '@/app/components'
 
-
 export default async function EditQuotePage({
   params,
 }: {
-  params: { quoteId: string }
+  params: Promise<{ quoteId: string[] }>
 }) {
-  const quoteId = params.quoteId[0]
-  console.log('quoteId', quoteId)
+  const { quoteId } = await params
+  const id = quoteId?.[0]
+  if (!id) return null
 
   return (
     <div>
       <NavBar />
-      <EditQuote quoteId={quoteId} />
+      <EditQuote quoteId={id} />
     </div>
   )
 }

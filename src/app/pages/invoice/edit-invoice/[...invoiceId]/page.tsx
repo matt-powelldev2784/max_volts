@@ -1,17 +1,19 @@
 import { EditInvoice, NavBar } from '@/app/components'
 
-
 export default async function EditInvoicePage({
   params,
 }: {
-  params: { invoiceId: string }
+  params: Promise<{ invoiceId: string[] }>
 }) {
-  const invoiceId = params.invoiceId[0]
+  const { invoiceId } = await params
+  const id = invoiceId?.[0]
+
+  if (!id) return null
 
   return (
     <div>
       <NavBar />
-      <EditInvoice invoiceId={invoiceId} />
+      <EditInvoice invoiceId={id} />
     </div>
   )
 }
