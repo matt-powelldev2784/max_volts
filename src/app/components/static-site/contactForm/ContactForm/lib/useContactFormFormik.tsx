@@ -1,41 +1,42 @@
-import { apiCall } from '@/app/lib/apiCall'
+'use client'
+
+import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useState } from 'react'
+import emailjs from '@emailjs/browser'
+
+type FormValues = {
+  name: string
+  email: string
+  tel: string
+  message: string
+}
+
+const validationSchema = Yup.object({
+  name: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid').required('Required'),
+  tel: Yup.string().required('Required'),
+  message: Yup.string().required('Required'),
+})
 
 export const useContactFormFormik = () => {
   const [submissionSuccessful, setSubmissionSuccessful] = useState(false)
 
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      tel: '',
-      message: '',
-    },
-    validationSchema: Yup.object({
-      name: Yup.string().required('Please input a name'),
-      email: Yup.string()
-        .email('Please input a valid email address')
-        .required('Email is required'),
-      tel: Yup.number()
-        .typeError('Please input a valid telephone number')
-        .required('Telephone number is required'),
-      message: Yup.string().required('Message is required'),
-    }),
+  const formik = useFormik<FormValues>({
+    initialValues: { name: '', email: '', tel: '', message: '' },
+    validationSchema,
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
-        const res = await apiCall({
-          route: '/api/email-enquiry',
-          httpMethod: 'POST',
-          body: values,
-        })
-        if (res.status === 200) {
-          resetForm()
-          setSubmissionSuccessful(true)
-        }
-      } catch (error) {
-        console.log('error', error)
+        const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string
+        const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string
+        const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+
+        await emailjs.send(serviceId, templateId, values, { publicKey })
+        resetForm()
+        setSubmissionSuccessful(true)
+      } catch (e) {
+        console.error('EmailJS error:', e)
+        setSubmissionSuccessful(false)
       } finally {
         setSubmitting(false)
       }
