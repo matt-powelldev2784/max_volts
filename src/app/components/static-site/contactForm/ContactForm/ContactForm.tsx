@@ -43,7 +43,7 @@ export const ContactForm = () => {
           <InputField
             formik={formik}
             htmlFor="tel"
-            labelText="Telelphone Number"
+            labelText="Telephone Number"
             inputType="text"
             imagePath="/icons/tel.svg"
             spanText=" *"
