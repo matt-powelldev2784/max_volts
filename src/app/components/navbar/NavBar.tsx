@@ -4,6 +4,7 @@ import { auth } from '@clerk/nextjs/server'
 
 export const NavBar = async () => {
   const { userId } = await auth()
+  const authorisedUser = userId === process.env.AUTHORISED_USER1
 
   return (
     <header className="">
@@ -26,7 +27,7 @@ export const NavBar = async () => {
         </a>
 
         <div className="flexRow w-full md:w-auto lg:mr-6">
-          {userId ? <NavItems /> : null}
+          {authorisedUser ? <NavItems /> : null}
         </div>
       </nav>
     </header>
